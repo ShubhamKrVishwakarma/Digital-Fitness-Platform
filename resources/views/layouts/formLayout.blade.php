@@ -27,6 +27,7 @@
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

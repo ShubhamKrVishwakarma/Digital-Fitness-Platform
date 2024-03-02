@@ -63,46 +63,57 @@
             <span class="mask bg-gradient-dark opacity-6"></span>
         </div>
         <div class="container">
-            <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
+            <div class="row mt-lg-n15 mt-n11 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
                         <div class="card-header text-center pt-4 pb-0">
                             <h5>Create New Account</h5>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data">
+                            <form id="signupForm">
+                                @csrf
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Name" required>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
                                     <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                                    <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
+                                </div>
+                                <div class="mb-2 d-flex justify-content-start align-items-center gap-4">
+                                    <label class="m-0 text-sm font-weight-medium">Gender:</label>
+                                    <div class="d-flex justify-content-center align-items-center gap-1">
+                                        <input type="radio" name="gender" id="male" required>
+                                        <label for="male" class="form-label m-0 font-weight-medium text-secondary">Male</label>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center gap-1">
+                                        <input type="radio" name="gender" id="female" required>
+                                        <label for="female" class="form-label font-weight-medium m-0 text-secondary">Female</label>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center gap-1">
+                                        <input type="radio" name="gender" id="others" required>
+                                        <label for="others" class="form-label font-weight-medium m-0 text-secondary">Others</label>
+                                        <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="form-label" class="text-sm font-weight-medium m-0">Date of Birth</label>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="date" class="form-control" name="dob" id="dob" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                                     <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" required>
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
                                     <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" required>
-                                    <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
-                                </div>
-                                <!-- <div class="mb-3">
-                                    <input type="file" class="form-control">
-                                </div> -->
-                                <div class="form-check form-check-info text-start">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms
-                                            and Conditions</a>
-                                    </label>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Create
-                                        Account</button>
+                                    <button type="submit" class="btn bg-gradient-dark w-100">Create Account</button>
                                 </div>
-                                <p class="text-sm text-center mt-3 mb-0">Already have an account? <a href="{{ route('login') }}"
+                                <p class="text-sm text-center mt-1 mb-0">Already have an account? <a href="{{ route('login') }}"
                                         class="text-dark font-weight-bolder">Login</a></p>
                             </form>
                         </div>

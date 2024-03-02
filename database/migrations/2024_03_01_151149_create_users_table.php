@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email', 100)->unique();
-            $table->string('phone', 10)->nullable()->default(null);
+            $table->string('phone', 10)->nullable();
             $table->string('password');
-            $table->string('gender');
+            $table->enum('gender', ['M', 'F', 'O']);
             $table->string('dob')->nullable();
             $table->string('address', 255)->nullable();
             $table->string('city', 100)->nullable();
