@@ -24,25 +24,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('shop') }}">
                             <i class="fa-solid fa-cart-shopping opacity-6 me-1"></i>
                             Shop
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('community') }}">
                             <i class="fa-solid fa-icons opacity-6 me-1"></i>
                             Community
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('about') }}">
                             <i class="fa-solid fa-circle-info opacity-6 me-1"></i>
                             About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('contact') }}">
                             <i class="fa-solid fa-file-signature opacity-6 me-1"></i>
                             Contact
                         </a>

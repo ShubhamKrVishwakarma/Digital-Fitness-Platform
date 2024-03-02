@@ -2,7 +2,7 @@
 
 @section('title') Query @endsection
 
-@push('css')
+@push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}">
 @endpush
 
