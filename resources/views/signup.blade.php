@@ -83,15 +83,15 @@
                                 <div class="mb-2 d-flex justify-content-start align-items-center gap-4">
                                     <label class="m-0 text-sm font-weight-medium">Gender:</label>
                                     <div class="d-flex justify-content-center align-items-center gap-1">
-                                        <input type="radio" name="gender" id="male" required>
+                                        <input type="radio" name="gender" id="male" value="M" required>
                                         <label for="male" class="form-label m-0 font-weight-medium text-secondary">Male</label>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center gap-1">
-                                        <input type="radio" name="gender" id="female" required>
+                                        <input type="radio" name="gender" id="female" value="F" required>
                                         <label for="female" class="form-label font-weight-medium m-0 text-secondary">Female</label>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center gap-1">
-                                        <input type="radio" name="gender" id="others" required>
+                                        <input type="radio" name="gender" id="others" value="O" required>
                                         <label for="others" class="form-label font-weight-medium m-0 text-secondary">Others</label>
                                         <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
                                     </div>
