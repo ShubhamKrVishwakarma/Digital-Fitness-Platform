@@ -13,14 +13,11 @@
     <header>
         <div class="container">
             <ul>
-                <li><a href="./home.html" class="logo">
-                        <!-- <div class="images">
-                            <img src="./images/logo-fordark.jpeg" alt="logo of fit studio">
-                        </div> -->
-                        <h2>Fit Studio</h2>
+                <li><a href="{{ route('home') }}" class="logo">
+                        <h2>Fitness Hub</h2>
                     </a></li>
-                <li><a href="./home.html" class="nav-link">Home</a></li>
-                <li><a href="./shop.html" class="nav-link">Shop</a></li>
+                <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ route('about') }}" class="nav-link">About Us</a></li>
             </ul>
         </div>
     </header>

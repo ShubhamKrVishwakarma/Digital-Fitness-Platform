@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
 @endpush
 
 @section("content")
-
     <section class="container-fluid banner text-white" id="banner-1">
         <video autoplay muted loop plays-inline class="background-clip">
           <source src="{{asset("videos/fitness_video.webm")}}" type="video/webm">
@@ -81,7 +81,8 @@
               <button class="btn btn-primary">Go to Store</button>
           </div>
       </div>
-  </section>
+    </section>
+
     <!-- <section class="container-fluid banner animate text-white" id="banner-3">
         <div class="heading">
             <h2>Need Equipments?</h2>
