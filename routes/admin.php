@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 // Admin Pages Route
 Route::group(["as" => "admin."], function() {
+    Route::get("/", function() {
+        return redirect()->route('admin.dashboard');
+    });
+    
     Route::get("/dashboard", function() {
         return view("Admin.dashboard");
     })->name("dashboard");
