@@ -8,7 +8,7 @@
 @endpush
 @section("content")
    <!-- Orders Section -->
-    {{-- <div class="orders-section my-4">
+    <div class="orders-section my-4">
         <main class="table" id="customers_table">
             <section class="table__header">
                 <h1>Your Orders</h1>
@@ -212,35 +212,6 @@
                 </table>
             </section>
         </main>
-    </div> --}}
-
-    <div class="py-3 py-md-5">
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-12">
-                    <div class="shadow bg-white p-3">
-                        <h4 class="mb-4">My orders</h4>
-                        <hr>
-
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                    <th>Id</th>
-                                </thead>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
