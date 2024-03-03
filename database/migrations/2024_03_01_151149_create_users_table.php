@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('phone', 10)->nullable();
             $table->string('password');
             $table->enum('gender', ['M', 'F', 'O']);
-            $table->string('dob')->nullable();
-            $table->string('address', 255)->nullable();
+            $table->date('dob');
+            $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
             $table->string('state', 50)->nullable();
             $table->string('zip_code', 10)->nullable();
