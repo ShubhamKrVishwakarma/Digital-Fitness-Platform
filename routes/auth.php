@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/login', 'login')->name('login');
-Route::view('/signup', 'signup')->name('signup');
-Route::view('/register', 'register')->name('register');
+Route::get("/login", function() {
+    return view('Auth.login');
+})->name('login');
 
+Route::get("/signup", function() {
+    return view('Auth.signup');
+})->name('signup');
+
+Route::get("/register", function() {
+    return view('Auth.register');
+})->name('register');
