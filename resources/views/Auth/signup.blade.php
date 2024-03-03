@@ -24,25 +24,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('shop') }}">
                             <i class="fa-solid fa-cart-shopping opacity-6 me-1"></i>
                             Shop
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('community') }}">
                             <i class="fa-solid fa-icons opacity-6 me-1"></i>
                             Community
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('about') }}">
                             <i class="fa-solid fa-circle-info opacity-6 me-1"></i>
                             About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="">
+                        <a class="nav-link me-2" href="{{ route('contact') }}">
                             <i class="fa-solid fa-file-signature opacity-6 me-1"></i>
                             Contact
                         </a>
@@ -63,7 +63,8 @@
             <span class="mask bg-gradient-dark opacity-6"></span>
         </div>
         <div class="container">
-            <div class="row mt-lg-n15 mt-n11 justify-content-center">
+            {{-- <div class="row mt-lg-n15 mt-n12 justify-content-center"> --}}
+            <div class="row mt-n12 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
                         <div class="card-header text-center pt-4 pb-0">
@@ -80,7 +81,7 @@
                                     <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                                     <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
                                 </div>
-                                <div class="mb-2 d-flex justify-content-start align-items-center gap-4">
+                                {{-- <div class="mb-2 d-flex justify-content-start align-items-center gap-4">
                                     <label class="m-0 text-sm font-weight-medium">Gender:</label>
                                     <div class="d-flex justify-content-center align-items-center gap-1">
                                         <input type="radio" name="gender" id="male" value="M" required>
@@ -95,9 +96,17 @@
                                         <label for="others" class="form-label font-weight-medium m-0 text-secondary">Others</label>
                                         <span class="text-danger d-block ms-1 mt-1 fs-6"></span>
                                     </div>
+                                </div> --}}
+                                <div class="mb-2">
+                                    <label for="" class="form-label">Gender</label>
+                                    <select class="form-control">
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Others</option>
+                                    </select>
                                 </div>
                                 <div class="mb-1">
-                                    <label for="form-label" class="text-sm font-weight-medium m-0">Date of Birth</label>
+                                    <label for="" class="form-label">Date of Birth</label>
                                 </div>
                                 <div class="mb-3">
                                     <input type="date" class="form-control" name="dob" id="dob" required>
