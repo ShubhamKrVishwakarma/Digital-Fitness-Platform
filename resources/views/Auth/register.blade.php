@@ -24,20 +24,25 @@
                             <input type="text" placeholder="Full Name" required>
                         </div>
                         <div class="input-field">
-                            <label for="">Date of Birth</label>
-                            <input type="date" placeholder="Enter Birth Date" required>
-                        </div>
-                        <div class="input-field">
                             <label for="">Email</label>
                             <input type="email" placeholder="Enter Email Address" required>
                         </div>
                         <div class="input-field">
-                            <label for="">Mobile Number</label>
+                            <label for="">Date of Birth</label>
+                            <input type="date" placeholder="Enter Birth Date" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="">Phone Number</label>
                             <input type="number" placeholder="Enter Mobile Number" required>
                         </div>
                         <div class="input-field">
                             <label for="">Gender</label>
-                            <input type="text" placeholder="Enter Gender" required>
+                            <select required placeholder="Select Gender">
+                                <option>Select Gender</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Others</option>
+                            </select>
                         </div>
                         <div class="input-field">
                             <label for="">Occupation</label>
@@ -47,15 +52,15 @@
                 </div>
 
                 <div class="ID details">
-                    <span class="title">Identity Details</span>
+                    <span class="title">Professional Information</span>
 
                     <div class="fields">
                         <div class="input-field">
-                            <label for="">ID Type</label>
-                            <input type="text" placeholder="Enter ID type" required>
+                            <label for="">Certificate ID</label>
+                            <input type="number" placeholder="Enter ID type" required>
                         </div>
                         <div class="input-field">
-                            <label for="">ID Number</label>
+                            <label for="">Name on Certificate</label>
                             <input type="number" placeholder="Enter ID Number" required>
                         </div>
                         <div class="input-field">
