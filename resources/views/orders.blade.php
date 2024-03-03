@@ -215,6 +215,9 @@
     </div>
 @endsection
 
+
+
+
 @push("scripts")
     <script src="./js/bootstrap.js"></script>
     <script src="./js/orders.js"></script>
