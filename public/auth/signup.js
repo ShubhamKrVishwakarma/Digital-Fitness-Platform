@@ -18,6 +18,7 @@ $(document).ready(function() {
             $("#dob").val('');
             $("#password").val('');
             $("#confirm_password").val('');
+            $('.text-danger').text('');
             setTimeout(function () {
                 window.location.href = "http://127.0.0.1:8000/";
             }, 1700);
