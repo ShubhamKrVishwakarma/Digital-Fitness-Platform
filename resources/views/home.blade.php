@@ -23,7 +23,7 @@
               Get started with out Personalized Workouts
             </p>
             <div class="banner-button mt-4">
-                <button class="btn">Get Started</button>
+                <button class="bttn bttn-primary">Get Started</button>
             </div>
         </div>
     </section>
