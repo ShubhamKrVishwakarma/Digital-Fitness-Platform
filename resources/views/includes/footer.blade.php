@@ -20,7 +20,7 @@
                     <div class="col-lg-4 col-12">
                         <div class="position-relative">
                             <div class="mb-3 pb-2 d-flex justify-content-between border-bottom border-bottom-lg-0">
-                                <h5 style="color:var(--main-color)">Links</h5>
+                                <h5>Links</h5>
                                 <a class="d-block d-lg-none stretched-link text-inherit" data-bs-toggle="collapse"
                                     href="#collapseLanding" role="button" aria-expanded="false"
                                     aria-controls="collapseLanding">
@@ -51,7 +51,7 @@
                     <div class="col-lg-4 col-12">
                         <div
                             class="mb-3 pb-2 d-flex justify-content-between border-bottom border-bottom-lg-0 position-relative">
-                            <h5 style="color:var(--main-color)">Accounts</h5>
+                            <h5>Accounts</h5>
                             <a class="d-block d-lg-none stretched-link text-inherit" data-bs-toggle="collapse"
                                 href="#collapseAccounts" role="button" aria-expanded="false"
                                 aria-controls="collapseAccounts">
@@ -81,7 +81,7 @@
                     <div class="col-lg-4 col-12">
                         <div
                             class="mb-3 pb-2 d-flex justify-content-between border-bottom border-bottom-lg-0 position-relative">
-                            <h5 style="color:var(--main-color)">Products</h5>
+                            <h5>Products</h5>
                             <a class="d-block d-lg-none stretched-link text-inherit" data-bs-toggle="collapse"
                                 href="#collapseResources" role="button" aria-expanded="false"
                                 aria-controls="collapseResources">
@@ -121,7 +121,7 @@
                     <span class="violet">eFitLab - Fitness Platform</span>
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div class="text-md-end d-flex align-items-center justify-content-md-end">
                     <div class="ms-3 d-flex gap-2">
                         <a href="#!" class="text-reset btn btn-instagram btn-icon">
@@ -147,7 +147,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </footer>

@@ -1,15 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/login", function() {
-    return view('Auth.login');
-})->name('login');
+Route::group(["controller" => AuthController::class], function() {
+    // Get Routes
+    Route::get('/login', 'login')->name('login');
+    Route::get('/signup', 'signup')->name('signup');
+    Route::get('/register', 'register')->name('register');
 
-Route::get("/signup", function() {
-    return view('Auth.signup');
-})->name('signup');
-
-Route::get("/register", function() {
-    return view('Auth.register');
-})->name('register');
+    // Post Routes
+    Route::post('/signup', 'create')->name('member.create');
+    Route::post('/register', 'store')->name('trainer.store');
+    Route::post('/login', 'authenticate')->name('authenticate');
+});

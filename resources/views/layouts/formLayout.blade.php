@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
+  @stack('styles')
 </head>
 
 <body>
@@ -27,6 +28,9 @@
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
+    <script src="{{ asset('plugins/jquery.js') }}"></script>
+    <script src="{{ asset('plugins/axios.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
     @stack('scripts')
 </body>
 

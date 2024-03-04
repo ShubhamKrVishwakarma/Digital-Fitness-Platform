@@ -1,171 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trainer Registration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-</head>
-<body>
-    <div class="container">
-        <header>Trainer Registration Form</header>
+@extends('layouts.formLayout')
 
-        <form action="">
-            <!-- First Form -->
-            <div class="form first">
-                <div class="personal details">
-                    <span class="title">Personal Details</span>
+@section('title')
+    Trainer Registration
+@endsection
 
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="">Full Name</label>
-                            <input type="text" placeholder="Full Name" required>
+@section('content')
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+        <div class="container">
+            <a class="navbar-brand font-weight-bolder fs-5 ms-lg-0 ms-3 text-white" href="{{ route('home') }}">Fitness HUB</a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon mt-2">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center me-2 active" href="{{ route('home') }}">
+                            <i class="fa-solid fa-house opacity-6 me-1"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="{{ route('shop') }}">
+                            <i class="fa-solid fa-cart-shopping opacity-6 me-1"></i>
+                            Shop
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="{{ route('community') }}">
+                            <i class="fa-solid fa-icons opacity-6 me-1"></i>
+                            Community
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="{{ route('about') }}">
+                            <i class="fa-solid fa-circle-info opacity-6 me-1"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="{{ route('contact') }}">
+                            <i class="fa-solid fa-file-signature opacity-6 me-1"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-lg-block d-none">
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}" class="btn btn-sm mb-0 me-1 bg-gradient-light">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Section -->
+    <main class="main-content  mt-0">
+        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
+            style="background-image: url('https://img.freepik.com/free-photo/dumbbells-set-against-dark-background-floor_60438-3557.jpg?w=1380&t=st=1708407752~exp=1708408352~hmac=5958d83b709212650b3fbc6ae8ec3fb3c85a2ee95f0210bda515dd3fb3c1722e'); background-position: top;">
+            <span class="mask bg-gradient-dark opacity-6"></span>
+        </div>
+        <div class="container">
+            <div class="row mt-n12 justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-10 mx-auto">
+                    <div class="card z-index-0">
+                        <div class="card-header text-center pt-3 pb-0">
+                            <h5 class="m-0">Join as Trainer</h5>
                         </div>
-                        <div class="input-field">
-                            <label for="">Email</label>
-                            <input type="email" placeholder="Enter Email Address" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Date of Birth</label>
-                            <input type="date" placeholder="Enter Birth Date" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Phone Number</label>
-                            <input type="number" placeholder="Enter Mobile Number" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Gender</label>
-                            <select required placeholder="Select Gender">
-                                <option>Select Gender</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                                <option value="O">Others</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Occupation</label>
-                            <input type="text" placeholder="Enter Occupation" required>
+                        <div class="card-body">
+                            <form action="">
+                                <div id="trainer-first-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6>Personal Details</h6>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" placeholder="Full Name" required>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Email Address</label>
+                                            <input type="email" class="form-control" placeholder="Email Address" required>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control" placeholder="Date Of Birth" required>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Phone Number</label>
+                                            <input type="number" class="form-control" placeholder="Phone Number" required>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Gender</label>
+                                            <select class="form-control" required>
+                                                <option value="" disabled selected>Select Gender</option>
+                                                <option value="">Male</option>
+                                                <option value="">Female</option>
+                                                <option value="">Others</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Occupation</label>
+                                            <input type="text" class="form-control" placeholder="Enter Occutaion">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6>Professional Information</h6>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Certificate ID</label>
+                                            <input type="text" class="form-control" placeholder="Certificate ID">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Issued Date</label>
+                                            <input type="date" class="form-control" placeholder="Issued Date">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Expiry Date</label>
+                                            <input type="date" class="form-control" placeholder="Expiry Date">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Issued Authority</label>
+                                            <input type="text" class="form-control" placeholder="Issued Authority">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Password</label>
+                                            <input type="password" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="" class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-sm btn-primary m-0">Register as Trainer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-
-                <div class="ID details">
-                    <span class="title">Professional Information</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="">Certificate ID</label>
-                            <input type="number" placeholder="Enter ID type" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Name on Certificate</label>
-                            <input type="number" placeholder="Enter ID Number" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Issued Authority</label>
-                            <input type="text" placeholder="Enter Issued Authority" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Issued State</label>
-                            <input type="text" placeholder="Enter Issue State" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Issued Date</label>
-                            <input type="date" placeholder="Enter Issued Date" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Expiry Date</label>
-                            <input type="date" placeholder="Enter Expiry Date" required>
-                        </div>
-                    </div>
-
-                    <button class="nextBtn">
-                        <span class="btnText">Next</span>
-                        <i class="fa-solid fa-square-caret-right"></i>
-                    </button>
                 </div>
             </div>
-            <!-- Second Form -->
-            <div class="form second">
-                <div class="address details">
-                    <span class="title">Address Details</span>
+        </div>
+    </main>
+@endsection
 
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="">Address Type</label>
-                            <input type="text" placeholder="Enter Address Type" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Nationality</label>
-                            <input type="text" placeholder="Enter Nationality" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">State</label>
-                            <input type="text" placeholder="Enter your State" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">District</label>
-                            <input type="text" placeholder="Enter your district" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Block Number</label>
-                            <input type="number" placeholder="Enter Block Number" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Ward Number</label>
-                            <input type="number" placeholder="Enter Ward Number" required>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="ID details">
-                    <span class="title">Family Details</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="">Father Name</label>
-                            <input type="text" placeholder="Enter Father Name" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Mother Name</label>
-                            <input type="text" placeholder="Enter ID Number" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Grand Father</label>
-                            <input type="text" placeholder="Enter Issued Authority" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Spouse Name</label>
-                            <input type="text" placeholder="Enter Issue State" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Father in Law</label>
-                            <input type="text" placeholder="Enter Issued Date" required>
-                        </div>
-                        <div class="input-field">
-                            <label for="">Mother in Law</label>
-                            <input type="text" placeholder="Enter Expiry Date" required>
-                        </div>
-                    </div>
-
-                    <div class="buttons">
-                        <div class="backBtn">
-                            <i class="fa-solid fa-square-caret-right"></i>
-                            <span class="btnText">Back</span>
-                        </div>
-                        <button class="nextBtn">
-                            <span class="btnText">Register</span>
-                            <i class="fa-solid fa-square-caret-right"></i>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <script src="{{ asset('js/register.js') }}"></script>
-</body>
-</html>

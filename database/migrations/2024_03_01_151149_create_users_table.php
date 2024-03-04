@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('phone', 10)->nullable();
             $table->string('password');
             $table->enum('gender', ['M', 'F', 'O']);
-            $table->string('dob')->nullable();
-            $table->string('address', 255)->nullable();
+            $table->date('dob');
+            $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
             $table->string('state', 50)->nullable();
             $table->string('zip_code', 10)->nullable();
             $table->string('bio', 255)->nullable();
-            $table->string('role', 10)->default('member');
+            $table->enum('role', ['member', 'trainer', 'admin'])->default('member');
             $table->float('rating')->nullable();
             $table->integer('followers')->default(0);
             $table->integer('following')->default(0);
