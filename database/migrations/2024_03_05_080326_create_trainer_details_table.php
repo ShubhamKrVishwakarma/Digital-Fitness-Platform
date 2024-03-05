@@ -15,8 +15,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('occupation', 100);
             $table->string('certificate_id', 50);
-            $table->date('issue_data');
-            $table->date('expiry_data');
+            $table->date('issue_date');
+            $table->date('expiry_date');
             $table->string('issued_authority', 200);
         });
     }

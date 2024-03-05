@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\TrainerDetail;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -79,6 +80,25 @@ class AuthController extends Controller
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
+
+            $user = User::create([
+                "name" => $request["name"],
+                "email" => $request["email"],
+                "dob" => $request["dob"],
+                "phone" => $request["phone"],
+                "gender" => $request["gender"],
+                "password" => $request["password"],
+                "role" => "pending"
+            ]);
+
+            TrainerDetail::create([
+                "user_id" => $user->id,
+                "occupation" => $request["occupation"],
+                "certificate_id" => $request["certifdicate_id"],
+                "issue_date" => $request["issue_date"],
+                "expiry_date" => $request["expiry_date"],
+                "issued_authority" => $request["issued_authority"]
+            ]); 
 
             return response()->json(['success' => 'Account Created Successfully!'], 200);
         } catch(Exception) {

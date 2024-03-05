@@ -12,4 +12,8 @@ class User extends Model
     protected $fillable = ['name', 'email', 'password', 'gender', 'dob'];
 
     protected $casts = ['password' => 'hashed'];
+
+    public function trainerDetails() {
+        $this->hasOne(TrainerDetail::class, 'user_id');
+    }
 }

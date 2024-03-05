@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('state', 50)->nullable();
             $table->string('zip_code', 10)->nullable();
             $table->string('bio', 255)->nullable();
-            $table->enum('role', ['member', 'trainer', 'admin'])->default('member');
+            $table->enum('role', ['member', 'trainer', 'pending', 'admin'])->default('member');
             $table->float('rating')->nullable();
             $table->integer('followers')->default(0);
             $table->integer('following')->default(0);
