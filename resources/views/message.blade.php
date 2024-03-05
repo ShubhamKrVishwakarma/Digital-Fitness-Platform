@@ -1,1 +1,7 @@
-<h1>Message Page</h1>
+@extends('layouts.mainLayout')
+
+@section('title', 'Messages')
+
+@section('content')
+    <h1>Message Box</h1>
+@endsection
