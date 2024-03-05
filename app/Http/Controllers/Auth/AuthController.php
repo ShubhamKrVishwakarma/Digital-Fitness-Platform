@@ -59,7 +59,30 @@ class AuthController extends Controller
         }
     }
 
-    // public function store() {
+    public function store(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                "name" => "required|min:2|max:100",
+                "email" => "required|email|min:5|max:100|unique:users,email",
+                "dob" => "required|date",
+                "phone" => "required|max:10",
+                "gender" => "required|in:M,F,O",
+                "occupation" => "required|min:2|max:100",
+                "certificate_id" => "required",
+                "issue_date" => "required|date",
+                "expiry_date" => "required|date",
+                "issued_authority" => "required|max:200",
+                "password" => "required|min:8",
+                "confirm_password" => "required|min:8|same:password"
+            ]);
 
-    // }
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            return response()->json(['success' => 'Account Created Successfully!'], 200);
+        } catch(Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
+    }
 }

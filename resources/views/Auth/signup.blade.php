@@ -117,7 +117,3 @@
         </div>
     </main>
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('auth/signup.js') }}"></script>
-@endpush
