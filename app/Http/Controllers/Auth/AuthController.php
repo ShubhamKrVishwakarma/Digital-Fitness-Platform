@@ -94,11 +94,11 @@ class AuthController extends Controller
             TrainerDetail::create([
                 "user_id" => $user->id,
                 "occupation" => $request["occupation"],
-                "certificate_id" => $request["certifdicate_id"],
+                "certificate_id" => $request["certificate_id"],
                 "issue_date" => $request["issue_date"],
                 "expiry_date" => $request["expiry_date"],
                 "issued_authority" => $request["issued_authority"]
-            ]); 
+            ]);
 
             return response()->json(['success' => 'Account Created Successfully!'], 200);
         } catch(Exception) {

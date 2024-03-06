@@ -12,9 +12,4 @@ class TrainerDetail extends Model
     public $timestamps = false;
 
     protected $fillable = ['user_id', 'occupation', 'certificate_id', 'issue_date', 'expiry_date', 'issued_authority'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'id');
-    }
 }

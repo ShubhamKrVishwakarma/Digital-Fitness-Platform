@@ -56,7 +56,7 @@ $(document).ready(function() {
         }
 
         if (errors.gender) {
-            $('signup-gender-error').text(errors.gender[0]);
+            $('#signup-gender-error').text(errors.gender[0]);
         }
 
         if (errors.dob) {
