@@ -19,13 +19,18 @@ $(document).ready(function() {
             $("#password").val('');
             $("#confirm_password").val('');
             $('.text-danger').text('');
-            setTimeout(function () {
-                window.location.href = "http://127.0.0.1:8000/";
-            }, 1700);
             Swal.fire({
-                title: "Success",
-                text: "Account Created Successfully!",
-                icon: "success"
+                title: 'Success..',
+                text: 'Account Created Successfully!',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'http://127.0.0.1:8000/';
+                }
             });
         })
         .catch(function(error) {
@@ -56,7 +61,7 @@ $(document).ready(function() {
         }
 
         if (errors.gender) {
-            $('signup-gender-error').text(errors.gender[0]);
+            $('#signup-gender-error').text(errors.gender[0]);
         }
 
         if (errors.dob) {
@@ -104,13 +109,18 @@ $(document).ready(function() {
             $("#password").val('');
             $("#confirm_password").val('');
             $('.text-danger').text('');
-            setTimeout(function () {
-                window.location.href = "http://127.0.0.1:8000/";
-            }, 4000);
             Swal.fire({
-                title: "Success",
-                text: "Our Team will go through your Details and Inform you!",
-                icon: "success"
+                title: 'Success..',
+                text: 'Our Team will you reach you soon. After Verifing your Details!',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'http://127.0.0.1:8000/';
+                }
             });
         })
         .catch(function(error) {
