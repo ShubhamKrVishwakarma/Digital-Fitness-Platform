@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trainer_details', function (Blueprint $table) {
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('occupation', 100);
             $table->string('certificate_id', 50);
             $table->date('issue_date');
             $table->date('expiry_date');
             $table->string('issued_authority', 200);
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
