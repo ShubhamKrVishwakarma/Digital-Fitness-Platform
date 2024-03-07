@@ -70,7 +70,6 @@
                             <h5>Create New Account</h5>
                         </div>
                         <div class="card-body">
-                            {{-- Member Signup Form --}}
                             <form id="signupForm">
                                 @csrf
                                 <div class="mb-3">

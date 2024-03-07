@@ -7,6 +7,7 @@ use App\Models\TrainerDetail;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -26,9 +27,38 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
-    // public function authenticate() {
+    public function authenticate(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                "email" => "required|email|min:5|max:100",
+                "password" => "required|min:8|"
+            ]);
 
-    // }    
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            $credentials = $request->only('email', 'password');
+
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+
+                if ($user->role == "member") {
+                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Member!', 'user' => $user], 200);
+                } else if ($user->role == "trainer") {
+                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Trainer!', 'user' => $user], 200);
+                } else if ($user->role == "pending") {
+                    return response()->json(['success' => 'Login Successful!', 'message' => 'Verfification Pending!', 'user' => $user], 200);
+                } else if ($user->role == "admin") {
+                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Admin!', 'user' => $user], 200);
+                }
+            }
+
+            return response()->json(['error' => 'Invalid credentials. Please check your email and password.'], 401);
+        } catch(Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
+    }    
 
     public function create(Request $request)
     {
@@ -104,5 +134,14 @@ class AuthController extends Controller
         } catch(Exception) {
             return response()->json(['error' => 'Server Error'], 500);
         }
+    }
+
+    public function logout() {
+        auth()->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('home')->with('success', "Logged out Successfully!");
     }
 }

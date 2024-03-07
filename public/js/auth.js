@@ -190,4 +190,53 @@ $(document).ready(function() {
             $('#register-confirm-password-error').text(errors.confirm_password[0]);
         }
     } 
+
+    // User Authentication
+    $("#loginForm").submit(function(form) {
+        form.preventDefault();
+
+        axios.post("/login", {
+            email: $('#email').val(),
+            password: $('#password').val()
+        })
+        .then(function(response) {
+            $('#email').val('');
+            $('#password').val('');
+            $('.text-danger').val('');
+            Swal.fire({
+                title: "Success",
+                text: "User Exists!",
+                icon: "success"
+            });
+        })
+        .catch(function(error) {
+            if (error.response && error.response.status === 422) {
+                displayLoginValidationErrors(error.response.data.errors);
+            } else if (error.response && error.response.status === 401) {
+                Swal.fire({
+                    title: "Invalid Credentials!",
+                    text: "Please check your email and password.",
+                    icon: "error"
+                  });
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: "Something Went Wrong!",
+                    icon: "error"
+                });
+            }
+        });
+    });
+
+    function displayLoginValidationErrors(errors) {
+        $('.text-danger').text('');
+
+        if (errors.email) {
+            $('#login-email-error').text(errors.email[0]);
+        }
+
+        if (errors.password) {
+            $('#login-password-error').text(errors.password[0]);
+        }
+    }
 });
