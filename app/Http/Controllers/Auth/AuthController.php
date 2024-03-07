@@ -44,12 +44,13 @@ class AuthController extends Controller
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
 
-                if ($user->role == "member") {
+                if ($user->role == "pending") {
+                    Auth::logout();
+                    return response()->json(['error' => 'Verification Pending. You cannot log in yet.'], 402);
+                } else if ($user->role == "member") {
                     return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Member!', 'user' => $user], 200);
                 } else if ($user->role == "trainer") {
                     return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Trainer!', 'user' => $user], 200);
-                } else if ($user->role == "pending") {
-                    return response()->json(['success' => 'Login Successful!', 'message' => 'Verfification Pending!', 'user' => $user], 200);
                 } else if ($user->role == "admin") {
                     return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Admin!', 'user' => $user], 200);
                 }
@@ -144,34 +145,5 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         return redirect()->route('home')->with('success', "Logged out Successfully!");
-    }
-
-    public function admin_Login() {
-        return view('Auth.admin');
-    }
-
-    public function authenticate_Admin(Request $request) {
-        try {
-            $validator = Validator::make($request->all(), [
-                "username" => "required|min:5",
-                "password" => "required|min:8"
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422);
-            }
-
-            $admin = Admin::where('username', $request['username'])
-                      ->where('password', $request['password'])
-                      ->first();
-
-            if ($admin) {
-                return response()->json(['success' => 'Admin Exists!'], 200);
-            }
-
-            return response()->json(['error' => 'Invalid credentials. Please check your email and password.'], 401);
-        } catch (Exception) {
-            return response()->json(['error' => 'Server Error'], 500);
-        }
     }
 }
