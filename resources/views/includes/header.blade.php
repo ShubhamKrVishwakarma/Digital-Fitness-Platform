@@ -39,7 +39,7 @@
                                 <a class="nav-link text-light" href="{{ route('orders') }}">My Orders</a>
                             </li>
                             <li class="nav-item d-block d-lg-none">
-                                <a class="nav-link text-light" href="#">Log out</a>
+                                <a class="nav-link text-light" href="{{ route('logout') }}">Log out</a>
                             </li>
                             <li>
                                 <hr class="hr m-0">
@@ -140,7 +140,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Log out</a></li>
                             </ul>
                         </div>
                     @endauth
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center align-items-center">
-                    <a>Login as Admin</a>
+                    <a href="{{ route('admin.login') }}">Login as Admin</a>
                 </div>
             </div>
         </div>

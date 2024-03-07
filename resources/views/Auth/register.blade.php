@@ -73,6 +73,7 @@
                         </div>
                         <div class="card-body">
                             <form id="registerForm">
+                                @csrf
                                 <div id="trainer-first-form">
                                     <div class="row">
                                         <div class="col-md-12">
