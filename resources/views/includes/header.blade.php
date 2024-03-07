@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center align-items-center">
-                    <a>Login as Admin</a>
+                    <a href="{{ route('admin.login') }}">Login as Admin</a>
                 </div>
             </div>
         </div>

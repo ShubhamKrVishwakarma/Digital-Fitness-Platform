@@ -16,4 +16,8 @@ Route::group(["controller" => AuthController::class], function() {
 
     // Logout Route
     Route::get('/logout', 'logout')->name('logout');
+
+    // Admin Login Routes
+    Route::get('/Admin-Login', 'admin_Login')->name('admin.login');
+    Route::post('/Admin-Login', 'authenticate_Admin')->name('admin.authenticate');
 });

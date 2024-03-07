@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Admin;
 use App\Models\TrainerDetail;
 use App\Models\User;
 use Exception;
@@ -143,5 +144,34 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         return redirect()->route('home')->with('success', "Logged out Successfully!");
+    }
+
+    public function admin_Login() {
+        return view('Auth.admin');
+    }
+
+    public function authenticate_Admin(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                "username" => "required|min:5",
+                "password" => "required|min:8"
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            $admin = Admin::where('username', $request['username'])
+                      ->where('password', $request['password'])
+                      ->first();
+
+            if ($admin) {
+                return response()->json(['success' => 'Admin Exists!'], 200);
+            }
+
+            return response()->json(['error' => 'Invalid credentials. Please check your email and password.'], 401);
+        } catch (Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
     }
 }
