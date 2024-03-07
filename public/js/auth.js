@@ -218,7 +218,13 @@ $(document).ready(function() {
                     title: "Invalid Credentials!",
                     text: "Please check your email and password.",
                     icon: "error"
-                  });
+                });
+            } else if (error.response && error.response.status === 402) {
+                Swal.fire({
+                    title: "Verification Pending!",
+                    text: "You cannot log in yet.",
+                    icon: "info"
+                });
             } else {
                 Swal.fire({
                     title: "Error",
@@ -239,56 +245,6 @@ $(document).ready(function() {
 
         if (errors.password) {
             $('#login-password-error').text(errors.password[0]);
-        }
-    }
-
-    // Admin Authentication
-    $('#adminLoginForm').submit(function(form) {
-        form.preventDefault();
-
-        axios.post("/Admin-Login", {
-            username: $('#username').val(),
-            password: $('#password').val()
-        })
-        .then(function(response) {
-            $('#username').val('');
-            $('#password').val('');
-            $('.text-center').val('');
-            // Swal.fire({
-            //     title: "Success",
-            //     text: "Admin Exists!",
-            //     icon: "success"
-            // });
-            window.location.href = 'http://127.0.0.1:8000/Admin/';
-        })
-        .catch(function(error) {
-            if (error.response && error.response.status === 422) {
-                displayAdminLoginValidationErrors(error.response.data.errors);
-            } else if (error.response && error.response.status === 401) {
-                Swal.fire({
-                    title: "Invalid Credentials!",
-                    text: "Please check your username and password.",
-                    icon: "error"
-                  });
-            } else {
-                Swal.fire({
-                    title: "Error",
-                    text: "Something Went Wrong!",
-                    icon: "error"
-                });
-            }
-        });
-    });
-
-    function displayAdminLoginValidationErrors(errors) {
-        $('.text-danger').text('');
-
-        if (errors.username) {
-            $('#admin-username-error').text(errors.username[0]);
-        }
-
-        if (errors.password) {
-            $('#admin-password-error').text(errors.password[0]);
         }
     }
 });
