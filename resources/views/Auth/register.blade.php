@@ -1,8 +1,6 @@
 @extends('layouts.formLayout')
 
-@section('title')
-    Trainer Registration
-@endsection
+@section('title', 'Fashion Hub - Trainer Registration')
 
 @section('content')
     <!-- Navbar -->

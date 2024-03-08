@@ -1,6 +1,6 @@
 @extends('layouts.adminLayout')
 
-@section('title') Query @endsection
+@section('title', 'Admin - Query')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}">

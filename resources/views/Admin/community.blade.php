@@ -1,6 +1,6 @@
 @extends('layouts.adminLayout')
 
-@section('title') Community @endsection
+@section('title', 'Admin - Community')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}">
