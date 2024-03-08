@@ -1,6 +1,6 @@
 @extends('layouts.adminLayout')
 
-@section('title', 'Admin - Category')
+@section('title', 'Category')
 
 @section('content')
 <div class="container-fluid py-4">

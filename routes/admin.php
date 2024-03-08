@@ -11,6 +11,10 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     Route::get("/dashboard", function() {
         return view("Admin.dashboard");
     })->name("dashboard");
+
+    Route::get("/users", function() {
+        return view("Admin.users");
+    })->name("users");
     
     Route::get("/categories", function() {
         return view("Admin.categories");
