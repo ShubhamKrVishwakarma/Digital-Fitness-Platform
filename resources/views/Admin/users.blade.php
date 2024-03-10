@@ -73,7 +73,8 @@
         </div>
         <!-- Add Member -->
         <div id="addMember" style="display: none">
-            <form>
+            <form id="addMemberForm">
+                @csrf
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                         <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
@@ -85,78 +86,82 @@
                                 <h6>Personal Information</h6>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Name</label>
-                                        <input type="text" class="form-control" placeholder="User Full Name" required>
+                                        <label for="name" class="form-control-label">Name</label>
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="User Full Name" required>
+                                        <span class="text-danger" id="addMember-name-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Email</label>
-                                        <input type="email" class="form-control" placeholder="Email Address" required>
+                                        <label for="email" class="form-control-label">Email</label>
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+                                        <span class="text-danger" id="addMember-email-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Gender</label>
-                                        <select class="form-control" required>
+                                        <label for="gender" class="form-control-label">Gender</label>
+                                        <select name="gender" id="gender" class="form-control" required>
                                             <option value="" disabled selected>Select Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                             <option value="O">Others</option>
                                         </select>
+                                        <span class="text-danger" id="addMember-gender-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Date of
-                                            Birth</label>
-                                        <input type="date" class="form-control" required>
+                                        <label for="dob" class="form-control-label">Date of Birth</label>
+                                        <input name="dob" id="dob" type="date" class="form-control" required>
+                                        <span class="text-danger" id="addMember-dob-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Phone
-                                            Number</label>
-                                        <input type="number" class="form-control" placeholder="Phone Number">
+                                        <label for="phone" class="form-control-label">Phone Number</label>
+                                        <input type="number" name="phone" id="phone" class="form-control" placeholder="Phone Number">
+                                        <span class="text-danger" id="addMember-phone-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Role</label>
+                                        <label class="form-control-label">Role</label>
                                         <input type="text" class="form-control" value="Member" readonly>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Address</label>
-                                        <textarea cols="30" rows="4" class="form-control" placeholder="Your Address..."></textarea>
+                                        <label for="address" class="form-control-label">Address</label>
+                                        <textarea cols="30" rows="4" name="address" id="address" class="form-control" placeholder="Your Address..."></textarea>
+                                        <span class="text-danger" id="addMember-address-error"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="" class="form-control-label">City</label>
-                                        <input type="text" class="form-control" placeholder="City">
+                                        <label for="city" class="form-control-label">City</label>
+                                        <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                                        <span class="text-danger" id="addMember-city-error"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="" class="form-control-label">Zip
-                                            Code</label>
-                                        <input type="text" class="form-control" placeholder="Zip Code">
+                                        <label for="zip_code" class="form-control-label">Zip Code</label>
+                                        <input type="text" name="zip_code" id="zip_code" class="form-control" placeholder="Zip Code">
+                                        <span class="text-danger" id="addMember-zip-code-error"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for=""
-                                            class="form-control-label">State</label>
-                                        <select class="form-control">
-                                            <option value="" disabled selected>Select State</option>
-                                            <option value=""></option>
+                                        <label for="state" class="form-control-label">State</label>
+                                        <select name="state" id="state" class="form-control">
+                                            <option value="" selected>Select State</option>
+                                            <option value="West Bengal">West Bengal</option>
+                                            <option value="Delhi">Delhi</option>
                                         </select>
+                                        <span class="text-danger" id="addMember-state-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="" class="form-control-label">Profile
-                                            Bio</label>
-                                        <textarea cols="30" rows="3" class="form-control" placeholder="Bio.."></textarea>
+                                        <label for="bio" class="form-control-label">Profile Bio</label>
+                                        <textarea cols="30" rows="3" name="bio" id="bio" class="form-control" placeholder="Bio.."></textarea>
+                                        <span class="text-danger" id="addMember-bio-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-4">
-                                        <label for="" class="form-control-label">Profile
-                                            Picture</label>
-                                        <input type="file" class="form-control">
+                                        <label for="profile_pic" class="form-control-label">Profile Picture</label>
+                                        <input type="file" name="profile_pic" id="profile_pic" class="form-control">
+                                        <span class="text-danger" id="addMember-profile-pic-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Password</label>
-                                        <input type="password" class="form-control" placeholder="New Password">
+                                        <label for="password" class="form-control-label">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="New Password" required>
+                                        <span class="text-danger" id="addMember-password-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Confirm
-                                            Password</label>
-                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                        <label for="confirm_password" class="form-control-label">Confirm Password</label>
+                                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                                        <span class="text-danger" id="addMember-confirm-password-error"></span>
                                     </div>
                                     <div class="col-md-12">
                                         <button class="btn btn-success m-0">Add Member</button>
@@ -558,4 +563,5 @@
         });
     });
 </script>
+<script src="{{ asset('admin/users.js') }}"></script>
 @endpush

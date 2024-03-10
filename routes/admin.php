@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Pages Route
@@ -35,4 +36,8 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     Route::get("/queries", function() {
         return view("Admin.queries");
     })->name("queries");
+
+    Route::post("/users/addMember", [UserController::class, 'create']);
+    Route::post("/users/addTrainer", [UserController::class, 'create']);
+    Route::post("/users/updateUser", [UserController::class, 'create']);
 });

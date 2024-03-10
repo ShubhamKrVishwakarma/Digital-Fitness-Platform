@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Admin;
 use App\Models\TrainerDetail;
 use App\Models\User;
 use Exception;
