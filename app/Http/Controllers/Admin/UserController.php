@@ -11,7 +11,9 @@ use Exception;
 class UserController extends Controller
 {
     public function index() {
-        return view('Admin.users');
+        return view('Admin.users', [
+            "users" => User::latest()->paginate(7)
+        ]);
     }
 
     public function create(Request $request) {

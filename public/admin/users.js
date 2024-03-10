@@ -56,6 +56,7 @@ $(document).ready(function() {
         });
     });
 
+    // Add Member Validation Errors
     function displayAddMemberErrors(errors) {
         $('.text-danger').val('');
 
