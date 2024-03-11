@@ -59,7 +59,7 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <button class="me-2 btn btn-xs btn-outline-danger mb-0"
-                                                        data-manage-user="12">Manage</button>
+                                                        data-manage-user="{{ $user->id }}">Manage</button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -339,7 +339,10 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <p class="text-uppercase text-sm">Personal Information</p>
+                                <div class="d-flex justify-content-between align-items-center flex-wrap my-2">
+                                    <p class="text-uppercase text-sm">Personal Information</p>
+                                    <button class="btn btn-sm btn-danger">Delete Account</button>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="example-text-input" class="form-control-label">Name</label>
