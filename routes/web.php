@@ -26,6 +26,8 @@ Route::get('/message', function() {
 // Profile Page
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 
+Route::get('/profile-edit/{id}', [UserController::class, 'profile_edit'])->name('user.profile_edit');
+
 Route::post('/profile/{id}',[UserController::class,'update'])->name('user.update');
 
 Route::post('/profile',[UserController::class,'update_pass'])->name('user.update_pass');
