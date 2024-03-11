@@ -22,7 +22,7 @@
                         <!-- After Login -->
                         @auth
                             <li class="nav-item d-block d-lg-none">
-                                <a href="{{ route('profile') }}"
+                                <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}"
                                     class="d-flex text-light align-items-center link-body-emphasis text-decoration-none">
                                     <img src="https://github.com/mdo.png" alt="User" width="40" height="40"
                                         class="rounded-circle">
@@ -136,7 +136,7 @@
                                 @can('admin')
                                     <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
                                 @endcan
-                                <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('user.show', Auth::user()->id )}}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('message') }}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart') }}">My Cart</a></li>
                                 <li><a class="dropdown-item" href="{{ route('orders') }}">My Orders</a></li>

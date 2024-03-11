@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 // Home Page
 Route::get('/', function () {
@@ -23,9 +24,12 @@ Route::get('/message', function() {
 })->name('message');
 
 // Profile Page
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
+
+Route::post('/profile/{id}',[UserController::class,'update'])->name('user.update');
+
+Route::post('/profile',[UserController::class,'update_pass'])->name('user.update_pass');
+
 
 // Cart Page
 Route::get('/cart', function () {
