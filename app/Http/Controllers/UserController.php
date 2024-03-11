@@ -56,7 +56,6 @@ class UserController extends Controller
         return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
     }
     
-    
     public function update_pass(Request $request)
     {
         $request->validate([
