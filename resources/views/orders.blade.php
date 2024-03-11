@@ -1,11 +1,12 @@
 @extends("layouts.mainLayout")
 
-@section("title") Orders @endsection
+@section("title", "Orders")
+
 @push("styles")
-    <link rel="stylesheet" type="text/css" href="./css/orders.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="./css/orders.css">
 @endpush
+
 @section("content")
    <!-- Orders Section -->
     <div class="orders-section my-4">
@@ -214,9 +215,6 @@
         </main>
     </div>
 @endsection
-
-
-
 
 @push("scripts")
     <script src="./js/bootstrap.js"></script>

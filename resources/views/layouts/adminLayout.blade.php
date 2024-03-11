@@ -137,6 +137,9 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
+    <script src="{{ asset('plugins/jquery.js') }}"></script>
+    <script src="{{ asset('plugins/axios.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
     @stack('scripts')
 </body>
 

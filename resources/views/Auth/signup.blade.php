@@ -1,6 +1,6 @@
 @extends('layouts.formLayout')
 
-@section('title') Fitness Hub - Signup @endsection
+@section('title', 'Fitness Hub - Signup')
 
 @section('content')
     <!-- Navbar -->
@@ -70,7 +70,6 @@
                             <h5>Create New Account</h5>
                         </div>
                         <div class="card-body">
-                            {{-- Member Signup Form --}}
                             <form id="signupForm">
                                 @csrf
                                 <div class="mb-3">
@@ -117,7 +116,3 @@
         </div>
     </main>
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('auth/signup.js') }}"></script>
-@endpush

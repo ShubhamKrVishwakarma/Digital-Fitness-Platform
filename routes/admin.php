@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Pages Route
-Route::group(["as" => "admin."], function() {
+Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     Route::get("/", function() {
         return redirect()->route('admin.dashboard');
     });
@@ -11,6 +12,8 @@ Route::group(["as" => "admin."], function() {
     Route::get("/dashboard", function() {
         return view("Admin.dashboard");
     })->name("dashboard");
+
+    Route::get("/users", [UserController::class, 'index'])->name("users");
     
     Route::get("/categories", function() {
         return view("Admin.categories");
@@ -31,4 +34,10 @@ Route::group(["as" => "admin."], function() {
     Route::get("/queries", function() {
         return view("Admin.queries");
     })->name("queries");
+
+    Route::post("/users/addMember", [UserController::class, 'create']);
+    
+    Route::post("/users/addTrainer", [UserController::class, 'store']);
+
+    Route::post('/users/getUserDetails', [UserController::class, 'getUserDetails']);
 });

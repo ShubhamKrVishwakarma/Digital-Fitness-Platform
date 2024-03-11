@@ -1,6 +1,6 @@
 @extends('layouts.formLayout')
 
-@section('title') Fitness Hub - Login @endsection
+@section('title', 'Fitness Hub - Login')
 
 @section('content')
     <!-- Navbar -->
@@ -81,19 +81,21 @@
                                     <p class="mb-0">Enter your email and password to Login in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form id="loginForm">
+                                        @csrf
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg" placeholder="Email"
+                                            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="Email"
                                                 required>
+                                                <span class="text-danger d-block ms-1 mt-1" id="login-email-error"></span>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
-                                                placeholder="Password" required>
+                                            <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Password" required>
+                                            <span class="text-danger d-block ms-1 mt-1" id="login-password-error"></span>
                                         </div>
                                         <!-- <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                            </div> -->
+                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                                        </div> -->
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Log
                                                 in</button>
