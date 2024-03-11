@@ -66,6 +66,7 @@
                                 <li class="mb-2">
                                     <a href="{{ route('login') }}" class="text-decoration-none text-light">Login</a>
                                 </li>
+                                @auth
                                 <li class="mb-2">
                                     <a href="#" class="text-decoration-none text-light">Forgot Password</a>
                                 </li>
@@ -73,8 +74,9 @@
                                     <a href="#" class="text-decoration-none text-light">Reset Password</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="{{ route('profile') }}" class="text-decoration-none text-light">Profile</a>
+                                    <a href="{{ route('user.show', ['id' => Auth::user()->id ]) }}" class="text-decoration-none text-light">Profile</a>
                                 </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
