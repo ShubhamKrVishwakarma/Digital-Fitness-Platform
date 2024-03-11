@@ -63,7 +63,7 @@
                         </li>
                         <!-- Workout Dropdown -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light fw-medium {{ Route::is('') ? 'active' : '' }}"
+                            <a class="nav-link dropdown-toggle text-light fw-medium"
                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown">Workout</a>
                             <div class="dropdown-menu dropdown-menu-md m-0 p-0">
                                 <!-- Begineer -->
@@ -133,7 +133,10 @@
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small me-4">
-                                <li><a class="dropdown-item" href="{{ route('user.show', ['id' => Auth::user()->id ]) }}">Profile</a></li>
+                                @can('admin')
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
+                                @endcan
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('message') }}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart') }}">My Cart</a></li>
                                 <li><a class="dropdown-item" href="{{ route('orders') }}">My Orders</a></li>
@@ -168,9 +171,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-center align-items-center">
+                {{-- <div class="modal-footer d-flex justify-content-center align-items-center">
                     <a href="{{ route('admin.login') }}">Login as Admin</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

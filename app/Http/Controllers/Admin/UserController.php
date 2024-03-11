@@ -1,68 +1,61 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\TrainerDetail;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Exception;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
-    public function login()
-    {
-        return view('Auth.login');
+    public function index() {
+        return view('Admin.users', [
+            "users" => User::orderBy('id', 'DESC')->paginate(7)
+        ]);
     }
 
-    public function signup()
-    {
-        return view('Auth.signup');
-    }
-
-    public function register()
-    {
-        return view('Auth.register');
-    }
-
-    public function authenticate(Request $request) {
+    public function create(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
-                "email" => "required|email|min:5|max:100",
-                "password" => "required|min:8|"
+                "name" => "required|min:2|max:100",
+                "email" => "required|email|unique:users,email|min:5|max:100",
+                "gender" => "required|in:M,F,O",
+                "dob" => "required|date",
+                "phone" => "max:10",
+                "city" =>"min:2|max:100",
+                "zip_code" => "max:10",
+                "state" => "max:50",
+                "bio" => "max:255",
+                "password" => "required|min:8",
+                "confirm_password" => "required|min:8|same:password",
             ]);
 
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
 
-            $credentials = $request->only('email', 'password');
+            User::create([
+                "name" => $request["name"],
+                "email" => $request["email"],
+                "gender" => $request["gender"],
+                "dob" => $request["dob"],
+                "phone" => $request["phone"],
+                "address" => $request["address"],
+                "city" => $request["city"],
+                "zip_code" => $request["zip_code"],
+                "state" => $request["state"],
+                "bio" => $request["bio"],
+                "profile_pic" => $request["profile_pic"],
+                "password" => $request["password"]
+            ]);
 
-            if (Auth::attempt($credentials)) {
-                $user = Auth::user();
-
-                if ($user->role == "pending") {
-                    Auth::logout();
-                    return response()->json(['error' => 'Verification Pending. You cannot log in yet.'], 402);
-                } else if ($user->role == "member") {
-                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Member!', 'user' => $user], 200);
-                } else if ($user->role == "trainer") {
-                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Trainer!', 'user' => $user], 200);
-                } else if ($user->role == "admin") {
-                    return response()->json(['success' => 'Login Successful!', 'message' => 'Welcome Admin!', 'user' => $user], 200);
-                }
-            }
-
-            return response()->json(['error' => 'Invalid credentials. Please check your email and password.'], 401);
-        } catch(Exception) {
+            return response()->json(['success' => 'Account Created Successfully!'], 200);
+        } catch (Exception) {
             return response()->json(['error' => 'Server Error'], 500);
         }
-    }    
-
-    public function create(Request $request)
-    {
     }
 
     public function store(Request $request) {
@@ -70,9 +63,13 @@ class AuthController extends Controller
             $validator = Validator::make($request->all(), [
                 "name" => "required|min:2|max:100",
                 "email" => "required|email|min:5|max:100|unique:users,email",
+                "gender" => "required|in:M,F,O",
                 "dob" => "required|date",
                 "phone" => "required|max:10",
-                "gender" => "required|in:M,F,O",
+                "city" =>"min:2|max:100",
+                "zip_code" => "max:10",
+                "state" => "max:50",
+                "bio" => "max:255",
                 "occupation" => "required|min:2|max:100",
                 "certificate_id" => "required",
                 "issue_date" => "required|date",
@@ -111,12 +108,15 @@ class AuthController extends Controller
         }
     }
 
-    public function logout() {
-        auth()->logout();
-
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-
-        return redirect()->route('home')->with('success', "Logged out Successfully!");
+    public function getUserDetails(Request $request) {
+        try {
+            $user = User::find($request["id"]);
+            if ($user) {
+                return response()->json(['success' => 'Data Fetched Successfullt', 'user' => $user]);
+            }
+            return response()->json(['error' => 'User Does not Exists'], 401);
+        } catch (Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
     }
 }

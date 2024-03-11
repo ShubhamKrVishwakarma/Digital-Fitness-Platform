@@ -1,6 +1,6 @@
 @extends('layouts.formLayout')
 
-@section('title') Fitness Hub - Login @endsection
+@section('title', 'Fitness Hub - Login')
 
 @section('content')
     <!-- Navbar -->
