@@ -1,12 +1,10 @@
 @extends("layouts.mainLayout")
 
-@section("title") Fitness Hub - Profile @endsection
+@section("title", "Profile")
 
 @push("styles")
-<link rel="stylesheet" href="css/profile.css">
-<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="{{ asset('css/global.css') }}">
+<link rel="stylesheet" href="css/profile.css">
 @endpush
 
 @section('content')

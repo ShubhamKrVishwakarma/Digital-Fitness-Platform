@@ -31,6 +31,7 @@
     <script src="{{ asset('plugins/jquery.js') }}"></script>
     <script src="{{ asset('plugins/axios.js') }}"></script>
     <script src="{{ asset('plugins/alert.js') }}"></script>
+    <script src="{{ asset('js/auth.js') }}"></script>
     @stack('scripts')
 </body>
 

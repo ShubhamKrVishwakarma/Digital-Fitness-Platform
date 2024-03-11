@@ -17,14 +17,15 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('phone', 10)->nullable();
             $table->string('password');
-            $table->enum('gender', ['M', 'F', 'O']);
-            $table->date('dob');
+            $table->enum('gender', ['M', 'F', 'O'])->nullable();
+            $table->date('dob')->nullable();
             $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
             $table->string('state', 50)->nullable();
             $table->string('zip_code', 10)->nullable();
             $table->string('bio', 255)->nullable();
-            $table->enum('role', ['member', 'trainer', 'admin'])->default('member');
+            $table->string('profile_pic')->nullable();
+            $table->enum('role', ['member', 'trainer', 'pending', 'admin'])->default('member');
             $table->float('rating')->nullable();
             $table->integer('followers')->default(0);
             $table->integer('following')->default(0);

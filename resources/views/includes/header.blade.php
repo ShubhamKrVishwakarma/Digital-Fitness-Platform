@@ -39,7 +39,7 @@
                                 <a class="nav-link text-light" href="{{ route('orders') }}">My Orders</a>
                             </li>
                             <li class="nav-item d-block d-lg-none">
-                                <a class="nav-link text-light" href="#">Log out</a>
+                                <a class="nav-link text-light" href="{{ route('logout') }}">Log out</a>
                             </li>
                             <li>
                                 <hr class="hr m-0">
@@ -63,7 +63,7 @@
                         </li>
                         <!-- Workout Dropdown -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light fw-medium {{ Route::is('') ? 'active' : '' }}"
+                            <a class="nav-link dropdown-toggle text-light fw-medium"
                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown">Workout</a>
                             <div class="dropdown-menu dropdown-menu-md m-0 p-0">
                                 <!-- Begineer -->
@@ -133,6 +133,9 @@
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small me-4">
+                                @can('admin')
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
+                                @endcan
                                 <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('message') }}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart') }}">My Cart</a></li>
@@ -140,7 +143,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Log out</a></li>
                             </ul>
                         </div>
                     @endauth
@@ -168,9 +171,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-center align-items-center">
-                    <a>Login as Admin</a>
-                </div>
+                {{-- <div class="modal-footer d-flex justify-content-center align-items-center">
+                    <a href="{{ route('admin.login') }}">Login as Admin</a>
+                </div> --}}
             </div>
         </div>
     </div>

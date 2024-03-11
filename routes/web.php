@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\QueryController;
+use App\Models\Query;
 use Illuminate\Support\Facades\Route;
 
 // Home Page
@@ -43,6 +45,7 @@ Route::get('/about', function() {
 })->name('about');
 
 // Contact Page
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', [QueryController::class, "index"])->name('contact');
+
+Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
+
