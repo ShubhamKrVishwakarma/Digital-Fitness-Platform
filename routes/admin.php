@@ -36,6 +36,6 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     })->name("queries");
 
     Route::post("/users/addMember", [UserController::class, 'create']);
-    Route::post("/users/addTrainer", [UserController::class, 'create']);
-    Route::post("/users/updateUser", [UserController::class, 'create']);
+    
+    Route::post("/users/addTrainer", [UserController::class, 'store']);
 });

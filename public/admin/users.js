@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    // Remove All Validation Errors
+    function removeValidationErrors() {
+        let errorSpans = document.querySelectorAll(".errors");
+        errorSpans.forEach(span => {
+            span.innerText = '';
+        });
+    }
+
     // Add Member
     $('#addMemberForm').submit(function(form) {
         form.preventDefault();
@@ -6,35 +14,37 @@ $(document).ready(function() {
         let url = window.location.href + "/addMember";
 
         axios.post(url, {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            gender: $('#gender').val(),
-            dob: $('#dob').val(),
-            phone: $('#phone').val(),
-            address: $('#address').val(),
-            city: $('#city').val(),
-            zip_code: $('#zip_code').val(),
-            state: $('#state').val(),
-            bio: $('#bio').val(),
-            profile_pic: $('#profile_pic').val(),
-            password: $('#password').val(),
-            confirm_password: $('#confirm_password').val()
+            name: $('#member-name').val(),
+            email: $('#member-email').val(),
+            gender: $('#member-gender').val(),
+            dob: $('#member-dob').val(),
+            phone: $('#member-phone').val(),
+            address: $('#member-address').val(),
+            city: $('#member-city').val(),
+            zip_code: $('#member-zip-code').val(),
+            state: $('#member-state').val(),
+            bio: $('#member-bio').val(),
+            profile_pic: $('#member-profile-pic').val(),
+            password: $('#member-password').val(),
+            confirm_password: $('#member-confirm-password').val()
         })
-        .then(function(response) {
-            $('#name').val('');
-            $('#email').val('');
-            $('#gender').val('');
-            $('#dob').val('');
-            $('#phone').val('');
-            $('#address').val('');
-            $('#city').val('');
-            $('#zip_code').val('');
-            $('#state').val('');
-            $('#bio').val('');
-            $('#profile_pic').val('');
-            $('#password').val('');
-            $('#confirm_password').val('');
-            $('.text-danger').val('');
+        .then(function() {
+            removeValidationErrors();
+            
+            $('#member-name').val('');
+            $('#member-email').val('');
+            $('#member-gender').val('');
+            $('#member-dob').val('');
+            $('#member-phone').val('');
+            $('#member-address').val('');
+            $('#member-city').val('');
+            $('#member-zip-code').val('');
+            $('#member-state').val('');
+            $('#member-bio').val('');
+            $('#member-profile-pic').val('');
+            $('#member-password').val('');
+            $('#member-confirm-password').val('');
+
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -45,71 +55,227 @@ $(document).ready(function() {
         })
         .catch(function(error) {
             if (error.response && error.response.status === 422) {
-                displayAddMemberErrors(error.response.data.errors);
+                memberValidationErrors(error.response.data.errors);
             } else {
                 Swal.fire({
                     title: "Server Error",
                     text: "Something Went Wrong!",
                     icon: "error"
                 });
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something went Wrong!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         });
     });
 
     // Add Member Validation Errors
-    function displayAddMemberErrors(errors) {
-        $('.text-danger').val('');
+    function memberValidationErrors(errors) {
+        removeValidationErrors();
 
         if (errors.name) {
-            $('#addMember-name-error').text(errors.name[0]);
+            $('#member-name-error').text(errors.name[0]);
         }
 
         if (errors.email) {
-            $('#addMember-email-error').text(errors.email[0]);
+            $('#member-email-error').text(errors.email[0]);
         }
 
         if (errors.gender) {
-            $('#addMember-gender-error').text(errors.gender[0]);
+            $('#member-gender-error').text(errors.gender[0]);
         }
 
         if (errors.dob) {
-            $('#addMember-dob-error').text(errors.dob[0]);
+            $('#member-dob-error').text(errors.dob[0]);
         }
 
         if (errors.phone) {
-            $('#addMember-phone-error').text(errors.phone[0]);
+            $('#member-phone-error').text(errors.phone[0]);
         }
 
         if (errors.address) {
-            $('#addMember-address-error').text(errors.address[0]);
+            $('#member-address-error').text(errors.address[0]);
         }
 
         if (errors.city) {
-            $('#addMember-city-error').text(errors.city[0]);
+            $('#member-city-error').text(errors.city[0]);
         }
 
         if (errors.zip_code) {
-            $('#addMember-zip-code-error').text(errors.zip_code[0]);
+            $('#member-zip-code-error').text(errors.zip_code[0]);
         }
 
         if (errors.state) {
-            $('#addMember-state-error').text(errors.state[0]);
+            $('#member-state-error').text(errors.state[0]);
         }
 
         if (errors.bio) {
-            $('#addMember-bio-error').text(errors.bio[0]);
+            $('#member-bio-error').text(errors.bio[0]);
         }
 
         if (errors.profile_pic) {
-            $('#addMember-profile-pic-error').text(errors.profile_pic[0]);
+            $('#member-profile-pic-error').text(errors.profile_pic[0]);
         }
 
         if (errors.password) {
-            $('#addMember-password-error').text(errors.password[0]);
+            $('#member-password-error').text(errors.password[0]);
         }
 
         if (errors.confirm_password) {
-            $('#addMember-confirm-password-error').text(errors.confirm_password[0]);
+            $('#member-confirm-password-error').text(errors.confirm_password[0]);
+        }
+    }
+
+    // Add Member
+    $('#addTrainerForm').submit(function(form) {
+        form.preventDefault();
+
+        let url = window.location.href + "/addTrainer";
+
+        axios.post(url, {
+            name: $('#trainer-name').val(),
+            email: $('#trainer-email').val(),
+            gender: $('#trainer-gender').val(),
+            dob: $('#trainer-dob').val(),
+            phone: $('#trainer-phone').val(),
+            address: $('#trainer-address').val(),
+            city: $('#trainer-city').val(),
+            zip_code: $('#trainer-zip-code').val(),
+            state: $('#trainer-state').val(),
+            bio: $('#trainer-bio').val(),
+            profile_pic: $('#trainer-profile-pic').val(),
+            password: $('#trainer-password').val(),
+            confirm_password: $('#trainer-confirm-password').val(),
+
+            occupation: $('#trainer-occupation').val(),
+            certificate_id: $('#trainer-certificate-id').val(),
+            issue_date: $('#trainer-issue-date').val(),
+            expiry_date: $('#trainer-expiry-date').val(),
+            issued_authority: $('#trainer-issued-authority').val()
+        })
+        .then(function() {
+            removeValidationErrors();
+
+            $('#trainer-name').val('');
+            $('#trainer-email').val('');
+            $('#trainer-gender').val('');
+            $('#trainer-dob').val('');
+            $('#trainer-phone').val('');
+            $('#trainer-address').val('');
+            $('#trainer-city').val('');
+            $('#trainer-zip-code').val('');
+            $('#trainer-state').val('');
+            $('#trainer-bio').val('');
+            $('#trainer-profile-pic').val('');
+            $('#trainer-password').val('');
+            $('#trainer-confirm-password').val('');
+            $('#trainer-occupation').val('');
+            $('#trainer-certificate-id').val('');
+            $('#trainer-issue-date').val('');
+            $('#trainer-expiry-date').val('');
+            $('#trainer-issued-authority').val('');
+            
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Trainer Details Added Successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+        .catch(function(error) {
+            if (error.response && error.response.status === 422) {
+                trainerValidationErrors(error.response.data.errors);
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something Went Wrong!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        });
+    });
+
+    // Add Trainer Validation Errors
+    function trainerValidationErrors(errors) {
+        removeValidationErrors();
+
+        if (errors.name) {
+            $('#trainer-name-error').text(errors.name[0]);
+        }
+
+        if (errors.email) {
+            $('#trainer-email-error').text(errors.email[0]);
+        }
+
+        if (errors.gender) {
+            $('#trainer-gender-error').text(errors.gender[0]);
+        }
+
+        if (errors.dob) {
+            $('#trainer-dob-error').text(errors.dob[0]);
+        }
+
+        if (errors.phone) {
+            $('#trainer-phone-error').text(errors.phone[0]);
+        }
+
+        if (errors.address) {
+            $('#trainer-address-error').text(errors.address[0]);
+        }
+
+        if (errors.city) {
+            $('#trainer-city-error').text(errors.city[0]);
+        }
+
+        if (errors.zip_code) {
+            $('#trainer-zip-code-error').text(errors.zip_code[0]);
+        }
+
+        if (errors.state) {
+            $('#trainer-state-error').text(errors.state[0]);
+        }
+
+        if (errors.bio) {
+            $('#trainer-bio-error').text(errors.bio[0]);
+        }
+
+        if (errors.profile_pic) {
+            $('#trainer-profile-pic-error').text(errors.profile_pic[0]);
+        }
+
+        if (errors.password) {
+            $('#trainer-password-error').text(errors.password[0]);
+        }
+
+        if (errors.confirm_password) {
+            $('#trainer-confirm-password-error').text(errors.confirm_password[0]);
+        }
+
+        if (errors.occupation) {
+            $('#trainer-occupation-error').text(errors.occupation[0]);
+        }
+
+        if (errors.certificate_id) {
+            $('#trainer-certificate-id-error').text(errors.certificate_id[0]);
+        }
+
+        if (errors.issue_date) {
+            $('#trainer-issue-date-error').text(errors.issue_date[0]);
+        }
+
+        if (errors.expiry_date) {
+            $('#trainer-expiry-date-error').text(errors.expiry_date[0]);
+        }
+
+        if (errors.issued_authority) {
+            $('#trainer-issued-authority-error').text(errors.issued_authority[0]);
         }
     }
 });
