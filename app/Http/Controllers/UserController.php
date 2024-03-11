@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -25,29 +26,55 @@ class UserController extends Controller
     {
 
         $request->validate([
-            "name" => "min:2|max:100",
-            "bio" => "min:10|max:500",
+            "name" => "required|min:2|max:100",
+            "bio" => "max:255",
             "dob" => "date",
             "phone" => "max:10",
-            "address" => "min:10|max:300",
+            "address" => "max:255",
             "city" => "max:100",
             "state" => "max:50",
-            "zip" => "max:10",
+            "zip_code" => "max:10",
+            "profile_pic" => "image"
         ]);
     
-
-
         $user = Auth::user();
 
-    // Update user data based on the submitted form data
         $user->name = $request->input('name');
-    // Update other profile data as needed
+        $user->bio = $request->input('dob');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
+        $user->city = $request->input('city');
+        $user->state = $request->input('state');
+        $user->zip_code = $request->input('zip-code');
 
-    // Save the changes
+        // print_r($request->image);
+        // die;
+        // $file_name= $user->id.'.'.$request->file('image')->getClientOriginalExtension();
+        // dd($file_name);
+        // if ($request->has('image')) {
+        //     $request->file('image')->storeAs('public/user', $file_name);
+        // }
+        // $user->profile_pic = $file_name;
+
         $user->save();
 
-    // Redirect back to the profile page with a success message
-        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
+    }
+    
+    
+    public function update_pass(Request $request)
+    {
+        $request->validate([
+            "old-pass" => "required|min:8|max:255",
+            "new-pass" => "required|min:8|max:255",
+            "re-pass" => "required|min:8|max:255|same:new-pass",
+        ]);
+        $user = Auth::user();
+        
+        $user->password = $request->input('new-pass');
+        $user->save();
+        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
     }
 }
+
 

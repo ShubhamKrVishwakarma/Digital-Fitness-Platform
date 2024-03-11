@@ -28,6 +28,8 @@ Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::post('/profile/{id}',[UserController::class,'update'])->name('user.update');
 
+Route::post('/profile',[UserController::class,'update_pass'])->name('user.update_pass');
+
 
 // Cart Page
 Route::get('/cart', function () {

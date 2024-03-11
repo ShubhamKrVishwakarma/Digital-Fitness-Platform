@@ -32,7 +32,7 @@ try {
         postsSection.style.display =  "none";
         postsSection.style.pointerEvents = "none";
         aboutSection.style.display = "none";
-        aboutSection.style.pointerEvents = "none";
+        aboutSection.style.pointerEvents = "none";        
     });
 } catch (error) {
     console.error('Error adding event listener: ' + error.message);
