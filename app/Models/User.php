@@ -19,4 +19,11 @@ class User extends Model implements Authenticatable
     public function trainerDetails() {
         $this->hasOne(TrainerDetail::class, 'user_id');
     }
+
+    public function getProfileUrl() {
+        if ($this->profile_pic !== null) {
+            return asset('storage/user/' . $this->profile_pic);
+        }
+        return asset('./images/profile.jpg');
+    }
 }
