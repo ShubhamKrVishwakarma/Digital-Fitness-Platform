@@ -38,4 +38,6 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     Route::post("/users/addMember", [UserController::class, 'create']);
     
     Route::post("/users/addTrainer", [UserController::class, 'store']);
+
+    Route::post('/users/getUserDetails', [UserController::class, 'getUserDetails']);
 });

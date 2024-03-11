@@ -107,4 +107,16 @@ class UserController extends Controller
             return response()->json(['error' => 'Server Error'], 500);
         }
     }
+
+    public function getUserDetails(Request $request) {
+        try {
+            $user = User::find($request["id"]);
+            if ($user) {
+                return response()->json(['success' => 'Data Fetched Successfullt', 'user' => $user]);
+            }
+            return response()->json(['error' => 'User Does not Exists'], 401);
+        } catch (Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
+    }
 }

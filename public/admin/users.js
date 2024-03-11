@@ -1,4 +1,108 @@
 $(document).ready(function() {
+    const usersTable = $('#usersTable');
+    const addMember = $('#addMember');
+    const addTrainer = $('#addTrainer');
+    const manageUser = $('#manageUser');
+
+    const addMemberButton = $('#addMemberButton');
+    const addTrainerButton = $('#addTrainerButton');
+    const manageUserButton = $('[data-manage-user]');
+    const usersTableButton = $('[data-view-users]');
+
+    addMemberButton.on("click", function() {
+        usersTable.hide();
+        addTrainer.hide();
+        manageUser.hide();
+        addMember.show();
+    });
+
+    addTrainerButton.on("click", function() {
+        usersTable.hide();
+        addMember.hide();
+        manageUser.hide();
+        addTrainer.show();
+    });
+
+    usersTableButton.on("click", function() {
+        addMember.hide();
+        addTrainer.hide();
+        manageUser.hide();
+        usersTable.show();
+    });
+
+    manageUserButton.on("click", function() {
+        usersTable.hide();
+        addMember.hide();
+        addTrainer.hide();
+        manageUser.show();
+
+        const userId = $(this).data('manage-user');
+        const url = window.location.href + "/getUserDetails";
+
+        axios.post(url, {
+            id: userId
+        })
+        .then(function(response) {
+            if (response.data.success) {
+                const userData = response.data.user;
+                
+                $('#update-name').val(userData.name);
+                $('#update-email').val(userData.email);
+                $('#update-gender').val(userData.gender);
+                $('#update-dob').val(userData.dob);
+                $('#update-phone').val(userData.phone);
+                $('#update-address').val(userData.address);
+                $('#update-city').val(userData.city);
+                $('#update-bio').val(userData.bio);
+                $('#user-role').val(userData.role);
+
+                if (userData.role === "trainer") {
+                    $('#trainer-details').show();
+                    $('#update-occupation').val(userData.occupation);
+                    $('#update-certificate-id').val(userData.certificate-id);
+                    $('#update-issue-date').val(userData.issue-date);
+                    $('#update-expiry-date').val(userData.expiry-date);
+                    $('#update-issued-authority').val(userData.issued-authority);
+                }
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something Went Wrong!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                usersTable.hide();
+                addTrainer.hide();
+                manageUser.hide();
+                addMember.show();
+            }
+        })
+        .catch(function(error) {
+            if (error.response && error.response.status === 401) {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "User Doesn't Exists!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something Went Wrong!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+            usersTable.hide();
+            addTrainer.hide();
+            manageUser.hide();
+            addMember.show();
+        });
+    });
+
     // Remove All Validation Errors
     function removeValidationErrors() {
         let errorSpans = document.querySelectorAll(".errors");

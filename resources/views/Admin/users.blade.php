@@ -345,109 +345,111 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="example-text-input" class="form-control-label">Name</label>
-                                        <input class="form-control" type="text" value="Shubham Kumar Vishwakarma">
+                                        <label for="update-name" class="form-control-label">Name</label>
+                                        <input class="form-control" id="update-name" type="text">
+                                        <span class="text-danger errors" id="update-name-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="example-text-input" class="form-control-label">Email</label>
-                                        <input class="form-control" type="email" value="test@example.com">
+                                        <label for="update-email" class="form-control-label">Email</label>
+                                        <input class="form-control" id="update-email" type="email">
+                                        <span class="text-danger errors" id="update-email-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-control-label">Gender</label>
-                                        <select class="form-control" required>
-                                            <option value="" disabled selected>Select Gender</option>
+                                        <label for="update-gender" class="form-control-label">Gender</label>
+                                        <select class="form-control" id="update-gender" required>
+                                            <option value="" selected>Select Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                             <option value="O">Others</option>
                                         </select>
+                                        <span class="text-danger errors" id="update-gender-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Date of
-                                            Birth</label>
-                                        <input type="date" class="form-control" required>
+                                        <label for="update-dob" class="form-control-label">Date of Birth</label>
+                                        <input type="date" id="update-dob" class="form-control" required>
+                                        <span class="text-danger errors" id="update-dob-error"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Phone
-                                            Number</label>
-                                        <input type="number" class="form-control" placeholder="Phone Number">
+                                        <label for="update-phone" class="form-control-label">Phone Number</label>
+                                        <input type="number" id="update-phone" class="form-control" placeholder="Phone Number">
+                                        <span class="text-danger errors" id="update-phone-phone"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Role</label>
-                                        <input type="text" class="form-control" value="Trainer" readonly>
+                                        <label class="form-control-label">Role</label>
+                                        <input type="text" class="form-control" id="user-role" readonly>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Address</label>
-                                        <textarea cols="30" rows="4" class="form-control" placeholder="Your Address..."></textarea>
+                                        <label for="update-address" class="form-control-label">Address</label>
+                                        <textarea cols="30" rows="4" id="update-address" class="form-control" placeholder="Your Address..."></textarea>
+                                        <span class="text-danger errors" id="update-address-error"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for=""
-                                            class="form-control-label">City</label>
-                                        <input type="text" class="form-control" placeholder="City">
+                                        <label for="update-city" class="form-control-label">City</label>
+                                        <input type="text" id="update-city" class="form-control" placeholder="City">
+                                        <span class="text-danger errors" id="update-city-error"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="" class="form-control-label">Zip
-                                            Code</label>
-                                        <input type="text" class="form-control" placeholder="Zip Code">
+                                        <label for="update-zip-code" class="form-control-label">Zip Code</label>
+                                        <input type="text" id="update-zip-code" class="form-control" placeholder="Zip Code">
+                                        <span class="text-danger errors" id="update-zip-code"></span>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for=""
-                                            class="form-control-label">State</label>
-                                        <select class="form-control">
-                                            <option value="" disabled selected>Select State</option>
+                                        <label for="update-state" class="form-control-label">State</label>
+                                        <select id="update-state" class="form-control">
+                                            <option value="" selected>Select State</option>
                                             <option value=""></option>
                                         </select>
+                                        <span class="text-danger errors" id="update-state-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="" class="form-control-label">Profile
-                                            Bio</label>
-                                        <textarea cols="30" rows="3" class="form-control" placeholder="Bio.."></textarea>
+                                        <label for="update-bio" class="form-control-label">Profile Bio</label>
+                                        <textarea cols="30" rows="3" id="bio" class="form-control" placeholder="Bio.."></textarea>
+                                        <span class="text-danger errors" id="update-bio-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="" class="form-control-label">Profile
-                                            Picture</label>
-                                        <input type="file" class="form-control">
+                                        <label for="update-profile-pic" class="form-control-label">Profile Picture</label>
+                                        <input type="file" id="update-profile-pic" class="form-control">
+                                        <span class="text-danger errors" id="update-profile-pic-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Password</label>
-                                        <input type="password" class="form-control" placeholder="New Password">
+                                        <label for="update-password" class="form-control-label">New Password</label>
+                                        <input type="password" id="update-password" class="form-control" placeholder="New Password">
+                                        <span class="text-danger errors" id="update-password-error"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="" class="form-control-label">Confirm
-                                            Password</label>
-                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                        <label for="update-confirm-password" class="form-control-label">Confirm Password</label>
+                                        <input type="password" id="update-confirm-password" class="form-control" placeholder="Confirm Password">
+                                        <span class="text-danger errors" id="update-confirm-password-error"></span>
                                     </div>
                                 </div>
-                                <hr class="horizontal bg-dark">
-                                <p class="text-uppercase text-sm">Professional Information</p>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for=""
-                                            class="form-control-label">Occupation</label>
-                                        <input type="text" class="form-control" placeholder="Occupation" required>
+                                <div class="row" id="trainer-details" style="display: none">
+                                    <hr class="horizontal bg-dark">
+                                    <div class="col-md-12">
+                                        <p class="text-uppercase text-sm">Professional Information</p>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Certificate
-                                            ID</label>
-                                        <input type="text" class="form-control" placeholder="Certificate ID" required>
+                                        <label for="update-occupation" class="form-control-label">Occupation</label>
+                                        <input type="text" id="update-occupation" class="form-control" placeholder="Occupation" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Issue
-                                            Date</label>
-                                        <input type="date" class="form-control" placeholder="Issue Date" required>
+                                        <label for="update-certificate-id" class="form-control-label">Certificate ID</label>
+                                        <input type="text" id="update-certificate-id" class="form-control" placeholder="Certificate ID" required>
+                                        <span class="text-danger errors" id="update-certificate-id"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="" class="form-control-label">Expiry
-                                            Date</label>
-                                        <input type="date" class="form-control" placeholder="Expiry Date" required>
+                                        <label for="update-issue-date" class="form-control-label">Issue Date</label>
+                                        <input type="date" id="update-issue-date" class="form-control" placeholder="Issue Date" required>
+                                        <span class="text-danger errors" id="update-issue-date"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="update-expiry-date" class="form-control-label">Expiry Date</label>
+                                        <input type="date" id="update-expiry-date" class="form-control" placeholder="Expiry Date" required>
+                                        <span class="text-danger errors" id="update-expiry-date"></span>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="" class="form-control-label">Issued
-                                            Authority</label>
-                                        <input type="text" class="form-control" placeholder="Issued Authority"
-                                            required>
+                                        <label for="update-issued-authority" class="form-control-label">Issued Authority</label>
+                                        <input type="text" id="update-isued-authority" class="form-control" placeholder="Issued Authority" required>
+                                        <span class="text-danger errors" id="update-issued-authority"></span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -525,48 +527,5 @@
 @endsection
 
 @push('scripts')
-<script>
-    const usersTable = document.querySelector('#usersTable');
-    const addMember = document.querySelector('#addMember');
-    const addTrainer = document.querySelector('#addTrainer');
-    const manageUser = document.querySelector('#manageUser');
-
-    const usersTableButton = document.querySelectorAll('[data-view-users]');
-    const addMemberButton = document.querySelector('#addMemberButton');
-    const addTrainerButton = document.querySelector('#addTrainerButton');
-    const manageUserButton = document.querySelectorAll('[data-manage-user]');
-
-    addMemberButton.addEventListener("click", function() {
-        usersTable.style.display = "none";
-        addTrainer.style.display = "none";
-        manageUser.style.display = "none";
-        addMember.style.display = "block";
-    });
-
-    addTrainerButton.addEventListener("click", function() {
-        usersTable.style.display = "none";
-        addMember.style.display = "none";
-        manageUser.style.display = "none";
-        addTrainer.style.display = "block";
-    });
-
-    usersTableButton.forEach(input => {
-        input.addEventListener("click", function() {
-            addMember.style.display = "none";
-            addTrainer.style.display = "none";
-            manageUser.style.display = "none";
-            usersTable.style.display = "block";
-        });
-    });
-
-    manageUserButton.forEach(btn => {
-        btn.addEventListener("click", function() {
-            usersTable.style.display = "none";
-            addMember.style.display = "none";
-            addTrainer.style.display = "none";
-            manageUser.style.display = "block";
-        });
-    });
-</script>
-<script src="{{ asset('admin/users.js') }}"></script>
+    <script src="{{ asset('admin/users.js') }}"></script>
 @endpush
