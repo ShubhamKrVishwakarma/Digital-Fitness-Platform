@@ -32,35 +32,49 @@
                             <p class="text">Or reach us via : <a href="#">FitnessGroup777@gmail.com</a></p>
                         </div>
 
-                        <form action="contact.html" method="post" class="contact-form">
+                        <form action="{{ route("contact.store") }}" method="post" class="contact-form">
+                            @csrf
                             <div class="input-wrap w-100">
-                                <input type="text" class="contact-input" autocomplete="off" name="First Name" required>
+                                <input type="text" class="contact-input" autocomplete="off" name="name" required>
                                 <label>Full Name</label>
                                 <i class="icon fa-solid fa-address-card"></i>
                             </div>
+                            @error('name')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            
 
                             <div class="input-wrap w-100">
-                                <input type="number" class="contact-input" autocomplete="off" name="Phone"
+                                <input type="number" class="contact-input" autocomplete="off" name="phone"
                                     pattern="[+]?[0-9]{1,4}[0-9]{10}" required>
                                 <label>Phone Number</label>
                                 <i class="icon fa-solid fa-phone"></i>
                             </div>
+                            @error('phone')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
 
                             <div class="input-wrap w-100">
                                 <input type="email" class="contact-input" autocomplete="off" name="email" required>
                                 <label>Email</label>
                                 <i class="icon fa-solid fa-envelope"></i>
                             </div>
+                            @error('email')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
 
                             <div class="input-wrap textarea w-100">
-                                <textarea name="Meassage" class="contact-input" autocomplete="off" required></textarea>
+                                <textarea name="message" class="contact-input" autocomplete="off" required></textarea>
                                 <label>Message</label>
                                 <i class="icon fa-solid fa-inbox"></i>
                             </div>
+                            @error('message')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            <div class="contact-buttons">
+                                <input type="submit" value="Send message" class="btn" style="width: 100%;">
+                            </div>
                         </form>
-                        <div class="contact-buttons">
-                            <input type="submit" value="Send message" class="btn" style="width: 100%;">
-                        </div>
                     </div>
                 </div>
                 <div class="right">
