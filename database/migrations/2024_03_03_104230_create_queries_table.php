@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('queries', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("e-mail");
-            $table->string("phone_no");
-            $table->text("query_msg");
+            $table->string("email");
+            $table->string("phone");
+            $table->text("message");
             $table->timestamps();
         });
     }
