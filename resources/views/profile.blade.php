@@ -29,17 +29,21 @@
                     <div>
                         <h6>Followers</h6>
                         <span>{{$user->followers}}</span>
+                        <span>{{$user->followers}}</span>
                     </div>
                     <div>
                         <h6>Following</h6>
                         <span>{{$user->following}}</span>
+                        <span>{{$user->following}}</span>
                     </div>
                     <div>
+                        @if ($user->role=='member')
                         @if ($user->role=='member')
                             <h6>Posts</h6>
                             <span>0</span>
                         @else
                             <h6>Rating</h6>
+                            <span>{{$user->rating}}</span>
                             <span>{{$user->rating}}</span>
                         @endif
                     </div>
@@ -135,13 +139,15 @@
                 <div class="inner-profile">
                     <div class="img-container">
                         <div class="image">
-                            @if ($user->profile_pic!=null)
-                                <img src="{{$user->profile_pic}}" alt="Profile image" />
+                            <img src="{{ $user->getProfileUrl() }}" alt="Profile image" />
+                            <span></span>
+                            {{-- @if ($user->profile_pic!=null)
+                                <img src="{{ $user->profile_pic }}" alt="Profile image" />
                                 <span></span>
                             @else
                                 <img src="{{ $user->getProfileUrl($user->id) }}" alt="Profile image" />
                                 <span></span>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                     <div class="name-container">
