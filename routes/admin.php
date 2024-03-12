@@ -41,5 +41,5 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
 
     Route::post('/users/getUserDetails', [UserController::class, 'getUserDetails']);
 
-    Route::post('/users/updateUserDetails', [UserController::class, 'update']);
+    Route::post('/users/updateUser', [UserController::class, 'update'])->name('user.update');
 });

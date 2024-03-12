@@ -122,87 +122,31 @@ class UserController extends Controller
 
     public function update(Request $request) {
         try {
-            if ($request->role === "trainer" || $request->role === "pending") {
-                $validator = Validator::make($request->all(), [
-                    "name" => "required|min:2|max:100",
-                    "gender" => "required|in:M,F,O",
-                    "dob" => "required|date",
-                    "phone" => "required|max:10",
-                    "address" => "max:255",
-                    "city" =>"max:100",
-                    "zip_code" => "max:10",
-                    "state" => "max:50",
-                    "bio" => "max:255",
-                    "occupation" => "required|min:2|max:100",
-                    "certificate_id" => "required",
-                    "issue_date" => "required|date",
-                    "expiry_date" => "required|date",
-                    "issued_authority" => "required|max:200",
-                    "password" => "min:8",
-                    "confirm_password" => "min:8|same:password"
-                ]);
-    
-                if ($validator->fails()) {
-                    return response()->json(['errors' => $validator->errors()], 422);
-                }
+            $validator = Validator::make($request->all(), [
+                "name" => "required|min:2|max:100",
+                "gender" => "required|in:M,F,O",
+                "dob" => "required|date",
+                "phone" => "max:10",
+                "address" => "max:255",
+                "city" =>"max:100",
+                "zip_code" => "max:10",
+                "state" => "max:50",
+                "bio" => "max:255",
+                "profile_pic" => "image",
+                "password" => "min:8",
+                "confirm_password" => "min:8|same:password"
+            ]);
 
-                $user = User::create([
-                    "name" => $request["name"],
-                    "gender" => $request["gender"],
-                    "dob" => $request["dob"],
-                    "phone" => $request["phone"],
-                    "address" => $request["address"],
-                    "city" => $request["city"],
-                    "state" => $request["state"],
-                    "zip_code" => $request["zip_code"],
-                    "bio" => $request["bio"],
-                    "password" => $request["password"],
-                    "role" => "pending"
-                ]);
-    
-                TrainerDetail::create([
-                    "user_id" => $user->id,
-                    "occupation" => $request["occupation"],
-                    "certificate_id" => $request["certificate_id"],
-                    "issue_date" => $request["issue_date"],
-                    "expiry_date" => $request["expiry_date"],
-                    "issued_authority" => $request["issued_authority"]
-                ]);
-
-            // } else if ($request->role === "member") {
-            } else {
-                $validator = Validator::make($request->all(), [
-                    "name" => "required|min:2|max:100",
-                    "gender" => "required|in:M,F,O",
-                    "dob" => "required|date",
-                    "phone" => "max:10",
-                    "address" => "max:255",
-                    "city" =>"max:100",
-                    "zip_code" => "max:10",
-                    "state" => "max:50",
-                    "bio" => "max:255",
-                    "password" => "min:8",
-                    "confirm_password" => "min:8|same:password"
-                ]);
-    
-                if ($validator->fails()) {
-                    return response()->json(['errors' => $validator->errors()], 422);
-                }
-
-                User::create([
-                    "name" => $request["name"],
-                    "gender" => $request["gender"],
-                    "dob" => $request["dob"],
-                    "phone" => $request["phone"],
-                    "address" => $request["address"],
-                    "city" => $request["city"],
-                    "state" => $request["state"],
-                    "zip_code" => $request["zip_code"],
-                    "bio" => $request["bio"],
-                    "password" => $request["password"],
-                ]);
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
             }
-            return response()->json(['error' => 'User Does not Exists'], 401);
+
+            $user = User::find($request["id"]);
+
+            $user->name = $request["name"];
+
+            $user->update();
+            return response()->json(['success' => 'Data Updated Successfully!'], 200);
         } catch (Exception) {
             return response()->json(['error' => 'Server Error'], 500);
         }

@@ -47,6 +47,8 @@ $(document).ready(function() {
             if (response.data.success) {
                 const userData = response.data.user;
                 
+                $('#update-user-id').val(userData.id);
+
                 $('#update-name').val(userData.name);
                 $('#update-email').val(userData.email);
                 $('#update-gender').val(userData.gender);
@@ -388,25 +390,23 @@ $(document).ready(function() {
     $('#manageUserForm').submit(function(form) {
         form.preventDefault();
 
-        let url = window.location.href + "/updateUserDetails";
+        let url = window.location.href + "/updateUser";
 
         axios.post(url, {
+            id: $('#update-user-id').val(),
             name: $('#update-name').val(),
             gender: $('#update-gender').val(),
             dob: $('#update-dob').val(),
             phone: $('#update-phone').val(),
+            role: $('#user-role').val(),
             address: $('#update-address').val(),
             city: $('#update-city').val(),
-            state: $('#update-state').val(),
             zip_code: $('#update-zip-code').val(),
+            state: $('#update-state').val(),
             bio: $('#update-bio').val(),
-            role: $('#user-role').val(),
-
-            occupation: $('#update-occupation').val(),
-            certificate_id: $('#update-certificate-id').val(),
-            issue_date: $('#update-issue-date').val(),
-            expiry_date: $('#update-expiry-date').val(),
-            issued_authority: $('#update-issued-authority').val()
+            profile_pic: $('#update-profile-pic').val(),
+            password: $('#update-password').val(),
+            confirm_password: $('#update-confirm-password').val(),
         })
         .then(function(response) {
             removeValidationErrors();
@@ -414,7 +414,7 @@ $(document).ready(function() {
             Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Trainer Details Added Successfully!",
+                title: "User Details Updated Successfully!",
                 showConfirmButton: false,
                 timer: 1500
             });

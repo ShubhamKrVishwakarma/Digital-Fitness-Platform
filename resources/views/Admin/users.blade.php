@@ -346,6 +346,7 @@
                                         <button class="btn btn-sm btn-danger">Delete Account</button>
                                     </div>
                                     <div class="row">
+                                        <input type="hidden" id="update-user-id">
                                         <div class="col-md-6 mb-3">
                                             <label for="update-name" class="form-control-label">Name</label>
                                             <input class="form-control" id="update-name" type="text">
@@ -423,7 +424,7 @@
                                             <span class="text-danger errors" id="update-confirm-password-error"></span>
                                         </div>
                                     </div>
-                                    <div class="row" id="trainer-details" style="display: none">
+                                    {{-- <div class="row" id="trainer-details" style="display: none">
                                         <hr class="horizontal bg-dark">
                                         <div class="col-md-12">
                                             <p class="text-uppercase text-sm">Professional Information</p>
@@ -453,7 +454,7 @@
                                             <input type="text" id="update-issued-authority" class="form-control" placeholder="Issued Authority" >
                                             <span class="text-danger errors" id="update-issued-authority-error"></span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="d-flex align-items-center">
                                         <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
                                     </div>
