@@ -30,160 +30,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm fs-6">John Michael</h6>
+                                @foreach ($queries as $query)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm fs-6">{{ $query->name }}</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm fs-5 text-secondary mb-0">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat
-                                            nostrum ut aspernatur! Ex unde dolores consectetur voluptatibus alias
-                                            architecto?
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm fs-5 text-secondary mb-0">
+                                                {{ $query->message }}
+                                            </p>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ $query->created_at->format('d-m-Y') }}</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-xs btn-dark" data-manage-query>Reply</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
