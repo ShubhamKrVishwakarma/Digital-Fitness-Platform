@@ -72,9 +72,11 @@ class AuthController extends Controller
                 "password" => "required|min:8",
                 "confirm_password" => "required|min:8|same:password"
             ]);
+
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
+
             User::create([
                 "name" => $request["name"],
                 "email" => $request["email"],
@@ -82,6 +84,7 @@ class AuthController extends Controller
                 "dob" => $request["dob"],
                 "password" => $request["password"]
             ]);
+
             return response()->json(['success' => 'Account Created Successfully!'], 200);
         } catch (Exception) {
             return response()->json(['error' => 'Server Error'], 500);
