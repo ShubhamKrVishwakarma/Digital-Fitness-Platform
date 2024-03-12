@@ -89,8 +89,9 @@
                 <p>
                     Checkout profile.
                 </p>
-
+                
                 <a href="#"><i class="bi bi-box-arrow-right"></i></a>
+                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
             </div>
 
             <div class="trainer">
@@ -100,7 +101,8 @@
                     Checkout profile.
                 </p>
 
-                <a href="#"><i class="bi bi-box-arrow-right"></i></a>
+                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
+                <a href="{{ route('user.show', ['id' => 2]) }}"><i class="bi bi-box-arrow-right"></i></a>
             </div>
 
             <div class="trainer">
@@ -109,7 +111,9 @@
                 <p>
                     Checkout profile.
                 </p>
-                <a href="#"><i class="bi bi-box-arrow-right"></i></a>
+                <a href="{{ route('user.show', ['id' => 1]) }}"><i class="bi bi-box-arrow-right"></i></a>
+                {{-- <a href="#"><i class="bi bi-box-arrow-right"></i></a> --}}
+                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
             </div>
         </div>
     </section>
