@@ -62,7 +62,8 @@
             style="background-image: url('https://img.freepik.com/free-photo/dumbbells-set-against-dark-background-floor_60438-3557.jpg?w=1380&t=st=1708407752~exp=1708408352~hmac=5958d83b709212650b3fbc6ae8ec3fb3c85a2ee95f0210bda515dd3fb3c1722e'); background-position: top;">
             <span class="mask bg-gradient-dark opacity-6"></span>
         </div>
-        <div class="container">
+        @livewire('member-registration')
+        {{-- <div class="container">
             <div class="row mt-n12 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
@@ -113,6 +114,24 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}',
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '{{ session('success') }}',
+            });
+        @endif
+    </script>
+@endpush
