@@ -39,6 +39,7 @@ $(document).ready(function() {
         const userId = $(this).data('manage-user');
         const url = window.location.href + "/getUserDetails";
 
+        // get user details
         axios.post(url, {
             id: userId
         })
@@ -46,6 +47,8 @@ $(document).ready(function() {
             if (response.data.success) {
                 const userData = response.data.user;
                 
+                $('#update-user-id').val(userData.id);
+
                 $('#update-name').val(userData.name);
                 $('#update-email').val(userData.email);
                 $('#update-gender').val(userData.gender);
@@ -380,6 +383,126 @@ $(document).ready(function() {
 
         if (errors.issued_authority) {
             $('#trainer-issued-authority-error').text(errors.issued_authority[0]);
+        }
+    }
+
+    // Manage User
+    $('#manageUserForm').submit(function(form) {
+        form.preventDefault();
+
+        let url = window.location.href + "/updateUser";
+
+        axios.post(url, {
+            id: $('#update-user-id').val(),
+            name: $('#update-name').val(),
+            gender: $('#update-gender').val(),
+            dob: $('#update-dob').val(),
+            phone: $('#update-phone').val(),
+            role: $('#user-role').val(),
+            address: $('#update-address').val(),
+            city: $('#update-city').val(),
+            zip_code: $('#update-zip-code').val(),
+            state: $('#update-state').val(),
+            bio: $('#update-bio').val(),
+            profile_pic: $('#update-profile-pic').val(),
+            password: $('#update-password').val(),
+            confirm_password: $('#update-confirm-password').val(),
+        })
+        .then(function(response) {
+            removeValidationErrors();
+
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User Details Updated Successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+        .catch(function(error) {
+            if (error.response && error.response.status === 422) {
+                updateValidationErrors(error.response.data.errors);
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something Went Wrong!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+    });
+
+    function updateValidationErrors(errors) {
+        removeValidationErrors();
+
+        if (errors.name) {
+            $('#update-name-error').text(errors.name[0]);
+        }
+
+        if (errors.gender) {
+            $('#update-gender-error').text(errors.gender[0]);
+        }
+
+        if (errors.dob) {
+            $('#update-dob-error').text(errors.dob[0]);
+        }
+
+        if (errors.phone) {
+            $('#update-phone-error').text(errors.phone[0]);
+        }
+
+        if (errors.address) {
+            $('#update-address-error').text(errors.address[0]);
+        }
+
+        if (errors.city) {
+            $('#update-city-error').text(errors.city[0]);
+        }
+
+        if (errors.zip_code) {
+            $('#update-zip-code-error').text(errors.zip_code[0]);
+        }
+
+        if (errors.state) {
+            $('#update-state-error').text(errors.state[0]);
+        }
+
+        if (errors.bio) {
+            $('#update-bio-error').text(errors.bio[0]);
+        }
+
+        if (errors.profile_pic) {
+            $('#update-profile-pic-error').text(errors.profile_pic[0]);
+        }
+
+        if (errors.password) {
+            $('#update-password-error').text(errors.password[0]);
+        }
+
+        if (errors.confirm_password) {
+            $('#update-confirm-password-error').text(errors.confirm_password[0]);
+        }
+
+        if (errors.occupation) {
+            $('#update-occupation-error').text(errors.occupation[0]);
+        }
+
+        if (errors.certificate_id) {
+            $('#update-certificate-id-error').text(errors.certificate_id[0]);
+        }
+
+        if (errors.issue_date) {
+            $('#update-issue-date-error').text(errors.issue_date[0]);
+        }
+
+        if (errors.expiry_date) {
+            $('#update-expiry-date-error').text(errors.expiry_date[0]);
+        }
+
+        if (errors.issued_authority) {
+            $('#update-issued-authority-error').text(errors.issued_authority[0]);
         }
     }
 });

@@ -22,7 +22,7 @@
                     </div>
                     <div class="name-container">
                         <h3 class="text-capitalize">{{ $user->name }}</h3>
-                        <span>{{$user->role }}</span>
+                        <span>{{ $user->role }}</span>
                     </div>
                 </div>
                 <div class="follow-details">
@@ -135,13 +135,15 @@
                 <div class="inner-profile">
                     <div class="img-container">
                         <div class="image">
-                            @if ($user->profile_pic!=null)
-                                <img src="{{$user->profile_pic}}" alt="Profile image" />
+                            <img src="{{ $user->getProfileUrl() }}" alt="Profile image" />
+                            <span></span>
+                            {{-- @if ($user->profile_pic!=null)
+                                <img src="{{ $user->profile_pic }}" alt="Profile image" />
                                 <span></span>
                             @else
                                 <img src="{{ $user->getProfileUrl($user->id) }}" alt="Profile image" />
                                 <span></span>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                     <div class="name-container">
