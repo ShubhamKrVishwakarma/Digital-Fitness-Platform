@@ -22,7 +22,7 @@
                     </div>
                     <div class="name-container">
                         <h3 class="text-capitalize">{{ $user->name }}</h3>
-                        <span>{{$user->role }}</span>
+                        <span>{{ $user->role }}</span>
                     </div>
                 </div>
                 <div class="follow-details">
