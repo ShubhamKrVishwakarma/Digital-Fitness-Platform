@@ -54,6 +54,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="px-4 pt-2">
+                            {{ $queries->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
