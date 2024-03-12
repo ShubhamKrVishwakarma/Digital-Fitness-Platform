@@ -49,15 +49,18 @@
 
         <div class="container-fluid mb-4" id="lower-container">
             <div class="profile-nav">
-                {{-- <div class="buttons-for-user">
+                @if(Auth::user()->id !== $user->id)
+                <div class="buttons-for-user">
                     <button type="button" class="btn btn-primary" id="chat-button">Chat</button>
                     <button type="button" class="btn btn-primary">Follow</button>
-                </div> --}}
+                </div>
+                @else
                 <div class="buttons-for-self">
                     <a href="{{route('user.profile_edit', $user->id)}}">
                      <button type="button" id="edit" class="bttn bttn-primary">Edit</button>
                     </a>
                 </div>
+                @endif
                 <div class="profile-nav-items">
                     <a href="#" class="nav-item-links is-active" id="about" active-color="black">About</a>
                     {{-- @If( Auth::user()->role != 'member') --}}
