@@ -28,21 +28,17 @@
                     <div>
                         <h6>Followers</h6>
                         <span>{{$user->followers}}</span>
-                        <span>{{$user->followers}}</span>
                     </div>
                     <div>
                         <h6>Following</h6>
                         <span>{{$user->following}}</span>
-                        <span>{{$user->following}}</span>
                     </div>
                     <div>
-                        @if ($user->role=='member')
                         @if ($user->role=='member')
                             <h6>Posts</h6>
                             <span>0</span>
                         @else
                             <h6>Rating</h6>
-                            <span>{{$user->rating}}</span>
                             <span>{{$user->rating}}</span>
                         @endif
                     </div>
