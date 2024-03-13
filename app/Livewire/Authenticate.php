@@ -3,9 +3,10 @@
 namespace App\Livewire;
 
 use Exception;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Authenticate extends Component
 {
@@ -38,12 +39,14 @@ class Authenticate extends Component
                 } else {
                     $this->dispatch('success');
                 }
+
+                $this->reset();
             } else {
                 $this->dispatch('invalid');
             }
-
-            $this->reset();
-        } catch(Exception) {
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch(Exception $e) {
             $this->dispatch('error');
         }
     }

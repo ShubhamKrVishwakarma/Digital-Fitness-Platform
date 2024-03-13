@@ -7,6 +7,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use App\Models\TrainerDetail;
+use Illuminate\Validation\ValidationException;
 
 class Trainer extends Component
 {
@@ -77,6 +78,8 @@ class Trainer extends Component
             $this->reset();
 
             $this->dispatch('success');
+        } catch (ValidationException $e) {
+            throw $e;
         } catch (Exception) {
             $this->dispatch('error');
         }

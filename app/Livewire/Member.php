@@ -6,6 +6,7 @@ use Exception;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Illuminate\Validation\ValidationException;
 
 class Member extends Component
 {
@@ -47,6 +48,8 @@ class Member extends Component
             $this->reset();
 
             $this->dispatch('success');
+        } catch (ValidationException $e) {
+            throw $e;
         } catch (Exception) {
             $this->dispatch('error');
         }

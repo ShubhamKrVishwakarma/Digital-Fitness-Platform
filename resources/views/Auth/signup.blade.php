@@ -69,10 +69,15 @@
 @push('scripts')
 <script>
     document.addEventListener('success', function () {
+        setTimeout(() => {
+            window.location.href = "http://localhost:8000/login";
+        }, 1600);
+
         Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Account Created Successfully!',
+            icon: "success",
+            title: "Account Created Successfully. Please Login!",
+            showConfirmButton: false,
+            timer: 1600
         });
     });
 

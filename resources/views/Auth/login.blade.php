@@ -99,11 +99,7 @@
 @push('scripts')
 <script>
     document.addEventListener('success', function () {
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Logged in Successfully!',
-        });
+        window.location.href = "http://localhost:8000/";
     });
 
     document.addEventListener('pending', function () {

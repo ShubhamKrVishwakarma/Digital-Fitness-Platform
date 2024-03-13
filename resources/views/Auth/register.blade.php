@@ -70,9 +70,17 @@
 <script>
     document.addEventListener('success', function () {
         Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Account Created Successfully!',
+                title: 'Success..',
+                text: 'Our Team will you reach you soon. After Verifing your Details!',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'http://127.0.0.1:8000/';
+            }
         });
     });
 
