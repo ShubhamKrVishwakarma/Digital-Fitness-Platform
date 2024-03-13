@@ -2,12 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
 use Exception;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 
-class MemberRegistration extends Component
+class Member extends Component
 {
     #[Rule('required|min:2|max:100', as: 'Username')]
     public $name;
@@ -29,7 +29,7 @@ class MemberRegistration extends Component
 
     public function render()
     {
-        return view('livewire.member-registration');
+        return view('livewire.member');
     }
 
     public function create() {
@@ -46,9 +46,9 @@ class MemberRegistration extends Component
 
             $this->reset();
 
-            session()->flash('success', 'Accound Created Successfully!');
+            $this->dispatch('success');
         } catch (Exception) {
-            session()->flash('error', 'Server Error!');
+            $this->dispatch('error');
         }
     }
 }
