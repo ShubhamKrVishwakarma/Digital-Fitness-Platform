@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Hub - Contact Us</title>
-    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
 </head>
 
 <body>
@@ -99,7 +99,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <script src="./js/contact.js"></script>
+    <script src="{{ asset('css/contact.css') }}"></script>
 </body>
 
 </html>
