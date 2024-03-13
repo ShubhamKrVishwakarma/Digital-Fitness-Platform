@@ -4,7 +4,7 @@
 
 @push("styles")
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="./css/orders.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/orders.css') }}">
 @endpush
 
 @section("content")
@@ -217,6 +217,5 @@
 @endsection
 
 @push("scripts")
-    <script src="./js/bootstrap.js"></script>
-    <script src="./js/orders.js"></script>
+<script src="{{ asset('js/orders.js') }}"></script>
 @endpush

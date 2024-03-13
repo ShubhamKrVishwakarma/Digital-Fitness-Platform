@@ -4,7 +4,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="./css/cart.css">
+<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 @endpush
 
 @section('content')
@@ -167,7 +167,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script src="./js/bootstrap.js"></script>
-@endpush
