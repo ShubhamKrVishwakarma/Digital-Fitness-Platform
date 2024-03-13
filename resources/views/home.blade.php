@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="banner-button">
-            <button class="btn">Checkout Workouts</button>
+            <button class="bttn bttn-primary">Explore more</button>
         </div>
     </section>
 
@@ -73,7 +73,7 @@
               journey.
           </p> -->
           <div class="banner-button">
-              <button class="btn btn-primary">Go to Store</button>
+              <button class="bttn bttn-primary">Go to Store</button>
           </div>
       </div>
     </section>
@@ -130,7 +130,7 @@
                     voluptatibus officia asperiores provident possimus?0</p> -->
             </div>
             <div class="banner-button">
-                <button class="btn btn-primary">Explore</button>
+                <button class="bttn bttn-primary">Explore</button>
             </div>
         </div>
     </section>
