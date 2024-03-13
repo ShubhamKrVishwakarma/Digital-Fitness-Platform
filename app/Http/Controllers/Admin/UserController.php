@@ -119,4 +119,36 @@ class UserController extends Controller
             return response()->json(['error' => 'Server Error'], 500);
         }
     }
+
+    public function update(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                "name" => "required|min:2|max:100",
+                "gender" => "required|in:M,F,O",
+                "dob" => "required|date",
+                "phone" => "max:10",
+                "address" => "max:255",
+                "city" =>"max:100",
+                "zip_code" => "max:10",
+                "state" => "max:50",
+                "bio" => "max:255",
+                "profile_pic" => "image",
+                "password" => "min:8",
+                "confirm_password" => "min:8|same:password"
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            $user = User::find($request["id"]);
+
+            $user->name = $request["name"];
+
+            $user->update();
+            return response()->json(['success' => 'Data Updated Successfully!'], 200);
+        } catch (Exception) {
+            return response()->json(['error' => 'Server Error'], 500);
+        }
+    }
 }

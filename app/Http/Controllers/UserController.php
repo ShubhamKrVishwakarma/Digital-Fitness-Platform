@@ -21,6 +21,17 @@ class UserController extends Controller
         }
     }
 
+    public function profile_edit($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            return view('profile_edit', compact('user'));
+        } catch (Exception $e) {
+            // Handled the case where the user is not found
+            return redirect()->route('home')->with('error', 'User not found.');
+        }
+    }
+
     public function update(Request $request)
     {
         $request->validate([
@@ -53,7 +64,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.profile_edit',$user->id)->with('success', 'Profile updated successfully.');
     }
     
     public function update_pass(Request $request)
