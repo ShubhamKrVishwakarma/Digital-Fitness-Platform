@@ -51,7 +51,10 @@
                                 <span class="text-danger d-block ms-1 mt-1">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="text-center">
+                        <div  wire:loading.block>
+                            <button class="btn bg-success text-white w-100">Processing....</button>
+                        </div>
+                        <div wire:loading.remove class="text-center">
                             <button type="submit" class="btn bg-gradient-dark w-100">Create Account</button>
                         </div>
                         <p class="text-sm text-center mt-1 mb-0">Already have an account? <a href="{{ route('login') }}"

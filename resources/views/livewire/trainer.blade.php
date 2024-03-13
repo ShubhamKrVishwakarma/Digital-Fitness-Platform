@@ -108,7 +108,10 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-12">
+                                <div wire:loading.block class="col-md-12">
+                                    <button class="btn btn-sm btn-success text-white m-0">Processing....</button>
+                                </div>
+                                <div wire:loading.remove class="col-md-12">
                                     <button class="btn btn-sm btn-dark m-0">Register as Trainer</button>
                                 </div>
                             </div>
