@@ -4,7 +4,6 @@
 
 @push("styles")
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-{{-- <link rel="stylesheet" href="css/profile.css"> --}}
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endpush
 
@@ -495,5 +494,4 @@
 
 @push("scripts")
 <script src="{{asset('js/profile.js')}}"></script>
-<script src="{{asset('./js/bootstrap.js')}}"></script>
 @endpush
