@@ -475,15 +475,16 @@
                                     </div>
                                 </div>
                                 <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
-                                    <div class="d-flex justify-content-between">
-                                        <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block">Connect</a>
+                                    <div class="d-flex justify-content-center align items-center my-3">
+                                        {{-- <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block">Connect</a>
                                         <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i
                                                 class="ni ni-collection"></i></a>
                                         <a href="javascript:;"
                                             class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
                                         <a href="javascript:;"
                                             class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i
-                                                class="ni ni-email-83"></i></a>
+                                                class="ni ni-email-83"></i></a> --}}
+                                        <button class="btn btn-sm btn-success m-0">Confirm Trainer</button>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">

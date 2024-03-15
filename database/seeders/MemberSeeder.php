@@ -24,7 +24,9 @@ class MemberSeeder extends Seeder
                 "dob" => fake()->date(),
                 "address" => fake()->address(),
                 "city" => fake()->city(),
-                "zip_code" => fake()->countryCode()
+                "zip_code" => fake()->countryCode(),
+                "created_at" => now(),
+                "updated_at" => now(),
             ];
         }
 
