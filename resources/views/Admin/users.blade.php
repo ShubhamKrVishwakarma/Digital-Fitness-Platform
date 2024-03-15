@@ -3,187 +3,19 @@
 @section('title', 'Users')
 
 @section('content')
-    <div class="container-fluid py-4">
+    <div x-data= "{usersTable : true, addMember : false, addTrainer : false, manageUser : false}" class="container-fluid py-4">
         <!-- Products Table -->
-        <div id="usersTable">
-            <div class="row mb-3">
-                <div class="col-12">
-                    <div class="card mb-4">
-                        <div class="card-header pb-0 d-flex justify-content-between align-items-center flex-wrap">
-                            <h6>Products table</h6>
-                            <div>
-                                <button class="btn btn-xs btn-warning my-1 me-0 me-md-2" id="addMemberButton">Add Member</button>
-                                <button class="btn btn-xs btn-dark my-1" id="addTrainerButton">Add Trainer</button>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center justify-content-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                ID</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                User</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                                                Role</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                                                Joined Date</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($users as $user)
-                                            <tr>
-                                                <td>
-                                                    <p class="ps-2 text-secondary mb-0">{{ $user->id }}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2">
-                                                        <div>
-                                                            <img src="{{ asset('admin.jpg') }}" class="avatar me-3" alt="Product">
-                                                        </div>
-                                                        <div class="my-auto">
-                                                            <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-sm text-center font-weight-bold mb-0">{{ $user->role }}</p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="text-xs font-weight-bold">{{ $user->created_at->format('d-m-Y') }}</span>
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="me-2 btn btn-xs btn-outline-danger mb-0"
-                                                        data-manage-user="{{ $user->id }}">Manage</button>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="px-4 pt-2">
-                                    {{ $users->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @livewire('Admin.UsersTable')
         <!-- Add Member -->
-        <div id="addMember" style="display: none">
-            <form id="addMemberForm">
-                @csrf
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-between align-items-center mb-2">
-                        <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
-                        <button class="btn btn-sm btn-dark mb-0 me-4" data-view-users>View All Users</button>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6>Personal Information</h6>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-name" class="form-control-label">Name</label>
-                                        <input type="text" id="member-name" class="form-control" placeholder="User Full Name" required>
-                                        <span class="text-danger errors" id="member-name-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-email" class="form-control-label">Email</label>
-                                        <input type="email" id="member-email" class="form-control" placeholder="Email Address" required>
-                                        <span class="text-danger errors" id="member-email-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-gender" class="form-control-label">Gender</label>
-                                        <select id="member-gender" class="form-control" required>
-                                            <option value="" disabled selected>Select Gender</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                            <option value="O">Others</option>
-                                        </select>
-                                        <span class="text-danger errors" id="member-gender-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-dob" class="form-control-label">Date of Birth</label>
-                                        <input id="member-dob" type="date" class="form-control" required>
-                                        <span class="text-danger errors" id="member-dob-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-phone" class="form-control-label">Phone Number</label>
-                                        <input type="number" id="member-phone" class="form-control" placeholder="Phone Number">
-                                        <span class="text-danger errors" id="member-phone-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-control-label">Role</label>
-                                        <input type="text" class="form-control" value="Member" readonly>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="member-address" class="form-control-label">Address</label>
-                                        <textarea cols="30" rows="4" id="member-address" class="form-control" placeholder="Your Address..."></textarea>
-                                        <span class="text-danger errors" id="member-address-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="member-city" class="form-control-label">City</label>
-                                        <input type="text" id="member-city" class="form-control" placeholder="City">
-                                        <span class="text-danger errors" id="member-city-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="member-zip-code" class="form-control-label">Zip Code</label>
-                                        <input type="text" id="member-zip-code" class="form-control" placeholder="Zip Code">
-                                        <span class="text-danger errors" id="member-zip-code-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="member-state" class="form-control-label">State</label>
-                                        <select id="member-state" class="form-control">
-                                            <option value="" selected>Select State</option>
-                                            <option value="West Bengal">West Bengal</option>
-                                            <option value="Delhi">Delhi</option>
-                                        </select>
-                                        <span class="text-danger errors" id="member-state-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="member-bio" class="form-control-label">Profile Bio</label>
-                                        <textarea cols="30" rows="3" id="member-bio" class="form-control" placeholder="Bio.."></textarea>
-                                        <span class="text-danger errors" id="member-bio-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-4">
-                                        <label for="member-profile-pic" class="form-control-label">Profile Picture</label>
-                                        <input type="file" id="member-profile-pic" class="form-control">
-                                        <span class="text-danger errors" id="member-profile-pic-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-password" class="form-control-label">Password</label>
-                                        <input type="password" id="member-password" class="form-control" placeholder="New Password" required>
-                                        <span class="text-danger errors" id="member-password-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="member-confirm-password" class="form-control-label">Confirm Password</label>
-                                        <input type="password" id="member-confirm-password" class="form-control" placeholder="Confirm Password" required>
-                                        <span class="text-danger errors" id="member-confirm-password-error"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn btn-success m-0">Add Member</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+        @livewire('Admin.AddMember')
         <!-- Add Trainer -->
-        <div id="addTrainer" style="display: none">
+        <div x-show="addTrainer" style="display: none">
             <form id="addTrainerForm">
                 @csrf
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                         <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
-                        <button class="btn btn-sm btn-dark mb-0 me-4" data-view-users>View All Users</button>
+                        <button x-on:click="addTrainer = false, usersTable = true" class="btn btn-sm btn-dark mb-0 me-4" data-view-users>View All Users</button>
                     </div>
                     <div class="col-md-8">
                         <div class="card">
@@ -312,7 +144,7 @@
             </form>
         </div>
         <!-- Manage User -->
-        <div id="manageUser" class="main-content position-relative border-radius-lg" style="display: none">
+        <div x-show="manageUser" class="main-content position-relative border-radius-lg" style="display: none">
             <div class="card shadow-lg mx-4 mt-4">
                 <div class="card-body p-3">
                     <div class="row gx-4">
@@ -329,7 +161,7 @@
                             </div>
                         </div>
                         <div class="col-auto ms-auto my-auto">
-                            <button class="btn btn-sm btn-dark m-0" data-view-users>View All Users</button>
+                            <button x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0" data-view-users>View All Users</button>
                         </div>
                     </div>
                 </div>
@@ -531,5 +363,22 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('admin/users.js') }}"></script>
+    {{-- <script src="{{ asset('admin/users.js') }}"></script> --}}
+    <script>
+        document.addEventListener('member-success', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'A New Member Added Successfully!',
+            });
+        });
+
+        document.addEventListener('error', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Server Timeout!',
+            });
+        });
+    </script>
 @endpush

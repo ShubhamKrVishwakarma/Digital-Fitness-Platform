@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Exception;
 use App\Models\User;
@@ -8,7 +8,7 @@ use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Illuminate\Validation\ValidationException;
 
-class Member extends Component
+class AddMember extends Component
 {
     #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
@@ -21,19 +21,40 @@ class Member extends Component
 
     #[Rule('required', as: 'Date of Birth')]
     public $dob;
+    
+    #[Rule('nullable|max:10', as: 'Phone Number')]
+    public $phone;
+
+    #[Rule('nullable', as: 'Address')]
+    public $address;
+
+    #[Rule('nullable|min:2|max:100', as: 'City')]
+    public $city;
+    
+    #[Rule('nullable|max:10', as: 'Zip Code')]
+    public $zip_code;
+
+    #[Rule('nullable|max:100', as: 'State')]
+    public $state;
+
+    #[Rule('nullable|max:255', as: 'Bio')]
+    public $bio;
+
+    #[Rule('nullable', as: 'Profile Picture')]
+    public $profile_pic;
 
     #[Rule('required|min:8', as: 'Password')]
     public $password;
-
+    
     #[Rule('required|min:8|same:password', as: 'Password Confirmation')]
     public $confirm_password;
 
     public function render()
     {
-        return view('livewire.member');
+        return view('livewire.admin.add-member');
     }
 
-    public function create() {
+    public function addMember() {
         try {
             $this->validate();
 
@@ -42,15 +63,21 @@ class Member extends Component
                 "email" => $this->email,
                 "gender" => $this->gender,
                 "dob" => $this->dob,
+                "phone" => $this->phone,
+                "address" => $this->address,
+                "city" => $this->city,
+                "zip_code" => $this->zip_code,
+                "state" => $this->state,
+                "bio" => $this->bio,
                 "password" => $this->password
             ]);
 
             $this->reset();
 
-            $this->dispatch('success');
-        } catch (ValidationException $e) {
-            throw $e;
-        } catch (Exception) {
+            $this->dispatch('member-success');
+        } catch(ValidationException) {
+            return false;
+        } catch(Exception) {
             $this->dispatch('error');
         }
     }
