@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\QueryController;
+use App\Models\Query;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -26,6 +28,8 @@ Route::get('/message', function() {
 // Profile Page
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 
+Route::get('/profile-edit/{id}', [UserController::class, 'profile_edit'])->name('user.profile_edit');
+
 Route::post('/profile/{id}',[UserController::class,'update'])->name('user.update');
 
 Route::post('/profile',[UserController::class,'update_pass'])->name('user.update_pass');
@@ -47,6 +51,7 @@ Route::get('/about', function() {
 })->name('about');
 
 // Contact Page
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', [QueryController::class, "index"])->name('contact');
+
+Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
+

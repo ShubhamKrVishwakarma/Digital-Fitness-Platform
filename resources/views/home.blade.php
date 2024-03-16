@@ -3,7 +3,7 @@
 @section("title", "Home")
 
 @push("styles")
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 @endpush
 
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="banner-button">
-            <button class="btn">Checkout Workouts</button>
+            <button class="bttn bttn-primary">Explore more</button>
         </div>
     </section>
 
@@ -73,7 +73,7 @@
               journey.
           </p> -->
           <div class="banner-button">
-              <button class="btn btn-primary">Go to Store</button>
+              <button class="bttn bttn-primary">Go to Store</button>
           </div>
       </div>
     </section>
@@ -130,7 +130,7 @@
                     voluptatibus officia asperiores provident possimus?0</p> -->
             </div>
             <div class="banner-button">
-                <button class="btn btn-primary">Explore</button>
+                <button class="bttn bttn-primary">Explore</button>
             </div>
         </div>
     </section>
@@ -200,6 +200,5 @@
 @endsection
 
 @push("scripts")
-    <script src="js/home.js"></script>
-    <script src="./js/bootstrap.js"></script>
+<script src="{{ asset('js/home.js') }}"></script>
 @endpush

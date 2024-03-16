@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Storage;
+use Exception;
 
 class UserController extends Controller
 {
@@ -16,7 +15,18 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
             return view('profile', compact('user'));
-        } catch (ModelNotFoundException $e) {
+        } catch (Exception $e) {
+            // Handled the case where the user is not found
+            return redirect()->route('home')->with('error', 'User not found.');
+        }
+    }
+
+    public function profile_edit($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            return view('profile_edit', compact('user'));
+        } catch (Exception $e) {
             // Handled the case where the user is not found
             return redirect()->route('home')->with('error', 'User not found.');
         }
@@ -24,7 +34,6 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-
         $request->validate([
             "name" => "required|min:2|max:100",
             "bio" => "max:255",
@@ -34,33 +43,29 @@ class UserController extends Controller
             "city" => "max:100",
             "state" => "max:50",
             "zip_code" => "max:10",
-            "profile_pic" => "image"
+            "profile_pic" => "mimes:jpg,bmp,png",
         ]);
     
         $user = Auth::user();
 
         $user->name = $request->input('name');
-        $user->bio = $request->input('dob');
+        $user->bio = $request->input('bio');
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
         $user->city = $request->input('city');
         $user->state = $request->input('state');
-        $user->zip_code = $request->input('zip-code');
+        $user->zip_code = $request->input('zip_code');
 
-        // print_r($request->image);
-        // die;
-        // $file_name= $user->id.'.'.$request->file('image')->getClientOriginalExtension();
-        // dd($file_name);
-        // if ($request->has('image')) {
-        //     $request->file('image')->storeAs('public/user', $file_name);
-        // }
-        // $user->profile_pic = $file_name;
+        if ($request->hasFile('profile_pic')) {
+            $file_name = $user->id . '.' . $request->file('profile_pic')->getClientOriginalExtension();
+            $request->file('profile_pic')->storeAs('public/user', $file_name);
+            $user->profile_pic = $file_name;
+        }
 
         $user->save();
 
-        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.profile_edit',$user->id)->with('success', 'Profile updated successfully.');
     }
-    
     
     public function update_pass(Request $request)
     {

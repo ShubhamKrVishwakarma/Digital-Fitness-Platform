@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,13 +32,13 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
         return view("Admin.orders");
     })->name("orders");
 
-    Route::get("/queries", function() {
-        return view("Admin.queries");
-    })->name("queries");
+    Route::get('/queries', [QueryController::class, 'index'])->name('queries');
 
     Route::post("/users/addMember", [UserController::class, 'create']);
     
     Route::post("/users/addTrainer", [UserController::class, 'store']);
 
     Route::post('/users/getUserDetails', [UserController::class, 'getUserDetails']);
+
+    Route::post('/users/updateUser', [UserController::class, 'update'])->name('user.update');
 });
