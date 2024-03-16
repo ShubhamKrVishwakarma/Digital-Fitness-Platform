@@ -13,7 +13,12 @@ class QuerySeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         $query=[];
+=======
+        $query = [];
+
+>>>>>>> a61be399a3bdbaff9e1b538c509ab3611d002fea
         for($i=1;$i<=100;$i++){
             $query[] = [
                 "name"=>fake()->name(),
@@ -24,6 +29,10 @@ class QuerySeeder extends Seeder
                 "updated_at"=> now()
             ];
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> a61be399a3bdbaff9e1b538c509ab3611d002fea
         Query::insert($query);
     }
 }
