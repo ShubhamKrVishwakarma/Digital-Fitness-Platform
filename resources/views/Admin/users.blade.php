@@ -9,140 +9,7 @@
         <!-- Add Member -->
         @livewire('Admin.AddMember')
         <!-- Add Trainer -->
-        <div x-show="addTrainer" style="display: none">
-            <form id="addTrainerForm">
-                @csrf
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-between align-items-center mb-2">
-                        <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
-                        <button x-on:click="addTrainer = false, usersTable = true" class="btn btn-sm btn-dark mb-0 me-4" data-view-users>View All Users</button>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6>Personal Information</h6>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="trainer-name" class="form-control-label">Name</label>
-                                        <input type="text" id="trainer-name" class="form-control" placeholder="User Full Name" required>
-                                        <span class="text-danger errors" id="trainer-name-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="trainer-email" class="form-control-label">Email</label>
-                                        <input type="email" id="trainer-email" class="form-control" placeholder="Email Address" required>
-                                        <span class="text-danger errors" id="trainer-email-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="trainer-gender" class="form-control-label">Gender</label>
-                                        <select id="trainer-gender" class="form-control" required>
-                                            <option value="" selected>Select Gender</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                            <option value="O">Others</option>
-                                        </select>
-                                        <span class="text-danger errors" id="trainer-gender-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="trainer-dob" class="form-control-label">Date of Birth</label>
-                                        <input type="date" id="trainer-dob" class="form-control" required>
-                                        <span class="text-danger errors" id="trainer-dob-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="trainer-phone" class="form-control-label">Phone Number</label>
-                                        <input type="number" id="trainer-phone" class="form-control" placeholder="Phone Number">
-                                        <span class="text-danger errors" id="trainer-phone-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-control-label">Role</label>
-                                        <input type="text" class="form-control" value="Trainer" readonly>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-address" class="form-control-label">Address</label>
-                                        <textarea cols="30" rows="4" id="trainer-address" class="form-control" placeholder="Your Address..."></textarea>
-                                        <span class="text-danger errors" id="trainer-address-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="trainer-city" class="form-control-label">City</label>
-                                        <input type="text" id="trainer-city" class="form-control" placeholder="City">
-                                        <span class="text-danger errors" id="trainer-city-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="trainer-zip-code" class="form-control-label">Zip Code</label>
-                                        <input type="text" id="trainer-zip-code" class="form-control" placeholder="Zip Code">
-                                        <span class="text-danger errors" id="trainer-zip-code-error"></span>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="trainer-state" class="form-control-label">State</label>
-                                        <select id="trainer-state" class="form-control">
-                                            <option value="" selected>Select State</option>
-                                            <option value="West Bengal">West Bengal</option>
-                                        </select>
-                                        <span class="text-danger errors" id="trainer-state-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-bio" class="form-control-label">Profile Bio</label>
-                                        <textarea cols="30" rows="3" id="trainer-bio" class="form-control" placeholder="Bio.."></textarea>
-                                        <span class="text-danger errors" id="trainer-bio-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-4">
-                                        <label for="trainer-profile-pic" class="form-control-label">Profile Picture</label>
-                                        <input type="file" id="trainer-profile-pic" class="form-control">
-                                        <span class="text-danger errors" id="trainer-profile-pic-error"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6>Professional Information</h6>
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-occupation" class="form-control-label">Occupation</label>
-                                        <input type="text" class="form-control" id="trainer-occupation" placeholder="Occupation" required>
-                                        <span class="text-danger errors" id="trainer-occupation-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-certificate-id" class="form-control-label">Certificate ID</label>
-                                        <input type="text" id="trainer-certificate-id" class="form-control" placeholder="Certificate ID" required>
-                                        <span class="text-danger errors" id="trainer-certificate-id-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-issue-date" class="form-control-label">Issue Date</label>
-                                        <input type="date" id="trainer-issue-date" class="form-control" placeholder="Issue Date" required>
-                                        <span class="text-danger errors" id="trainer-issue-date-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-expiry-date" class="form-control-label">Expiry Date</label>
-                                        <input type="date" id="trainer-expiry-date" class="form-control" placeholder="Expiry Date" required>
-                                        <span class="text-danger errors" id="trainer-expiry-date-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-issued-authority" class="form-control-label">Issued Authority</label>
-                                        <input type="text" id="trainer-issued-authority" class="form-control" placeholder="Issued Authority" required>
-                                        <span class="text-danger errors" id="trainer-issued-authority-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-password" class="form-control-label">Password</label>
-                                        <input type="password" id="trainer-password" class="form-control" placeholder="New Password">
-                                        <span class="text-danger errors" id="trainer-password-error"></span>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="trainer-confirm-password" class="form-control-label">Confirm Password</label>
-                                        <input type="password" id="trainer-confirm-password" class="form-control" placeholder="Confirm Password">
-                                        <span class="text-danger errors" id="trainer-confirm-password-error"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn btn-success m-0">Add Trainer</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+        @livewire('Admin.AddTrainer')
         <!-- Manage User -->
         <div x-show="manageUser" class="main-content position-relative border-radius-lg" style="display: none">
             <div class="card shadow-lg mx-4 mt-4">
@@ -363,13 +230,20 @@
 @endsection
 
 @push('scripts')
-    {{-- <script src="{{ asset('admin/users.js') }}"></script> --}}
     <script>
         document.addEventListener('member-success', function () {
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
                 text: 'A New Member Added Successfully!',
+            });
+        });
+
+        document.addEventListener('trainer-success', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'A New Trainer Added Successfully! But not verified!',
             });
         });
 

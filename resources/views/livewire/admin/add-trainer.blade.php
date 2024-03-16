@@ -1,11 +1,11 @@
-<div x-show="addMember" style="display: none">
-    <form wire:submit='addMember' enctype="multipart/form-data">
+<div x-show="addTrainer" style="display: none">
+    <form wire:submit='addTrainer' enctype="multipart/form-data">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-2">
-                <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
-                <button x-on:click="addMember = false, usersTable = true" class="btn btn-sm btn-dark mb-0 me-4">View All Users</button>
+                <h3 class="text-light ms-2 font-weight-bolder">Add New Trainer</h3>
+                <button x-on:click="addTrainer = false, usersTable = true" class="btn btn-sm btn-dark mb-0 me-4">View All Users</button>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
                         <h6>Personal Information</h6>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-control-label">Role</label>
-                                <input type="text" class="form-control" value="Member" readonly>
+                                <input type="text" class="form-control" value="Trainer" readonly>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-control-label">Address</label>
@@ -80,7 +80,6 @@
                                 <select wire:model='state' class="form-control">
                                     <option value="" selected>Select State</option>
                                     <option value="West Bengal">West Bengal</option>
-                                    <option value="Delhi">Delhi</option>
                                 </select>
                                 @error('state')
                                     <span class="text-danger">{{ $message }}</span>
@@ -100,16 +99,60 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-md-6 mb-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>Professional Information</h6>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-control-label">Occupation</label>
+                                <input type="text" class="form-control" wire:model='occupation' placeholder="Occupation" required>
+                                @error('ocupation')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-control-label">Certificate ID</label>
+                                <input type="text" wire:model='certificate_id' class="form-control" placeholder="Certificate ID" required>
+                                @error('certificate_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-control-label">Issue Date</label>
+                                <input type="date" wire:model='issue_date' class="form-control" placeholder="Issue Date" required>
+                                @error('issue_date')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-control-label">Expiry Date</label>
+                                <input type="date" wire:model='expiry_date' class="form-control" placeholder="Expiry Date" required>
+                                @error('expiry_date')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-control-label">Issued Authority</label>
+                                <input type="text" wire:model='issued_authority' class="form-control" placeholder="Issued Authority" required>
+                                @error('issued_authority')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-3">
                                 <label class="form-control-label">Password</label>
-                                <input type="password" wire:model='password' class="form-control" placeholder="New Password" required>
+                                <input type="password" wire:model='password' class="form-control" placeholder="New Password">
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label class="form-control-label">Confirm Password</label>
-                                <input type="password" wire:model='confirm_password' class="form-control" placeholder="Confirm Password" required>
+                                <input type="password" wire:model='confirm_password' class="form-control" placeholder="Confirm Password">
                                 @error('confirm_password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -118,7 +161,7 @@
                                 <button class="btn btn-sm btn-success m-0 text-white">Processing....</button>
                             </div>
                             <div wire:loading.remove class="col-md-12">
-                                <button class="btn btn-sm btn-primary m-0">Add Member</button>
+                                <button class="btn btn-sm btn-primary m-0">Add Trainer</button>
                             </div>
                         </div>
                     </div>

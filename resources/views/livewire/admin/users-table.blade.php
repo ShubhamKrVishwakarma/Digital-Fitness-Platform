@@ -5,8 +5,8 @@
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center flex-wrap">
                     <h6>Products table</h6>
                     <div>
-                        <button x-on:click="usersTable = false, addMember = true" class="btn btn-xs btn-warning my-1 me-0 me-md-2" id="addMemberButton">Add Member</button>
-                        <button x-on:click="usersTable = false, addTrainer = true" class="btn btn-xs btn-dark my-1" id="addTrainerButton">Add Trainer</button>
+                        <button x-on:click="usersTable = false, addMember = true" class="btn btn-xs btn-warning my-1 me-0 me-md-2">Add Member</button>
+                        <button x-on:click="usersTable = false, addTrainer = true" class="btn btn-xs btn-dark my-1">Add Trainer</button>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -51,8 +51,7 @@
                                             <span class="text-xs font-weight-bold">{{ $user->created_at->format('d-m-Y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <button x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0"
-                                                data-manage-user="{{ $user->id }}">Manage</button>
+                                            <button x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0">Manage</button>
                                         </td>
                                     </tr>
                                 @endforeach
