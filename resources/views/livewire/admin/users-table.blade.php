@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    <tr>
+                                    <tr wire:key='{{ $user->id }}'>
                                         <td>
                                             <p class="ps-2 text-secondary mb-0">{{ $user->id }}</p>
                                         </td>
