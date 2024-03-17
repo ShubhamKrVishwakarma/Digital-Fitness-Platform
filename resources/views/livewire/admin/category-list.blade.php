@@ -7,6 +7,11 @@
         <hr class="bg-dark mb-0">
         <div class="card-body p-3">
             <ul class="list-group">
+                @if ($categories->count() < 1)
+                    <li class="list-group-item border-0">
+                        <p>No Categories Found</p>
+                    </li>
+                @endif
                 @foreach ($categories as $category)
                     <li wire:key='{{ $category->id }}' class="list-group-item border-0 d-flex justify-content-between flex-wrap ps-0 mb-2 border-radius-lg">
                         <div class="d-flex align-items-center">
