@@ -1,5 +1,5 @@
 <div x-show="addProduct" style="display: none;">
-    <form wire:submit='store' enctype="multipart/form-data">
+    <form wire:submit='store'>
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">Add New Product</h3>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-control-label">Image</label>
-                            <input type="file" wire:model='image' class="form-control" required>
+                            <input type="file" accept="image/png, image/jpeg" wire:model='image' class="form-control" required>
                             @error('image')
                                 <span class="text-danger d-block mt-1">{{ $message }}</span>
                             @enderror
@@ -56,12 +56,15 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-control-label">Category</label>
-                            <select wire:model='category' class="form-control" required>
+                            <select wire:model='category_id' class="form-control" required>
                                 <option value="" selected>Select Category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category_id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                                <span class="text-danger d-block mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div wire:loading.block class="col-12">
                             <button class="btn btn-sm btn-success text-white m-0 mt-2">Processing....</button>
