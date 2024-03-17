@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float("rating")->default(0);
             $table->text("keywords");
             $table->timestamps();
+            
             $table->foreign("category_id")->references("id")->on("categories")->cascadeOnDelete();
         });
     }
