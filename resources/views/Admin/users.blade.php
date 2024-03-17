@@ -3,7 +3,7 @@
 @section('title', 'Users')
 
 @section('content')
-    <div x-data= "{usersTable : true, addMember : false, addTrainer : false, manageUser : false}" class="container-fluid py-4">
+    <div x-data="{usersTable : true, addMember : false, addTrainer : false, manageUser : false}" class="container-fluid py-4">
         <!-- Products Table -->
         @livewire('Admin.UsersTable')
         <!-- Add Member -->
