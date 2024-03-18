@@ -15,7 +15,7 @@ class QuerySeeder extends Seeder
     {
         $query = [];
 
-        for($i=1;$i<=100;$i++){
+        for($i=1;$i<=20;$i++){
             $query[] = [
                 "name"=>fake()->name(),
                 "email"=>fake()->email(),
