@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Category;
 
 use App\Models\Category;
 use Livewire\Attributes\Rule;
@@ -13,7 +13,7 @@ class AddCategory extends Component
 
     public function render()
     {
-        return view('livewire.admin.add-category');
+        return view('livewire.admin.category.add-category');
     }
 
     public function create() {

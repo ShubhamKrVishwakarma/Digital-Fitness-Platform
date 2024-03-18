@@ -6,13 +6,13 @@
 <div class="container-fluid py-4">
     <div x-data="{manageCategory : false, addCategory : true}" class="row mt-4">
         <!-- Categories -->
-        @livewire('Admin.CategoryList')
+        @livewire('Admin.Category.CategoryList')
         <!-- Manage Category -->
         <div class="col-lg-6 mb-4">
             <!-- Update / Delete Category -->
-            @livewire('Admin.ManageCategory')
+            @livewire('Admin.Category.ManageCategory')
             <!-- Add Category -->
-            @livewire('Admin.AddCategory')
+            @livewire('Admin.Category.AddCategory')
         </div>
     </div>
 </div>

@@ -5,9 +5,9 @@
 @section('content')
 <div x-data="{productsTable : true, addProduct : false, manageProduct : false}" class="container-fluid py-4">
     <!-- Products Table -->
-    @livewire('Admin.ProductsTable')
+    @livewire('Admin.Product.ProductsTable')
     <!-- Add Product -->
-    @livewire('Admin.AddProduct')
+    @livewire('Admin.Product.AddProduct')
     <!-- Manage Product -->
     <div x-show="manageProduct" style="display: none;">
         <form>

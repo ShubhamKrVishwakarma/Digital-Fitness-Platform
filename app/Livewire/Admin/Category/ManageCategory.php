@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Category;
 
 use App\Models\Category;
 use Livewire\Attributes\On;
@@ -14,7 +14,7 @@ class ManageCategory extends Component
 
     public function render()
     {
-        return view('livewire.admin.manage-category');
+        return view('livewire.admin.category.manage-category');
     }
 
     #[On('edit-category')]
