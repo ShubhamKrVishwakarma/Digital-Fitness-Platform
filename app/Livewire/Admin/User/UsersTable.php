@@ -13,7 +13,7 @@ class UsersTable extends Component
     public function render()
     {
         return view('livewire.admin.user.users-table',[
-            "users" => User::orderBy('created_at', 'DESC')->paginate(5)
+            "users" => User::orderBy('created_at', 'DESC')->paginate(7)
         ]);
     }
 }

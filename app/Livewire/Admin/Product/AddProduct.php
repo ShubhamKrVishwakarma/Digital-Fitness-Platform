@@ -58,6 +58,7 @@ class AddProduct extends Component
         ]);
 
         $this->dispatch('addProduct-success');
+        $this->dispatch('refreshProductsTable');
 
         $this->reset();
     }
