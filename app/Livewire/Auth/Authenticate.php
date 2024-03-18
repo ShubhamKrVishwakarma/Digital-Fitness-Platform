@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Auth;
 
 use Exception;
-use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
 
 class Authenticate extends Component
 {
@@ -15,10 +15,10 @@ class Authenticate extends Component
 
     #[Rule('required|min:8', as: 'Password')]
     public $password;
-    
+
     public function render()
     {
-        return view('livewire.authenticate');
+        return view('livewire.auth.authenticate');
     }
 
     public function authenticate() {
