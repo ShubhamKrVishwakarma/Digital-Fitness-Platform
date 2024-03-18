@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\User;
 
-use Exception;
 use App\Models\User;
-use Livewire\Component;
 use Livewire\Attributes\Rule;
-use Illuminate\Validation\ValidationException;
+use Livewire\Component;
 
 class ManageUser extends Component
 {
@@ -52,7 +50,7 @@ class ManageUser extends Component
 
     public function render()
     {
-        return view('livewire.admin.manage-user');
+        return view('livewire.admin.user.manage-user');
     }
 
     public function mount($id) {
@@ -74,33 +72,27 @@ class ManageUser extends Component
 
     public function update()
     {
-        try {
-            $this->validate();
+        $this->validate();
 
-            $user = User::find($this->id);
-            $user->name = $this->name;
-            $user->email = $this->email;
-            $user->gender = $this->gender;
-            $user->dob = $this->dob;
-            $user->phone = $this->phone;
-            $user->address = $this->address;
-            $user->city = $this->city;
-            $user->zip_code = $this->zip_code;
-            $user->state = $this->state;
-            $user->bio = $this->bio;
-            $user->profile_pic = $this->profile_pic;
+        $user = User::find($this->id);
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->gender = $this->gender;
+        $user->dob = $this->dob;
+        $user->phone = $this->phone;
+        $user->address = $this->address;
+        $user->city = $this->city;
+        $user->zip_code = $this->zip_code;
+        $user->state = $this->state;
+        $user->bio = $this->bio;
+        $user->profile_pic = $this->profile_pic;
 
-            if (!empty($this->password)) {
-                $user->password = $this->password;
-            }
-
-            $user->update();
-
-            $this->dispatch('update-success');
-        } catch(ValidationException) {
-            return false;
-        } catch(Exception) {
-            $this->dispatch('error');
+        if (!empty($this->password)) {
+            $user->password = $this->password;
         }
+
+        $user->update();
+
+        $this->dispatch('update-success');
     }
 }

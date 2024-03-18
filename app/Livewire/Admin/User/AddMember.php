@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\User;
 
-use Exception;
 use App\Models\User;
-use Livewire\Component;
 use Livewire\Attributes\Rule;
-use Illuminate\Validation\ValidationException;
+use Livewire\Component;
 
 class AddMember extends Component
 {
@@ -51,34 +49,28 @@ class AddMember extends Component
 
     public function render()
     {
-        return view('livewire.admin.add-member');
+        return view('livewire.admin.user.add-member');
     }
 
     public function addMember() {
-        try {
-            $this->validate();
+        $this->validate();
 
-            User::create([
-                "name" => $this->name,
-                "email" => $this->email,
-                "gender" => $this->gender,
-                "dob" => $this->dob,
-                "phone" => $this->phone,
-                "address" => $this->address,
-                "city" => $this->city,
-                "zip_code" => $this->zip_code,
-                "state" => $this->state,
-                "bio" => $this->bio,
-                "password" => $this->password
-            ]);
+        User::create([
+            "name" => $this->name,
+            "email" => $this->email,
+            "gender" => $this->gender,
+            "dob" => $this->dob,
+            "phone" => $this->phone,
+            "address" => $this->address,
+            "city" => $this->city,
+            "zip_code" => $this->zip_code,
+            "state" => $this->state,
+            "bio" => $this->bio,
+            "password" => $this->password
+        ]);
 
-            $this->reset();
+        $this->reset();
 
-            $this->dispatch('member-success');
-        } catch(ValidationException) {
-            return false;
-        } catch(Exception) {
-            $this->dispatch('error');
-        }
+        $this->dispatch('member-success');
     }
 }

@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\User;
 
-use Exception;
-use App\Models\User;
-use Livewire\Component;
 use App\Models\TrainerDetail;
+use App\Models\User;
 use Livewire\Attributes\Rule;
-use Illuminate\Validation\ValidationException;
+use Livewire\Component;
 
 class AddTrainer extends Component
 {
@@ -67,43 +65,38 @@ class AddTrainer extends Component
 
     public function render()
     {
-        return view('livewire.admin.add-trainer');
+        return view('livewire.admin.user.add-trainer');
     }
 
+    
     public function addTrainer() {
-        try {
-            $this->validate();
+        $this->validate();
 
-            $user = User::create([
-                "name" => $this->name,
-                "email" => $this->email,
-                "gender" => $this->gender,
-                "dob" => $this->dob,
-                "phone" => $this->phone,
-                "address" => $this->address,
-                "city" => $this->city,
-                "zip_code" => $this->zip_code,
-                "state" => $this->state,
-                "bio" => $this->bio,
-                "password" => $this->password
-            ]);
+        $user = User::create([
+            "name" => $this->name,
+            "email" => $this->email,
+            "gender" => $this->gender,
+            "dob" => $this->dob,
+            "phone" => $this->phone,
+            "address" => $this->address,
+            "city" => $this->city,
+            "zip_code" => $this->zip_code,
+            "state" => $this->state,
+            "bio" => $this->bio,
+            "password" => $this->password
+        ]);
 
-            TrainerDetail::create([
-                "user_id" => $user->id,
-                "occupation" => $this->occupation, 
-                "certificate_id" => $this->certificate_id, 
-                "issue_date" => $this->issue_date, 
-                "expiry_date" => $this->expiry_date, 
-                "issued_authority" => $this->issued_authority
-            ]);
+        TrainerDetail::create([
+            "user_id" => $user->id,
+            "occupation" => $this->occupation, 
+            "certificate_id" => $this->certificate_id, 
+            "issue_date" => $this->issue_date, 
+            "expiry_date" => $this->expiry_date, 
+            "issued_authority" => $this->issued_authority
+        ]);
 
-            $this->reset();
+        $this->reset();
 
-            $this->dispatch('trainer-success');
-        } catch(ValidationException) {
-            return false;
-        } catch(Exception) {
-            $this->dispatch('error');
-        }
+        $this->dispatch('trainer-success');
     }
 }

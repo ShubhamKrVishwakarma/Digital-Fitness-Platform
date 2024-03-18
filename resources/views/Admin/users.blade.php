@@ -5,13 +5,13 @@
 @section('content')
     <div x-data="{usersTable : true, addMember : false, addTrainer : false, manageUser : false}" class="container-fluid py-4">
         <!-- Products Table -->
-        @livewire('Admin.UsersTable')
+        @livewire('Admin.User.UsersTable')
         <!-- Add Member -->
-        @livewire('Admin.AddMember')
+        @livewire('Admin.User.AddMember')
         <!-- Add Trainer -->
-        @livewire('Admin.AddTrainer')
+        @livewire('Admin.User.AddTrainer')
         <!-- Manage User -->
-        @livewire('Admin.ManageUser', ["id" => 12])
+        @livewire('Admin.User.ManageUser', ["id" => 1])
     </div>
 @endsection
 

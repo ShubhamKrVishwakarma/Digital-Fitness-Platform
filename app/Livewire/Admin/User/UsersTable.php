@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\User;
 
 use App\Models\User;
 use Livewire\Component;
@@ -12,7 +12,7 @@ class UsersTable extends Component
     
     public function render()
     {
-        return view('livewire.admin.users-table', [
+        return view('livewire.admin.user.users-table',[
             "users" => User::orderBy('created_at', 'DESC')->paginate(5)
         ]);
     }
