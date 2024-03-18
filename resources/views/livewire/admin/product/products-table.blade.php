@@ -27,34 +27,38 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="{{ asset('admin.jpg') }}" class="avatar me-3"
-                                                    alt="Product">
+                                @foreach ($products as $product)
+                                    <tr wire:key='{{ $product->id }}'>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <div>
+                                                    <img src="{{ asset('admin.jpg') }}" class="avatar me-3"
+                                                        alt="Product">
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h6 class="mb-0 text-sm">{{ $product->name }}</h6>
+                                                </div>
                                             </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Protien</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <p class="text-sm text-center font-weight-bold mb-0"><i
-                                                class="fa-solid fa-indian-rupee-sign"></i> 2,500</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-xs font-weight-bold">40</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="text-xs font-weight-bold">Protien</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="me-2 btn btn-xs btn-dark mb-0" x-on:click="productsTable = false, manageProduct = true">Manage</button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td class="text-center">
+                                            <p class="text-sm text-center font-weight-bold mb-0"><i class="fa-solid fa-indian-rupee-sign"></i> {{ $product->price }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-xs font-weight-bold">{{ $product->quantity }}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-xs font-weight-bold">{{ $product->category->name }}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="me-2 btn btn-xs btn-dark mb-0" x-on:click="productsTable = false, manageProduct = true">Manage</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        <div class="px-4 pt-2">
+                            {{ $products->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

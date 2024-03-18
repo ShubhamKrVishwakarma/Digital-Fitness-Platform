@@ -37,6 +37,14 @@
                                 <span class="text-danger d-block mt-1">{{ $message }}</span>
                             @enderror
                         </div>
+                        @if ($image)
+                            <div class="col-12 mb-2">
+                                <img src="{{ $image->temporaryUrl() }}" alt="Product Image" class="rounded h-20 w-20">
+                            </div>
+                        @endif
+                        <div wire:loading wire:target='image' class="col-12 mb-2">
+                            <span class="text-success">Uploading...</span>
+                        </div>
                     </div>
                 </div>
             </div>

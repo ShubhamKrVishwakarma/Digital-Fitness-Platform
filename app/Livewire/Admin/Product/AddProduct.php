@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Product;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -34,13 +35,17 @@ class AddProduct extends Component
 
     public function render()
     {
-        return view('livewire.admin.product.add-product');
+        return view('livewire.admin.product.add-product', [
+            "categories" => Category::all()
+        ]);
     }
 
     public function store() {
         $this->validate();
 
-        $this->image = $this->image->store('products', 'public');
+        if ($this->image) {
+            $this->image = $this->image->store('products', 'public');
+        }
 
         Product::create([
             "name" => $this->name,
