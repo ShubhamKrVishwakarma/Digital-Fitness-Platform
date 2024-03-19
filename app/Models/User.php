@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model implements Authenticatable
+{
+    use HasFactory;
+    use AuthenticatableTrait;
+
+    protected $fillable = ['name', 'email', 'phone', 'password', 'gender', 'dob', 'address', 'city', 'state', 'zip_code', 'bio', 'profile_pic', 'role', 'rating', 'followers', 'following'];
+
+    protected $casts = ['password' => 'hashed'];
+
+    public function trainerDetails() {
+        $this->hasOne(TrainerDetail::class, 'user_id');
+    }
+
+    public function getProfileUrl() {
+        if ($this->profile_pic) {
+            return url('storage/user/' . $this->profile_pic);
+        }
+        return asset('./images/profile/profile.jpg');
+    }
+
+    public function getProfilePic() {
+        if ($this->profile_pic) {
+            return url('storage/' . $this->profile_pic);
+        }
+        return asset('./images/profile/profile.jpg');
+    }
+}
