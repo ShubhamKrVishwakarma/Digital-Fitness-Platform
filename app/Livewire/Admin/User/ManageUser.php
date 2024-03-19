@@ -6,9 +6,12 @@ use App\Models\User;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ManageUser extends Component
 {
+    use WithFileUploads;
+
     #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
 
@@ -37,6 +40,8 @@ class ManageUser extends Component
     public $bio;
 
     #[Rule('nullable', as: 'Profile Picture')]
+    public $new_profile_pic;
+
     public $profile_pic;
 
     #[Rule('nullable|min:8', as: 'Password')]
@@ -49,6 +54,7 @@ class ManageUser extends Component
     public $email;
     public $role;
 
+    #[On('refreshManageUser')]
     public function render()
     {
         return view('livewire.admin.user.manage-user');
@@ -76,6 +82,10 @@ class ManageUser extends Component
     {
         $this->validate();
 
+        if($this->new_profile_pic) {
+            $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
+        }
+
         $user = User::find($this->id);
         $user->name = $this->name;
         $user->email = $this->email;
@@ -87,7 +97,9 @@ class ManageUser extends Component
         $user->zip_code = $this->zip_code;
         $user->state = $this->state;
         $user->bio = $this->bio;
-        $user->profile_pic = $this->profile_pic;
+        $user->profile_pic = $this->new_profile_pic;
+
+        $this->new_profile_pic = null;
 
         if (!empty($this->password)) {
             $user->password = $this->password;
@@ -95,6 +107,17 @@ class ManageUser extends Component
 
         $user->update();
 
+        $this->dispatch('refreshManageUser');
         $this->dispatch('update-success');
+        $this->dispatch('refreshUsersTable');
+    }
+
+    public function confirmVerification() {
+        $trainer = User::find($this->id);
+        $trainer->role = "trainer";
+        $trainer->update();
+        $this->dispatch('refreshManageUser');
+        $this->dispatch('trainer-verified');
+        $this->dispatch('refreshUsersTable');
     }
 }

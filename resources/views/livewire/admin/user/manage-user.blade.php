@@ -3,25 +3,30 @@
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="../images/team-1.jpg" alt="profile_image"
-                            class="w-100 border-radius-lg shadow-sm">
-                    </div>
+                    @if ($profile_pic)
+                        <div class="avatar avatar-xl position-relative">
+                            <img src="{{ url('storage') . '/' . $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        </div>
+                    @else
+                        <div class="avatar avatar-xl position-relative">
+                            <img src="{{ asset('images/profile/profile.jpg') }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        </div>
+                    @endif
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                        <h5 class="mb-1">Username</h5>
-                        <p class="mb-0 font-weight-bold text-sm">User Role</p>
+                        <h5 class="mb-1">{{ $name }}</h5>
+                        <p class="mb-0 font-weight-bold text-sm">{{ $role }}</p>
                     </div>
                 </div>
                 <div class="col-auto ms-auto my-auto">
-                    <button x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0" data-view-users>View All Users</button>
+                    <button x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0">View All Users</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid py-4">
-        <form wire:submit='update'>
+        <form wire:submit='update' enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -96,10 +101,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label class="form-control-label">State</label>
-                                    <select wire:model='state' class="form-control">
-                                        <option value="" selected>Select State</option>
-                                        <option value=""></option>
-                                    </select>
+                                    <input type="text" wire:model='state' class="form-control">
                                     @error('state')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -113,12 +115,18 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-control-label">Profile Picture</label>
-                                    <input type="file" wire:model='profile_pic' class="form-control">
-                                    @error('profile_pic')
+                                    <input type="file" wire:model='new_profile_pic' class="form-control">
+                                    @error('new_profile_pic')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                @if ($new_profile_pic)
+                                    <div class="col-md-12 mb-3">
+                                        <p>Preview:</p>
+                                        <img src="{{ $new_profile_pic->temporaryUrl() }}" class="rounded h-20 w-20">
+                                    </div>
+                                @endif
+                                {{-- <div class="col-md-12 mb-3">
                                     <label class="form-control-label">New Password</label>
                                     <input type="password" wire:model='password' class="form-control" placeholder="New Password">
                                     @error('password')
@@ -131,7 +139,7 @@
                                     @error('confirm_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
                             </div>
                             {{-- <div class="row" id="trainer-details" style="display: none">
                                 <hr class="horizontal bg-dark">
@@ -184,9 +192,15 @@
                             </div>
                         </div>
                         <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+                            @if ($role === "pending")
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button wire:click.prevent='confirmVerification' class="btn btn-sm btn-success m-0 w-100">Confirm Verification</button>
+                                </div>
+                            @else
                             <div class="d-flex justify-content-center align-items-center">
-                                <button wire:click='confirm' class="btn btn-sm btn-success m-0 w-100">Confirm Verification</button>
+                                <span class="badge badge-sm {{ ($role === 'admin') ? 'bg-gradient-success' : (($role === 'member') ? 'bg-gradient-info' : 'bg-gradient-warning') }}">{{ $role }}</span>
                             </div>
+                            @endif
                         </div>
                         <div class="card-body pt-0">
                             <div class="row">

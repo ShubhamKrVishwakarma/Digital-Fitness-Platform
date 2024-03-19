@@ -41,6 +41,14 @@
             });
         });
 
+        document.addEventListener('trainer-verified', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Trainer Verification Completed!',
+            });
+        });
+
         document.addEventListener('error', function () {
             Swal.fire({
                 icon: 'error',
