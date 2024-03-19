@@ -5,9 +5,12 @@ namespace App\Livewire\Admin\User;
 use App\Models\User;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddMember extends Component
 {
+    use WithFileUploads;
+
     #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
 
@@ -38,7 +41,7 @@ class AddMember extends Component
     #[Rule('nullable|max:255', as: 'Bio')]
     public $bio;
 
-    #[Rule('nullable', as: 'Profile Picture')]
+    #[Rule('nullable|sometimes|image', as: 'Profile Picture')]
     public $profile_pic;
 
     #[Rule('required|min:8', as: 'Password')]
@@ -55,6 +58,10 @@ class AddMember extends Component
     public function addMember() {
         $this->validate();
 
+        if($this->profile_pic) {
+            $this->profile_pic = $this->profile_pic->store('user', 'public');
+        }
+
         User::create([
             "name" => $this->name,
             "email" => $this->email,
@@ -66,11 +73,13 @@ class AddMember extends Component
             "zip_code" => $this->zip_code,
             "state" => $this->state,
             "bio" => $this->bio,
+            "profile_pic" => $this->profile_pic,
             "password" => $this->password
         ]);
 
         $this->reset();
 
+        $this->dispatch('refreshUsersTable');
         $this->dispatch('member-success');
     }
 }

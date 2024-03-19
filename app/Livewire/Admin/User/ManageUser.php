@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\User;
 
 use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -53,9 +54,10 @@ class ManageUser extends Component
         return view('livewire.admin.user.manage-user');
     }
 
-    public function mount($id) {
+    #[On('manage-user')]
+    public function edit($id) {
         $user = User::find($id);
-        $this->id = $user->id;
+        $this->id = $id;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->gender = $user->gender;

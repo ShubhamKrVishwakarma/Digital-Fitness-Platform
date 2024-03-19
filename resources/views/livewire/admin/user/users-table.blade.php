@@ -36,7 +36,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="{{ $user->getProfileUrl() }}" class="avatar me-3" alt="Product">
+                                                    <img src="{{ $user->getProfilePic() }}" class="avatar me-3" >
                                                 </div>
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
@@ -51,7 +51,7 @@
                                             <span class="text-xs font-weight-bold">{{ $user->created_at->format('d-m-Y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <button x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0">Manage</button>
+                                            <button @click="$dispatch('manage-user', { id: '{{ $user->id }}' })" x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0">Manage</button>
                                         </td>
                                     </tr>
                                 @endforeach

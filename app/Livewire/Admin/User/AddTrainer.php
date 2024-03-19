@@ -6,9 +6,12 @@ use App\Models\TrainerDetail;
 use App\Models\User;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddTrainer extends Component
 {
+    use WithFileUploads;
+
     #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
 
@@ -72,6 +75,10 @@ class AddTrainer extends Component
     public function addTrainer() {
         $this->validate();
 
+        if ($this->profile_pic) {
+            $this->profile_pic = $this->profile_pic->store('user', 'public');
+        }
+
         $user = User::create([
             "name" => $this->name,
             "email" => $this->email,
@@ -83,6 +90,8 @@ class AddTrainer extends Component
             "zip_code" => $this->zip_code,
             "state" => $this->state,
             "bio" => $this->bio,
+            "profile_pic" => $this->profile_pic,
+            "role" => "pending",
             "password" => $this->password
         ]);
 
@@ -97,6 +106,7 @@ class AddTrainer extends Component
 
         $this->reset();
 
+        $this->dispatch('refreshUsersTable');
         $this->dispatch('trainer-success');
     }
 }

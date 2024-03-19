@@ -92,12 +92,18 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-md-12 mb-4">
+                            <div class="col-md-12 mb-3">
                                 <label class="form-control-label">Profile Picture</label>
                                 <input type="file" wire:model='profile_pic' class="form-control">
                                 @error('profile_pic')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                @if ($profile_pic)
+                                    <p>Preview:</p>
+                                    <img src="{{ $profile_pic->temporaryUrl() }}" class="rounded h-20 w-20">
+                                @endif
                             </div>
                         </div>
                     </div>

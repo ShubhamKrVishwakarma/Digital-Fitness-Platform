@@ -11,7 +11,7 @@
         <!-- Add Trainer -->
         @livewire('Admin.User.AddTrainer')
         <!-- Manage User -->
-        @livewire('Admin.User.ManageUser', ["id" => 1])
+        @livewire('Admin.User.ManageUser')
     </div>
 @endsection
 

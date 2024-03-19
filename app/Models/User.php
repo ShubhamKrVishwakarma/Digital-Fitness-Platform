@@ -26,4 +26,11 @@ class User extends Model implements Authenticatable
         }
         return asset('./images/profile/profile.jpg');
     }
+
+    public function getProfilePic() {
+        if ($this->profile_pic) {
+            return url('storage/' . $this->profile_pic);
+        }
+        return asset('./images/profile/profile.jpg');
+    }
 }
