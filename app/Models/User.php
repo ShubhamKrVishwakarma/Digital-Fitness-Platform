@@ -24,6 +24,6 @@ class User extends Model implements Authenticatable
         if ($this->profile_pic) {
             return url('storage/user/' . $this->profile_pic);
         }
-        return asset('./images/profile.jpg');
+        return asset('./images/profile/profile.jpg');
     }
 }

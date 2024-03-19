@@ -36,7 +36,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="{{ asset('admin.jpg') }}" class="avatar me-3" alt="Product">
+                                                    <img src="{{ $user->getProfileUrl() }}" class="avatar me-3" alt="Product">
                                                 </div>
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
@@ -44,8 +44,8 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="text-center">
-                                            <p class="text-sm text-center font-weight-bold mb-0">{{ $user->role }}</p>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm {{ ($user->role === 'admin') ? 'bg-gradient-success' : (($user->role === 'member') ? 'bg-gradient-primary' : (($user->role === 'trainer') ? 'bg-gradient-warning' : 'bg-gradient-secondary')) }}">{{ $user->role }}</span>
                                         </td>
                                         <td class="text-center">
                                             <span class="text-xs font-weight-bold">{{ $user->created_at->format('d-m-Y') }}</span>
