@@ -4,6 +4,8 @@ use App\Http\Controllers\QueryController;
 use App\Models\Query;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+
 
 // Home Page
 Route::get('/', function () {
@@ -11,9 +13,8 @@ Route::get('/', function () {
 })->name('home');
 
 // Shop Page
-Route::get('/shop', function() {
-    return view('shop');
-})->name('shop');
+Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
+
 
 // Community Page
 Route::get('/community', function() {

@@ -14,4 +14,10 @@ class Product extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+    public function getProductUrl() {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        }
+        return asset('./images/profile/profile.jpg');
+    }
 }
