@@ -34,7 +34,10 @@ class Authenticate extends Component
                 $user = Auth::user();
 
                 if ($user->role == "pending") {
-                    Auth::logout();
+                    auth()->logout();
+
+                    request()->session()->invalidate();
+                    request()->session()->regenerateToken();
                     $this->dispatch('pending');
                 } else {
                     $this->dispatch('success');
