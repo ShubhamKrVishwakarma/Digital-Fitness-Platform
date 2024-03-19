@@ -12,6 +12,7 @@ class MemberSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         $userData = [];
 
         for ($i = 1; $i < 20; $i++) {
@@ -31,5 +32,20 @@ class MemberSeeder extends Seeder
         }
 
         User::insert($userData);
+=======
+        $members = [];
+        for ($i=1 ; $i<20 ; $i++) {
+            $members[] = [
+                "name" => fake()->name(),
+                "email" => fake()->unique()->email(),
+                "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
+                "gender" => fake()->randomElement(['M', 'F', 'O']),
+                "dob" => fake()->date(),
+                "created_at" => now(),
+                "updated_at" => now()
+            ];
+        }
+        User::insert($members);
+>>>>>>> 4b3ff30f75b97bc38050d928ffeceaad6f42846b
     }
 }

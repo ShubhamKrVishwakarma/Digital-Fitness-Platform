@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Auth;
 
 use Exception;
 use App\Models\User;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 use App\Models\TrainerDetail;
+use Livewire\Attributes\Rule;
 use Illuminate\Validation\ValidationException;
 
 class Trainer extends Component
@@ -49,7 +49,7 @@ class Trainer extends Component
 
     public function render()
     {
-        return view('livewire.trainer');
+        return view('livewire.auth.trainer');
     }
 
     public function store() {

@@ -17,7 +17,7 @@
                     <span class="text-danger d-block ms-1 mt-1">{{ $message }}</span>
                 @enderror
             </div>
-            <div  wire:loading.block>
+            <div wire:loading.block>
                 <button class="btn btn-lg btn-success btn-lg w-100 mt-4 mb-0 text-white">Processing....</button>
             </div>
             <div wire:loading.remove class="text-center">
