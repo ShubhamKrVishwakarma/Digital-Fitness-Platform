@@ -12,14 +12,18 @@ class MemberSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=1 ; $i<10 ; $i++) {
-            User::create([
+        $members = [];
+        for ($i=1 ; $i<20 ; $i++) {
+            $members[] = [
                 "name" => fake()->name(),
                 "email" => fake()->unique()->email(),
-                "password" => "ssssssss",
-                "gender" => fake()->randomElement(['M', 'F']),
-                "dob" => fake()->date()
-            ]);
+                "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
+                "gender" => fake()->randomElement(['M', 'F', 'O']),
+                "dob" => fake()->date(),
+                "created_at" => now(),
+                "updated_at" => now()
+            ];
         }
+        User::insert($members);
     }
 }
