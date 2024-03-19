@@ -2,7 +2,6 @@
     <nav class="navbar navbar-expand-lg w-100 navbar-clone fixed">
         <div class="container p-0 px-3 px-sm-0">
             <a class="navbar-brand m-0" href="{{ route('home') }}" id="main-logo">
-                {{-- <h3 class="text-light m-0">eFitLab</h3> --}}
                 <img src="{{ asset('images/logo/logo.png') }}">
             </a>
             <button class="navbar-toggler offcanvas-nav-btn text-light" data-bs-toggle="offcanvas"
@@ -129,7 +128,7 @@
                         <div class="dropdown text-end d-none d-lg-block">
                             <a class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="User" width="40" height="40"
+                                <img src="{{ auth()->user()->getProfilePic() }}" alt="User" width="40" height="40"
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small me-4">
