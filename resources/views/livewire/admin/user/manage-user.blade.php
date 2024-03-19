@@ -141,37 +141,49 @@
                                     @enderror
                                 </div> --}}
                             </div>
-                            {{-- <div class="row" id="trainer-details" style="display: none">
-                                <hr class="horizontal bg-dark">
-                                <div class="col-md-12">
-                                    <p class="text-uppercase text-sm">Professional Information</p>
+                            @if ($role === "pending" || $role === "trainer")
+                                <div class="row mt-2">
+                                    <hr class="horizontal bg-dark">
+                                    <div class="col-md-12">
+                                        <p class="text-uppercase text-sm">Professional Information</p>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-control-label">Occupation</label>
+                                        <input type="text" wire:model='occupation' class="form-control" placeholder="Occupation">
+                                        @error('occupation')
+                                            <div class="text-danger d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-control-label">Certificate ID</label>
+                                        <input type="text" wire:model='certificate_id' class="form-control" placeholder="Certificate ID" >
+                                        @error('certificate_id')
+                                            <div class="text-danger d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-control-label">Issue Date</label>
+                                        <input type="date" wire:model='issue_date' class="form-control" placeholder="Issue Date" >
+                                        @error('issue_date')
+                                            <div class="text-danger d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-control-label">Expiry Date</label>
+                                        <input type="date" wire:model='expiry_date' class="form-control" placeholder="Expiry Date" >
+                                        @error('expiry_date')
+                                            <div class="text-danger d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-control-label">Issued Authority</label>
+                                        <input type="text" wire:model='issued_authority' class="form-control" placeholder="Issued Authority" >
+                                        @error('issued_authority')
+                                            <div class="text-danger d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="update-occupation" class="form-control-label">Occupation</label>
-                                    <input type="text" id="update-occupation" class="form-control" placeholder="Occupation" >
-                                    <span class="text-danger errors" id="update-occupation-error"></span>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="update-certificate-id" class="form-control-label">Certificate ID</label>
-                                    <input type="text" id="update-certificate-id" class="form-control" placeholder="Certificate ID" >
-                                    <span class="text-danger errors" id="update-certificate-id-error"></span>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="update-issue-date" class="form-control-label">Issue Date</label>
-                                    <input type="date" id="update-issue-date" class="form-control" placeholder="Issue Date" >
-                                    <span class="text-danger errors" id="update-issue-date-error"></span>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="update-expiry-date" class="form-control-label">Expiry Date</label>
-                                    <input type="date" id="update-expiry-date" class="form-control" placeholder="Expiry Date" >
-                                    <span class="text-danger errors" id="update-expiry-date-error"></span>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="update-issued-authority" class="form-control-label">Issued Authority</label>
-                                    <input type="text" id="update-issued-authority" class="form-control" placeholder="Issued Authority" >
-                                    <span class="text-danger errors" id="update-issued-authority-error"></span>
-                                </div>
-                            </div> --}}
+                            @endif
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
                             </div>
