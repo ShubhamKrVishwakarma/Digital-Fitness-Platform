@@ -1,0 +1,42 @@
+body {
+  background: linear-gradient(360deg, #333882, #c4c5ce);
+}
+
+.chatbox {
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.profile-pic {
+  height: 40px;
+  width: 40px;
+}
+
+.form-rounded {
+  border-radius: 1rem;
+}
+
+.friend-pic {
+  height: 50px;
+  width: 50px;
+  margin-left: -10px;
+}
+
+.name {
+  font-weight: 400;
+  color: #000;
+}
+
+.under-name {
+  font-size: 12px;
+  line-height: 15px;
+  max-height: 15px;
+}
+
+.icon {
+  font-size: 20px;
+  color: #9ca1a3;
+  cursor: pointer;
+}
