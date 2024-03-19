@@ -20,4 +20,8 @@ class Product extends Model
         }
         return asset('./images/profile/profile.jpg');
     }
+
+    public function cart() {
+        return $this->hasMany(Cart::class);
+    }
 }

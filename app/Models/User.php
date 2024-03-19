@@ -33,4 +33,8 @@ class User extends Model implements Authenticatable
         }
         return asset('./images/profile/profile.jpg');
     }
+
+    public function cart() {
+        return $this->hasMany(Cart::class);
+    }
 }
