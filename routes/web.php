@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\QueryController;
 use App\Models\Query;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,7 @@ Route::get('/', function () {
 
 // Shop Page
 Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
-
+Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->name('addToCart');
 
 // Community Page
 Route::get('/community', function() {
@@ -37,9 +38,9 @@ Route::post('/profile',[UserController::class,'update_pass'])->name('user.update
 
 
 // Cart Page
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('/cart',[
+    CartController::class, 'index'
+])->name('cart');
 
 // Orders Page
 Route::get('/orders', function () {

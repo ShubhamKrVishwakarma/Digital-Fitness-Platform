@@ -77,7 +77,7 @@
                 <img src="{{$item->getProductUrl()}}" alt="product image" />
               </div>
               <div class="product-btns d-flex justify-content-center align-items-center">
-                <a href="{{route('cart')}}" class="btn btn-cart">
+                <a href="{{route('addToCart',$item->id)}}" class="btn btn-cart">
                   add to cart
                   {{-- <span><i class="fa-solid fa-plus"></i></span> --}}
                 </a>
