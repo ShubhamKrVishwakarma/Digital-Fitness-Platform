@@ -68,6 +68,8 @@ Route::get('/about', function() {
 // Checkout Page
 Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth')->name('checkout');
 
+Route::post('/checkout', [CheckoutController::class, 'store'])->middleware('auth')->name('checkout.store');
+
 // Contact Page
 Route::get('/contact', [QueryController::class, "index"])->name('contact');
 

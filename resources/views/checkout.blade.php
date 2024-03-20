@@ -12,6 +12,14 @@
 
                 <div class="row g-5">
                     <!-- Checkout Total -->
+                    @php
+                        $total_price=0;
+                    @endphp
+                    @foreach ($cart as $item)
+                        @php
+                            $total_price+= ($item->price * $item->quantity);  
+                        @endphp
+                    @endforeach
                     <div class="col-md-5 col-lg-4 order-md-last">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-light-blue">Order
@@ -55,8 +63,8 @@
                                 <span class="text-success">−$5</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Total (USD)</span>
-                                <strong>$20</strong>
+                                <span>Total</span>
+                                <strong>&#x20B9;{{$total_price}}</strong>
                             </li>
                         </ul>
 
@@ -72,62 +80,74 @@
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Billing address</h4>
                         <!-- Form -->
-                        <form id="checkoutForm">
+                        <form id="checkoutForm" action="{{route('checkout.store', $total_price)}}" method="post">
+                        @csrf
+                            
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="name" class="form-label">Your Full Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" required>
-                                    <span class="text-danger d-block mt-1 ms-1">Name Field is required</span>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{auth()->user()->name}}" required>
+                                    @error('name')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
+
 
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="you@example.com" readonly>
-                                    <span class="text-danger d-block mt-1 ms-1">Email Field is required</span>
+                                         value="{{auth()->user()->email}}" readonly>
                                 </div>
 
                                 <div class="col-12">
                                     <label for="phone_number" class="form-label">Phone Number</label>
                                     <div class="input-group">
                                         <span class="input-group-text">+91</span>
-                                        <input type="text" class="form-control" name="phone_number" id="phone_number"
-                                            required>
+                                        <input type="text" class="form-control" name="phone" id="phone_number"
+                                           value="{{auth()->user()->phone}}" placeholder="XXXXXX-XXXXX" required>
                                     </div>
-                                    <span class="text-danger d-block mt-1 ms-1">Phone Number Field is required</span>
+                                    @error('phone')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-12">
                                     <label for="address" class="form-label">Shipping Address</label>
-                                    <textarea class="form-control" name="address" id="address" rows="3" required></textarea>
-                                    <span class="text-danger d-block mt-1 ms-1">Address Field is required</span>
+                                    <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter your address" value="{{auth()->user()->address}}" required></textarea>
+                                    @error('address')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" name="city" id="city" required>
+                                    <input type="text" class="form-control" name="city" id="city" value="{{auth()->user()->city}}" placeholder="Enter your city" required>
                                     <span class="text-danger d-block mt-1 ms-1">City Field is required</span>
+                                    @error('city')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-5">
                                     <label for="zipcode" class="form-label">Zip Code</label>
-                                    <input type="text" class="form-control" name="zipcode" id="zipcode" required>
-                                    <span class="text-danger d-block mt-1 ms-1">Zip Code Field is required</span>
+                                    <input type="text" class="form-control" name="zip_code" id="zipcode" value="{{auth()->user()->zip_code}}" placeholder="Enter your Zip Code" required>
+                                    @error('zip_code')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="state" class="form-label">State</label>
-                                    <select class="form-select" name="state" id="state" required>
-                                        <option value>Choose...</option>
-                                        <option>United States</option>
-                                    </select>
-                                    <span class="text-danger d-block mt-1 ms-1">State Field is required</span>
+                                    <input type="text" class="form-control" name="state" id="state" value="{{auth()->user()->state}}" placeholder="Enter your state" required>
+                                    @error('state')
+                                    <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <hr class="my-4">
 
-                            <h4 class="mb-3">Payment</h4>
+                            {{-- <h4 class="mb-3">Payment</h4>
 
                             <div class="my-3">
                                 <div class="form-check">
@@ -175,7 +195,7 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4">
+                            <hr class="my-4"> --}}
 
                             <button class="w-100 btn btn-lg btn-primary" type="submit">Continue to checkout</button>
                         </form>
