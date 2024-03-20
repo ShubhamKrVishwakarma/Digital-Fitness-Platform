@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\QueryController;
 use App\Models\Query;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,9 @@ Route::get('/orders', function () {
 Route::get('/about', function() {
     return view('about');
 })->name('about');
+
+// Checkout Page
+Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth')->name('checkout');
 
 // Contact Page
 Route::get('/contact', [QueryController::class, "index"])->name('contact');
