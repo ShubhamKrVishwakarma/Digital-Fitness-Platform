@@ -164,7 +164,7 @@
                                                     <h5>&#x20B9; 182.00</h5>
                                                 </div>
 
-                                                <button type="button" class="btn btn-dark btn-block btn-lg w-100">Continue to Checkout</button>
+                                                <a href="{{route('checkout')}}" type="button" class="btn btn-dark btn-block btn-lg w-100">Continue to Checkout</a>
 
                                             </div>
                                         </div>
