@@ -122,7 +122,6 @@
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
                                     <input type="text" class="form-control" name="city" id="city" value="{{auth()->user()->city}}" placeholder="Enter your city" required>
-                                    <span class="text-danger d-block mt-1 ms-1">City Field is required</span>
                                     @error('city')
                                     <span class="text-danger d-block mt-1 ms-1">{{$message}}</span>
                                     @enderror
