@@ -15,10 +15,9 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             ["name" => "Protien"],
-            ["name" => "Dumbell"],
+            ["name" => "GYM Equipments"],
             ["name" => "T-shirt"],
-            ["name" => "Cap"],
-            ["name" => "Bottles"],
+            ["name" => "Bottle"],
         ];
 
         Category::insert($categories);

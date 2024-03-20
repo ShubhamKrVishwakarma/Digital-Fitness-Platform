@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 // Shop Page
 Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
-Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->name('addToCart');
+Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->middleware('auth')->name('addToCart');
 
 // Community Page
 Route::get('/community', function() {
@@ -25,7 +25,7 @@ Route::get('/community', function() {
 // Message Page
 Route::get('/message', function() {
     return view('message');
-})->name('message');
+})->middleware('auth')->name('message');
 
 // Profile Page
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
@@ -40,12 +40,12 @@ Route::post('/profile',[UserController::class,'update_pass'])->name('user.update
 // Cart Page
 Route::get('/cart',[
     CartController::class, 'index'
-])->name('cart');
+])->middleware('auth')->name('cart');
 
 // Orders Page
 Route::get('/orders', function () {
     return view('orders');
-})->name('orders');
+})->middleware('auth')->name('orders');
 
 // About Page
 Route::get('/about', function() {
@@ -56,4 +56,3 @@ Route::get('/about', function() {
 Route::get('/contact', [QueryController::class, "index"])->name('contact');
 
 Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
-
