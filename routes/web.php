@@ -42,6 +42,18 @@ Route::get('/cart',[
     CartController::class, 'index'
 ])->middleware('auth')->name('cart');
 
+Route::delete('/cart/{id}',[
+    CartController::class, 'destroy'
+])->middleware('auth')->name('product.delete');
+
+Route::delete('/cart',[
+    CartController::class, 'delete'
+])->middleware('auth')->name('product.delete.all');
+
+Route::post('/cart/edit/{id}',[
+    CartController::class, 'update'
+])->middleware('auth')->name('cart.update');
+
 // Orders Page
 Route::get('/orders', function () {
     return view('orders');
