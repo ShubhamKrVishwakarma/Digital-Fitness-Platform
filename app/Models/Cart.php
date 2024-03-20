@@ -11,6 +11,8 @@ class Cart extends Model
 
     public $timestamps=false;
     
+    // protected $primaryKey = false;
+
     protected $fillable = ['price', 'quantity', 'user_id', 'product_id'];
     
     public function product(){
