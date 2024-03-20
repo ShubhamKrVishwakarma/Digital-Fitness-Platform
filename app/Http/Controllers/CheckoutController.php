@@ -23,7 +23,7 @@ class CheckoutController extends Controller
         ]);
 
         $cart = Cart::where('user_id' , auth()->user()->id)->get();
-
+        
         $order = Order::create([
             'user_id' => auth()->user()->id ,
             'user_role' =>auth()->user()->role,
@@ -40,8 +40,8 @@ class CheckoutController extends Controller
                 'quantity'=>$item->quantity
             ]);
         }
-        $cart->delete();
-
+        Cart::where('user_id' , auth()->user()->id)->delete();
+        
         return redirect()->route('cart')->with('success','order successfull');
 
     }
