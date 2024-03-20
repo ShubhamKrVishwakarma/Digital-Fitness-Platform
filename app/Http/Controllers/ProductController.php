@@ -13,9 +13,10 @@ class ProductController extends Controller
             "products" => Product::all()
         ]);
     }
+    
     public function addToCart($id){
-        // $cart=Cart::where("product_id", $id)->get();
-        // if (!$cart){
+        $cart=Cart::where("product_id", $id)->first();
+        if (!$cart){
             $product=Product::find($id);
             Cart::create([
                 "user_id"=>auth()->user()->id,
@@ -23,7 +24,7 @@ class ProductController extends Controller
                 "quantity"=>1,
                 "price"=>$product->price
             ]);
-        // }
+        }
         return redirect()->route('cart');
     }
 }
