@@ -196,4 +196,9 @@ class ManageUser extends Component
 
         $this->dispatch('refreshUsersTable');
     }
+
+    public function delete() {
+        User::findOrFail($this->id)->delete();
+        $this->dispatch('refreshUsersTable');
+    }
 }
