@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Admin\User;
 
+use App\Models\TrainerDetail;
 use App\Models\User;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,47 +12,29 @@ class ManageUser extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
-
-    #[Rule('required|in:M,F,O', as: 'Gender')]
     public $gender;
-
-    #[Rule('required', as: 'Date of Birth')]
     public $dob;
-    
-    #[Rule('nullable|max:10', as: 'Phone Number')]
     public $phone;
-
-    #[Rule('nullable', as: 'Address')]
     public $address;
-
-    #[Rule('nullable|min:2|max:100', as: 'City')]
     public $city;
-    
-    #[Rule('nullable|max:10', as: 'Zip Code')]
     public $zip_code;
-
-    #[Rule('nullable|max:100', as: 'State')]
     public $state;
-
-    #[Rule('nullable|max:255', as: 'Bio')]
     public $bio;
-
-    #[Rule('nullable', as: 'Profile Picture')]
     public $new_profile_pic;
-
     public $profile_pic;
-
-    #[Rule('nullable|min:8', as: 'Password')]
     public $password;
-    
-    #[Rule('nullable|min:8|same:password', as: 'Password Confirmation')]
     public $confirm_password;
-
     public $id;
     public $email;
     public $role;
+
+    // For Trainers
+    public $occupation;
+    public $certificate_id;
+    public $issue_date;
+    public $expiry_date;
+    public $issued_authority;
 
     #[On('refreshManageUser')]
     public function render()
@@ -60,6 +42,7 @@ class ManageUser extends Component
         return view('livewire.admin.user.manage-user');
     }
 
+    // Fetch the user information
     #[On('manage-user')]
     public function edit($id) {
         $user = User::find($id);
@@ -76,39 +59,120 @@ class ManageUser extends Component
         $this->bio = $user->bio;
         $this->profile_pic = $user->profile_pic;
         $this->role = $user->role;
+
+        if ($this->role === "trainer" || $this->role === "pending") {
+            $trainer_details = TrainerDetail::where('user_id', $id)->first();
+            $this->occupation = $trainer_details->occupation;
+            $this->certificate_id = $trainer_details->certificate_id;
+            $this->issue_date = $trainer_details->issue_date;
+            $this->expiry_date = $trainer_details->expiry_date;
+            $this->issued_authority = $trainer_details->issued_authority;
+        }
     }
 
-    public function update()
-    {
-        $this->validate();
+    // Updates the User Details
+    public function update() {
+        if ($this->role === "trainer" || $this->role === "pending") {
+            $this->validate([
+                'name' => 'required|min:2|max:100',
+                'gender' => 'required|in:M,F,O',
+                'dob' => 'required|date',
+                'phone' => 'required|max:10',
+                'address' => 'nullable',
+                'city' => 'nullable|min:2|max:100',
+                'zip_code' => 'nullable|max:10',
+                'state' => 'nullable|max:100',
+                'bio' => 'nullable|max:255',
+                'new_profile_pic' => 'nullable|sometimes|image',
+                'password' => 'nullable|min:8',
+                'confirm_password' => 'nullable|min:8|same:password',
+                'occupation' => 'required|min:2|max:100',
+                'certificate_id' => 'required|max:100',
+                'issue_date' => 'required|date',
+                'expiry_date' => 'required|date|after:issue_date',
+                'issued_authority' => 'required|max:100',
+            ]);
 
-        if($this->new_profile_pic) {
-            $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
+            $user = User::findOrFail($this->id);
+            $user->name = $this->name;
+            $user->gender = $this->gender;
+            $user->dob = $this->dob;
+            $user->phone = $this->phone;
+            $user->address = $this->address;
+            $user->city = $this->city;
+            $user->zip_code = $this->zip_code;
+            $user->state = $this->state;
+            $user->bio = $this->bio;
+
+            TrainerDetail::where('user_id', $this->id)
+                        ->update([
+                            "occupation" => $this->occupation,
+                            "certificate_id" => $this->certificate_id,
+                            "issue_date" => $this->issue_date,
+                            "expiry_date" => $this->expiry_date,
+                            "issued_authority" => $this->issued_authority,
+                        ]);
+
+            if ($this->new_profile_pic !== null) {
+                $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
+                $user->profile_pic = $this->new_profile_pic;
+            }
+
+            if (!empty($this->password)) {
+                $user->password = $this->password;
+            }
+
+            $user->update();
+
+        } else {
+            $this->validate([
+                'name' => 'required|min:2|max:100',
+                'gender' => 'required|in:M,F,O',
+                'dob' => 'required|date',
+                'phone' => 'required|max:10',
+                'address' => 'nullable',
+                'city' => 'nullable|min:2|max:100',
+                'zip_code' => 'nullable|max:10',
+                'state' => 'nullable|max:100',
+                'bio' => 'nullable|max:255',
+                'new_profile_pic' => 'nullable|sometimes|image',
+                'password' => 'nullable|min:8',
+                'confirm_password' => 'nullable|min:8|same:password',
+            ]);
+
+            $user = User::findOrFail($this->id);
+            $user->name = $this->name;
+            $user->gender = $this->gender;
+            $user->dob = $this->dob;
+            $user->phone = $this->phone;
+            $user->address = $this->address;
+            $user->city = $this->city;
+            $user->zip_code = $this->zip_code;
+            $user->state = $this->state;
+            $user->bio = $this->bio;
+
+            if ($this->new_profile_pic) {
+                $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
+            }
+
+            $user->profile_pic = $this->new_profile_pic;
+
+            if (!empty($this->password)) {
+                $user->password = $this->password;
+            }
+
+            $user->update();
         }
-
-        $user = User::find($this->id);
-        $user->name = $this->name;
-        $user->email = $this->email;
-        $user->gender = $this->gender;
-        $user->dob = $this->dob;
-        $user->phone = $this->phone;
-        $user->address = $this->address;
-        $user->city = $this->city;
-        $user->zip_code = $this->zip_code;
-        $user->state = $this->state;
-        $user->bio = $this->bio;
-        $user->profile_pic = $this->new_profile_pic;
-
-        $this->new_profile_pic = null;
-
-        if (!empty($this->password)) {
-            $user->password = $this->password;
-        }
-
-        $user->update();
 
         $this->dispatch('refreshManageUser');
-        $this->dispatch('update-success');
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'User Details Updated Successfully!',
+        );
+        
         $this->dispatch('refreshUsersTable');
     }
 
@@ -116,8 +180,16 @@ class ManageUser extends Component
         $trainer = User::find($this->id);
         $trainer->role = "trainer";
         $trainer->update();
+        
         $this->dispatch('refreshManageUser');
-        $this->dispatch('trainer-verified');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Trainer Verification Confirmed!',
+        );
+
         $this->dispatch('refreshUsersTable');
     }
 }

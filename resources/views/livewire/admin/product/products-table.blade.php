@@ -39,7 +39,8 @@
                                                             alt="Product">
                                                     </div>
                                                     <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm">{{ $product->name }}</h6>
+                                                        {{-- <h6 class="mb-0 text-sm">{{ substr($product->name, 0, 20) }}..</h6> --}}
+                                                        <h6 class="mb-0 text-sm">{{ implode(' ', array_slice(explode(' ', $product->name), 0, 3)) }}</h6>
                                                     </div>
                                                 </div>
                                             </td>

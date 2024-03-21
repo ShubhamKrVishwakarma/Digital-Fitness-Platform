@@ -77,11 +77,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-control-label">State</label>
-                                <select wire:model='state' class="form-control">
-                                    <option value="" selected>Select State</option>
-                                    <option value="West Bengal">West Bengal</option>
-                                    <option value="Delhi">Delhi</option>
-                                </select>
+                                <input type="text" wire:model='state' class="form-control">
                                 @error('state')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
