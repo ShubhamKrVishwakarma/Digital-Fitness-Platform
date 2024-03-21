@@ -9,6 +9,20 @@
 
 @section('content')
 @auth
+    @if(session('success'))
+    <div id="success-message" class="alert alert-success mb-0">
+        {{ session('success') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'none';
+            },0);
+        }, 3000);
+    </script>
+    @endif
+
     <div class="container-fluid" id="profile-body">
         <div class="container-fluid" id="upper-container">
             <div class="profile">
@@ -91,7 +105,7 @@
                             @if ($user->city!=null)
                                 <li><i class="bi bi-geo-alt-fill"></i> Lives in <b>{{$user->city}}</b></li>
                             @endif
-                            <li><i class="bi bi-clock-fill"></i> Joined on <b>{{ $user->created_at }}</b></li>
+                            <li><i class="bi bi-clock-fill"></i> Joined on <b>{{ $user->created_at->format('d-m-Y') }}</b></li>
                             @if ($user->phone!=null)
                                 <li><i class="bi bi-telephone-fill"></i> {{ $user->phone }}</li>
                             @endif
