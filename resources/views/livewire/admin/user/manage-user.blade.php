@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center flex-wrap my-2">
                                 <p class="text-uppercase text-sm">Personal Information</p>
-                                <button class="btn btn-sm btn-danger">Delete Account</button>
+                                <button class="btn btn-sm btn-danger" wire:confirm.prompt='Are you sure? \nEnter password to "DELETE" |aaaa' wire:click.prevent='delete' x-on:click="manageUser = false, usersTable = true">Delete Account</button>
                             </div>
                             <div class="row">
                                 <input type="hidden" id="update-user-id">
