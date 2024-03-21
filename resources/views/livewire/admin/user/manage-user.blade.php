@@ -190,10 +190,17 @@
                         <div class="row justify-content-center">
                             <div class="col-4 col-lg-4 order-lg-2">
                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                                    <a href="javascript:;">
-                                        <img src="../assets/img/team-2.jpg"
-                                            class="rounded-circle img-fluid border border-2 border-white">
-                                    </a>
+                                    @if ($profile_pic)
+                                        <a href="javascript:;">
+                                            <img src="{{ url('storage/user') . '/' . $profile_pic }}"
+                                                class="rounded-circle img-fluid border border-2 border-white">
+                                        </a>
+                                    @else
+                                        <a href="javascript:;">
+                                            <img src="{{ asset('images/profile/profile.jpg') }}"
+                                                class="rounded-circle img-fluid border border-2 border-white">
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

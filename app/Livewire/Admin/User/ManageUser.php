@@ -125,13 +125,12 @@ class ManageUser extends Component
             }
 
             $user->update();
-
         } else {
             $this->validate([
                 'name' => 'required|min:2|max:100',
                 'gender' => 'required|in:M,F,O',
                 'dob' => 'required|date',
-                'phone' => 'required|max:10',
+                'phone' => 'nullable|max:10',
                 'address' => 'nullable',
                 'city' => 'nullable|min:2|max:100',
                 'zip_code' => 'nullable|max:10',
@@ -166,6 +165,8 @@ class ManageUser extends Component
 
             $user->update();
         }
+
+        $this->reset('password', 'confirm_password', 'new_profile_pic');
 
         $this->dispatch('refreshManageUser');
 

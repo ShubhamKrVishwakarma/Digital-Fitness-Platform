@@ -128,7 +128,7 @@
                         <div class="dropdown text-end d-none d-lg-block">
                             <a class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ auth()->user()->getProfilePic() }}" alt="User" width="40" height="40"
+                                <img src="{{ auth()->user()->getProfileUrl() }}" alt="User" width="40" height="40"
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small me-4">
