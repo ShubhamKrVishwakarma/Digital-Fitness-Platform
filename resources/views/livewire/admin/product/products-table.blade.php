@@ -39,7 +39,6 @@
                                                             alt="Product">
                                                     </div>
                                                     <div class="my-auto">
-                                                        {{-- <h6 class="mb-0 text-sm">{{ substr($product->name, 0, 20) }}..</h6> --}}
                                                         <h6 class="mb-0 text-sm">{{ implode(' ', array_slice(explode(' ', $product->name), 0, 3)) }}</h6>
                                                     </div>
                                                 </div>
@@ -51,10 +50,10 @@
                                                 <span class="text-xs font-weight-bold">{{ $product->quantity }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <span class="text-xs font-weight-bold">{{ $product->category->name }}</span>
+                                                <span class="badge badge-sm bg-gradient-info text-xxs">{{ $product->category->name }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <button class="me-2 btn btn-xs btn-dark mb-0" wire:click='edit({{ $product->id }})' x-on:click="productsTable = false, manageProduct = true">Manage</button>
+                                                <button @click="$dispatch('manage-user', { id: {{ $product->id }} })" class="me-2 btn btn-xs btn-dark mb-0" x-on:click="productsTable = false, manageProduct = true">Manage</button>
                                             </td>
                                         </tr>
                                     @endforeach

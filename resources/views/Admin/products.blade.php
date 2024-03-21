@@ -15,19 +15,11 @@
 
 @push('scripts')
 <script>
-    document.addEventListener('addProduct-success', function () {
+    document.addEventListener('alert', (event) => {
         Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'A Product Added Successfully!',
-        });
-    });
-
-    document.addEventListener('error', function () {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Server Timeout!',
+            icon: event.detail.icon,
+            title: event.detail.title,
+            text: event.detail.text,
         });
     });
 </script>

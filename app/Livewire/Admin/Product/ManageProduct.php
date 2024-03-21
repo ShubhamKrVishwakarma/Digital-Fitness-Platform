@@ -16,13 +16,13 @@ class ManageProduct extends Component
     #[Rule('required|min:3|max:100')]
     public $name;
 
-    #[Rule('required|min:10|max:255')]
+    #[Rule('required|min:10')]
     public $description;
 
-    #[Rule('required|min:10|max:255')]
+    #[Rule('required|min:10')]
     public $keywords;
 
-    #[Rule('required')]
+    #[Rule('nullable|sometimes')]
     public $image;
 
     #[Rule('required')]
@@ -44,30 +44,57 @@ class ManageProduct extends Component
         ]);
     }
 
-    #[On('edit-product')]
+    #[On('manage-user')]
     public function edit($id) {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $this->id = $id;
         $this->name = $product->name;
         $this->description = $product->description;
         $this->keywords = $product->keywords;
-        $this->image = $product->image;
         $this->price = $product->price;
         $this->quantity = $product->quantity;
         $this->category_id = $product->category_id;
-
-        $category = Category::find($product->category_id);
-        $this->category = $category->name;
+        $this->category = $product->category->name;
     }
 
     public function update() {
-        $product = Product::find($this->id);
+        $this->validate();
+
+        $product = Product::findOrFail($this->id);
         $product->name = $this->name;
         $product->description = $this->description;
         $product->keywords = $this->keywords;
-        $product->image = $this->image;
         $product->price = $this->price;
         $product->quantity = $this->quantity;
         $product->category_id = $this->category_id;
+
+        if ($this->image) {
+            $this->image = $this->image->store('products', 'public');
+            $product->image = $this->image;
+        }
+
+        $product->update();
+
+        $this->reset('image');
+        
+        $this->dispatch('refreshProductsTable');
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Product Details Updated Successfully!',
+        );
+    }
+    
+    public function delete() {
+        Product::findOrFail($this->id)->delete();
+        $this->dispatch('refreshProductsTable');
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Product Deleted Successfully!',
+        );
     }
 }

@@ -9,8 +9,8 @@
                 <div class="card">
                     <div class="card-body mb-3">
                         <div class="col-12 d-flex justify-content-between align-items-center flex-wrap">
-                            <h6>Product ID : 2223</h6>
-                            <a class="btn btn-sm btn-danger my-2">Delete</a>
+                            <h6>Product ID : {{ $id }}</h6>
+                            <button wire:confirm.prompt='Are you sure?\nEnter password to "DELETE"|aaaa' wire:click.prevent='delete' x-on:click="manageProduct = false, productsTable = true" class="btn btn-sm btn-danger my-2">Delete</button>
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-control-label">Name</label>
@@ -29,23 +29,17 @@
                         <div class="col-12 mb-3">
                             <label class="form-control-label">Search Keywords</label>
                             <textarea wire:model='keywords' class="form-control" cols="30" rows="3" placeholder="Product Keywords" required></textarea>
-                            @error('description')
+                            @error('keywords')
                                 <span class="d-block text-danger mt-1">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12">
                             <label class="form-control-label">Image</label>
-                            <input wire:model='image' accept="image/png, image/jpeg" type="file" class="form-control" required>
+                            <input wire:model='image' accept="image/png, image/jpeg" type="file" class="form-control">
                             @error('image')
                                 <span class="d-block text-danger mt-1">{{ $message }}</span>
                             @enderror
                         </div>
-                        @if ($image)
-                            <div class="ps-3 pt-3">
-                                <p class="m-0 mb-1">Product Image Preview:</p>
-                                <img src="{{ url('storage/' . $image) }}" alt="Product Image" class="rounded h-20 w-20">
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>
