@@ -3,7 +3,7 @@
 @section('title', 'Users')
 
 @section('content')
-    <div x-data="{usersTable : true, addMember : false, addTrainer : false, manageUser : false}" class="container-fluid py-4">
+    <div x-data="{usersTable : true, addMember : false, addTrainer : false, manageUser : false, manageUserId : 1}" class="container-fluid py-4">
         <!-- Products Table -->
         @livewire('Admin.User.UsersTable')
         <!-- Add Member -->
@@ -17,43 +17,11 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('member-success', function () {
+        document.addEventListener('alert', (event) => {
             Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'A New Member Added Successfully!',
-            });
-        });
-
-        document.addEventListener('trainer-success', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'A New Trainer Added Successfully! But not verified!',
-            });
-        });
-
-        document.addEventListener('update-success', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'User Details Updated Successfully!',
-            });
-        });
-
-        document.addEventListener('trainer-verified', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'Trainer Verification Completed!',
-            });
-        });
-
-        document.addEventListener('error', function () {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'Server Timeout!',
+                icon: event.detail.icon,
+                title: event.detail.title,
+                text: event.detail.text,
             });
         });
     </script>

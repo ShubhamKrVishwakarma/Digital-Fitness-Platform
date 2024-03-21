@@ -5,9 +5,12 @@ namespace App\Livewire\Admin\Product;
 use App\Models\Product;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ProductsTable extends Component
 {
+    use WithPagination;
+    
     #[On('refreshProductsTable')]
     public function render()
     {

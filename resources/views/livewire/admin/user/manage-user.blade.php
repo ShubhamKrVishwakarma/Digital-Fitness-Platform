@@ -5,7 +5,7 @@
                 <div class="col-auto">
                     @if ($profile_pic)
                         <div class="avatar avatar-xl position-relative">
-                            <img src="{{ url('storage') . '/' . $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                            <img src="{{ url('storage/user') . '/' . $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                         </div>
                     @else
                         <div class="avatar avatar-xl position-relative">
@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center flex-wrap my-2">
                                 <p class="text-uppercase text-sm">Personal Information</p>
-                                <button class="btn btn-sm btn-danger">Delete Account</button>
+                                <button class="btn btn-sm btn-danger" wire:confirm.prompt='Are you sure? \nEnter password to "DELETE" |aaaa' wire:click.prevent='delete' x-on:click="manageUser = false, usersTable = true">Delete Account</button>
                             </div>
                             <div class="row">
                                 <input type="hidden" id="update-user-id">
@@ -114,19 +114,13 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-control-label">Profile Picture</label>
+                                    <label class="form-control-label">New Profile Picture</label>
                                     <input type="file" wire:model='new_profile_pic' class="form-control">
                                     @error('new_profile_pic')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                @if ($new_profile_pic)
-                                    <div class="col-md-12 mb-3">
-                                        <p>Preview:</p>
-                                        <img src="{{ $new_profile_pic->temporaryUrl() }}" class="rounded h-20 w-20">
-                                    </div>
-                                @endif
-                                {{-- <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-3">
                                     <label class="form-control-label">New Password</label>
                                     <input type="password" wire:model='password' class="form-control" placeholder="New Password">
                                     @error('password')
@@ -139,7 +133,7 @@
                                     @error('confirm_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div> --}}
+                                </div>
                             </div>
                             @if ($role === "pending" || $role === "trainer")
                                 <div class="row mt-2">
@@ -185,7 +179,7 @@
                                 </div>
                             @endif
                             <div class="d-flex align-items-center">
-                                <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
+                                <button class="btn btn-primary btn-sm" wire:click='$refresh' type="submit">Save Changes</button>
                             </div>
                         </div>
                     </div>
@@ -196,10 +190,17 @@
                         <div class="row justify-content-center">
                             <div class="col-4 col-lg-4 order-lg-2">
                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                                    <a href="javascript:;">
-                                        <img src="../assets/img/team-2.jpg"
-                                            class="rounded-circle img-fluid border border-2 border-white">
-                                    </a>
+                                    @if ($profile_pic)
+                                        <a href="javascript:;">
+                                            <img src="{{ url('storage/user') . '/' . $profile_pic }}"
+                                                class="rounded-circle img-fluid border border-2 border-white">
+                                        </a>
+                                    @else
+                                        <a href="javascript:;">
+                                            <img src="{{ asset('images/profile/profile.jpg') }}"
+                                                class="rounded-circle img-fluid border border-2 border-white">
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

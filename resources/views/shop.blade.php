@@ -77,7 +77,7 @@
                 <img src="{{$item->getProductUrl()}}" alt="product image" />
               </div>
               <div class="product-btns d-flex justify-content-center align-items-center">
-                <a href="{{route('cart')}}" class="btn btn-cart">
+                <a href="{{route('addToCart',$item->id)}}" class="btn btn-cart">
                   add to cart
                   {{-- <span><i class="fa-solid fa-plus"></i></span> --}}
                 </a>
@@ -99,9 +99,9 @@
                   <span><i class="bi bi-star-fill"></i></span>
                 </div>
               </div>
-              <a href="#" class="product-name">{{$item->name}}</a>
+              <a href="#" class="product-name">{{ substr($item->name, 0, 15) }}...</a>
               <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
-              <p class="product-price">{{$item->price}}</p>
+              <p class="product-price">{{ $item->price }}</p>
             </div>
 
             {{-- <div class="off-info">

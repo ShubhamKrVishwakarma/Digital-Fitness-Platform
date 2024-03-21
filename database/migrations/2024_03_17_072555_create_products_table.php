@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float("price");
             $table->integer("quantity");
             $table->unsignedBigInteger("category_id");
-            $table->string("image");
+            $table->string("image")->nullable();
             $table->float("rating")->default(0);
             $table->text("keywords");
             $table->timestamps();

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QueryController;
 use App\Models\Query;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +17,7 @@ Route::get('/', function () {
 
 // Shop Page
 Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
-
+Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->middleware('auth')->name('addToCart');
 
 // Community Page
 Route::get('/community', function() {
@@ -24,7 +27,7 @@ Route::get('/community', function() {
 // Message Page
 Route::get('/message', function() {
     return view('message');
-})->name('message');
+})->middleware('auth')->name('message');
 
 // Profile Page
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
@@ -37,22 +40,36 @@ Route::post('/profile',[UserController::class,'update_pass'])->name('user.update
 
 
 // Cart Page
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('/cart',[
+    CartController::class, 'index'
+])->middleware('auth')->name('cart');
+
+Route::delete('/cart/{id}',[
+    CartController::class, 'destroy'
+])->middleware('auth')->name('product.delete');
+
+Route::delete('/cart',[
+    CartController::class, 'delete'
+])->middleware('auth')->name('product.delete.all');
+
+Route::post('/cart/edit/{id}',[
+    CartController::class, 'update'
+])->middleware('auth')->name('cart.update');
 
 // Orders Page
-Route::get('/orders', function () {
-    return view('orders');
-})->name('orders');
+Route::get('/orders',[OrderController::class,'index'])->middleware('auth')->name('orders');
 
 // About Page
 Route::get('/about', function() {
     return view('about');
 })->name('about');
 
+// Checkout Page
+Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth')->name('checkout');
+
+Route::post('/checkout/{total_price}', [CheckoutController::class, 'store'])->middleware('auth')->name('checkout.store');
+
 // Contact Page
 Route::get('/contact', [QueryController::class, "index"])->name('contact');
 
 Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
-

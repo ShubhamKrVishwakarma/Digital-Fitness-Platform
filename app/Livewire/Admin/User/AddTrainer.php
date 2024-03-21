@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Models\TrainerDetail;
 use App\Models\User;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
+use App\Models\TrainerDetail;
 
 class AddTrainer extends Component
 {
@@ -21,7 +21,7 @@ class AddTrainer extends Component
     #[Rule('required|in:M,F,O', as: 'Gender')]
     public $gender;
 
-    #[Rule('required', as: 'Date of Birth')]
+    #[Rule('required|date', as: 'Date of Birth')]
     public $dob;
     
     #[Rule('nullable|max:10', as: 'Phone Number')]
@@ -54,7 +54,7 @@ class AddTrainer extends Component
     #[Rule('required|date', as: 'Issue Date')]
     public $issue_date;
     
-    #[Rule('required|date', as: 'Expiry Date')]
+    #[Rule('required|date|after:issue_date', as: 'Expiry Date')]
     public $expiry_date;
 
     #[Rule('required|max:100', as: 'Issued Authority')]
@@ -74,26 +74,31 @@ class AddTrainer extends Component
     
     public function addTrainer() {
         $this->validate();
+        
+        $user = new User();
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->gender = $this->gender;
+        $user->dob = $this->dob;
+        $user->phone = $this->phone;
+        $user->address = $this->address;
+        $user->city = $this->city;
+        $user->zip_code = $this->zip_code;
+        $user->state = $this->state;
+        $user->bio = $this->bio;
+        $user->role = "pending";
+        $user->password = $this->password;
+
+        $user->save();
 
         if ($this->profile_pic) {
-            $this->profile_pic = $this->profile_pic->store('user', 'public');
+            $fileExtension = $this->profile_pic->getClientOriginalExtension();
+            $fileName = $user->id . '.' . $fileExtension;
+            $this->profile_pic->storeAs('public/user', $fileName);
+            $user->profile_pic = $fileName;
         }
 
-        $user = User::create([
-            "name" => $this->name,
-            "email" => $this->email,
-            "gender" => $this->gender,
-            "dob" => $this->dob,
-            "phone" => $this->phone,
-            "address" => $this->address,
-            "city" => $this->city,
-            "zip_code" => $this->zip_code,
-            "state" => $this->state,
-            "bio" => $this->bio,
-            "profile_pic" => $this->profile_pic,
-            "role" => "pending",
-            "password" => $this->password
-        ]);
+        $user->save();
 
         TrainerDetail::create([
             "user_id" => $user->id,
@@ -107,6 +112,12 @@ class AddTrainer extends Component
         $this->reset();
 
         $this->dispatch('refreshUsersTable');
-        $this->dispatch('trainer-success');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'info',
+            title: 'Success!',
+            text: 'Trainer Added Successfully. But Not Verified!',
+        );
     }
 }
