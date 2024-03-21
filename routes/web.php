@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QueryController;
 use App\Models\Query;
 use Illuminate\Support\Facades\Route;
@@ -56,9 +57,7 @@ Route::post('/cart/edit/{id}',[
 ])->middleware('auth')->name('cart.update');
 
 // Orders Page
-Route::get('/orders', function () {
-    return view('orders');
-})->middleware('auth')->name('orders');
+Route::get('/orders',[OrderController::class,'index'])->middleware('auth')->name('orders');
 
 // About Page
 Route::get('/about', function() {
