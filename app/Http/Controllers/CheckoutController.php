@@ -17,6 +17,7 @@ class CheckoutController extends Controller
         $req->validate([
             'name' => "required|min:2|max:100",
             'phone' => "required|min:10",
+            'address' => "required",
             'state' => "required|min:2",
             'zip_code' => "required|min:6",
             'city'=> "required|min:2"
@@ -28,7 +29,13 @@ class CheckoutController extends Controller
             'user_id' => auth()->user()->id ,
             'user_role' =>auth()->user()->role,
             'status' => 'pending' ,
+            'address' => $req->address ,
+            'state' => $req->state,
+            'city' => $req->city,
+            'zip_code' => $req->zip_code,
+            'phone' => $req->phone,
             'total_price' => $total_price
+
         ]);
 
         foreach ($cart as $item) {
