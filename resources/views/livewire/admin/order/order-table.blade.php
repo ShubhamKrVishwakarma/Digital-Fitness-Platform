@@ -43,7 +43,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">+91 {{ $order->user->phone }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">+91 {{ $order->phone }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-secondary">{{ $order->status }}</span>
@@ -52,7 +52,7 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $order->created_at->format('d-m-Y') }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <button @click="$dispatch('manage-order', { id: {{ $order->id }} })" class="btn btn-xs btn-dark m-0" x-on:click="ordersTable = true, manageOrder = false">Manage</button>
+                                            <button @click="$dispatch('manage-order', { id: {{ $order->id }} })" class="btn btn-xs btn-dark m-0" x-on:click="ordersTable = false, manageOrder = true">Manage</button>
                                         </td>
                                     </tr>
                                 @endforeach
