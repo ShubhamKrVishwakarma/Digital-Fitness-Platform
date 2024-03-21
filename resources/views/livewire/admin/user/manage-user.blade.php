@@ -114,19 +114,13 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-control-label">Profile Picture</label>
+                                    <label class="form-control-label">New Profile Picture</label>
                                     <input type="file" wire:model='new_profile_pic' class="form-control">
                                     @error('new_profile_pic')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                @if ($new_profile_pic)
-                                    <div class="col-md-12 mb-3">
-                                        <p>Preview:</p>
-                                        <img src="{{ $new_profile_pic->temporaryUrl() }}" class="rounded h-20 w-20">
-                                    </div>
-                                @endif
-                                {{-- <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-3">
                                     <label class="form-control-label">New Password</label>
                                     <input type="password" wire:model='password' class="form-control" placeholder="New Password">
                                     @error('password')
@@ -139,7 +133,7 @@
                                     @error('confirm_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div> --}}
+                                </div>
                             </div>
                             @if ($role === "pending" || $role === "trainer")
                                 <div class="row mt-2">
@@ -185,7 +179,7 @@
                                 </div>
                             @endif
                             <div class="d-flex align-items-center">
-                                <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
+                                <button class="btn btn-primary btn-sm" wire:click='$refresh' type="submit">Save Changes</button>
                             </div>
                         </div>
                     </div>
