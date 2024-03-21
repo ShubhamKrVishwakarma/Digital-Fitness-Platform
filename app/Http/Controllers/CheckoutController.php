@@ -27,14 +27,13 @@ class CheckoutController extends Controller
         
         $order = Order::create([
             'user_id' => auth()->user()->id ,
-            'user_role' =>auth()->user()->role,
-            'status' => 'pending' ,
+            'phone' => $req->phone,
             'address' => $req->address ,
             'state' => $req->state,
             'city' => $req->city,
             'zip_code' => $req->zip_code,
-            'phone' => $req->phone,
-            'total_price' => $total_price
+            'amount' => $total_price,
+            'status' => 'pending'
 
         ]);
 
