@@ -113,9 +113,11 @@ class ManageUser extends Component
                             "issued_authority" => $this->issued_authority,
                         ]);
 
-            if ($this->new_profile_pic !== null) {
-                $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
-                $user->profile_pic = $this->new_profile_pic;
+            if ($this->new_profile_pic) {
+                $fileExtension = $this->new_profile_pic->getClientOriginalExtension();
+                $fileName = $this->id . '.' . $fileExtension;
+                $this->new_profile_pic->storeAs('public/user', $fileName);
+                $user->profile_pic = $fileName;
             }
 
             if (!empty($this->password)) {
@@ -123,13 +125,12 @@ class ManageUser extends Component
             }
 
             $user->update();
-
         } else {
             $this->validate([
                 'name' => 'required|min:2|max:100',
                 'gender' => 'required|in:M,F,O',
                 'dob' => 'required|date',
-                'phone' => 'required|max:10',
+                'phone' => 'nullable|max:10',
                 'address' => 'nullable',
                 'city' => 'nullable|min:2|max:100',
                 'zip_code' => 'nullable|max:10',
@@ -152,10 +153,11 @@ class ManageUser extends Component
             $user->bio = $this->bio;
 
             if ($this->new_profile_pic) {
-                $this->new_profile_pic = $this->new_profile_pic->store('user', 'public');
+                $fileExtension = $this->new_profile_pic->getClientOriginalExtension();
+                $fileName = $this->id . '.' . $fileExtension;
+                $this->new_profile_pic->storeAs('public/user', $fileName);
+                $user->profile_pic = $fileName;
             }
-
-            $user->profile_pic = $this->new_profile_pic;
 
             if (!empty($this->password)) {
                 $user->password = $this->password;
@@ -163,6 +165,8 @@ class ManageUser extends Component
 
             $user->update();
         }
+
+        $this->reset('password', 'confirm_password', 'new_profile_pic');
 
         $this->dispatch('refreshManageUser');
 
