@@ -108,7 +108,14 @@ class ManageUser extends Component
         $user->update();
 
         $this->dispatch('refreshManageUser');
-        $this->dispatch('update-success');
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'User Details Updated Successfully!',
+        );
+        
         $this->dispatch('refreshUsersTable');
     }
 
@@ -116,8 +123,16 @@ class ManageUser extends Component
         $trainer = User::find($this->id);
         $trainer->role = "trainer";
         $trainer->update();
+        
         $this->dispatch('refreshManageUser');
-        $this->dispatch('trainer-verified');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Trainer Verification Confirmed!',
+        );
+
         $this->dispatch('refreshUsersTable');
     }
 }

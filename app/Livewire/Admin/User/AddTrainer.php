@@ -107,6 +107,12 @@ class AddTrainer extends Component
         $this->reset();
 
         $this->dispatch('refreshUsersTable');
-        $this->dispatch('trainer-success');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'info',
+            title: 'Success!',
+            text: 'Trainer Added Successfully. But Not Verified!',
+        );
     }
 }

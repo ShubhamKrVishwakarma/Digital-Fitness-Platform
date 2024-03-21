@@ -80,6 +80,12 @@ class AddMember extends Component
         $this->reset();
 
         $this->dispatch('refreshUsersTable');
-        $this->dispatch('member-success');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'A New Member Added Successfully!',
+        );
     }
 }
