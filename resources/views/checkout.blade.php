@@ -14,57 +14,59 @@
                     <!-- Checkout Total -->
                     @php
                         $total_price=0;
+                        $quantity=0;
                     @endphp
                     @foreach ($cart as $item)
                         @php
                             $total_price+= ($item->price * $item->quantity);  
+                            $quantity+=$item->quantity; 
                         @endphp
                     @endforeach
                     <div class="col-md-5 col-lg-4 order-md-last">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-light-blue">Order
                                 Summary</span>
-                            <span class="badge bg-light-blue rounded-pill">3</span>
+                            {{-- <span class="badge bg-light-blue rounded-pill">{{$quantity}} 3</span> --}}
                         </h4>
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0">Product name</h6>
-                                    <small class="text-body-secondary">Category</small>
+                                    <h6 class="my-0">Products :</h6>
+                                    <small class="text-body-secondary"></small>
                                 </div>
-                                <span class="text-body-secondary">$12</span>
+                                <span class="text-body-secondary">{{$cart->count()}}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0">Second product</h6>
-                                    <small class="text-body-secondary">Category</small>
+                                    <h6 class="my-0">Total Items :</h6>
+                                    {{-- <small class="text-body-secondary">Category</small> --}}
                                 </div>
-                                <span class="text-body-secondary">$8</span>
+                                <span class="text-body-secondary">{{$quantity}}</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            {{-- <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
                                     <h6 class="my-0">Third product</h6>
                                     <small class="text-body-secondary">Category</small>
                                 </div>
                                 <span class="text-body-secondary">$5</span>
-                            </li>
+                            </li> --}}
                             <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
                                 <div class="text-danger">
-                                    <h6 class="my-0">Tax (4%)</h6>
+                                    <h6 class="my-0">Tax (0%)</h6>
                                     <!-- <small>EXAMPLECODE</small> -->
                                 </div>
-                                <span class="text-danger">+$1</span>
+                                <span class="text-danger">+ &#x20B9; 0.00</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
                                 <div class="text-success">
                                     <h6 class="my-0">Discount</h6>
                                     <!-- <small>EXAMPLECODE</small> -->
                                 </div>
-                                <span class="text-success">−$5</span>
+                                <span class="text-success">− &#x20B9; 0.00</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total</span>
-                                <strong>&#x20B9;{{$total_price}}</strong>
+                                <strong>&#x20B9; {{$total_price}}.00</strong>
                             </li>
                         </ul>
 
