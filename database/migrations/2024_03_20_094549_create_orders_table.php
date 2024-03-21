@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('state', 50);
             $table->string('zip_code', 10);
             $table->float('amount');
-            $table->enum('status',['delivered','pending','confirmed']);
+            $table->enum('status',['pending','confirmed','rejected']);
             $table->timestamps();
             
         });

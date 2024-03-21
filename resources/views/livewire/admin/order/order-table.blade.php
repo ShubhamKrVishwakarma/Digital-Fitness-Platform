@@ -46,7 +46,7 @@
                                             <p class="text-xs font-weight-bold mb-0">+91 {{ $order->phone }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-secondary">{{ $order->status }}</span>
+                                            <span class="badge badge-sm bg-gradient-{{ ($order->status === "pending") ? 'info' : ($order->status === "rejected" ? 'danger' : 'success')  }}">{{ $order->status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ $order->created_at->format('d-m-Y') }}</span>

@@ -12,6 +12,13 @@
 @endsection
 
 @push('scripts')
-<script>
-</script>
+    <script>
+        document.addEventListener('alert', (event) => {
+            Swal.fire({
+                icon: event.detail.icon,
+                title: event.detail.title,
+                text: event.detail.text,
+            });
+        });
+    </script>
 @endpush

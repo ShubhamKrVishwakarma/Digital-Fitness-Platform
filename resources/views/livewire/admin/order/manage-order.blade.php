@@ -11,10 +11,10 @@
                     <h6 class="mb-0">Order Information</h6>
                 </div>
                 <div class="text-end">
-                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                            class="far fa-trash-alt me-2" aria-hidden="true"></i>Cancel</a>
-                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;"><i
-                            class="fa-solid fa-circle-check"></i> Confirm</a>
+                    <button class="btn btn-link text-danger text-gradient px-3 mb-0" wire:click.prevent='cancelOrder'><i
+                            class="far fa-trash-alt me-2" aria-hidden="true"></i>Cancel</button>
+                    <button class="btn btn-link text-success text-gradient px-3 mb-0" wire:click.prevent='confirmOrder'><i
+                            class="fa-solid fa-circle-check"></i> Confirm</button>
                 </div>
             </div>
             <div class="card-body pt-4 p-3">
