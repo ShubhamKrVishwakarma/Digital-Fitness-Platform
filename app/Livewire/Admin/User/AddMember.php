@@ -20,7 +20,7 @@ class AddMember extends Component
     #[Rule('required|in:M,F,O', as: 'Gender')]
     public $gender;
 
-    #[Rule('required', as: 'Date of Birth')]
+    #[Rule('required|date', as: 'Date of Birth')]
     public $dob;
     
     #[Rule('nullable|max:10', as: 'Phone Number')]

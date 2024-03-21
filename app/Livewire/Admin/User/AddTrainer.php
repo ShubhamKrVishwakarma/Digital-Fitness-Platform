@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Models\TrainerDetail;
 use App\Models\User;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
+use App\Models\TrainerDetail;
 
 class AddTrainer extends Component
 {
@@ -21,7 +21,7 @@ class AddTrainer extends Component
     #[Rule('required|in:M,F,O', as: 'Gender')]
     public $gender;
 
-    #[Rule('required', as: 'Date of Birth')]
+    #[Rule('required|date', as: 'Date of Birth')]
     public $dob;
     
     #[Rule('nullable|max:10', as: 'Phone Number')]
@@ -54,7 +54,7 @@ class AddTrainer extends Component
     #[Rule('required|date', as: 'Issue Date')]
     public $issue_date;
     
-    #[Rule('required|date', as: 'Expiry Date')]
+    #[Rule('required|date|after:issue_date', as: 'Expiry Date')]
     public $expiry_date;
 
     #[Rule('required|max:100', as: 'Issued Authority')]
