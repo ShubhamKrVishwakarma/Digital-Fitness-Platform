@@ -36,7 +36,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="{{ $user->getProfilePic() }}" class="avatar me-3" >
+                                                    <img src="{{ $user->getProfileUrl() }}" class="avatar me-3" >
                                                 </div>
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">{{ $user->name }}</h6>

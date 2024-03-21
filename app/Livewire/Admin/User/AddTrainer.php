@@ -74,26 +74,31 @@ class AddTrainer extends Component
     
     public function addTrainer() {
         $this->validate();
+        
+        $user = new User();
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->gender = $this->gender;
+        $user->dob = $this->dob;
+        $user->phone = $this->phone;
+        $user->address = $this->address;
+        $user->city = $this->city;
+        $user->zip_code = $this->zip_code;
+        $user->state = $this->state;
+        $user->bio = $this->bio;
+        $user->role = "pending";
+        $user->password = $this->password;
+
+        $user->save();
 
         if ($this->profile_pic) {
-            $this->profile_pic = $this->profile_pic->store('user', 'public');
+            $fileExtension = $this->profile_pic->getClientOriginalExtension();
+            $fileName = $user->id . '.' . $fileExtension;
+            $this->profile_pic->storeAs('public/user', $fileName);
+            $user->profile_pic = $fileName;
         }
 
-        $user = User::create([
-            "name" => $this->name,
-            "email" => $this->email,
-            "gender" => $this->gender,
-            "dob" => $this->dob,
-            "phone" => $this->phone,
-            "address" => $this->address,
-            "city" => $this->city,
-            "zip_code" => $this->zip_code,
-            "state" => $this->state,
-            "bio" => $this->bio,
-            "profile_pic" => $this->profile_pic,
-            "role" => "pending",
-            "password" => $this->password
-        ]);
+        $user->save();
 
         TrainerDetail::create([
             "user_id" => $user->id,
