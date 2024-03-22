@@ -1,7 +1,7 @@
 <div class="card" x-show="manageCategory" style="display: none">
     <div class="card-header d-flex flex-wrap justify-content-between align-items-center pb-0 p-3">
         <h6 class="mb-0">Manage Category</h6>
-        <button class="btn btn-sm btn-danger my-2" wire:click='destroy' wire:confirm='Are u Sure?' x-on:click='manageCategory = false, addCategory = true'>Delete</button>
+        <button class="btn btn-sm btn-danger my-2" wire:confirm.prompt='Are u sure?\nEnter password to "DELETE"|aaaa' wire:click='destroy' x-on:click='manageCategory = false, addCategory = true'>Delete</button>
     </div>
     <hr class="bg-dark">
     <div class="card-body py-1 px-3">
