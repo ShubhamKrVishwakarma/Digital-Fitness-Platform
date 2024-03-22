@@ -57,36 +57,60 @@
         </div>
     </nav>
     <!-- Main Section -->
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
             style="background-image: url('https://img.freepik.com/free-photo/dumbbells-set-against-dark-background-floor_60438-3557.jpg?w=1380&t=st=1708407752~exp=1708408352~hmac=5958d83b709212650b3fbc6ae8ec3fb3c85a2ee95f0210bda515dd3fb3c1722e'); background-position: top;">
             <span class="mask bg-gradient-dark opacity-6"></span>
         </div>
-        @livewire('Auth.Member')
+        <div class="container">
+            <div class="row mt-n12 justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+                    <div class="card z-index-0">
+                        <div class="card-header text-center pt-4 pb-0">
+                            <h5>Create New Account</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="signupForm">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="signup-name" placeholder="Name" required>
+                                    <span class="text-danger" id="signup-name-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" id="signup-email" placeholder="Email" required>
+                                    <span class="text-danger" id="signup-email-error"></span>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label-control-control">Gender</label>
+                                    <select class="form-control" id="signup-gender" required>
+                                        <option value="" selected>Select Gender</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Others</option>
+                                    </select>
+                                    <span class="text-danger" id="signup-gender-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label-control">Date of Birth</label>
+                                    <input type="date" class="form-control" id="signup-dob" required>
+                                    <span class="text-danger" id="signup-dob-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" id="signup-password" placeholder="Password" required>
+                                    <span class="text-danger" id="signup-password-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" id="signup-confirm-password" placeholder="Confirm Password" required>
+                                    <span class="text-danger" id="signup-confirm-password-error"></span>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn bg-gradient-dark w-100">Create Account</button>
+                                </div>
+                                <p class="text-sm text-center mt-1 mb-0">Already have an account? <a href="{{ route('login') }}" class="text-dark font-weight-bolder">Login</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 @endsection
-
-@push('scripts')
-<script>
-    document.addEventListener('success', function () {
-        setTimeout(() => {
-            window.location.href = "http://localhost:8000/login";
-        }, 1600);
-
-        Swal.fire({
-            icon: "success",
-            title: "Account Created Successfully. Please Login!",
-            showConfirmButton: false,
-            timer: 1600
-        });
-    });
-
-    document.addEventListener('error', function () {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Server Timeout!',
-        });
-    });
-</script>
-@endpush

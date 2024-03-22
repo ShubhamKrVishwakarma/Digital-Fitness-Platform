@@ -12,7 +12,7 @@
                 </div>
                 <div class="text-end">
                     <button class="btn btn-link text-danger text-gradient px-3 mb-0" wire:click.prevent='cancelOrder'><i
-                            class="far fa-trash-alt me-2" aria-hidden="true"></i>Cancel</button>
+                            class="far fa-trash-alt me-2"></i>Cancel</button>
                     <button class="btn btn-link text-success text-gradient px-3 mb-0" wire:click.prevent='confirmOrder'><i
                             class="fa-solid fa-circle-check"></i> Confirm</button>
                 </div>
@@ -121,18 +121,18 @@
                         <img src="../images/team-3.jpg" class="avatar avatar-sm me-3" alt="user1">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">John Michael</h6>
-                        <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                        <h6 class="mb-0 text-sm">{{ $name }}</h6>
+                        <p class="text-xs text-secondary mb-0">{{ $email }}</p>
                     </div>
                 </div>
                 <div>
                     <span class="text-success d-block py-2 fs-5 mb-0"><i class="fa-solid fa-cart-shopping"></i>
-                        12 Orders</span>
+                        {{ $total_orders }} Orders</span>
                 </div>
                 <div>
                     <h6 class="m-0">Contact Info:</h6>
-                    <p class="m-0 text-sm mb-1"><b>Email:</b> test@gmail.com</p>
-                    <p class="m-0 text-sm"><b>Mobile:</b> +91 8987567865</p>
+                    <p class="m-0 text-sm mb-1"><b>Email :</b> {{ $email }}</p>
+                    <p class="m-0 text-sm"><b>Mobile :</b> +91 {{ $phone }}</p>
                 </div>
                 <!-- Shipping Info -->
             </div>
@@ -141,9 +141,7 @@
         <div class="card mb-3">
             <div class="card-body p-3">
                 <h6 class="mb-0 px-1 py-2">Shipping Address</h6>
-                <p class="text-sm text-secondary m-0 px-1 pt-1 pb-2">Lorem ipsum, dolor sit amet consectetur
-                    adipisicing elit. Consequatur aliquid quia itaque esse quibusdam unde nam eaque? Vero fugit,
-                    possimus corporis pariatur autem amet natus vel aliquam! Tempora, quo molestias.</p>
+                <p class="text-sm text-secondary m-0 px-1 pt-1 pb-2">{{ $address }}</p>
             </div>
         </div>
         <!-- Payment Inforamtaion -->

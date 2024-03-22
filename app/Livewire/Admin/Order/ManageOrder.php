@@ -10,6 +10,14 @@ use Livewire\Component;
 class ManageOrder extends Component
 {
     public $id;
+    public $order;
+    public $ordered_products;
+
+    public $name;
+    public $email;
+    public $phone;
+    public $address;
+    public $total_orders;
 
     public function render()
     {
@@ -19,6 +27,12 @@ class ManageOrder extends Component
     #[On('manage-order')]
     public function manage($id) {
         $this->id = $id;
+        $order = Order::with('user', 'orders.product')->findOrFail($id);
+        $this->name = $order->user->name;
+        $this->email = $order->user->email;
+        $this->phone = $order->phone;
+        $this->address = $order->address;
+        $this->total_orders = $order->orders->count();
     }
 
     public function confirmOrder() {
