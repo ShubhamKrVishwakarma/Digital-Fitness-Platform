@@ -11,8 +11,13 @@ class ManageOrder extends Component
 {
     public $id;
     public $order;
-    public $user;
     public $ordered_products;
+
+    public $name;
+    public $email;
+    public $phone;
+    public $address;
+    public $total_orders;
 
     public function render()
     {
@@ -22,9 +27,12 @@ class ManageOrder extends Component
     #[On('manage-order')]
     public function manage($id) {
         $this->id = $id;
-        $order = Order::findOrFail($id);
-        $this->user = $order->user;
-        $this->ordered_products = $order->orders;
+        $order = Order::with('user', 'orders.product')->findOrFail($id);
+        $this->name = $order->user->name;
+        $this->email = $order->user->email;
+        $this->phone = $order->phone;
+        $this->address = $order->address;
+        $this->total_orders = $order->orders->count();
     }
 
     public function confirmOrder() {
