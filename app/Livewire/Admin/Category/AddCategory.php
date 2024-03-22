@@ -25,7 +25,13 @@ class AddCategory extends Component
 
         $this->reset();
 
-        $this->dispatch('addCategory-success');
         $this->dispatch('refreshCategoryList');
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'A New Category Added Successfully!',
+        );
     }
 }

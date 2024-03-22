@@ -20,21 +20,12 @@
 
 @push('scripts')
 <script>
-    document.addEventListener('addCategory-success', function () {
+    document.addEventListener('alert', (event) => {
         Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "A New Category Added Successfully!",
-            showConfirmButton: false,
-            timer: 1200
-        });
-    });
-
-    document.addEventListener('manageCategory-success', function () {
-        Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "Category Name Updated Successfully!",
+            position: "center",
+            icon: event.detail.icon,
+            title: event.detail.title,
+            text: event.detail.text,
             showConfirmButton: false,
             timer: 1200
         });

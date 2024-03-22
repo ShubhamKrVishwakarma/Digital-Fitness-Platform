@@ -51,7 +51,7 @@
                                             <span class="text-xs font-weight-bold">{{ $user->created_at->format('d-m-Y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <button @click="$dispatch('manage-user', { id: '{{ $user->id }}' })" x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0">Manage</button>
+                                            <button @click="$dispatch('manage-user', { id: {{ $user->id }} })" x-on:click="usersTable = false, manageUser = true" class="me-2 btn btn-xs btn-outline-danger mb-0">Manage</button>
                                         </td>
                                     </tr>
                                 @endforeach

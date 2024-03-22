@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="d-flex">
-                            <button class="btn btn-sm btn-outline-danger my-2" x-on:click="addCategory = false, manageCategory = true" wire:click='editCategory({{ $category->id }})'>Edit</button>
+                            <button @click="$dispatch('edit-category', { id: {{ $category->id }} })" class="btn btn-sm btn-outline-danger my-2" x-on:click="addCategory = false, manageCategory = true">Edit</button>
                         </div>
                     </li>
                 @endforeach
