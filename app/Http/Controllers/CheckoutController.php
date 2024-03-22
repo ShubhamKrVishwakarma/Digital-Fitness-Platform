@@ -48,7 +48,7 @@ class CheckoutController extends Controller
         }
         Cart::where('user_id' , auth()->user()->id)->delete();
         
-        return redirect()->route('cart')->with('success','order successfull');
+        return redirect()->route('orders');
 
     }
 
