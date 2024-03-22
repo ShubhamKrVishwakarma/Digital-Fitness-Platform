@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Order;
 
 use App\Models\Order;
+use App\Models\Product;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -22,6 +23,12 @@ class ManageOrder extends Component
 
     public function confirmOrder() {
         $order = Order::findOrFail($this->id);
+        $products = $order->orders->toArray();
+        foreach ($products as $product) {
+            $update = Product::findOrFail($product["product_id"]);
+            $update->quantity = $update->quantity - $product["quantity"];
+            $update->update();
+        }
         $order->status = "confirmed";
         $order->update();
         $this->dispatch('refreshOrdersTable');

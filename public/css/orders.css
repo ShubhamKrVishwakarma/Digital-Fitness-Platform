@@ -1,9 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 @media print {
@@ -13,11 +11,6 @@
   width: auto !important;
  }
 }
-
-/*@page {
-    size: landscape;
-    margin: 0; 
-}*/
 
 .orders-section {
     display: flex;

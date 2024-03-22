@@ -35,8 +35,14 @@ class ManageCategory extends Component
             $category->name = $this->name;
             $category->update();
     
-            $this->dispatch('manageCategory-success');
             $this->dispatch('refreshCategoryList');
+            
+            $this->dispatch(
+                'alert', 
+                icon: 'success',
+                title: 'Success!',
+                text: 'Category Name Updated Successfully!',
+            );
         }
     }
 

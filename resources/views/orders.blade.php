@@ -3,7 +3,7 @@
 @section("title", "Orders")
 
 @push("styles")
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/orders.css') }}">
 @endpush
 
@@ -16,33 +16,43 @@
                     <div class="shadow bg-white p-3">
                         <h4 class="mb-4"> My Orders</h4>
                         <hr>
-
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="min-height: 300px">
                             <table class="table tble-bordered table-striped">
                                 <thead>
                                     <tr>
-                                    <th> Id </th>
-                                    <th> Date</th>
-                                    <th> Role </th>
-                                    <th> Status </th>
-                                    <th> Amount </th>
-                                    <th> Action</th>
-                                </tr>
+                                        <th class="text-center fw-semibold">Id</th>
+                                        <th class="text-center fw-semibold">Date</th>
+                                        <th class="text-center fw-semibold">Role</th>
+                                        <th class="text-center fw-semibold">Status</th>
+                                        <th class="text-center fw-semibold">Amount</th>
+                                        <th class="text-center fw-semibold">Action</th>
+                                    </tr>
                                 </thead>
                                     <tbody>
-                                        @forelse ($orders as $item)
+                                        @forelse ($orders as $order)
                                            <tr>
-                                            <td>{{ $item->id }}</td>    
-                                            <td>{{ $item->created_at->format('d-m-Y') }}</td>    
-                                            <td>{{ $item->user_role }}</td>    
-                                            <td>{{ $item->status }}</td>    
-                                            <td>{{ $item->total_price }}</td>    
-                                            <td> <a href="#" class="btn btn-primary btn-sm">View</a>
+                                                <td class="text-center">
+                                                    <span>{{ $order->id }}</span>
                                                 </td>    
-                                        </tr> 
+                                                <td class="text-center">
+                                                    <span>{{ $order->created_at->format('d-m-Y') }}</span>
+                                                </td>    
+                                                <td class="text-center">
+                                                    <span class="badge text-bg-primary">{{ $order->user->role }}</span>
+                                                </td>    
+                                                <td class="text-center">
+                                                    <span class="badge text-bg-{{ ($order->status === "confirmed") ? 'success' : ($order->status === "rejected" ? 'danger' : 'info') }} text-white">{{ $order->status }}</span>
+                                                </td>    
+                                                <td class="text-center">
+                                                    <span><i class="bi bi-currency-rupee"></i> {{ $order->amount }}</span>
+                                                </td>    
+                                                <td class="text-center">
+                                                    <a href="#" class="btn btn-primary btn-sm">View</a>
+                                                </td>    
+                                            </tr> 
                                         @empty
                                             <tr>
-                                                <td colspan="7">No Orders Available</td>
+                                                <td class="text-center" colspan="7">No Orders Available</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

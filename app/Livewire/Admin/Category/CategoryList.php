@@ -15,8 +15,4 @@ class CategoryList extends Component
             "categories" => Category::all()
         ]);
     }
-
-    public function editCategory($id) {
-        $this->dispatch('edit-category', $id);
-    }
 }
