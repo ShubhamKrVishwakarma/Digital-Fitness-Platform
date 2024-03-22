@@ -1,4 +1,51 @@
 $(document).ready(function() {
+    // User Authentication
+    $('#loginForm').submit(function(form) {
+        form.preventDefault();
+
+        axios.post("/login", {
+            email: $('#login-email').val(),
+            password: $('#login-password').val()
+        })
+        .then(function(response) {
+            $('.text-danger').text('');
+            $('#login-email').val('');
+            $('#login-password').val('');
+
+            window.location.href = "http://127.0.0.1:8000/";
+        })
+        .catch(function(error) {
+            if (error.response && error.response.status === 422) {
+                loginValidationsErrors(error.response.data.errors);
+            } else if (error.response && error.response.status === 401) {
+                Swal.fire({
+                    title: "Invalid Credentials!",
+                    text: "Check your Email and Password!",
+                    icon: "info"
+                });
+            } else {
+                Swal.fire({
+                    title: "Server Error",
+                    text: "Something Went Wrong!",
+                    icon: "error"
+                });
+            }
+        });
+    });
+
+    // User Authentication Validations Error
+    function loginValidationsErrors(errors) {
+        $('.text-danger').text('');
+
+        if (errors.email) {
+            $('#login-email-error').text(errors.email[0]);
+        }
+
+        if (errors.password) {
+            $('#login-password-error').text(errors.password[0]);
+        }
+    }
+    
     // Member Signup
     $('#signupForm').submit(function(form) {
         form.preventDefault();
@@ -21,7 +68,7 @@ $(document).ready(function() {
             $('#signup-confirm-password').val('');
 
             setTimeout(()=> {
-                window.location.href = "http://127.0.0.1:8000/";
+                window.location.href = "http://127.0.0.1:8000/login";
             }, 1500);
 
             Swal.fire({
