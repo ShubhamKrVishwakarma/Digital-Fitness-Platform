@@ -20,14 +20,18 @@ class User extends Model implements Authenticatable
         $this->hasOne(TrainerDetail::class, 'user_id');
     }
 
+    public function cart() {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/user/' . $this->profile_pic);
         }
         return asset('./images/profile/profile.jpg');
-    }
-
-    public function cart() {
-        return $this->hasMany(Cart::class);
     }
 }
