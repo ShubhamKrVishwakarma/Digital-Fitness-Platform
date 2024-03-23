@@ -6,6 +6,9 @@
     padding-bottom:20px;
 }
 
+#success-message{
+    font-size: 1.5rem;
+}
 /* UPPER SECTION*/
 
 #upper-container {

@@ -57,8 +57,14 @@ class AddProduct extends Component
             "category_id" => $this->category_id
         ]);
 
-        $this->dispatch('addProduct-success');
         $this->dispatch('refreshProductsTable');
+        
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'A New Product Added Successfully!',
+        );
 
         $this->reset();
     }

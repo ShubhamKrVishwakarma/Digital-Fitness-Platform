@@ -17,6 +17,7 @@ class CheckoutController extends Controller
         $req->validate([
             'name' => "required|min:2|max:100",
             'phone' => "required|min:10",
+            'address' => "required",
             'state' => "required|min:2",
             'zip_code' => "required|min:6",
             'city'=> "required|min:2"
@@ -26,9 +27,14 @@ class CheckoutController extends Controller
         
         $order = Order::create([
             'user_id' => auth()->user()->id ,
-            'user_role' =>auth()->user()->role,
-            'status' => 'pending' ,
-            'total_price' => $total_price
+            'phone' => $req->phone,
+            'address' => $req->address ,
+            'state' => $req->state,
+            'city' => $req->city,
+            'zip_code' => $req->zip_code,
+            'amount' => $total_price,
+            'status' => 'pending'
+
         ]);
 
         foreach ($cart as $item) {
@@ -42,7 +48,7 @@ class CheckoutController extends Controller
         }
         Cart::where('user_id' , auth()->user()->id)->delete();
         
-        return redirect()->route('cart')->with('success','order successfull');
+        return redirect()->route('orders');
 
     }
 

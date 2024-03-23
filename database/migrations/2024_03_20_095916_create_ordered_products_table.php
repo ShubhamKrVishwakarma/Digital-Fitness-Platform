@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ordered_products', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger("product_id");
-            $table->float('product_price');
             $table->string('product_name');
+            $table->float('product_price');
             $table->integer('quantity');
-            $table->foreign("product_id")->references("id")->on("products")->cascadeOnDelete();
+            $table->foreign("product_id")->references("id")->on("products");
         });
     }
 
