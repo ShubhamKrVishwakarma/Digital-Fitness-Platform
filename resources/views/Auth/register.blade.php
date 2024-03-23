@@ -62,7 +62,103 @@
             style="background-image: url('https://img.freepik.com/free-photo/dumbbells-set-against-dark-background-floor_60438-3557.jpg?w=1380&t=st=1708407752~exp=1708408352~hmac=5958d83b709212650b3fbc6ae8ec3fb3c85a2ee95f0210bda515dd3fb3c1722e'); background-position: top;">
             <span class="mask bg-gradient-dark opacity-6"></span>
         </div>
-        @livewire('Auth.Trainer')
+        <div class="container">
+            <div class="row mt-n12 justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-10 mx-auto">
+                    <div class="card z-index-0">
+                        <div class="card-header text-center pt-3 pb-0">
+                            <h4 class="m-0">Join as a Trainer</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="registerForm">
+                                <div id="trainer-first-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6>Personal Details</h6>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Full Name</label>
+                                            <input type="text" id="register-name" class="form-control" placeholder="Full Name" required>
+                                            <span class="text-danger" id="register-name-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Email Address</label>
+                                            <input type="email" id="register-email" class="form-control" placeholder="Email Address" required>
+                                            <span class="text-danger" id="register-email-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Date of Birth</label>
+                                            <input type="date" id="register-dob" class="form-control" placeholder="Date Of Birth" required>
+                                            <span class="text-danger" id="register-dob-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Phone Number</label>
+                                            <input type="number" id="register-phone" class="form-control" placeholder="Phone Number" required>
+                                            <span class="text-danger" id="register-phone-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Gender</label>
+                                            <select id="register-gender" class="form-control" required>
+                                                <option value="" selected>Select Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="O">Others</option>
+                                            </select>
+                                            <span class="text-danger" id="register-gender-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Occupation</label>
+                                            <input type="text" id="register-occupation" class="form-control" placeholder="Enter Occupation" required>
+                                            <span class="text-danger" id="register-occupation-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6>Professional Information</h6>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Certificate ID</label>
+                                            <input type="text" id='register-certificate-id' class="form-control" placeholder="Certificate ID" required>
+                                            <span class="text-danger" id="register-certificate-id-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Issued Date</label>
+                                            <input type="date" id='register-issue-date' class="form-control" placeholder="Issued Date" required>
+                                            <span class="text-danger" id="register-issue-date-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Expiry Date</label>
+                                            <input type="date" id='register-expiry-date' class="form-control" placeholder="Expiry Date" required>
+                                            <span class="text-danger" id="register-expiry-date-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Issued Authority</label>
+                                            <input type="text" id='register-issued-authority' class="form-control" placeholder="Issued Authority" required>
+                                            <span class="text-danger" id="register-issued-authority-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Password</label>
+                                            <input type="password" id="register-password" class="form-control" placeholder="Password" required>
+                                            <span class="text-danger" id="register-password-error"></span>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label class="form-label-control">Confirm Password</label>
+                                            <input type="password" id="register-confirm-password" class="form-control" placeholder="Confirm Password" required>
+                                            <span class="text-danger" id="register-confirm-password-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-sm btn-dark m-0">Register as Trainer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </main>
 @endsection
 
