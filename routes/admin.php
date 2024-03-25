@@ -16,9 +16,9 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     
     Route::get("/users", [UserController::class, 'index'])->name("users");
 
-    Route::get("/workouts", function() {
-        return view("Admin.workouts");
-    })->name("workouts");
+    Route::get("/exercises", function() {
+        return view("Admin.exercises");
+    })->name("exercises");
     
     Route::get("/categories", function() {
         return view("Admin.categories");
