@@ -44,7 +44,7 @@
                                             <span class="badge badge-sm bg-gradient-info">Chest</span>
                                         </td>
                                         <td class="text-center">
-                                            <button class="me-2 btn btn-xs btn-dark mb-0" x-on:click="exercisesTable = false, manageExercise = true">Manage</button>
+                                            <button @click="$dispatch('manage-exercise', { id: {{ $exercise->id }} })" class="me-2 btn btn-xs btn-dark mb-0" x-on:click="exercisesTable = false, manageExercise = true">Manage</button>
                                         </td>
                                     </tr>
                                 @endforeach
