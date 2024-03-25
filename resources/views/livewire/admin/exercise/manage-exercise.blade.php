@@ -10,12 +10,12 @@
                     <div class="card-body mb-3">
                         <div class="col-12 mb-3">
                             <div class="px-2" style="width: 300px;">
-                                <img src="../images/team-3.jpg" class="w-100 rounded" alt="Product">
+                                <img src="{{ url('storage') . '/' . $image }}" class="w-100 rounded" alt="Product">
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between align-items-center flex-wrap">
                             <h6>Exercise ID : {{ $id }}</h6>
-                            <a class="btn btn-sm btn-danger my-2">Delete</a>
+                            <button wire:confirm.prompt='Are u Sure?\nEnter Password to "DELETE"|aaaa' wire:click.prevent='delete' x-on:click='manageExercise = false, exercisesTable = true' class="btn btn-sm btn-danger my-2">Delete</button>
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label-control">Exercise Name</label>
@@ -23,8 +23,14 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label-control">Image</label>
-                            <input type="file" wire:model='new_image' class="form-control" required>
+                            <input type="file" wire:model='new_image' class="form-control">
                         </div>
+                        @if ($new_image)
+                            <div class="col-12 mb-2">
+                                <p class="mt-2">Preview:</p>
+                                <img src="{{ $new_image->temporaryUrl() }}" alt="Product Image" class="rounded h-20 w-20">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -44,7 +50,7 @@
                             </select>
                         </div>
                         <div class="col-12 mb-3">
-                            <button type="submit" class="btn btn-sm btn-success m-0 mt-2">Update</button>
+                            <button class="btn btn-sm btn-success m-0 mt-2">Update</button>
                         </div>
                     </div>
                 </div>
