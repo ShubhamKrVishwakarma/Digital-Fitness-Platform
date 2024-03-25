@@ -10,4 +10,11 @@ class Exercise extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'image', 'type', 'equipment'];
+
+    public function getExerciseGif() {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        }
+        return asset('./images/profile/profile.jpg');
+    }
 }
