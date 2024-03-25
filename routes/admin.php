@@ -13,8 +13,12 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     Route::get("/dashboard", function() {
         return view("Admin.dashboard");
     })->name("dashboard");
-
+    
     Route::get("/users", [UserController::class, 'index'])->name("users");
+
+    Route::get("/exercises", function() {
+        return view("Admin.exercises");
+    })->name("exercises");
     
     Route::get("/categories", function() {
         return view("Admin.categories");

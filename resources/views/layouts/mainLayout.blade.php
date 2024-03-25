@@ -11,7 +11,7 @@
     @stack("styles")
 </head>
 
-<body class="bg-light">
+<body>
     <!-- Header -->
     @include('includes.header')
 

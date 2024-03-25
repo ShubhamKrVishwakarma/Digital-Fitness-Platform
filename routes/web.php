@@ -59,6 +59,11 @@ Route::post('/cart/edit/{id}',[
 // Orders Page
 Route::get('/orders',[OrderController::class,'index'])->middleware('auth')->name('orders');
 
+// Order Details
+Route::get('/orders_details', function() {
+    return view('order_details');
+})->middleware('auth')->name('order_details');
+
 // About Page
 Route::get('/about', function() {
     return view('about');
