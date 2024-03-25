@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +16,8 @@ class DatabaseSeeder extends Seeder
             MemberSeeder::class,
             QuerySeeder::class,
             CategorySeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            ExerciseSeeder::class
         ]);
     }
 }

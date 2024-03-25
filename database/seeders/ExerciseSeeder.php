@@ -338,6 +338,6 @@ class ExerciseSeeder extends Seeder
             ],
         ];
 
-        // Exercise::insert($exercises);
+        Exercise::insert($exercises);
     }
 }
