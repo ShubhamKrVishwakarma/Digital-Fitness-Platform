@@ -178,7 +178,7 @@ class ExerciseSeeder extends Seeder
             // Shoulder
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/shoulder-21.gif",
+                "image" => "exercises/shoulder-1.gif",
                 "type" => "shoulder",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -186,7 +186,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL PUSH PRESS",
-                "image" => "exercises/shoulder-22.gif",
+                "image" => "exercises/shoulder-2.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -194,7 +194,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-23.gif",
+                "image" => "exercises/shoulder-3.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -202,7 +202,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM SCISSORS",
-                "image" => "exercises/shoulder-24.gif",
+                "image" => "exercises/shoulder-4.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -210,7 +210,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SIDE ARM RAISES",
-                "image" => "exercises/shoulder-25.gif",
+                "image" => "exercises/shoulder-5.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -218,7 +218,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM CIRCLES",
-                "image" => "exercises/shoulder-26.gif",
+                "image" => "exercises/shoulder-6.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -226,7 +226,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL LATERAL RAISE",
-                "image" => "exercises/shoulder-27.gif",
+                "image" => "exercises/shoulder-7.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -234,7 +234,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-28.gif",
+                "image" => "exercises/shoulder-8.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -242,7 +242,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SMITH MACHINE BEHIND NECK PRESS",
-                "image" => "exercises/shoulder-29.gif",
+                "image" => "exercises/shoulder-9.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -250,7 +250,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SMITH MACHINE SHOULDER PRESS",
-                "image" => "exercises/shoulder-30.gif",
+                "image" => "exercises/shoulder-10.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -258,7 +258,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE LATERAL RAISE",
-                "image" => "exercises/shoulder-31.gif",
+                "image" => "exercises/shoulder-11.gif",
                 "type" => "shoulder",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -266,7 +266,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "45 DEGREE INCLINE ROW",
-                "image" => "exercises/shoulder-32.gif",
+                "image" => "exercises/shoulder-12.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbell, Bench",
                 "created_at" => now(),
@@ -274,7 +274,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER SHOULDER PRESS",
-                "image" => "exercises/shoulder-33.gif",
+                "image" => "exercises/shoulder-13.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -282,7 +282,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED BARBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-34.gif",
+                "image" => "exercises/shoulder-14.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -290,7 +290,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING CLOSE GRIP MILITARY PRESS",
-                "image" => "exercises/shoulder-35.gif",
+                "image" => "exercises/shoulder-15.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -298,7 +298,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BARBELL MILITARY PRESS (OVERHEAD PRESS)",
-                "image" => "exercises/shoulder-36.gif",
+                "image" => "exercises/shoulder-16.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -306,7 +306,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL CHEST SUPPORTED LATERAL RAISES",
-                "image" => "exercises/shoulder-37.gif",
+                "image" => "exercises/shoulder-17.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -314,7 +314,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL 6 WAY RAISE",
-                "image" => "exercises/shoulder-38.gif",
+                "image" => "exercises/shoulder-18.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -322,7 +322,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL 4 WAY LATERAL RAISE",
-                "image" => "exercises/shoulder-39.gif",
+                "image" => "exercises/shoulder-19.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -330,7 +330,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ALTERNATING DUMBBELL FRONT RAISE",
-                "image" => "exercises/shoulder-40.gif",
+                "image" => "exercises/shoulder-20.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbells",
                 "created_at" => now(),

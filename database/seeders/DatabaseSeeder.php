@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Workout;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,8 @@ class DatabaseSeeder extends Seeder
             QuerySeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
-            ExerciseSeeder::class
+            ExerciseSeeder::class,
+            WorkoutPlanSeeder::class
         ]);
     }
 }
