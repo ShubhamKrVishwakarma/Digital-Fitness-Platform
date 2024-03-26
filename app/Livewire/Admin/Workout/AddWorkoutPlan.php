@@ -68,6 +68,8 @@ class AddWorkoutPlan extends Component
 
         $this->reset();
 
+        $this->dispatch('refreshWorkoutPlansTable');
+
         $this->dispatch(
             'alert', 
             icon: 'success',
