@@ -20,6 +20,10 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
         return view("Admin.exercises");
     })->name("exercises");
     
+    Route::get("/workout_plan", function() {
+        return view("Admin.workouts");
+    })->name("workout.plan");
+    
     Route::get("/categories", function() {
         return view("Admin.categories");
     })->name("categories");
