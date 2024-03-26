@@ -18,7 +18,7 @@
     <script>
         document.addEventListener('alert', (event) => {
             Swal.fire({
-                position: "center",
+                position: "top-end",
                 icon: event.detail.icon,
                 title: event.detail.title,
                 text: event.detail.text,

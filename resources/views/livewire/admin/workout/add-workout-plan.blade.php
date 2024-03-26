@@ -34,27 +34,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2">
-                                                <div>
-                                                    <img src="../images/team-3.jpg" class="avatar me-3"
-                                                        alt="Product">
+                                    @foreach ($inputs as $key => $value)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2">
+                                                    <div>
+                                                        <img src="../images/team-3.jpg" class="avatar me-3"
+                                                            alt="Product">
+                                                    </div>
+                                                    <div class="my-auto">
+                                                        <h6 class="mb-0 text-sm">DUMBELL PRESS</h6>
+                                                    </div>
                                                 </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm">DUMBELL PRESS</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <span class="text-xs font-weight-bold">Chest</span>
-                                        </td>
-                                        <td class="text-center">
-                                            <button class="me-2 btn btn-xs btn-danger mb-0"
-                                                data-manage-product="12"><i
-                                                    class="fa-solid fa-xmark"></i></button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="text-xs font-weight-bold">Chest</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <button wire:click.prevent='removeExercise' class="me-2 btn btn-xs btn-danger mb-0"><i class="fa-solid fa-xmark"></i></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -71,57 +71,30 @@
                         </div>
                         <div class="p-3">
                             <ul class="list-group">
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between flex-wrap ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="../images/team-3.jpg" class="avatar-xxl rounded me-3"
-                                                alt="Product">
+                                @forelse ($exercises as $exercise)
+                                    <li x-data="{added : false}" wire:key='{{ $exercise->id }}'
+                                        class="list-group-item border-0 d-flex justify-content-between flex-wrap ps-0 mb-2 border-radius-lg">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <img src="{{ $exercise->getExerciseGif() }}" class="avatar-xxl rounded me-3" alt="Exercise">
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="mb-1 text-dark text-sm">{{ $exercise->name }}</h6>
+                                                <span class="text-xs">{{ $exercise->type }}</span>
+                                            </div>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">DUMBELL INCLINE BENCH PRESS
-                                            </h6>
-                                            <span class="text-xs">Shoulder</span>
+                                        <div class="d-flex mt-3">
+                                            <button wire:click.prevent='addExercise({{ $exercise->id }})' class="btn btn-sm btn-primary my-auto">Add</button>
                                         </div>
-                                    </div>
-                                    <div class="d-flex mt-3">
-                                        <button class="btn btn-sm btn-primary my-auto">Add</button>
-                                    </div>
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between flex-wrap ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="../images/team-3.jpg" class="avatar-xxl rounded me-3"
-                                                alt="Product">
+                                        <div x-show="added" class="d-flex mt-3">
+                                            <button wire:click.prevent='addExercise({{ $exercise->id }})' class="btn btn-sm btn-primary my-auto">Add</button>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">DUMBELL INCLINE BENCH PRESS
-                                            </h6>
-                                            <span class="text-xs">Shoulder</span>
-                                        </div>
+                                    </li>
+                                @empty
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <h6 class="text-dark text-md">No Exercises Available</h6>
                                     </div>
-                                    <div class="d-flex mt-3">
-                                        <button class="btn btn-sm btn-primary my-auto">Add</button>
-                                    </div>
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between flex-wrap ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="../images/team-3.jpg" class="avatar-xxl rounded me-3"
-                                                alt="Product">
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">DUMBELL INCLINE BENCH PRESS
-                                            </h6>
-                                            <span class="text-xs">Shoulder</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-3">
-                                        <button class="btn btn-sm btn-primary my-auto">Add</button>
-                                    </div>
-                                </li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
