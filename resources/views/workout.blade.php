@@ -78,36 +78,70 @@
     </section>
 
     <section class="container" id="trainings">
-        <div class="training-list mt-5">
-            <div class="heading text-light text-center mb-4">
-                <h4>Training-list</h4>
-            </div>
-            <ul class="list-unstyled card bg-dark m-0">
-            @foreach ($workouts as $workout)
-                <li class="list-items bg-dark-subtle mb-4 ">
-                    <div class="training-image">
-                        <img src="{{ $workout->exercises->getExerciseGif()}}" alt="">
-                    </div>
-                    <div class="training-details text-dark card card-body bg-dark-subtle">
-                        <h5>{{ $workout->exercises->name }}</h5>
-                        <div>
-                            <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/repeat.png')}}" alt=""></span>{{ $workout->sets }} rounds</p>
-                            <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/muscle.png')}}" alt=""></span>{{ $workout->reps }} reps</p>
+        <form action="">
+            <div class="training-list mt-5">
+                <div class="heading text-light text-center mb-4">
+                    <h4>Training-list</h4>
+                </div>
+                <ul class="list-unstyled card bg-dark m-0">
+                <!-- @foreach ($workouts as $workout)
+                    <li class="list-items bg-dark-subtle mb-4 ">
+                        <div class="training-image">
+                            <img src="{{ $workout->exercises->getExerciseGif()}}" alt="">
                         </div>
-                        <button class="btn btn-primary ">Log set</button>
-                    </div>
-                </li>
-            @endforeach
-            </ul>
-        </div>
-        <div class="row">
-            <div class="col-md-12 py-3 ">
-                <a href="{{route('workout.completed', $plan_id)}}">
-                    <button class="btn btn-danger btn-lg w-100">Completed</button>
-                </a>
+                        <div class="training-details text-dark card card-body bg-dark-subtle">
+                            <h5>{{ $workout->exercises->name }}</h5>
+                            <div>
+                                <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/repeat.png')}}" alt=""></span>{{ $workout->sets }} rounds</p>
+                                <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/muscle.png')}}" alt=""></span>{{ $workout->reps }} reps</p>
+                            </div>
+                            <button class="btn btn-primary ">Log set</button>
+                        </div>
+                    </li>
+                @endforeach -->
+                @for ($i = 0; $i < $workouts->count(); $i++)
+                    <li class="list-items bg-dark-subtle mb-4 ">
+                        <div class="training-image">
+                            <img src="{{ $workouts[$i]->exercises->getExerciseGif()}}" alt="">
+                        </div>
+                        <div class="training-details text-dark card card-body bg-dark-subtle">
+                            <h5>{{ $workouts[$i]->exercises->name }}</h5>
+                            <div>
+                                <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/repeat.png')}}" alt=""></span>{{ $workouts[$i]->sets }} rounds</p>
+                                <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/muscle.png')}}" alt=""></span>{{ $workouts[$i]->reps }} reps</p>
+                            </div>
+                            {{-- <span class="button-checkbox">
+                                <button type="button" class="btn" data-color="primary">Primary</button>
+                                <input type="checkbox" class="hidden" checked />
+                            </span> --}}
+                            <input type="checkbox" class="log-check" name="{{$i}}" id="" hidden required>
+                            <button type="button" class="log-button btn btn-primary ">Log set</button>
+                        </div>
+                    </li>
+                @endfor
+                </ul>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-12 py-3 ">
+                    <a href="{{route('workout.completed', $plan_id)}}">
+                        <button type="submit" class="btn btn-danger btn-lg w-100">Completed</button>
+                    </a>
+                </div>
+            </div>
+        </form>
     </section>
 
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    const logButton = document.querySelectorAll('.log-button');
+    const logCheck = document.querySelectorAll('.log-check');
+    for(let i=0;i<logButton.length;i++){
+        logButton[i].addEventListener('click', ()=>{
+            logCheck[i].setAttribute('checked',true);
+        });
+    }
+</script>
+@endpush
