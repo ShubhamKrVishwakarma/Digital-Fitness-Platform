@@ -7,8 +7,10 @@ use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserWorkoutLogController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\WorkoutPlansController;
+use App\Models\UserWorkoutLog;
 
 // Home Page
 Route::get('/', function () {
@@ -83,3 +85,5 @@ Route::post('/contact', [QueryController::class, "store"])->name('contact.store'
 Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('workout.plans');
 
 Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
+
+Route::get('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
