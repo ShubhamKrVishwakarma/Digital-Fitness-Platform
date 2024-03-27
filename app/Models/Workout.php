@@ -14,10 +14,10 @@ class Workout extends Model
     protected $fillable = ['plan_id', 'exercise_id', 'sets', 'reps'];
 
     public function plan() {
-        return $this->belongsTo(WorkoutPlan::class);
+        return $this->belongsTo(WorkoutPlan::class , "plan_id" , "id");
     }
 
     public function exercises() {
-        return $this->belongsToMany(Exercise::class);
+        return $this->belongsTo(Exercise::class,"exercise_id","id");
     }
 }

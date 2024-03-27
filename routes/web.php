@@ -4,11 +4,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QueryController;
-use App\Models\Query;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\WorkoutController;
+use App\Http\Controllers\WorkoutPlansController;
 
 // Home Page
 Route::get('/', function () {
@@ -78,3 +78,8 @@ Route::post('/checkout/{total_price}', [CheckoutController::class, 'store'])->mi
 Route::get('/contact', [QueryController::class, "index"])->name('contact');
 
 Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
+
+//Workout Page
+Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('workout.plans');
+
+Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
