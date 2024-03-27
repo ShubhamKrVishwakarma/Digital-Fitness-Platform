@@ -47,7 +47,7 @@
                                                     <span><i class="bi bi-currency-rupee"></i> {{ $order->amount }}</span>
                                                 </td>    
                                                 <td class="text-center">
-                                                    <a href="{{ route('order_details') }}" class="btn btn-primary btn-sm">View</a>
+                                                    <a href="{{ route('orders.details', $order->id) }}" class="btn btn-primary btn-sm">View</a>
                                                 </td>    
                                             </tr> 
                                         @empty
