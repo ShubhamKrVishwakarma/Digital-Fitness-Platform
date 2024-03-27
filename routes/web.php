@@ -62,9 +62,7 @@ Route::post('/cart/edit/{id}',[
 Route::get('/orders',[OrderController::class,'index'])->middleware('auth')->name('orders');
 
 // Order Details
-Route::get('/orders_details', function() {
-    return view('order_details');
-})->middleware('auth')->name('order_details');
+Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->middleware('auth')->name('orders.details');
 
 // About Page
 Route::get('/about', function() {
