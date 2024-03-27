@@ -66,7 +66,7 @@
         </div>
 
         <!-- Products -->
-        <div class="row justify-content-md-center align-items-center flex-wrap">
+        <div class="row justify-content-center align-items-center flex-wrap">
 
         @foreach ($products as $item)
             

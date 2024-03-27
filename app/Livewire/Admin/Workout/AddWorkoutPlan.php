@@ -12,6 +12,7 @@ class AddWorkoutPlan extends Component
    
     public $name;
     public $level;
+    public $duration;
     public $search;
     public $exerciseDetails = [];
     public $sets = [];
@@ -52,12 +53,14 @@ class AddWorkoutPlan extends Component
             "name" => "required|min:5|max:100",
             "level" => "required|in:begineer,intermediate,advanced",
             "sets.*" => "required",
-            "reps.*" => "required"
+            "reps.*" => "required",
+            "duration" => "required"
         ]);
 
         $plan = WorkoutPlan::create([
             "name" => $this->name,
-            "level" => $this->level
+            "level" => $this->level,
+            "duration" => $this->duration
         ]);
 
         $exercises = [];
