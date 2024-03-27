@@ -1,8 +1,8 @@
-<header class="header py-1" style="background-color: #000">
+<header class="header py-1" style="background-color: #1b1b1f">
     <nav class="navbar navbar-expand-lg w-100 navbar-clone fixed">
         <div class="container p-0 px-3 px-sm-0">
             <a class="navbar-brand m-0" href="{{ route('home') }}" id="main-logo">
-                <img src="{{ asset('images/logo/logo.png') }}">
+                <img src="{{ asset('images/logo/logo-3.png') }}">
             </a>
             <button class="navbar-toggler offcanvas-nav-btn text-light" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" type="button">
