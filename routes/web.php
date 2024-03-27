@@ -10,7 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserWorkoutLogController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\WorkoutPlansController;
-use App\Models\UserWorkoutLog;
+
 
 // Home Page
 Route::get('/', function () {
