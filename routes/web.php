@@ -84,4 +84,4 @@ Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('
 
 Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
 
-Route::get('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
+Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
