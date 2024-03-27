@@ -96,6 +96,10 @@
     left: -94%!important;
 }
 
+.dropdown-toggle::after {
+    color: #fff!important;
+}
+
 /*-----------------------------------*\
     # Modal
 \*-----------------------------------*/
