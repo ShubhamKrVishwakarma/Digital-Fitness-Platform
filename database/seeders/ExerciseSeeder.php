@@ -336,6 +336,87 @@ class ExerciseSeeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now()
             ],
+            // Back
+            [
+                "name" => "ROWING MACHINE",
+                "image" => "exercises/back-1.gif",
+                "type" => "back",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEVER FRONT PULLDOWN",
+                "image" => "exercises/back-2.gif",
+                "type" => "back",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "PULL-UP",
+                "image" => "exercises/back-3.gif",
+                "type" => "back",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CABLE REAR PULLDOWN",
+                "image" => "exercises/back-4.gif",
+                "type" => "back",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LAT PULLDOWN",
+                "image" => "exercises/back-5.gif",
+                "type" => "back",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "SEATED CABLE ROW",
+                "image" => "exercises/back-6.gif",
+                "type" => "back",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BARBELL BENT OVER ROW",
+                "image" => "exercises/back-7.gif",
+                "type" => "back",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CABLE STRAIGHT ARM PULLDOWN",
+                "image" => "exercises/back-8.gif",
+                "type" => "back",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEGLESS ROPE CLIMB",
+                "image" => "exercises/back-9.gif",
+                "type" => "back",
+                "equipment" => "Pole, Rope",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEVER T-BAR ROW",
+                "image" => "exercises/back-10.gif",
+                "type" => "back",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
         ];
 
         Exercise::insert($exercises);

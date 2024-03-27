@@ -29,6 +29,13 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label-control">Duration (in minutes)</label>
+                            <input type="number" wire:model='duration' class="form-control">
+                            @error('duration')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="col-12">
                             <h6>Exercises Information</h6>
                         </div>

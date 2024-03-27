@@ -61,49 +61,9 @@
                                 href="{{ route('community') }}">Community</a>
                         </li>
                         <!-- Workout Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light fw-medium"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown">Workout</a>
-                            <div class="dropdown-menu dropdown-menu-md m-0 p-0">
-                                <!-- Begineer -->
-                                <a class="dropdown-item text-body py-3" href="">
-                                    <div class="d-flex align-items-center">
-                                        <i class="bi bi-file-text fs-4 text-primary"></i>
-                                        <div class="ms-3 lh-1">
-                                            <h6 class="mb-1">Beginner</h6>
-                                            <p class="mb-0 fs-6">No workout Experience</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="m-0">
-                                <!-- Intermediate -->
-                                <a class="dropdown-item text-body py-3" href="">
-                                    <div class="d-flex align-items-center">
-                                        <i class="bi bi-clipboard fs-4 text-primary"></i>
-                                        <div class="ms-3 lh-1">
-                                            <h6 class="mb-1">
-                                                Intermediate
-                                                <span class="text-primary ms-1" id="changelog"></span>
-                                            </h6>
-                                            <p class="mb-0 fs-6">Some workout Experience</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="m-0">
-                                <!-- Advanced -->
-                                <a class="dropdown-item text-body py-3" href="">
-                                    <div class="d-flex align-items-center">
-                                        <i class="bi bi-clipboard fs-4 text-primary"></i>
-                                        <div class="ms-3 lh-1">
-                                            <h6 class="mb-1">
-                                                Advanced
-                                                <span class="text-primary ms-1" id="changelog"></span>
-                                            </h6>
-                                            <p class="mb-0 fs-6">Works out Daily</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-medium {{ Route::is('workout.plans') ? 'active' : '' }}"
+                                href="{{ route('workout.plans') }}">Workouts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light fw-medium {{ Route::is('about') ? 'active' : '' }}"
