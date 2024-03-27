@@ -17,7 +17,12 @@
                     </div>
                     <span id="greet">
                         <h2 class="text-light">WELCOME ,</h2>
-                        <p>Roshan</p>
+                        @auth
+                        <p>{{auth()->user()->name}}</p>
+                        @endauth
+                        @guest
+                        <p>Guest</p>
+                        @endguest
                     </span>
                 </div>
             </div>

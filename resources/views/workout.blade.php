@@ -82,14 +82,14 @@
             <div class="heading text-light text-center mb-4">
                 <h4>Training-list</h4>
             </div>
-            <ul class="list-unstyled card bg-dark">
+            <ul class="list-unstyled card bg-dark m-0">
             @foreach ($workouts as $workout)
                 <li class="list-items bg-dark-subtle mb-4 ">
                     <div class="training-image">
                         <img src="{{ $workout->exercises->getExerciseGif()}}" alt="">
                     </div>
                     <div class="training-details text-dark card card-body bg-dark-subtle">
-                        <h5>{{ $workout->plan->name }}</h5>
+                        <h5>{{ $workout->exercises->name }}</h5>
                         <div>
                             <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/repeat.png')}}" alt=""></span>{{ $workout->sets }} rounds</p>
                             <p class="mb-1"><span class="icons me-1"><img src="{{asset('./images/workout/muscle.png')}}" alt=""></span>{{ $workout->reps }} reps</p>
@@ -99,6 +99,13 @@
                 </li>
             @endforeach
             </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12 py-3 ">
+                <a href="{{route('workout.completed', $plan_id)}}">
+                    <button class="btn btn-danger btn-lg w-100">Completed</button>
+                </a>
+            </div>
         </div>
     </section>
 
