@@ -16,11 +16,12 @@ class WorkoutPlanSeeder extends Seeder
         $plan = WorkoutPlan::create([
             "name" => "Begineer's Chest Workout",
             "level" => "begineer",
-            "duration" => 40
+            "duration" => 40,
+            "calories" => 450
         ]);
-
+        
         $workouts = [];
-
+        
         for ($i=1;$i<=6;$i++) {
             $workouts[] = [
                 "plan_id" => $plan->id,
@@ -31,15 +32,16 @@ class WorkoutPlanSeeder extends Seeder
         }
 
         Workout::insert($workouts);
-
+        
         $plan2 = WorkoutPlan::create([
             "name" => "Begineer's Shoulder Workout",
             "level" => "begineer",
-            "duration" => 30
+            "duration" => 30,
+            "calories" => 336
         ]);
         
         $workouts2 = [];
-
+        
         for ($i=11;$i<=16;$i++) {
             $workouts2[] = [
                 "plan_id" => $plan2->id,
@@ -48,13 +50,14 @@ class WorkoutPlanSeeder extends Seeder
                 "reps" => 8,
             ];
         }
-
+        
         Workout::insert($workouts2);
-
+        
         $plan3 = WorkoutPlan::create([
             "name" => "Begineer's Back Workout",
             "level" => "begineer",
-            "duration" => 30
+            "duration" => 30,
+            "calories" => 412
         ]);
 
         $workouts3 = [];
