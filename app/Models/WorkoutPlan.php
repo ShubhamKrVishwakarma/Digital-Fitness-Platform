@@ -9,7 +9,7 @@ class WorkoutPlan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'level', 'duration'];
+    protected $fillable = ['name', 'level', 'duration','calories'];
 
     public function workouts() {
         return $this->hasMany(Workout::class);
