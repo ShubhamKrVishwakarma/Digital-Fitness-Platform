@@ -77,6 +77,7 @@
                 <div class="image">
                     <img src="{{asset('./images/workout/banner3.png')}}" alt="">
                 </div>
+                @auth
                 <div class="data align-self-center w-50">
                     <div class="heading">
                         <h5 class="display-4 mb-5">Today's workout</h5>
@@ -90,6 +91,21 @@
                         <span class="small-icons mb-1 "><img src="{{asset('./images/workout/edit (1).png')}}" alt=""></span>
                     </div>
                 </div>
+                @endauth
+                @guest
+                <div class="data align-self-center w-50">
+                    <div class="heading">
+                        <h5 class="display-4 mb-5">Personalized Workout</h5>
+                    </div>
+                    <p id="workout-parts">Chest, Shoulder, <br>Back</p>
+                    <p id="time">All For Free</p>
+                    <div class="d-flex flex-wrap-reverse ">
+                        <a href="{{route('login')}}">
+                            <button class="btn btn-primary me-4">Get Started</button>
+                        </a>
+                    </div>
+                </div>
+                @endguest
             </div>
         </section>
 
