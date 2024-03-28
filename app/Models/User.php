@@ -28,7 +28,7 @@ class User extends Model implements Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function chat() {
+    public function chats() {
         return $this->hasMany(Chat::class);
     }
 
