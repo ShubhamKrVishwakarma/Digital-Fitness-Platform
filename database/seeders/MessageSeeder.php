@@ -72,5 +72,35 @@ class MessageSeeder extends Seeder
         }
 
         Message::insert($messages);
+
+        $messages = [];
+        
+        for ($i=1;$i<=2;$i++) {
+            $messages[] = [
+                "chat_id" => 1,
+                "sender_id" => 2,
+                "reciever_id" => 24,
+                "message" => fake()->text(),
+                "created_at" => now(),
+                "updated_at" => now()
+            ];
+        }
+
+        Message::insert($messages);
+
+        $messages = [];
+        
+        for ($i=1;$i<=3;$i++) {
+            $messages[] = [
+                "chat_id" => 1,
+                "sender_id" => 24,
+                "reciever_id" => 2,
+                "message" => fake()->text(),
+                "created_at" => now(),
+                "updated_at" => now()
+            ];
+        }
+
+        Message::insert($messages);
     }
 }
