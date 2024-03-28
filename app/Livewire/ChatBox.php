@@ -17,7 +17,6 @@ class ChatBox extends Component
     
     #[On("chatt")]
     public function chatbox_listen($id){
-        // $this->messages = Message::all();
         $this->messages = Message::where("chat_id",$id)->get();
     }
 }
