@@ -1,5 +1,5 @@
 <div x-show="addMember" style="display: none">
-    <form wire:submit='addMember' enctype="multipart/form-data">
+    <form wire:submit='create' enctype="multipart/form-data">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">Add New Member</h3>
@@ -120,7 +120,7 @@
                                 <button class="btn btn-sm btn-success m-0 text-white">Processing....</button>
                             </div>
                             <div wire:loading.remove class="col-md-12">
-                                <button class="btn btn-sm btn-primary m-0">Add Member</button>
+                                <button type="submit" class="btn btn-sm btn-primary m-0">Add Member</button>
                             </div>
                         </div>
                     </div>
