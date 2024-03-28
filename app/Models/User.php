@@ -28,6 +28,10 @@ class User extends Model implements Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function chat() {
+        return $this->hasMany(Chat::class);
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/user/' . $this->profile_pic);
