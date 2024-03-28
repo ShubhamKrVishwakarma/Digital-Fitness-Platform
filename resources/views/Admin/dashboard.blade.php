@@ -13,12 +13,12 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Users</p>
                                 <h5 class="font-weight-bolder">
-                                    230
+                                    {{ $total_users }}
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                     since yesterday
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -38,12 +38,12 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Todal Products</p>
                                 <h5 class="font-weight-bolder">
-                                    2,300
+                                    {{ $total_products }}
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     since last week
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -63,12 +63,12 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Orders</p>
                                 <h5 class="font-weight-bolder">
-                                    +3,462
+                                    {{ $total_orders }}
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">+2%</span>
                                     than last month
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -88,11 +88,11 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Queries</p>
                                 <h5 class="font-weight-bolder">
-                                    34
+                                    {{ $total_queries }}
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
