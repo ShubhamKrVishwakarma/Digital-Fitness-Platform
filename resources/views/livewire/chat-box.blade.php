@@ -24,11 +24,12 @@
                 </div> --}}
                 {{-- <div class="col-4 col-sm-5 col-md-5"> --}}
                 @if (auth()->user()->id === $message->sender_id)
-                    <div class="row text-end" style="widt:100px">
+                    <div class="row text-end my-2" style="widt:100px">
+                        <div class="col-md-3"></div>
                         <div class="col-2 col-sm-1 col-md-1">
                             <img src="" alt="">
                         </div>
-                        <div class="col-md-12 text-end">
+                        <div class="col-md-7 text-end">
                             <p>
                                 {{ $message->message }}
                                 {{-- <span>{{ $message->created_at->format('H:i A') }}</span> --}}
@@ -36,13 +37,14 @@
                         </div>
                     </div>
                 @else
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row my-2">
+                        <div class="col-md-7">
                             <p>
                                 {{ $message->message }}
                                 {{-- <span>{{ $message->created_at->format('h:i A') }}</span> --}}
                             </p>
                         </div>
+                        <div class="col-md-3"></div>
                     </div>
                 @endif
             @endforeach
