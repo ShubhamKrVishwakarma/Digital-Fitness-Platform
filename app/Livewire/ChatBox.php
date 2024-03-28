@@ -13,6 +13,7 @@ class ChatBox extends Component
     public $message;
     public $chat_id;
     public $receiver_id;
+    public $name;
 
     public function render()
     {
@@ -27,9 +28,12 @@ class ChatBox extends Component
         if (auth()->user()->role === "trainer") {
             # code...
             $this->receiver_id = $chat->user_id;
+            $this->name = $chat->member->name;
+            
         }
         else{
             $this->receiver_id = $chat->trainer_id;
+            $this->name = $chat->trainer->name;
         }
     }
 
@@ -45,6 +49,6 @@ class ChatBox extends Component
             "message" => $this->message,
         ]);
 
-        $this->reset();
+        $this->reset("message");
     }
 }

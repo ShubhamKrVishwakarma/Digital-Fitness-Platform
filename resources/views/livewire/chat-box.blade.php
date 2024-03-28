@@ -6,7 +6,7 @@
                     <img src="{{ asset('admin.jpg') }}" class="friend-pic" />
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-7">
-                    <div class="name">Any Name</div>
+                    <div class="name">{{ $name }}</div>
                     <div class="under-name">This is some message text...</div>
                 </div>
                 <div class="col-4 col-sm-4 d-md-none col-lg-4 d-flex justify-content-end align-items-center"
