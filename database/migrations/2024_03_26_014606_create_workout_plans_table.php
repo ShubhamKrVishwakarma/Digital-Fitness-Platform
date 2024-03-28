@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('level', ['begineer', 'intermediate', 'advanced']);
+            $table->integer('duration');
+            $table->integer('calories');
             $table->timestamps();
         });
     }

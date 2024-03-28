@@ -1,4 +1,4 @@
-<footer class="footer border-top border-2 border-white py-4" style="background-color: #1b1b1f">
+<footer class="footer py-4" style="background-color: #1b1b1f">
     <div class="container">
         <!-- Footer 4 column -->
         <div class="row">

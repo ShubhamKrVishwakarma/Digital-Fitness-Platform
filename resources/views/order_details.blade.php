@@ -60,60 +60,62 @@
                 {{-- Ordered Product --}}
                 <div class="card border shadow-none">
                     <div class="card-body">
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="https://www.bootdey.com/image/380x380/008B8B/000000" class="avatar-lg rounded">
-                            </div>
-                            <div class="flex-grow-1 align-self-center overflow-hidden">
+                        @foreach ($ordered_products as $ordered_product)
+                            <div>
+                                <div class="d-flex align-items-start border-bottom pb-3">
+                                    <div class="me-4">
+                                        <img src="{{ $ordered_product->product->getProductUrl() }}" class="avatar-lg rounded">
+                                    </div>
+                                    <div class="flex-grow-1 align-self-center overflow-hidden">
+                                        <div>
+                                            <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">{{ $ordered_product->product_name }}</a></h5>
+                                            <p class="text-muted mb-0">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                            </p>
+                                            <p class="mb-0 mt-1">Category : <span class="fw-medium">{{ $ordered_product->product->category->name }}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0 ms-2">
+                                        <ul class="list-inline mb-0 font-size-16">
+                                            <li class="list-inline-item">
+                                                <a href="#" class="text-muted px-1">
+                                                    <i class="mdi mdi-trash-can-outline"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="text-muted px-1">
+                                                    <i class="mdi mdi-heart-outline"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
                                 <div>
-                                    <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">Waterproof
-                                            Mobile Phone </a></h5>
-                                    <p class="text-muted mb-0">
-                                        <i class="bi bi-star-fill text-warning"></i>
-                                        <i class="bi bi-star-fill text-warning"></i>
-                                        <i class="bi bi-star-fill text-warning"></i>
-                                        <i class="bi bi-star-fill text-warning"></i>
-                                        <i class="bi bi-star-fill text-warning"></i>
-                                    </p>
-                                    <p class="mb-0 mt-1">Category : <span class="fw-medium">T-shirt</span></p>
-                                </div>
-                            </div>
-                            <div class="flex-shrink-0 ms-2">
-                                <ul class="list-inline mb-0 font-size-16">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-muted px-1">
-                                            <i class="mdi mdi-trash-can-outline"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-muted px-1">
-                                            <i class="mdi mdi-heart-outline"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="mb-2">Price: &#8377; 450</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="mt-3">
-                                        <p class="mb-2">Quantity: 4</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="mt-3">
-                                        <p class="mb-2">Total: &#8377; 4345</p>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mt-3">
+                                                <p class="mb-2">Price: &#8377; {{ $ordered_product->product_price }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="mt-3">
+                                                <p class="mb-2">Quantity: {{ $ordered_product->quantity }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mt-3">
+                                                <p class="mb-2">Total: &#8377; {{ $ordered_product->order->amount }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
                 {{-- Order Footer --}}
@@ -142,7 +144,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Sub Total :</td>
-                                            <td class="text-end">$ 780</td>
+                                            <td class="text-end">444</td>
                                         </tr>
                                         <tr>
                                             <td>Discount : </td>

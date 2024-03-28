@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\User;
 
 use App\Models\TrainerDetail;
 use App\Models\User;
+use Illuminate\Support\Facades\Date;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -76,21 +77,21 @@ class ManageUser extends Component
             $this->validate([
                 'name' => 'required|min:2|max:100',
                 'gender' => 'required|in:M,F,O',
-                'dob' => 'required|date',
-                'phone' => 'required|max:10',
+                "dob" => "required|date|before_or_equal:" . Date::now()->subYears(18)->format('d-m-Y'),
+                'phone' => 'required|min:10|max:12',
                 'address' => 'nullable',
                 'city' => 'nullable|min:2|max:100',
-                'zip_code' => 'nullable|max:10',
-                'state' => 'nullable|max:100',
-                'bio' => 'nullable|max:255',
+                'zip_code' => 'nullable|min:6|max:12',
+                'state' => 'nullable|min:2|max:100',
+                'bio' => 'nullable|min:5|max:255',
                 'new_profile_pic' => 'nullable|sometimes|image',
-                'password' => 'nullable|min:8',
-                'confirm_password' => 'nullable|min:8|same:password',
+                'password' => 'nullable|min:8|max:20',
+                'confirm_password' => 'nullable|min:8|max:20|same:password',
                 'occupation' => 'required|min:2|max:100',
-                'certificate_id' => 'required|max:100',
+                'certificate_id' => 'required|min:5|max:50',
                 'issue_date' => 'required|date',
                 'expiry_date' => 'required|date|after:issue_date',
-                'issued_authority' => 'required|max:100',
+                'issued_authority' => 'required|min:2|max:200',
             ]);
 
             $user = User::findOrFail($this->id);
@@ -118,6 +119,7 @@ class ManageUser extends Component
                 $fileName = $this->id . '.' . $fileExtension;
                 $this->new_profile_pic->storeAs('public/user', $fileName);
                 $user->profile_pic = $fileName;
+                $this->new_profile_pic = null;
             }
 
             if (!empty($this->password)) {
@@ -129,16 +131,16 @@ class ManageUser extends Component
             $this->validate([
                 'name' => 'required|min:2|max:100',
                 'gender' => 'required|in:M,F,O',
-                'dob' => 'required|date',
-                'phone' => 'nullable|max:10',
+                "dob" => "required|date|before_or_equal:" . Date::now()->subYears(18)->format('d-m-Y'),
+                'phone' => 'required|min:10|max:12',
                 'address' => 'nullable',
                 'city' => 'nullable|min:2|max:100',
-                'zip_code' => 'nullable|max:10',
-                'state' => 'nullable|max:100',
-                'bio' => 'nullable|max:255',
+                'zip_code' => 'nullable|min:6|max:12',
+                'state' => 'nullable|min:2|max:100',
+                'bio' => 'nullable|min:5|max:255',
                 'new_profile_pic' => 'nullable|sometimes|image',
-                'password' => 'nullable|min:8',
-                'confirm_password' => 'nullable|min:8|same:password',
+                'password' => 'nullable|min:8|max:20',
+                'confirm_password' => 'nullable|min:8|max:20|same:password'
             ]);
 
             $user = User::findOrFail($this->id);
@@ -157,6 +159,7 @@ class ManageUser extends Component
                 $fileName = $this->id . '.' . $fileExtension;
                 $this->new_profile_pic->storeAs('public/user', $fileName);
                 $user->profile_pic = $fileName;
+                $this->new_profile_pic = null;
             }
 
             if (!empty($this->password)) {

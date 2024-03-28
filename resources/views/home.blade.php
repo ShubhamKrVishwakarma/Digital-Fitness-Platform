@@ -21,7 +21,7 @@
                 Get started with out Personalized Workouts
             </p>
             <div class="banner-button mt-4">
-                <button class="bttn bttn-primary">Get Started</button>
+                <a href="{{ route('workout.plans') }}" class="bttn bttn-primary text-decoration-none">Get Started</a>
             </div>
         </div>
     </section>

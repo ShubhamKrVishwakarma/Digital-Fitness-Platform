@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email', 100)->unique();
-            $table->string('phone', 10)->nullable();
+            $table->string('phone', 12)->nullable();
             $table->string('password');
             $table->enum('gender', ['M', 'F', 'O'])->nullable();
             $table->date('dob')->nullable();
             $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
-            $table->string('state', 50)->nullable();
-            $table->string('zip_code', 10)->nullable();
+            $table->string('state', 100)->nullable();
+            $table->string('zip_code', 12)->nullable();
             $table->string('bio', 255)->nullable();
             $table->string('profile_pic')->nullable();
             $table->enum('role', ['member', 'trainer', 'pending', 'admin'])->default('member');

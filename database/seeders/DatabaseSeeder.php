@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             ExerciseSeeder::class,
-            WorkoutPlanSeeder::class
+            WorkoutPlanSeeder::class,
+            OrderSeeder::class
         ]);
     }
 }

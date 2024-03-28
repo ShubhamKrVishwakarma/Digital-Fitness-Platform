@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-<section>
+<section style="background-color: whitesmoke">
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
             @if ($cart->count() < 1) <div class="col-12 d-flex justify-content-center align-items-center"
@@ -47,8 +47,9 @@
                                             class="img-fluid rounded-3" alt="Dumbbells">
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <h6 class="text-muted">{{ $item->product->category->name }}</h6>
-                                        {{-- <h6 class="text-black mb-0">Dumbbells</h6> --}}
+                                        <a href="#" class="text-dark text-decoration-none">
+                                            {{ $item->product->name }}
+                                        </a>
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-2">
                                         <form method="POST" action="{{ route('cart.update', $item->product_id) }}">

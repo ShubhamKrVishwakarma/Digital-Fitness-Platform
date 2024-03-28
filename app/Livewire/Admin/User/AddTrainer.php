@@ -4,76 +4,67 @@ namespace App\Livewire\Admin\User;
 
 use App\Models\User;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
 use App\Models\TrainerDetail;
+use Illuminate\Support\Facades\Date;
 
 class AddTrainer extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required|min:2|max:100', as: 'Name')]
     public $name;
-
-    #[Rule('required|email|unique:users,email|min:5|max:100', as: 'Email')]
     public $email;
-
-    #[Rule('required|in:M,F,O', as: 'Gender')]
     public $gender;
-
-    #[Rule('required|date', as: 'Date of Birth')]
     public $dob;
-    
-    #[Rule('nullable|max:10', as: 'Phone Number')]
     public $phone;
-
-    #[Rule('nullable', as: 'Address')]
     public $address;
-
-    #[Rule('nullable|min:2|max:100', as: 'City')]
     public $city;
-    
-    #[Rule('nullable|max:10', as: 'Zip Code')]
     public $zip_code;
-
-    #[Rule('nullable|max:100', as: 'State')]
     public $state;
-
-    #[Rule('nullable|max:255', as: 'Bio')]
     public $bio;
-
-    #[Rule('nullable', as: 'Profile Picture')]
     public $profile_pic;
-    
-    #[Rule('required|min:2|max:100', as: 'Occupation')]
     public $occupation;
-
-    #[Rule('required|max:100', as: 'Certificate ID')]
     public $certificate_id;
-
-    #[Rule('required|date', as: 'Issue Date')]
     public $issue_date;
-    
-    #[Rule('required|date|after:issue_date', as: 'Expiry Date')]
     public $expiry_date;
-
-    #[Rule('required|max:100', as: 'Issued Authority')]
     public $issued_authority;
-
-    #[Rule('required|min:8', as: 'Password')]
     public $password;
-    
-    #[Rule('required|min:8|same:password', as: 'Password Confirmation')]
     public $confirm_password;
 
+    /**
+     * Render the Component
+     * @return view
+     */
     public function render()
     {
         return view('livewire.admin.user.add-trainer');
     }
 
-    
+    /**
+     * Add New Member
+     * Dispatch Events
+     */
     public function addTrainer() {
-        $this->validate();
+        $this->validate([
+            "name" => "required|min:2|max:100",
+            "email" => "required|email|unique:users,email|min:5|max:100",
+            "gender" => "required|in:M,F,O",
+            "dob" => "required|date|before_or_equal:" . Date::now()->subYears(18)->format('d-m-Y'),
+            "phone" => "nullable|min:10|max:12",
+            "address" => "nullable",
+            "city" => "nullable|min:2|max:100",
+            "zip_code" => "nullable|min:6|max:12",
+            "state" => "nullable|min:2|max:100",
+            "bio" => "nullable|min:5|max:255",
+            "profile_pic" => "nullable|sometimes|image",
+            "occupation" => "required|min:2|max:100",
+            "certificate_id" => "required|min:5|max:50",
+            "issue_date" => "required|date",
+            "expiry_date" => "required|date|after:issue_date",
+            "issued_authority" => "required|min:2|max:200",
+            "password" => "required|min:8|max:20",
+            "confirm_password" => "required|min:8|max:20|same:password"
+        ]);
         
         $user = new User();
         $user->name = $this->name;
@@ -87,6 +78,7 @@ class AddTrainer extends Component
         $user->state = $this->state;
         $user->bio = $this->bio;
         $user->role = "pending";
+        $user->rating = 0;
         $user->password = $this->password;
 
         $user->save();

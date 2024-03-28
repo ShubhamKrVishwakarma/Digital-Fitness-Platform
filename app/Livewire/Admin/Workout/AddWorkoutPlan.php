@@ -5,17 +5,18 @@ namespace App\Livewire\Admin\Workout;
 use App\Models\Exercise;
 use App\Models\Workout;
 use App\Models\WorkoutPlan;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class AddWorkoutPlan extends Component
 {
-    #[Rule('required|min:5|max:100')]
+   
     public $name;
-    #[Rule('required|in:begineer,intermediate,advanced')]
     public $level;
+    public $duration;
     public $search;
     public $exerciseDetails = [];
+    public $sets = [];
+    public $reps = [];
 
     public function render()
     {
@@ -27,6 +28,8 @@ class AddWorkoutPlan extends Component
     public function addExercise($exerciseId) {
         $exercise = Exercise::findOrFail($exerciseId);
         $this->exerciseDetails[] = $exercise;
+        $this->sets[$exercise->id] = null;
+        $this->reps[$exercise->id] = null;
         $this->dispatch(
             'alert', 
             icon: 'success',
@@ -46,11 +49,18 @@ class AddWorkoutPlan extends Component
     }
 
     public function addWorkoutPlan() {
-        $this->validate();
+        $this->validate([
+            "name" => "required|min:5|max:100",
+            "level" => "required|in:begineer,intermediate,advanced",
+            "sets.*" => "required",
+            "reps.*" => "required",
+            "duration" => "required"
+        ]);
 
         $plan = WorkoutPlan::create([
             "name" => $this->name,
-            "level" => $this->level
+            "level" => $this->level,
+            "duration" => $this->duration
         ]);
 
         $exercises = [];
@@ -59,8 +69,8 @@ class AddWorkoutPlan extends Component
             $exercises [] = [
                 "plan_id" => $plan->id,
                 "exercise_id" => $exercise->id,
-                "sets" => 10,
-                "reps" => 2
+                "sets" => $this->sets[$exercise->id],
+                "reps" => $this->reps[$exercise->id]
             ];
         }
 

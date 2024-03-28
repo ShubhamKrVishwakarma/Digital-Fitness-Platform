@@ -13,6 +13,23 @@
 }
 
 /*-----------------------------------*\
+    # Custome Scrollbar
+\*-----------------------------------*/
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+/*-----------------------------------*\
     # Custom Variables & Classes
 \*-----------------------------------*/
 
@@ -94,6 +111,10 @@
 
 .dropdown-menu[data-bs-popper] {
     left: -94%!important;
+}
+
+.dropdown-toggle::after {
+    color: #fff!important;
 }
 
 /*-----------------------------------*\
