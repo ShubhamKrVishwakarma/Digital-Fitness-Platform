@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             MemberSeeder::class,
+            TrainerSeeder::class,
             QuerySeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             ExerciseSeeder::class,
             WorkoutPlanSeeder::class,
-            OrderSeeder::class
+            OrderSeeder::class,
+            ChatSeeder::class,
+            MessageSeeder::class
         ]);
     }
 }
