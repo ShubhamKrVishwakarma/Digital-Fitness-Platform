@@ -120,6 +120,12 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                @if ($new_profile_pic)
+                                    <div class="col-md-12 mb-3">
+                                        <p class="mt-2">Preview:</p>
+                                        <img src="{{ $new_profile_pic->temporaryUrl() }}" class="rounded h-20 w-20">
+                                    </div>
+                                @endif
                                 <div class="col-md-12 mb-3">
                                     <label class="form-control-label">New Password</label>
                                     <input type="password" wire:model='password' class="form-control" placeholder="New Password">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -10,10 +11,8 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
         return redirect()->route('admin.dashboard');
     });
     
-    Route::get("/dashboard", function() {
-        return view("Admin.dashboard");
-    })->name("dashboard");
-    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard");
+
     Route::get("/users", [UserController::class, 'index'])->name("users");
 
     Route::get("/exercises", function() {
