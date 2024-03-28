@@ -61,12 +61,15 @@
                 <input type="button" value="Send" class="rounded-pill "
                     style="background-color:#3f51aa; color: #f8f8f8;">
             </div> --}}
-            <div class="input-group my-2">
-                <form wire:submit="sendMessage">
-                <input type="text" wire:model="message" class="form-control" placeholder="Type here" required>
-                <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+            <form class="w-100">
+                <div class="input-group my-2">
+                    <input type="text" wire:model="message" class="form-control" placeholder="Type here" required>
+                    <button wire:click.prevent='sendMessage' class="btn btn-primary" type="submit">Send Message</button>
+                </div>
+                @error('message')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </form>
-            </div>
         </div>
     </div>
 
