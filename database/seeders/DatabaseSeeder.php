@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             MemberSeeder::class,
+            TrainerSeeder::class,
             QuerySeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
