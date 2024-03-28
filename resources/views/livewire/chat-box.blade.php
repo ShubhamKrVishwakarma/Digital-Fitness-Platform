@@ -1,5 +1,5 @@
-<div class="col-md-8 pl-0 " id="side-2">
-    <div id="chatPanel" class="card h-100" style="display: none;">
+<div  class="col-md-8 pl-0 " id="side-2">
+    <div x-show="chatBox" id="chatPanel" class="card h-100" style="display: none;">
         <div class="card-header">
             <div class="row ">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-1">
@@ -18,28 +18,41 @@
 
         {{-- User Message --}}
         <div class="card-body">
-            <div class="row">
+            @foreach ($messages as $message)
+    
+            
                 {{-- <div class="col-2 col-sm-1 col-md-1">
                     <img src="" alt="">
                 </div> --}}
                 {{-- <div class="col-4 col-sm-5 col-md-5"> --}}
-                <div class="col-md-12">
-                    <p>werwerwer
-                        <span>1:28 pm</span>
-                    </p>
+                    @if (auth()->user()->id === $message->sender_id)
+                    <div class="row text-end" style="widt:100px">
+                        <div class="col-2 col-sm-1 col-md-1">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-md-12 text-end">
+                            <p>
+                                {{ $message->message }}
+                                <span>{{ $message->created_at->format("H:i A")}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    @else
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            {{ $message->message }}
+                            <span>{{ $message->created_at->format("h:i A") }}</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-end" style="widt:100px">
-                {{-- <div class="col-2 col-sm-1 col-md-1">
-                    <img src="" alt="">
-                </div> --}}
-                <div class="col-md-12 text-end">
-                    <p>werwerwer
-                        <span>1:28 pm</span>
-                    </p>
-                </div>
-            </div>
+
+                    @endif
+                
+            
+            @endforeach
         </div>
+
 
         <div class="card-footer  d-flex justify-content-between">
             {{-- Dhanraj --}}

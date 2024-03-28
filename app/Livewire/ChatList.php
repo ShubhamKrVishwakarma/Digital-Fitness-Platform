@@ -11,12 +11,7 @@ class ChatList extends Component
     {
         
         return view('livewire.chat-list', [
-            "Users" => User::all()
+            "Users" => User::where("id" , "!=" , auth()->user()->id )->get()
         ]);
-    }
-
-    public function message()
-    {
-
     }
 }

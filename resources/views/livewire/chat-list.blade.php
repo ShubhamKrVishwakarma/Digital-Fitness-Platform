@@ -1,4 +1,4 @@
-<div class="col-md-4 pr-0 d-none d-md-block" id="side-1">
+<div x-show="chatList" class="col-md-4 pr-0 d-none d-md-block" id="side-1">
     <div class="card h-100">
         <div class="card-header">
             {{-- <div class="row">
@@ -16,7 +16,7 @@
                 </li>
                 @foreach ($Users as $user)
                     
-                <li wire:key="{{ $user->id }}" wire:click.prevent="message" class="list-group-item list-group-item-action" onclick="StartChat(1)">
+                <li wire:key="{{ $user->id }}" @click="$dispatch('chatt', { id: {{ 1 }} })" x-on:click="chatList=false , chatBox=true" class="list-group-item list-group-item-action" onclick="StartChat(1)">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-2 col-md-2">
                             <img src="{{ $user->getProfileUrl() }}" class="friend-pic" />
