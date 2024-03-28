@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Message;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MessageSeeder extends Seeder
@@ -19,7 +18,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 2,
-                "reciever_id" => 21,
+                "receiver_id" => 21,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
@@ -34,7 +33,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 21,
-                "reciever_id" => 2,
+                "receiver_id" => 2,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
@@ -49,7 +48,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 2,
-                "reciever_id" => 21,
+                "receiver_id" => 21,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
@@ -64,7 +63,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 21,
-                "reciever_id" => 2,
+                "receiver_id" => 2,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
@@ -79,7 +78,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 2,
-                "reciever_id" => 24,
+                "receiver_id" => 24,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
@@ -94,7 +93,7 @@ class MessageSeeder extends Seeder
             $messages[] = [
                 "chat_id" => 1,
                 "sender_id" => 24,
-                "reciever_id" => 2,
+                "receiver_id" => 2,
                 "message" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()

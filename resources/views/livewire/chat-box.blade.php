@@ -62,8 +62,10 @@
                     style="background-color:#3f51aa; color: #f8f8f8;">
             </div> --}}
             <div class="input-group my-2">
-                <input type="text" class="form-control" placeholder="Type here">
+                <form wire:submit="sendMessage">
+                <input type="text" wire:model="message" class="form-control" placeholder="Type here" required>
                 <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+            </form>
             </div>
         </div>
     </div>
