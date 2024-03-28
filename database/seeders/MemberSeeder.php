@@ -21,10 +21,11 @@ class MemberSeeder extends Seeder
                 "phone" => fake()->numerify('##########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
                 "gender" => fake()->randomElement(['M', 'F', 'O']),
-                "dob" => fake()->date(),
+                "dob" => "2005-10-10",
                 "address" => fake()->address(),
                 "city" => fake()->city(),
-                "zip_code" => fake()->countryCode(),
+                "zip_code" => "98765432",
+                "state" => "Delhi",
                 "created_at" => now(),
                 "updated_at" => now(),
             ];

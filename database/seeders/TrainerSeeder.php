@@ -21,19 +21,20 @@ class TrainerSeeder extends Seeder
                 "phone" => fake()->numerify('##########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
                 "gender" => fake()->randomElement(['M', 'F', 'O']),
-                "dob" => fake()->date(),
+                "dob" => "2004-01-10",
                 "address" => fake()->address(),
                 "city" => fake()->city(),
-                "zip_code" => fake()->countryCode(),
+                "zip_code" => "123456",
+                "state" => "West Bengal",
                 "role" => "trainer"
             ]);
 
             TrainerDetail::create([
                 "user_id" => $user->id,
-                "occupation" => fake()->jobTitle(),
-                "certificate_id" => fake()->randomElement(),
-                "issue_date" => fake()->date(),
-                "expiry_date" => fake()->date(),
+                "occupation" => "GYM Trainer",
+                "certificate_id" => "CSGW325HF",
+                "issue_date" => "2014-10-05",
+                "expiry_date" => "2020-11-12",
                 "issued_authority" => "West Bengal"
             ]);
         }
