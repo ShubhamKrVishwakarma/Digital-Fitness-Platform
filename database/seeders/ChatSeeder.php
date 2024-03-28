@@ -19,8 +19,13 @@ class ChatSeeder extends Seeder
         ]);
 
         Chat::create([
-            "user_id" => 3,
+            "user_id" => 2,
             "trainer_id" => 22
+        ]);
+
+        Chat::create([
+            "user_id" => 2,
+            "trainer_id" => 24
         ]);
     }
 }
