@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
     protected $fillable = ['user_id','trainer_id'];
 
     public function member(){
