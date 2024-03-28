@@ -49,7 +49,7 @@ class AddMember extends Component
             "city" => "nullable|min:2|max:100",
             "zip_code" => "nullable|min:6|max:12",
             "state" => "nullable|min:2|max:100",
-            "bio" => "nullable|max:255",
+            "bio" => "nullable|min:5|max:255",
             "profile_pic" => "nullable|sometimes|image",
             "password" => "required|min:8|max:20",
             "confirm_password" => "required|min:8|max:20|same:password"
