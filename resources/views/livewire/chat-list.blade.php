@@ -14,22 +14,45 @@
                 <li class="list-group-item list-group-item-action" style="background-color:#f8f8f8;">
                   <input type="text" placeholder="Search or new chat" class="form-control rounded-pill" />
                 </li>
+                @if ($trainer)
                 @foreach ($Users as $user)
                     
-                <li wire:key="{{ $user->id }}" @click="$dispatch('chatt', { id: {{ 1 }} })" x-on:click="chatList=false , chatBox=true" class="list-group-item list-group-item-action" onclick="StartChat(1)">
+                <li wire:key="{{ $user->member->id }}" @click="$dispatch('chatt', { id: {{ $user->id }} })" x-on:click="chatList=false , chatBox=true" class="list-group-item list-group-item-action" onclick="StartChat(1)">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-2 col-md-2">
-                            <img src="{{ $user->getProfileUrl() }}" class="friend-pic" />
+                            <img src="{{ $user->member->getProfileUrl() }}" class="friend-pic" />
                         </div>
                         
                         <div class="col-10 col-md-10 d-md-block" style="cursor:pointer;">
-                            <div class="name">{{ $user->name }}</div>
+                            <div class="name">{{ $user->member->name }}</div>
                             <div class="under-name">This is some message text...</div>
                         </div>
                     </div>
                 </li>
 
                 @endforeach
+
+
+                @else
+
+                @foreach ($Users as $user)
+                    
+                <li wire:key="{{ $user->trainer->id }}" @click="$dispatch('chatt', { id: {{ $user->id }} })" x-on:click="chatList=false , chatBox=true" class="list-group-item list-group-item-action" onclick="StartChat(1)">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-2 col-md-2">
+                            <img src="{{ $user->trainer->getProfileUrl() }}" class="friend-pic" />
+                        </div>
+                        
+                        <div class="col-10 col-md-10 d-md-block" style="cursor:pointer;">
+                            <div class="name">{{ $user->trainer->name }}</div>
+                            <div class="under-name">This is some message text...</div>
+                        </div>
+                    </div>
+                </li>
+
+                @endforeach
+
+                @endif
             </ul>
         </div>
     </div>
