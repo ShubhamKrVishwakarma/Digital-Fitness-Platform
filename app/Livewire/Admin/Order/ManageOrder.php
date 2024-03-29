@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Order;
 
 use App\Models\Order;
+use App\Models\OrderedProduct;
 use App\Models\Product;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -10,14 +11,16 @@ use Livewire\Component;
 class ManageOrder extends Component
 {
     public $id;
-    public $order;
-    public $ordered_products;
+    public $order = [];
+    public $order_details = [];
+    public $products = [];
 
     public $name;
     public $email;
     public $phone;
     public $address;
     public $total_orders;
+    public $total_amount;
 
     public $status;
 
@@ -29,12 +32,23 @@ class ManageOrder extends Component
     #[On('manage-order')]
     public function manage($id) {
         $this->id = $id;
-        $order = Order::with('user', 'orders.product')->findOrFail($id);
+
+        $order = Order::findOrFail($id);
+        $this->order[] = $order;
         $this->name = $order->user->name;
         $this->email = $order->user->email;
         $this->phone = $order->phone;
         $this->address = $order->address;
         $this->total_orders = $order->orders->count();
+        $this->total_amount = $order->amount;
+
+        $order_details = OrderedProduct::where('order_id', $id)->get();
+        $this->order_details[] = $order_details;
+        
+        foreach($order_details as $orders) {
+            $this->products[] = Product::find($orders->product_id);
+        }
+
 
         if ($order->status === "confirmed") {
             $this->status = "Order Confirmed";
