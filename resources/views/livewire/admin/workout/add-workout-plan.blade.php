@@ -1,5 +1,5 @@
 <div x-show="addWorkoutPlan" style="display: none;">
-    <form wire:submit='addWorkoutPlan' x-on:submit="addWorkoutPlan = false, workoutPlansTable = true">
+    <form wire:submit='addWorkoutPlan'>
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center flex-wrap mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">View All Plans</h3>
@@ -31,8 +31,15 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label-control">Duration (in minutes)</label>
-                            <input type="number" wire:model='duration' class="form-control">
+                            <input type="number" wire:model='duration' class="form-control" placeholder="Plan Duration in Minutes" required>
                             @error('duration')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label-control">Calories</label>
+                            <input type="number" wire:model='calories' class="form-control" placeholder="Calories" required>
+                            @error('calories')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
