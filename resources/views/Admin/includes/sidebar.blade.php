@@ -81,7 +81,7 @@
                     <span class="nav-link-text ms-1">Conversations</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Route::is('admin.community') ? 'active' : '' }}"
                     href="{{ route('admin.community') }}">
                     <div
@@ -90,7 +90,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Community</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('admin.orders') ? 'active' : '' }}"
                     href="{{ route('admin.orders') }}">
