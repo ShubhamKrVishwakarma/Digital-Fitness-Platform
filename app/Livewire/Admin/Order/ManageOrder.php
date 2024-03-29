@@ -19,6 +19,8 @@ class ManageOrder extends Component
     public $address;
     public $total_orders;
 
+    public $status;
+
     public function render()
     {
         return view('livewire.admin.order.manage-order');
@@ -33,6 +35,14 @@ class ManageOrder extends Component
         $this->phone = $order->phone;
         $this->address = $order->address;
         $this->total_orders = $order->orders->count();
+
+        if ($order->status === "confirmed") {
+            $this->status = "Order Confirmed";
+        } else if ($order->status === "rejected") {
+            $this->status = "Order Canceled";
+        } else {
+            $this->status = null;
+        }
     }
 
     public function confirmOrder() {
@@ -45,6 +55,7 @@ class ManageOrder extends Component
         }
         $order->status = "confirmed";
         $order->update();
+        $this->status = "Order Confirmed";
         $this->dispatch('refreshOrdersTable');
         $this->dispatch(
             'alert', 
@@ -58,6 +69,7 @@ class ManageOrder extends Component
         $order = Order::findOrFail($this->id);
         $order->status = "rejected";
         $order->update();
+        $this->status = "Order Canceled";
         $this->dispatch('refreshOrdersTable');
         $this->dispatch(
             'alert', 
