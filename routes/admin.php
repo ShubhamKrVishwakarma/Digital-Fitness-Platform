@@ -4,10 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 // Admin Pages Route
 Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
-    // Redirect Route
-    Route::get("/", function() {
-        return redirect()->route('admin.dashboard');
-    });
     
     // Admin Dashboard Page
     Route::get("/dashboard", function() {
