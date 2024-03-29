@@ -14,99 +14,45 @@
                     @if ($status)
                         <span class="btn btn-link text-{{ $status === "Order Confirmed" ? 'success' : 'danger' }} text-gradient px-3 mb-0">{{ $status }}</span>
                     @else
-                        <button class="btn btn-link text-danger text-gradient px-3 mb-0" wire:click.prevent='cancelOrder'><i
-                                class="far fa-trash-alt me-2"></i>Cancel</button>
-                        <button class="btn btn-link text-success text-gradient px-3 mb-0" wire:click.prevent='confirmOrder'><i
-                                class="fa-solid fa-circle-check"></i> Confirm</button>
+                        <button class="btn btn-link text-danger text-gradient px-3 mb-0" wire:click.prevent='cancelOrder'><i class="far fa-trash-alt me-2"></i>Cancel</button>
+                        <button class="btn btn-link text-success text-gradient px-3 mb-0" wire:click.prevent='confirmOrder'><i class="fa-solid fa-circle-check"></i> Confirm</button>
                     @endif
                 </div>
             </div>
             <div class="card-body pt-4 p-3">
                 <ul class="list-group">
-                    <li
-                        class="list-group-item border-0 d-flex justify-content-center justify-content-md-start p-4 mb-3 bg-gray-100 border-radius-lg">
-                        <div
-                            class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
-                            <div class="avatar avatar-xxl position-relative mb-2">
-                                <img src="../images/team-3.jpg" alt="profile_image"
-                                    class="w-100 border-radius-lg shadow-sm">
+                    @foreach ($products as $product)
+                        <li
+                            class="list-group-item border-0 d-flex justify-content-center justify-content-md-start p-4 mb-3 bg-gray-100 border-radius-lg">
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
+                                <div class="avatar avatar-xxl position-relative mb-2">
+                                    <img src="{{ url('storage/' . $product->image) }}" class="w-100 border-radius-lg shadow-sm">
+                                </div>
+                                <!-- Product Details -->
+                                <div class="d-flex flex-column justify-content-center">
+                                    <span class="mb-1 text-xs">Product ID: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">{{ $product->id }}</span></span>
+                                    <span class="mb-1 text-xs">Product Name: <span
+                                            class="text-dark font-weight-bold ms-sm-2">{{ $product->name }}</span></span>
+                                    <span class="mb-1 text-xs">Category: <span
+                                            class="text-dark font-weight-bold ms-sm-2">{{ $product->category->name }}</span></span>
+                                    <span class="mb-1 text-xs">Quantity: <span
+                                            class="text-danger ms-sm-1 font-weight-bold">{{ $product->quantity }}</span></span>
+                                    <span class="mb-1 text-xs">Available Quantity: <span
+                                            class="text-dark ms-sm-1 font-weight-bold">112</span></span>
+                                    <span class="mb-1 text-xs">Price: <span
+                                            class="text-success ms-sm-1 font-weight-bold"><i
+                                                class="fa-solid fa-indian-rupee-sign"></i> {{ $product->price }}</span></span>
+                                </div>
                             </div>
-                            <!-- Product Details -->
-                            <div class="d-flex flex-column justify-content-center">
-                                <span class="mb-1 text-xs">Product ID: <span
-                                        class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                <span class="mb-1 text-xs">Product Name: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Dumbell</span></span>
-                                <span class="mb-1 text-xs">Category: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Equipment</span></span>
-                                <span class="mb-1 text-xs">Quantity: <span
-                                        class="text-danger ms-sm-1 font-weight-bold">12</span></span>
-                                <span class="mb-1 text-xs">Available Quantity: <span
-                                        class="text-dark ms-sm-1 font-weight-bold">112</span></span>
-                                <span class="mb-1 text-xs">Price: <span
-                                        class="text-success ms-sm-1 font-weight-bold"><i
-                                            class="fa-solid fa-indian-rupee-sign"></i> 450</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li
-                        class="list-group-item border-0 d-flex justify-content-center justify-content-md-start p-4 mb-3 bg-gray-100 border-radius-lg">
-                        <div
-                            class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
-                            <div class="avatar avatar-xxl position-relative mb-2">
-                                <img src="../images/team-3.jpg" alt="profile_image"
-                                    class="w-100 border-radius-lg shadow-sm">
-                            </div>
-                            <!-- Product Details -->
-                            <div class="d-flex flex-column justify-content-center">
-                                <span class="mb-1 text-xs">Product ID: <span
-                                        class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                <span class="mb-1 text-xs">Product Name: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Dumbell</span></span>
-                                <span class="mb-1 text-xs">Category: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Equipment</span></span>
-                                <span class="mb-1 text-xs">Quantity: <span
-                                        class="text-danger ms-sm-1 font-weight-bold">12</span></span>
-                                <span class="mb-1 text-xs">Available Quantity: <span
-                                        class="text-dark ms-sm-1 font-weight-bold">112</span></span>
-                                <span class="mb-1 text-xs">Price: <span
-                                        class="text-success ms-sm-1 font-weight-bold"><i
-                                            class="fa-solid fa-indian-rupee-sign"></i> 450</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li
-                        class="list-group-item border-0 d-flex justify-content-center justify-content-md-start p-4 mb-3 bg-gray-100 border-radius-lg">
-                        <div
-                            class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
-                            <div class="avatar avatar-xxl position-relative mb-2">
-                                <img src="../images/team-3.jpg" alt="profile_image"
-                                    class="w-100 border-radius-lg shadow-sm">
-                            </div>
-                            <!-- Product Details -->
-                            <div class="d-flex flex-column justify-content-center">
-                                <span class="mb-1 text-xs">Product ID: <span
-                                        class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                <span class="mb-1 text-xs">Product Name: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Dumbell</span></span>
-                                <span class="mb-1 text-xs">Category: <span
-                                        class="text-dark font-weight-bold ms-sm-2">Equipment</span></span>
-                                <span class="mb-1 text-xs">Quantity: <span
-                                        class="text-danger ms-sm-1 font-weight-bold">12</span></span>
-                                <span class="mb-1 text-xs">Available Quantity: <span
-                                        class="text-dark ms-sm-1 font-weight-bold">112</span></span>
-                                <span class="mb-1 text-xs">Price: <span
-                                        class="text-success ms-sm-1 font-weight-bold"><i
-                                            class="fa-solid fa-indian-rupee-sign"></i> 450</span></span>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endforeach
                 </ul>
                 <!-- Order Total -->
                 <hr class="m-0 bg-secondary">
                 <div class="pt-2">
-                    <h6 class="m-0 ps-4">Total Amount: <span class="text-success ms-sm-1 font-weight-bold"><i
-                                class="fa-solid fa-indian-rupee-sign"></i> 450</span></h6>
+                    <h6 class="m-0 ps-4">Total Amount: <span class="text-success ms-sm-1 font-weight-bold"><i class="fa-solid fa-indian-rupee-sign"></i> {{ $total_amount }}</span></h6>
                 </div>
             </div>
         </div>
