@@ -2,7 +2,7 @@
     <form wire:submit='addWorkoutPlan'>
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center flex-wrap mb-2">
-                <h3 class="text-light ms-2 font-weight-bolder">View All Plans</h3>
+                <h3 class="text-light ms-2 font-weight-bolder">Add New Workout Plan</h3>
                 <button class="btn btn-sm btn-dark mb-0 me-4"
                     x-on:click="addWorkoutPlan = false, workoutPlansTable = true">View All Workout Plans</button>
             </div>

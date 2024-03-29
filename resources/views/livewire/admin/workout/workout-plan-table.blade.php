@@ -36,7 +36,7 @@
                                             <span class="badge badge-sm bg-gradient-primary">{{ $plan->level }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <button class="me-2 btn btn-xs btn-dark mb-0" x-on:click="workoutPlansTable = false, manageWorkoutPlan = true">Manage</button>
+                                            <button @click="$dispatch('manage-workout-plan', { id: {{ $plan->id }} })" class="me-2 btn btn-xs btn-dark mb-0" x-on:click="workoutPlansTable = false, manageWorkoutPlan = true">Manage</button>
                                         </td>
                                     </tr>
                                 @empty
