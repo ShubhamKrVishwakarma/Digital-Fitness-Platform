@@ -13,15 +13,14 @@ class ManageExercise extends Component
     use WithFileUploads;
 
     public $id;
-    #[Rule('required|min:5|max:255')]
 
+    #[Rule('required|min:5|max:255')]
     public $name;
     #[Rule('required|min:3|max:50')]
-    
     public $type;
     #[Rule('required|min:3|max:100')]
-    
     public $equipment;
+    
     public $image;
     
     #[Rule('nullable|sometimes|image')]
@@ -47,6 +46,7 @@ class ManageExercise extends Component
         $exercise = Exercise::findOrFail($this->id);
         $exercise->name = $this->name;
         $exercise->type = $this->type;
+        $exercise->equipment = $this->equipment;
         
         if ($this->new_image) {
             $this->new_image = $this->new_image->store('exercises', 'public');
@@ -54,8 +54,10 @@ class ManageExercise extends Component
             $this->new_image = null;
         }
 
-        $exercise->save();
+        $exercise->update();
+
         $this->dispatch('refreshExerciseTable');
+        
         $this->dispatch(
             'alert', 
             icon: 'success',

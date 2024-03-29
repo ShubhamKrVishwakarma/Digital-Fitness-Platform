@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-control-label">New Profile Picture</label>
-                                    <input type="file" wire:model='new_profile_pic' class="form-control">
+                                    <input type="file" accept="image/png, image/jpeg" wire:model='new_profile_pic' class="form-control">
                                     @error('new_profile_pic')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
