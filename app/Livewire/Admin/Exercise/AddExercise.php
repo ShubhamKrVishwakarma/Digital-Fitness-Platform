@@ -40,6 +40,7 @@ class AddExercise extends Component
         $this->reset();
 
         $this->dispatch("refreshExerciseTable");
+        
         $this->dispatch(
             'alert', 
             icon: 'success',

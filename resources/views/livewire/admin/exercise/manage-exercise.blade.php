@@ -1,11 +1,11 @@
 <div x-show="manageExercise" style="display: none;">
-    <form wire:submit='update'>
+    <form wire:submit='update' enctype="multipart/form-data">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-3">
                 <h3 class="text-light ms-2 font-weight-bolder">Manage Exercise</h3>
                 <a class="btn btn-sm btn-dark mb-0 me-4" x-on:click="manageExercise = false, exercisesTable = true">View All Products</a>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body mb-3">
                         <div class="col-12 mb-3">
@@ -20,37 +20,48 @@
                         <div class="col-12 mb-3">
                             <label class="form-label-control">Exercise Name</label>
                             <input type="text" wire:model='name' class="form-control" placeholder="Exercise Name" required>
+                            @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
+                            <label class="form-label-control">Type</label>
+                            <select wire:model='type' class="form-control" required>
+                                <option value="" selected>Change Exercise Type</option>
+                                <option value="chest">Chest</option>
+                                <option value="back">Back</option>
+                                <option value="shoulder">Shoulder</option>
+                                <option value="bicep">Bicep</option>
+                                <option value="tricep">Tricep</option>
+                                <option value="leg">Leg</option>
+                                <option value="abs">Abs</option>
+                            </select>
+                            @error('type')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label-control">Equipment</label>
+                            <input type="text" wire:model='equipment' class="form-control">
+                            @error('equipment')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-12 mb-3">
                             <label class="form-label-control">Image</label>
-                            <input type="file" wire:model='new_image' class="form-control">
+                            <input type="file" accept="image/png, image/gif, image/jpeg" wire:model='new_image' class="form-control">
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         @if ($new_image)
-                            <div class="col-12 mb-2">
+                            <div class="col-12 mb-3">
                                 <p class="mt-2">Preview:</p>
                                 <img src="{{ $new_image->temporaryUrl() }}" alt="Product Image" class="rounded h-20 w-20">
                             </div>
                         @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
                         <div class="col-12 mb-3">
-                            <label class="form-label-control">Type</label>
-                            <select wire:model='type' class="form-control">
-                                <option value="">Chest</option>
-                                <option value="">Back</option>
-                                <option value="">Shoulder</option>
-                                <option value="">Bicep</option>
-                                <option value="">Tricep</option>
-                                <option value="">Leg</option>
-                                <option value="">Abs</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <button class="btn btn-sm btn-success m-0 mt-2">Update</button>
+                            <button class="btn btn-sm btn-success m-0">Update</button>
                         </div>
                     </div>
                 </div>
