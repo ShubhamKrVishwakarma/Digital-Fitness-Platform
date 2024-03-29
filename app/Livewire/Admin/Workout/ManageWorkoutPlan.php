@@ -39,9 +39,14 @@ class ManageWorkoutPlan extends Component
         $this->duration = $plan->duration;
         $this->calories = $plan->calories;
 
-        // $exercises = Workout::where('plan_id', $id)->get();
-        // $this->exerciseDetails[] = $exercises;
-        // dd($this->exerciseDetails);
+        $workouts = Workout::where("plan_id", $id)->get();
+        
+        foreach($workouts as $workout) {
+            $exercise = Exercise::findOrFail($workout->exercise_id);
+            $this->exerciseDetails[] = $exercise;
+            $this->sets[$exercise->id] = $workout->sets;
+            $this->reps[$exercise->id] = $workout->reps;
+        }
     }
 
     public function addExercise($exerciseId) {
@@ -73,8 +78,8 @@ class ManageWorkoutPlan extends Component
             "level" => "required|in:begineer,intermediate,advanced",
             "duration" => "required|integer",
             "calories" => "required|integer",
-            // "sets.*" => "required|integer",
-            // "reps.*" => "required|integer",
+            "sets.*" => "required|integer",
+            "reps.*" => "required|integer",
         ]);
 
         $plan = WorkoutPlan::findOrFail($this->id);

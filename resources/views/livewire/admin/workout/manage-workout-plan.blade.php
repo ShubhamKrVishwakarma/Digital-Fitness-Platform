@@ -67,13 +67,13 @@
                                             <td>
                                                 <div>
                                                     <div class="d-flex px-2 mb-2">
-                                                        {{-- <div>
+                                                        <div>
                                                             <img src="{{ $exercise->getExerciseGif() }}" class="avatar me-3"
                                                                 alt="Product">
                                                         </div>
                                                         <div class="my-auto">
                                                             <h6 class="mb-0 text-sm">{{ $exercise->name }}</h6>
-                                                        </div> --}}
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-4">
