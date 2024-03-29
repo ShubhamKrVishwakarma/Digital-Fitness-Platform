@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\QueryController;
-use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Pages Route
@@ -13,39 +11,43 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard");
 
-    Route::get("/users", [UserController::class, 'index'])->name("users");
-
+    // Users Page
+    Route::get("/users", function() {
+        return view("Admin.users");
+    })->name("users");
+    
+    // Exercises Page
     Route::get("/exercises", function() {
         return view("Admin.exercises");
     })->name("exercises");
     
+    // Workout Plans Page
     Route::get("/workout_plan", function() {
         return view("Admin.workouts");
     })->name("workout.plan");
     
+    // Categories Page
     Route::get("/categories", function() {
         return view("Admin.categories");
     })->name("categories");
     
+    // Products Page
     Route::get("/products", function() {
         return view("Admin.products");
     })->name("products");
     
+    // Community Page
     Route::get("/community", function() {
         return view("Admin.community");
     })->name("community");
 
+    // Orders Page
     Route::get("/orders", function() {
         return view("Admin.orders");
     })->name("orders");
 
-    Route::get('/queries', [QueryController::class, 'index'])->name('queries');
-
-    Route::post("/users/addMember", [UserController::class, 'create']);
-    
-    Route::post("/users/addTrainer", [UserController::class, 'store']);
-
-    Route::post('/users/getUserDetails', [UserController::class, 'getUserDetails']);
-
-    Route::post('/users/updateUser', [UserController::class, 'update'])->name('user.update');
+    // Queries Page
+    Route::get("/queries", function() {
+        return view("Admin.queries");
+    })->name("queries");
 });
