@@ -126,7 +126,11 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <a href="#" class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</a>
+                            <form action="{{ route('cancel.order', $order->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -144,25 +148,21 @@
                                     <tbody>
                                         <tr>
                                             <td>Sub Total :</td>
-                                            <td class="text-end">444</td>
+                                            <td class="text-end">&#8377; {{ $order->amount }}</td>
                                         </tr>
                                         <tr>
                                             <td>Discount : </td>
-                                            <td class="text-end">- $ 78</td>
+                                            <td class="text-end">&#8377; 0</td>
                                         </tr>
                                         <tr>
                                             <td>Shipping Charge :</td>
-                                            <td class="text-end">$ 25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Estimated Tax : </td>
-                                            <td class="text-end">$ 18.20</td>
+                                            <td class="text-end">&#8377; 0</td>
                                         </tr>
                                         <tr class="bg-light">
                                             <th>Total :</th>
                                             <td class="text-end">
                                                 <span class="fw-bold">
-                                                    $ 745.2
+                                                    &#8377; {{ $order->amount }}
                                                 </span>
                                             </td>
                                         </tr>

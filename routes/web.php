@@ -63,6 +63,7 @@ Route::get('/orders',[OrderController::class,'index'])->middleware('auth')->name
 
 // Order Details
 Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->middleware('auth')->name('orders.details');
+Route::delete('/orders/{id}', [OrderController::class, 'cancelOrder'])->middleware('auth')->name('cancel.order');
 
 // About Page
 Route::get('/about', function() {
