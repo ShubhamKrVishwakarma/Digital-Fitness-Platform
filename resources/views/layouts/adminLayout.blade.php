@@ -19,6 +19,19 @@
         .navbar-collapse {
             height: auto !important;
         }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: whitesmoke;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: gray;
+            border-radius: 10px;
+        }
     </style>
     @stack('styles')
 </head>
