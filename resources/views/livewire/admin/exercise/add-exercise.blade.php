@@ -1,5 +1,5 @@
 <div x-show="addExercise" style="display: none;">
-    <form wire:submit='store'>
+    <form wire:submit='store' enctype="multipart/form-data">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">Add New Exercise</h3>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-label-control">Image</label>
-                                <input type="file" wire:model='image' class="form-control" required>
+                                <input type="file" accept="image/png, image/gif, image/jpeg" wire:model='image' class="form-control" required>
                             </div>
                             @if ($image)
                                 <div class="col-12 mb-2">

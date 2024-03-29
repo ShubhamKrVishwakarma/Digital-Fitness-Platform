@@ -41,7 +41,7 @@
                                             <span class="">{{ $exercise->name }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge badge-sm bg-gradient-info">Chest</span>
+                                            <span class="badge badge-sm bg-gradient-info">{{ $exercise->type }}</span>
                                         </td>
                                         <td class="text-center">
                                             <button @click="$dispatch('manage-exercise', { id: {{ $exercise->id }} })" class="me-2 btn btn-xs btn-dark mb-0" x-on:click="exercisesTable = false, manageExercise = true">Manage</button>

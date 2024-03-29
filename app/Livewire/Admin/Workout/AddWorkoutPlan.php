@@ -13,7 +13,10 @@ class AddWorkoutPlan extends Component
     public $name;
     public $level;
     public $duration;
+    public $calories;
+
     public $search;
+    
     public $exerciseDetails = [];
     public $sets = [];
     public $reps = [];
@@ -52,15 +55,17 @@ class AddWorkoutPlan extends Component
         $this->validate([
             "name" => "required|min:5|max:100",
             "level" => "required|in:begineer,intermediate,advanced",
-            "sets.*" => "required",
-            "reps.*" => "required",
-            "duration" => "required"
+            "duration" => "required|integer",
+            "calories" => "required|integer",
+            "sets.*" => "required|integer",
+            "reps.*" => "required|integer",
         ]);
 
         $plan = WorkoutPlan::create([
             "name" => $this->name,
             "level" => $this->level,
-            "duration" => $this->duration
+            "duration" => $this->duration,
+            "calories" => $this->calories
         ]);
 
         $exercises = [];
