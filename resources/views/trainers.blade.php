@@ -33,9 +33,7 @@
             <div class="col-md-10 col-xl-8 text-center">
               <h3 class="fw-bold mb-4">Trainers</h3>
               <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-                quisquam eum porro a pariatur veniam.
+                We're dedicated to providing you with top-tier trainers who are experts in their fields. Whether you're a beginner or an experienced fitness enthusiast, our trainers are here to guide and support you.
               </p>
             </div>
           </div>
