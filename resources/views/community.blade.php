@@ -60,21 +60,21 @@
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center">
                                                 <!-- User stat item -->
                                                 <div>
-                                                    <h6 class="mb-0">256</h6>
+                                                    <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
                                                     <small>Post</small>
                                                 </div>
                                                 <!-- Divider -->
                                                 <div class="vr"></div>
                                                 <!-- User stat item -->
                                                 <div>
-                                                    <h6 class="mb-0">2.5K</h6>
+                                                    <h6 class="mb-0">{{ auth()->user()->followers }}</h6>
                                                     <small>Followers</small>
                                                 </div>
                                                 <!-- Divider -->
                                                 <div class="vr"></div>
                                                 <!-- User stat item -->
                                                 <div>
-                                                    <h6 class="mb-0">365</h6>
+                                                    <h6 class="mb-0">{{ auth()->user()->following }}</h6>
                                                     <small>Following</small>
                                                 </div>
                                             </div>
@@ -219,35 +219,26 @@
                 </div>
                 <div class="card mt-3">
                     <div class="card-header pb-0 border-0">
-                        <h5 class="">Friend Requests</h5>
+                        <h5 class="">Trainers to Follow</h5>
                     </div>
                     <div class="card-body">
-                        <div class="hstack gap-2 mb-3">
-                            <div class="avatar">
-                                <a href="#!"><img class="avatar-img rounded-circle" src="{{ asset('images/profile-12.jpg') }}" alt="" width="50px"></a>
+                        @foreach ($trainers as $trainer)
+                            <div class="hstack gap-2 mb-3">
+                                <div class="avatar">
+                                    <a href="{{ route('user.show', $trainer->id) }}">
+                                        <img class="avatar-img rounded-circle" src="{{ $trainer->getProfileUrl() }}" alt="" width="50px">
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-start">
+                                    <a class="h6 mb-0 text-decoration-none" href="{{ route('user.show', $trainer->id) }}">{{ substr($trainer->name, 0, 16) }}..</a>
+                                    <a class="mb-0 small text-muted text-decoration-none" href="{{ route('user.show', $trainer->id) }}">{{ substr($trainer->email, 0, 16) }}..</a>
+                                </div>
+                                <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="bi bi-plus-lg"></i></a>
                             </div>
-                            <div class="overflow-hidden">
-                                <a class="h6 mb-0" href="#!">Mario Brother</a>
-                                <p class="mb-0 small text-truncate">@Mario</p>
+                        @endforeach
+                            <div class="d-grid mt-3">
+                                <a class="btn btn-sm btn-primary-soft" href="#!">Show More</a>
                             </div>
-                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i
-                                    class="fa-solid fa-plus"> </i></a>
-                        </div>
-                        <div class="hstack gap-2 mb-3">
-                            <div class="avatar">
-                                <a href="#!"><img class="avatar-img rounded-circle"
-                                        src="{{ asset('images/profile-15.jpg') }}" alt="" width="50px"></a>
-                            </div>
-                            <div class="overflow-hidden">
-                                <a class="h6 mb-0" href="#!">Mario Brother</a>
-                                <p class="mb-0 small text-truncate">@Mario</p>
-                            </div>
-                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i
-                                    class="fa-solid fa-plus"> </i></a>
-                        </div>
-                        <div class="d-grid mt-3">
-                            <a class="btn btn-sm btn-primary-soft" href="#!">Show More</a>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -71,6 +71,7 @@
     cursor: pointer;
     transition: all 300ms ease;
     font-size: 0.9rem;
+    text-decoration: none;
 }
 
 .bttn:hover {
