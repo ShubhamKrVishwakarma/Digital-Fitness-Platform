@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,7 @@ Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
 Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->middleware('auth')->name('addToCart');
 
 // Community Page
-Route::get('/community', function() {
-    return view('community');
-})->name('community');
+Route::get('/community', [CommunityController::class, 'index'])->name('community');
 
 // Message Page
 Route::get('/message', function() {
