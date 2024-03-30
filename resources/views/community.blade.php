@@ -27,15 +27,6 @@
         <div class="row">
             {{-- Left Sidebar --}}
             <div class="d-none d-lg-block col-lg-3">
-                <!-- Advanced filter responsive toggler START -->
-                    <div class="d-flex align-items-center d-lg-none">
-                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                            <span class="btn btn-primary"><i class="fa-solid fa-sliders-h"></i></span>
-                            <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
-                        </button>
-                    </div>
-                    <!-- Advanced filter responsive toggler END -->
-                    
                     <!-- Navbar START-->
                     <nav class="navbar navbar-expand-lg mx-0 pt-0"> 
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
@@ -57,13 +48,13 @@
                                             <!-- Avatar -->
                                             <div class="avatar avatar-lg mt-n5 mb-3">
                                                 <a href="#">
-                                                    <img class="avatar-img rounded border border-white border-3" src="{{ asset('images/profile-9.jpg') }}" alt="Profile Pic" width="72" >
+                                                    <img class="avatar-img rounded border border-white border-3" src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic" width="72" >
                                                 </a>
                                             </div>
                                             <!-- Info -->
-                                            <h5 class="mb-0"> Sam Lanson </h5>
-                                            <small>Web Developer at Webestica</small>
-                                            <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
+                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                            <small>{{ auth()->user()->email }}</small>
+                                            <p class="mt-3">{{ auth()->user()->bio ?? 'Bio is Empty'}}</p>
     
                                             <!-- User stat START -->
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center">
@@ -89,40 +80,11 @@
                                             </div>
                                             <!-- User stat END -->
                                         </div>
-    
-                                        <!-- Divider -->
-                                        {{-- <hr> --}}
-    
-                                        <!-- Side Nav START -->
-                                        {{-- <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="my-profile.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/home-outline-filled.svg" alt=""><span>Feed </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="my-profile-connections.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/person-outline-filled.svg" alt=""><span>Connections </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="blog.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/earth-outline-filled.svg" alt=""><span>Latest News </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="events.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/calendar-outline-filled.svg" alt=""><span>Events </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/chat-outline-filled.svg" alt=""><span>Groups </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications </span></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="settings.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings </span></a>
-                                            </li>
-                                        </ul> --}}
-                                        <!-- Side Nav END -->
                                     </div>
                                     <!-- Card body END -->
                                     <!-- Card footer -->
                                     <div class="card-footer text-center py-2">
-                                        <a class="link-primary text-decoration-none" href="#">View Profile </a>
+                                        <a class="link-primary text-decoration-none" href="{{ route('user.show', auth()->user()->id )}}">View Profile </a>
                                     </div>
                                 </div>
                                 <!-- Card END -->
@@ -130,62 +92,15 @@
                         </div>
                     </nav>
                     <!-- Navbar END-->
-    
-                {{-- <div class="card overflow-hidden">
-                    <div class="card-body pt-3">
-                        <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="#">
-                                    <span>Home</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Explore</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Feed</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Terms</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Support</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span>Settings</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer text-center py-2">
-                        <a class="btn btn-link btn-sm" href="#">View Profile </a>
-                    </div>
-                </div> --}}
             </div>
             {{-- Middle Section --}}
             <div class="col-lg-6">
-                {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Idea created Successfully
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div> --}}
-                {{-- <h4> Share yours ideas </h4> --}}
-                {{-- <div class="row">
-                    <div class="mb-3">
-                        <textarea class="form-control" id="idea" rows="3"></textarea>
-                    </div>
-                    <div class="">
-                        <button class="btn btn-dark"> Share </button>
-                    </div>
-                </div> --}}
                 {{-- Share your Thoughts --}}
                 <div class="card card-body">
                     <div class="d-flex mb-3">
                         <!-- Avatar -->
                         <div class="me-2">
-                            <a href="#"> <img class="avatar-sm rounded-circle" src="{{ asset('images/profile-9.jpg') }}" alt="" width="50px"> </a>
+                            <a href="#"> <img class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt="" width="50px"> </a>
                         </div>
                         <!-- Post input -->
                         <form class="w-100">
@@ -207,9 +122,7 @@
                             <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#modalCreateFeed"> <i class="bi bi-emoji-smile-fill text-warning pe-2"></i>Feeling /Activity</a>
                         </li>
                         <li class="nav-item dropdown ms-lg-auto">
-                            <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots"></i>
-                            </a>
+                            <button class="btn btn-sm btn-dark">Post</button>
                             <!-- Dropdown menu -->
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
                                 <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a poll</a></li>
@@ -223,6 +136,7 @@
                 </div>
                 <hr>
                 <div class="mt-3">
+                    {{-- Single Post --}}
                     <div class="card">
                         <div class="px-3 pt-4 pb-2">
                             <div class="d-flex align-items-center justify-content-between">
