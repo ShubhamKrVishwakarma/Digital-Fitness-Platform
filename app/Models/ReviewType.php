@@ -9,6 +9,8 @@ class ReviewType extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['review_id', 'trainer_id','product_id','type'];
 
     public function trainer(){
