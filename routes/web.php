@@ -86,3 +86,8 @@ Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('
 Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
 
 Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
+
+// Trainers Info
+Route::get('/trainers', function() {
+    return view('trainers');
+})->name('trainers');
