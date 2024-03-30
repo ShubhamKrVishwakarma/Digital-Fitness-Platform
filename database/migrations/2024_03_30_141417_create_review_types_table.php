@@ -15,10 +15,11 @@ return new class extends Migration
             $table->unsignedBigInteger('review_id');
             $table->unsignedBigInteger('trainer_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('review_id')->refernces('id')->on('reviews')->cascadeOnDelete();
-            $table->foreign('product_id')->refernces('id')->on('products')->cascadeOnDelete();
-            $table->foreign('trainer_id')->refernces('id')->on('users')->cascadeOnDelete();
             $table->enum('type',['trainer','product']);
+
+            $table->foreign("review_id")->references("id")->on("reviews")->cascadeOnDelete();
+            $table->foreign("trainer_id")->references("id")->on("users")->cascadeOnDelete();
+            $table->foreign("product_id")->references("id")->on("products")->cascadeOnDelete();
         });
     }
 
