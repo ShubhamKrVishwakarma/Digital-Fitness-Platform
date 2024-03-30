@@ -118,20 +118,20 @@
 
 /*main-section-1*/
 
-#main-section-1 .content .image-group{
+.main-section-1 .content .image-group{
     position: relative;
     width:380px;
     height:180px;
     border-radius: 10px;
     background-color: black;
 }
-#main-section-1 .content .image-group img{
+.main-section-1 .content .image-group img{
     width:inherit;
     height:inherit;
     border-radius: inherit;
     opacity:0.6;
 }
-#main-section-1 .content .image-group span{
+.main-section-1 .content .image-group span{
     position:absolute;
     top:0;
     left:0;
