@@ -114,6 +114,9 @@
                 {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
             </div>
         </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{{ route('trainers') }}" class="bttn bttn-primary">View All Trainers</a>
+        </div>
     </section>
 
     <section class="container-fluid banner animate" id="banner-5">

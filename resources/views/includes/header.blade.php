@@ -96,6 +96,7 @@
                                     <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
                                 @endcan
                                 <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id )}}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('trainers') }}">Trainers</a></li>
                                 <li><a class="dropdown-item" href="{{ route('message') }}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart') }}">My Cart</a></li>
                                 <li><a class="dropdown-item" href="{{ route('orders') }}">My Orders</a></li>

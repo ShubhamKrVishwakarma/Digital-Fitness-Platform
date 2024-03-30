@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->hasMany(Chat::class);
     }
 
+    public function posts() {
+        return $this->hasMany(Community::class);
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/user/' . $this->profile_pic);
