@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('review_types', function (Blueprint $table) {
             $table->unsignedBigInteger('review_id');
-            $table->unsignedBigInteger('trainer_id');
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('trainer_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->enum('type',['trainer','product']);
 
             $table->foreign("review_id")->references("id")->on("reviews")->cascadeOnDelete();
