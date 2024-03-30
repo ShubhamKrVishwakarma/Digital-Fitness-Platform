@@ -8,6 +8,7 @@ use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\UserWorkoutLogController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\WorkoutPlansController;
@@ -87,6 +88,5 @@ Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('
 Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
 
 // Trainers Info
-Route::get('/trainers', function() {
-    return view('trainers');
-})->name('trainers');
+Route::get("/trainers" , [TrainerController::class, 'index'])->name('trainers');
+Route::post("/trainers" , [TrainerController::class, 'rate'])->name('trainers.review');
