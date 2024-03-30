@@ -33,7 +33,7 @@
         </div>
         <div class="content animate">
             <div class="content-1 animate-2">
-                <a href="">
+                <a href="{{route('workout.plans')}}#beginner">
                     <div class="image">
                         <img src="./images/home/beginner.jpg" alt="">
                         <span>BEGINNER</span>
@@ -41,7 +41,7 @@
                 </a>
             </div>
             <div class="content-2">
-                <a href="">
+                <a href="{{route('workout.plans')}}#intermediate">
                     <div class="image">
                         <img src="./images/home/intermediate.jpg" alt="">
                         <span>INTERMEDIATE</span>
@@ -49,7 +49,7 @@
                 </a>
             </div>
             <div class="content-3 animate-3">
-                <a href="">
+                <a href="{{route('workout.plans')}}#advance">
                     <div class="image">
                         <img src="./images/home/advance.jpg" alt="">
                         <span>ADVANCE</span>
@@ -58,7 +58,9 @@
             </div>
         </div>
         <div class="banner-button">
+        <a href="{{route('workout.plans')}}">
             <button class="bttn bttn-primary">Explore more</button>
+        </a>
         </div>
     </section>
 
