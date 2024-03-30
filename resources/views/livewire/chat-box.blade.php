@@ -1,4 +1,4 @@
-<div class="col-md-8 pl-0 " id="side-2">
+<div class="col-md-8 pl-0 " id="side-2" style="height: 600px">
     <div x-show="chatBox" id="chatPanel" class="card" style="display: none;">
         <div class="card-header">
             <div class="row ">
@@ -17,7 +17,7 @@
         </div>
 
         {{-- User Message --}}
-        <div class="card-body overflow-y-scroll" style="max-height: 520px">
+        <div class="card-body overflow-y-scroll" style="height: 463px">
             @foreach ($messages as $message)
                 {{-- <div class="col-2 col-sm-1 col-md-1">
                     <img src="" alt="">
@@ -63,10 +63,10 @@
             </form>
         </div>
     </div>
-
+{{-- 
     <div id="startChat" class="text-center">
         <i class="bi bi-chat-dots-fill" style="font-size: 200px"></i>
         <h2 class="mt-2">Start chating.</h2>
         <a class="d-md-none text-decoration-none fw-bold">New Chat</a>
-    </div>
+    </div> --}}
 </div>
