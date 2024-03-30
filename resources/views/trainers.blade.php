@@ -31,12 +31,14 @@
         {{-- Heading --}}
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 col-xl-8 text-center">
-              <h3 class="fw-bold mb-4">Trainers</h3>
-              <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                We're dedicated to providing you with top-tier trainers who are experts in their fields. Whether you're a beginner or an experienced fitness enthusiast, our trainers are here to guide and support you.
-              </p>
+                <h3 class="fw-bold mb-4">Trainers</h3>
+                <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                    We're dedicated to providing you with top-tier trainers who are experts in their fields. Whether
+                    you're a beginner or an experienced fitness enthusiast, our trainers are here to guide and support
+                    you.
+                </p>
             </div>
-          </div>
+        </div>
         {{-- Trainers Card --}}
         <div class="row">
             @foreach ($trainers as $trainer)
@@ -63,7 +65,9 @@
                             {{-- <p class="" style="font-size: 0.8rem">trainer@gmail.com</p> --}}
                         </div>
                         <div>
-                            <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3" data-bs-toggle="modal" data-bs-target="#reviewModal">Rate Trainer</button>
+                            <button type="button"
+                                class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
+                                data-bs-toggle="modal" data-bs-target="#reviewModal">Rate Trainer</button>
                             <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
                         </div>
                     </div>
@@ -106,6 +110,7 @@
     </div>
 </div>
 @endsection
+
 @push('scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -113,6 +118,7 @@
     const ratingInput = document.querySelector('#exampleFormControlTextarea1');
     const submitBtn = document.querySelector('#submitRatingBtn');
     let rating = document.querySelector('#trainer-rating');
+
     let ratingValue = 0;
 
     // Function to highlight stars up to the hovered/clicked star
@@ -154,9 +160,7 @@
             alert('Please provide a review.');
             return;
         }
-
-        rating.value=ratingValue;
-
+        
         // Here you can use the ratingValue and review for further processing
         console.log('Rating:', ratingValue);
         console.log('Review:', review);
