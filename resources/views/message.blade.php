@@ -9,17 +9,15 @@
 
 @section('content')
     <div class="container-fluid bg-white chatbox shadow-lg rounded">
-        <div x-data="{chatList:true, chatBox:false}" class="row h-100 p-2 p-md-4" style="min-height: 600px">
+        <div x-data="{chatList : true, chatBox : false}" class="row h-100 p-2 p-md-4" style="min-height: 600px">
             {{-- Chat list --}}
-            <livewire:ChatList>
-                
-             {{-- chatbox --}}
-             <livewire:ChatBox>
-            
+            <livewire:ChatList>    
+            {{-- chatbox --}}
+            <livewire:ChatBox>
         </div>
     </div>
 @endsection
 
 @push('scripts')
-    {{-- <script src="{{ asset('js/message.js') }}"></script> --}}
+    <script src="{{ asset('js/message.js') }}"></script>
 @endpush

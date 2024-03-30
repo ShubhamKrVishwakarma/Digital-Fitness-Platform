@@ -1,5 +1,5 @@
 <div class="col-md-8 pl-0 " id="side-2">
-    <div x-show="chatBox" id="chatPanel" class="card h-100" style="display: none;">
+    <div x-show="chatBox" id="chatPanel" class="card" style="display: none;">
         <div class="card-header">
             <div class="row ">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-1">
@@ -17,7 +17,7 @@
         </div>
 
         {{-- User Message --}}
-        <div class="card-body">
+        <div class="card-body overflow-y-scroll" style="max-height: 520px">
             @foreach ($messages as $message)
                 {{-- <div class="col-2 col-sm-1 col-md-1">
                     <img src="" alt="">
@@ -52,15 +52,6 @@
 
 
         <div class="card-footer  d-flex justify-content-between">
-            {{-- Dhanraj --}}
-            {{-- <div class="col-md-10">
-                <input type="text" placeholder="Type here" class="form-control rounded-pill">
-            </div>
-            <div class="col-md-1">
-                <button class="btn btn-primary">Send</button>
-                <input type="button" value="Send" class="rounded-pill "
-                    style="background-color:#3f51aa; color: #f8f8f8;">
-            </div> --}}
             <form class="w-100">
                 <div class="input-group my-2">
                     <input type="text" wire:model="message" class="form-control" placeholder="Type here" required>
@@ -73,9 +64,9 @@
         </div>
     </div>
 
-    <div id="divStart" class="text-center">
+    <div id="startChat" class="text-center">
         <i class="bi bi-chat-dots-fill" style="font-size: 200px"></i>
         <h2 class="mt-2">Start chating.</h2>
-        <a onclick="showChatList()" class="d-md-none text-decoration-none fw-bold">New Chat</a>
+        <a class="d-md-none text-decoration-none fw-bold">New Chat</a>
     </div>
 </div>
