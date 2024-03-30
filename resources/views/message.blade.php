@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="container-fluid bg-white chatbox shadow-lg rounded">
-        <div x-data="{chatList : true, chatBox : false}" class="row h-100 p-2 p-md-4" style="min-height: 600px">
+        <div x-data="{chatList : true, chatBox : false}" class="row h-100 p-2 p-md-4" style="height: 500px">
             {{-- Chat list --}}
             <livewire:ChatList>    
             {{-- chatbox --}}

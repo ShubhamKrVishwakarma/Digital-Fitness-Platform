@@ -12,7 +12,7 @@
             </div> --}}
             <ul class="list-group  list-group-flush">
                 <li class="list-group-item list-group-item-action" style="background-color:#f8f8f8;">
-                    <input type="text" placeholder="Search or new chat" class="form-control rounded-pill" />
+                    <input type="text" wire:model.live.debounce="search" placeholder="Search or new chat" class="form-control rounded-pill" />
                 </li>
                 @if ($trainer)
                     @foreach ($Users as $user)

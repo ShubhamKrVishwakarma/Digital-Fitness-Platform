@@ -9,17 +9,18 @@ use Livewire\Component;
 class ChatList extends Component
 {
     public $trainer = false;
+    public $search;
 
     public function render()
     {
         $user = User::find(auth()->user()->id );
         // dd($user->role);
         if ($user->role==="trainer") {
-            $receivers = Chat::where("trainer_id",$user->id)->get();
+            $receivers = Chat::where("trainer_id",$user->id)->where("name","like","%{$this->search}%")->get();
             $this->trainer = true;
         }
         else{
-            $receivers = Chat::where("user_id",$user->id)->get();
+            $receivers = Chat::where("user_id",$user->id)->where("name","like","%{$this->search}%")->get();
             $this->trainer = false;
 
         }
