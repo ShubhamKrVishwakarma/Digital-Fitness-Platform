@@ -9,6 +9,15 @@
     .bg-grey {
         background-color: rgba(238, 240, 242, 1)
     }
+    .post {
+        max-height: 500px;
+    }
+    .post img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
 </style>
 @endpush
 
@@ -219,9 +228,9 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
+                                        src="{{ asset('images/profile-15.jpg') }}" alt="Mario Avatar">
                                     <div class="">
-                                        <h5 class="card-title mb-0"><a href="#">Mario</a></h5>
+                                        <h5 class="card-title mb-0 text-dark"><a href="#" class="text-decoration-none">Mario</a></h5>
                                         <p class="m-0">test@email.com</p>
                                     </div>
                                 </div>
@@ -234,8 +243,11 @@
                                 ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
                                 dolor sit amet..", comes from a line in section 1.10.32.
                             </p> --}}
+                            <div class="post">
+                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
+                            </div>
     
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between my-3">
                                 <div>
                                     <a href="#" class="fw-light nav-link fs-6"> <i class="bi bi-heart-fill"></i> 100 </a>
                                 </div>
@@ -249,13 +261,13 @@
                                     <textarea class="fs-6 form-control" rows="1"></textarea>
                                 </div>
                                 <div>
-                                    <button class="btn btn-primary btn-sm"> Post Comment </button>
+                                    <button class="btn btn-dark btn-sm"> Post Comment </button>
                                 </div>
     
                                 <hr>
                                 <div class="d-flex align-items-start">
                                     <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Luigi" alt="Luigi Avatar">
+                                        src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between">
                                             <div>
