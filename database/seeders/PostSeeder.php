@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
             $posts[] = [
                 "user_id" => $i,
                 "title" => fake()->title(),
-                "message" => fake()->text(),
+                "content" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
             ];
