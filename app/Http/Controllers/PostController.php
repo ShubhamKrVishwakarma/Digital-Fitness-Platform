@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Community;
-use App\Models\User;
 use Exception;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CommunityController extends Controller
+class PostController extends Controller
 {
     public function index() {
         return view('community', [
             "trainers" => User::where('role', 'trainer')->inRandomOrder()->take(5)->get(),
-            "posts" => Community::all()
+            "posts" => Post::all()
         ]);
     }
 
     public function like(Request $request) {
         try {
-            $post = Community::findOrFail($request->post_id);
+            $post = Post::findOrFail($request->post_id);
             $post->likes = $post->likes + 1;
             $post->update();
             return response()->json(['message' => 'Account created successfully']);

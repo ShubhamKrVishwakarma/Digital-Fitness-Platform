@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Community;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
-class CommunitySeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,6 +24,6 @@ class CommunitySeeder extends Seeder
             ];
         }
 
-        Community::insert($posts);
+        Post::insert($posts);
     }
 }

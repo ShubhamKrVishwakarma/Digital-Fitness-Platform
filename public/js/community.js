@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#likePost').submit(function(form) {
         form.preventDefault();
         
-        axios.post("/community/like", {
+        axios.post("/post/like", {
             post_id: $('#post-id').val()
         })
         .then(function(response) {
