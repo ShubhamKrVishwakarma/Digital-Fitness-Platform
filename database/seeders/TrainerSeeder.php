@@ -26,7 +26,8 @@ class TrainerSeeder extends Seeder
                 "city" => fake()->city(),
                 "zip_code" => "123456",
                 "state" => "West Bengal",
-                "role" => "trainer"
+                "role" => "trainer" , 
+                "rating" => 0
             ]);
 
             TrainerDetail::create([

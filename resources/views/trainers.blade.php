@@ -53,11 +53,10 @@
                                 width="100" height="100" />
                         </div>
                         <div class="my-3">
-                            <i class="bi bi-star text-warning fs-5"></i>
-                            <i class="bi bi-star text-warning fs-5"></i>
-                            <i class="bi bi-star text-warning fs-5"></i>
-                            <i class="bi bi-star text-warning fs-5"></i>
-                            <i class="bi bi-star text-warning fs-5"></i>
+                            <span>
+                            <i class="bi bi-star-fill text-warning fs-5"></i>
+                            {{ $trainer->rating }}
+                        </span>
                         </div>
                         <div>
                             <h4 class="mb-2">{{$trainer->name}}</h4>
