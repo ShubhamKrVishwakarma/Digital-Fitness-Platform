@@ -24,6 +24,7 @@
 @endpush
 
 @section('content')
+
 <main style="background-color: #eff2f6">
     <div class="container py-4">
         <div class="row">
@@ -153,83 +154,79 @@
                 <div class="mt-3">
                     {{-- Single Post --}}
                     @foreach ($posts as $post)
-                        <div class="card mb-3">
-                            <div class="px-3 pt-4 pb-2">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                            src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
-                                        <div class="">
-                                            <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
-                                                    class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
-                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
-                                        </div>
+                    <div class="card mb-3">
+                        <div class="px-3 pt-4 pb-2">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                        src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
+                                    <div class="">
+                                        <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
+                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
+                                        <p class="text-muted m-0">{{ $post->user->email }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <h5># {{ $post->title }}</h5>
-                                @if ($post->type === "message")
-                                    <p class="fs-6 fw-light text-muted">
-                                        {{ $post->content }}
-                                    </p>
-                                @elseif ($post->type === "image")
-                                    <div class="post">
-                                        <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
-                                    </div>
-                                @elseif ($post->type === "video")
-                                    <div class="post">
-                                        <video src=""></video>
-                                    </div>
-                                @endif
-                                <div class="d-flex justify-content-between my-3">
-                                    <div>
-                                        <form id="likePost">
-                                            <input type="hidden" id="post-id" value="{{ $post->id }}">
-                                            <button type="submit" class="fw-light nav-link text-danger fs-6"> <i
-                                                    class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
-                                        </form>
-                                    </div>
-                                    <div>
-                                        <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
-                                            $post->created_at->diffForHumans() }} </span>
-                                    </div>
+                        </div>
+                        <div class="card-body">
+                            <h5># {{ $post->title }}</h5>
+                            @if ($post->type === "message")
+                            <p class="fs-6 fw-light text-muted">
+                                {{ $post->content }}
+                            </p>
+                            @elseif ($post->type === "image")
+                            <div class="post">
+                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
+                            </div>
+                            @elseif ($post->type === "video")
+                            <div class="post">
+                                <video src=""></video>
+                            </div>
+                            @endif
+                            <div class="d-flex justify-content-between my-3">
+                                <div>
+                                    <form id="likePost">
+                                        <input type="hidden" id="post-id" value="{{ $post->id }}">
+                                        <button type="submit" class="fw-light nav-link text-danger fs-6"> <i
+                                                class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
+                                    </form>
                                 </div>
-                                {{-- Comments Section --}}
-                                {{-- <div>
+                                <div>
+                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
+                                        $post->created_at->diffForHumans() }} </span>
+                                </div>
+                            </div>
+                            {{-- Comments Section --}}
+                            <div>
+                                <form action="">
                                     <div class="mb-3">
-                                        <textarea class="fs-6 form-control" rows="1"></textarea>
-                                    </div>
-                                    <div>
+                                        <textarea class="fs-6 form-control mb-3" rows="1"></textarea>
                                         <button class="btn btn-dark btn-sm"> Post Comment </button>
                                     </div>
+                                </form>
 
-                                    <hr>
+                                {{-- <hr> --}}
+                                @foreach ($post->comments as $comment)
                                     <div class="d-flex align-items-start">
                                         <img style="width:35px" class="me-2 avatar-sm rounded-circle"
                                             src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
                                         <div class="w-100">
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                    <h6 class="m-0">Luigi</h6>
-                                                    <p class="m-0">Member</p>
+                                                    <h6 class="m-0">{{ $comment->user->name }}</h6>
+                                                    <p class="m-0">{{ $comment->user->email }}</p>
                                                 </div>
-                                                <small class="fs-6 fw-light text-muted"> 3 hour
-                                                    ago</small>
+                                                <small class="fs-6 fw-light text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                             </div>
                                             <p class="fs-6 mt-3 fw-light">
-                                                and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                                                Evil)
-                                                by
-                                                Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
-                                                very
-                                                popular during the Renaissan
+                                                {{ $comment->comment }}
                                             </p>
                                         </div>
                                     </div>
-                                </div> --}}
+                                @endforeach
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
