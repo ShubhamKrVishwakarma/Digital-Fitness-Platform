@@ -30,6 +30,18 @@ class TrainerController extends Controller
             "type" => "trainer",
             "trainer_id" =>  $request["trainer-id"],
         ]);
+
+        $reviews = ReviewType::where("trainer_id" , $request['trainer-id'])->get();
+        
+        $total_no_of_reviews = $reviews->count();
+
+        $trainer = User::find($request["trainer-id"]);
+
+        $trainer->rating = ($trainer->rating +  $request["trainer-rating"])/$total_no_of_reviews;
+
+        $trainer->update();
+
+
         return redirect()->route("trainers");
     }
 }
