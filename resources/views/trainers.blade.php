@@ -90,11 +90,11 @@
                     @csrf
                 <div class="mb-3">
                     <input type="hidden" id='trainer-rating' name="trainer-rating">
-                    <i class="star bi bi-star text-warning fs-4"></i>
-                    <i class="star bi bi-star text-warning fs-4"></i>
-                    <i class="star bi bi-star text-warning fs-4"></i>
-                    <i class="star bi bi-star text-warning fs-4"></i>
-                    <i class="star bi bi-star text-warning fs-4"></i>
+                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
                 </div>
             
                 <div class="mb-3">
@@ -125,9 +125,11 @@
     function highlightStars(index) {
         stars.forEach((star, idx) => {
             if (idx <= index) {
-                star.classList.add('text-warning');
+                star.classList.remove('bi-star');
+                star.classList.add('bi-star-fill');
             } else {
-                star.classList.remove('text-warning');
+                star.classList.remove('bi-star-fill');
+                star.classList.add('bi-star');
             }
         });
     }
