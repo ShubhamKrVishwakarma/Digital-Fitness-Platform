@@ -137,73 +137,74 @@
                 <hr>
                 <div class="mt-3">
                     {{-- Single Post --}}
-                    <div class="card">
-                        <div class="px-3 pt-4 pb-2">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="{{ asset('images/profile-15.jpg') }}" alt="Mario Avatar">
-                                    <div class="">
-                                        <h5 class="card-title mb-0 text-dark"><a href="#" class="text-decoration-none">Mario</a></h5>
-                                        <p class="m-0">test@email.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            {{-- <p class="fs-6 fw-light text-muted">
-                                comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-                                of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
-                                ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
-                                dolor sit amet..", comes from a line in section 1.10.32.
-                            </p> --}}
-                            <div class="post">
-                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
-                            </div>
-    
-                            <div class="d-flex justify-content-between my-3">
-                                <div>
-                                    <a href="#" class="fw-light nav-link fs-6"> <i class="bi bi-heart-fill"></i> 100 </a>
-                                </div>
-                                <div>
-                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i>
-                                        3-5-2023 </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="mb-3">
-                                    <textarea class="fs-6 form-control" rows="1"></textarea>
-                                </div>
-                                <div>
-                                    <button class="btn btn-dark btn-sm"> Post Comment </button>
-                                </div>
-    
-                                <hr>
-                                <div class="d-flex align-items-start">
-                                    <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                        src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
-                                    <div class="w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h6 class="m-0">Luigi</h6>
-                                                <p class="m-0">Member</p>
-                                            </div>
-                                            <small class="fs-6 fw-light text-muted"> 3 hour
-                                                ago</small>
+                    @foreach ($posts as $post)
+                        <div class="card mb-3">
+                            <div class="px-3 pt-4 pb-2">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
+                                        <div class="">
+                                            <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}" class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
+                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
                                         </div>
-                                        <p class="fs-6 mt-3 fw-light">
-                                            and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                                            Evil)
-                                            by
-                                            Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
-                                            very
-                                            popular during the Renaissan
-                                        </p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <h5># {{ $post->title }}</h5>
+                                <p class="fs-6 fw-light text-muted">
+                                    {{ $post->message }}
+                                </p>
+                                {{-- <div class="post">
+                                    <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
+                                </div> --}}
+                                <div class="d-flex justify-content-between my-3">
+                                    <div>
+                                        <form id="likePost">
+                                            <input type="hidden" id="post-id" value="{{ $post->id }}">
+                                            <button type="submit" class="fw-light nav-link text-danger fs-6"> <i class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{ $post->created_at->diffForHumans() }} </span>
+                                    </div>
+                                </div>
+                                {{-- Comments Section --}}
+                                {{-- <div>
+                                    <div class="mb-3">
+                                        <textarea class="fs-6 form-control" rows="1"></textarea>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-dark btn-sm"> Post Comment </button>
+                                    </div>
+        
+                                    <hr>
+                                    <div class="d-flex align-items-start">
+                                        <img style="width:35px" class="me-2 avatar-sm rounded-circle"
+                                            src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h6 class="m-0">Luigi</h6>
+                                                    <p class="m-0">Member</p>
+                                                </div>
+                                                <small class="fs-6 fw-light text-muted"> 3 hour
+                                                    ago</small>
+                                            </div>
+                                            <p class="fs-6 mt-3 fw-light">
+                                                and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                                                Evil)
+                                                by
+                                                Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
+                                                very
+                                                popular during the Renaissan
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             {{-- Right Section --}}
@@ -236,9 +237,9 @@
                                 <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="bi bi-plus-lg"></i></a>
                             </div>
                         @endforeach
-                            <div class="d-grid mt-3">
-                                <a class="btn btn-sm btn-primary-soft" href="#!">Show More</a>
-                            </div>
+                        <div class="d-grid mt-3">
+                            <a class="btn btn-sm btn-primary-soft" href="{{ route('trainers') }}">Show More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -246,3 +247,10 @@
     </div>
 </main>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('plugins/jquery.js') }}"></script>
+    <script src="{{ asset('plugins/axios.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
+    <script src="{{ asset('js/community.js') }}"></script>
+@endpush
