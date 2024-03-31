@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Community;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
-class CommunitySeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,12 +18,12 @@ class CommunitySeeder extends Seeder
             $posts[] = [
                 "user_id" => $i,
                 "title" => fake()->title(),
-                "message" => fake()->text(),
+                "content" => fake()->text(),
                 "created_at" => now(),
                 "updated_at" => now()
             ];
         }
 
-        Community::insert($posts);
+        Post::insert($posts);
     }
 }

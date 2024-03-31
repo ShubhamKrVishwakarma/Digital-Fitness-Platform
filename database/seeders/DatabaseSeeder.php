@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             ChatSeeder::class,
             MessageSeeder::class,
-            CommunitySeeder::class
+            PostSeeder::class
         ]);
     }
 }

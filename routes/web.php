@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -90,5 +91,6 @@ Route::post("/trainers" , [TrainerController::class, 'rate'])->name('trainers.re
 
 
 // Community Page
-Route::get('/community', [CommunityController::class, 'index'])->name('community');
-Route::post('/community/like', [CommunityController::class, 'like'])->name('post.like');
+Route::get('/community', [PostController::class, 'index'])->name('community');
+Route::post('/post/like', [PostController::class, 'like'])->name('post.like');
+Route::post('/post/share', [PostController::class, 'share'])->name('post.share');

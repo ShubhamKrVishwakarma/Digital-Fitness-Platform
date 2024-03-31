@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 
     public function posts() {
-        return $this->hasMany(Community::class);
+        return $this->hasMany(Post::class);
     }
 
     public function getProfileUrl() {

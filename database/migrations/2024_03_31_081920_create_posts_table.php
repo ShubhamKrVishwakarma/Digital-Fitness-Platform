@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('communities', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('message')->nullable();
-            $table->string('file')->nullable();
+            $table->string('title', 100);
+            $table->enum('type', ['image', 'video', 'message'])->default('message');
+            $table->string('content');
             $table->string('likes')->default(0);
             $table->timestamps();
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('communities');
+        Schema::dropIfExists('posts');
     }
 };
