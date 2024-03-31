@@ -23,9 +23,6 @@ Route::get('/', function () {
 Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
 Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->middleware('auth')->name('addToCart');
 
-// Community Page
-Route::get('/community', [CommunityController::class, 'index'])->name('community');
-
 // Message Page
 Route::get('/message', function() {
     return view('message');
@@ -90,3 +87,8 @@ Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store
 // Trainers Info
 Route::get("/trainers" , [TrainerController::class, 'index'])->name('trainers');
 Route::post("/trainers" , [TrainerController::class, 'rate'])->name('trainers.review');
+
+
+// Community Page
+Route::get('/community', [CommunityController::class, 'index'])->name('community');
+Route::post('/community/like', [CommunityController::class, 'like'])->name('post.like');
