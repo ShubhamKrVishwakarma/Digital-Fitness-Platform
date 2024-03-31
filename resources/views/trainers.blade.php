@@ -67,7 +67,7 @@
                         <div>
                             <button type="button"
                                 class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
-                                data-bs-toggle="modal" data-bs-target="#reviewModal">Rate Trainer</button>
+                                data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
                             <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
             
                 <div class="mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Your Review..." required></textarea>
+                        placeholder="Your Review..." required name="trainer-review"></textarea>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success" id="submitRatingBtn" type="submit">Submit Rating</button>
@@ -118,9 +118,18 @@
     const ratingInput = document.querySelector('#exampleFormControlTextarea1');
     const submitBtn = document.querySelector('#submitRatingBtn');
     let rating = document.querySelector('#trainer-rating');
-
+    let trainer_id_btn= document.querySelectorAll("[data-trainer-id]");
     let ratingValue = 0;
+    let trainer = document.querySelector("#trainer-id");
 
+    trainer_id_btn.forEach(btn => {
+        btn.addEventListener("click" , (e)=>{
+            // trainer.value=e.dataset("[data-trainer-id]");
+            trainer.value = e.target.dataset.trainerId;
+            // alert(trainer.value);
+        });
+
+    });
     // Function to highlight stars up to the hovered/clicked star
     function highlightStars(index) {
         stars.forEach((star, idx) => {
@@ -152,6 +161,7 @@
             ratingValue = index + 1;
             ratingInput.value = ''; // Clear any previous text in the textarea
             highlightStars(index);
+            rating.value=ratingValue;
         });
     });
 
@@ -162,15 +172,7 @@
             alert('Please provide a review.');
             return;
         }
-        
-        // Here you can use the ratingValue and review for further processing
-        console.log('Rating:', ratingValue);
-        console.log('Review:', review);
 
-        // Clear the rating and review after submission if needed
-        // ratingValue = 0;
-        // ratingInput.value = '';
-        // stars.forEach(star => star.classList.remove('text-warning'));
     });
 });
 </script>
