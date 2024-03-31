@@ -93,3 +93,4 @@ Route::post("/trainers" , [TrainerController::class, 'rate'])->name('trainers.re
 // Community Page
 Route::get('/community', [PostController::class, 'index'])->name('community');
 Route::post('/post/like', [PostController::class, 'like'])->name('post.like');
+Route::post('/post/share', [PostController::class, 'share'])->name('post.share');
