@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             WorkoutPlanSeeder::class,
             OrderSeeder::class,
             ChatSeeder::class,
-            MessageSeeder::class
+            MessageSeeder::class,
+            CommunitySeeder::class
         ]);
     }
 }

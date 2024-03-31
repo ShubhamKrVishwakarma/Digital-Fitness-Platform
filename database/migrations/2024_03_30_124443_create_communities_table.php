@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('message')->nullable();
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->string('likes')->default(0);
             $table->timestamps();
 
