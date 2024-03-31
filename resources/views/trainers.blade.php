@@ -90,6 +90,7 @@
                     @csrf
                 <div class="mb-3">
                     <input type="hidden" id='trainer-rating' name="trainer-rating">
+                    <input type="hidden" id='trainer-id' name="trainer-id">
                     <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
                     <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
                     <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
