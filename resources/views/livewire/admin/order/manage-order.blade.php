@@ -1,7 +1,7 @@
 <div class="row" x-show="manageOrder" style="display: none;">
     <!-- view Order Table Button -->
     <div class="col-12 d-flex justify-content-start align-items-center flex-wrap ps-3 mb-3">
-        <button class="btn btn-sm btn-dark m-0" x-on:click="manageOrder = false, ordersTable = true">View All Orders</button>
+        <button class="btn btn-sm btn-dark m-0" wire:click='resetAll' x-on:click="manageOrder = false, ordersTable = true">View All Orders</button>
     </div>
     <!-- Order Details -->
     <div class="col-md-8">
