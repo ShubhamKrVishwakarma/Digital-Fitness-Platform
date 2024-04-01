@@ -30,15 +30,24 @@ class AddWorkoutPlan extends Component
 
     public function addExercise($exerciseId) {
         $exercise = Exercise::findOrFail($exerciseId);
-        $this->exerciseDetails[] = $exercise;
-        $this->sets[$exercise->id] = null;
-        $this->reps[$exercise->id] = null;
-        $this->dispatch(
-            'alert', 
-            icon: 'success',
-            title: 'Success!',
-            text: 'Exercise Added Successfully!',
-        );
+        if (in_array($exercise, $this->exerciseDetails)) {
+            $this->dispatch(
+                'alert', 
+                icon: 'info',
+                title: 'Done!',
+                text: 'Exercise is already added!',
+            );
+        } else {
+            $this->exerciseDetails[] = $exercise;
+            $this->sets[$exercise->id] = null;
+            $this->reps[$exercise->id] = null;
+            $this->dispatch(
+                'alert', 
+                icon: 'success',
+                title: 'Success!',
+                text: 'Exercise Added Successfully!',
+            );
+        }
     }
 
     public function removeExercise($index) {
