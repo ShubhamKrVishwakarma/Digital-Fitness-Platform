@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\User;
 
+use App\Models\Post;
 use App\Models\TrainerDetail;
 use App\Models\User;
 use Illuminate\Support\Facades\Date;
@@ -29,6 +30,9 @@ class ManageUser extends Component
     public $id;
     public $email;
     public $role;
+    public $posts;
+    public $followers;
+    public $followings;
 
     // For Trainers
     public $occupation;
@@ -60,6 +64,10 @@ class ManageUser extends Component
         $this->bio = $user->bio;
         $this->profile_pic = $user->profile_pic;
         $this->role = $user->role;
+
+        $this->posts = Post::where("user_id", $id)->count();
+        $this->followers = $user->followers;
+        $this->followings = $user->following;
 
         if ($this->role === "trainer" || $this->role === "pending") {
             $trainer_details = TrainerDetail::where('user_id', $id)->first();
