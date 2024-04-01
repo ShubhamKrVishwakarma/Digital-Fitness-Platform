@@ -99,7 +99,20 @@ class ManageWorkoutPlan extends Component
 
         $plan->update();
 
+        Workout::where("plan_id", $this->id)->delete();
 
+        $exercises = [];
+
+        foreach ($this->exerciseDetails as $index => $exercise) {
+            $exercises [] = [
+                "plan_id" => $plan->id,
+                "exercise_id" => $exercise->id,
+                "sets" => $this->sets[$exercise->id],
+                "reps" => $this->reps[$exercise->id]
+            ];
+        }
+
+        Workout::insert($exercises);
 
         $this->dispatch('refreshWorkoutPlansTable');
 
