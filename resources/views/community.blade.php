@@ -29,7 +29,7 @@
     <div class="container py-4">
         <div class="row">
             {{-- Left Sidebar --}}
-            <div class="d-none d-lg-block col-lg-3">
+            <div class="col-lg-3">
                 <!-- Navbar START-->
                 <nav class="navbar navbar-expand-lg mx-0 pt-0">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
@@ -43,19 +43,12 @@
                         <div class="offcanvas-body d-block px-2 px-lg-0">
                             <!-- Card START -->
                             <div class="card overflow-hidden">
-                                <!-- Cover image -->
-                                {{-- <div class="h-50px"
-                                    style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                                </div> --}}
-                                {{-- <div class="w-100"
-                                    style="background-image:url({{ asset('images/bg-profile.jpg') }}); background-position: center; background-size: cover; background-repeat: no-repeat;height: 50px;">
-                                </div> --}}
                                 <!-- Card body START -->
                                 <div class="card-body pt-2">
                                     <div class="text-center">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-lg mt-n5 mb-3">
-                                            <a href="#">
+                                            <a href="{{ route('user.show', auth()->user()->id) }}">
                                                 <img class="avatar-img rounded border border-white border-3"
                                                     src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic"
                                                     width="72">
@@ -106,18 +99,28 @@
             </div>
             {{-- Middle Section --}}
             <div class="col-lg-6">
+                {{-- Success Alert --}}
+                @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 {{-- Share your Thoughts --}}
                 <div class="card card-body">
                     <div class="d-flex mb-3">
                         <!-- Avatar -->
                         <div class="me-2">
-                            <a href="#"> <img class="avatar-sm rounded-circle"
-                                    src="{{ auth()->user()->getProfileUrl() }}" alt="" width="50px"> </a>
+                            <a href="{{ route('user.show', auth()->user()->id) }}"> <img class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt="" width="50px"> </a>
                         </div>
                         <!-- Post input -->
-                        <form class="w-100">
-                            <textarea class="form-control" id="post-message" rows="3"
+                        <form class="w-100" action="{{ route('post.share') }}" method="POST">
+                            @csrf
+                            <textarea class="form-control" rows="3" name="post-message"
                                 placeholder="Share your thoughts..." required></textarea>
+                            <div class="d-flex flex-wrap justify-content-end align-items-center">
+                                <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                            </div>
                         </form>
                     </div>
                     <!-- Share feed toolbar START -->
@@ -132,81 +135,67 @@
                                 data-bs-target="#feedActionVideo"> <i
                                     class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
                         </li>
-                        <li class="nav-item dropdown ms-lg-auto">
-                            <button id="sharePostBtn" class="btn btn-sm btn-dark">Post</button>
-                            <!-- Dropdown menu -->
-                            {{-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
-                                <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a
-                                        poll</a></li>
-                                <li><a class="dropdown-item" href="#"> <i
-                                            class="bi bi-bookmark-check fa-fw pe-2"></i>Ask a question </a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#"> <i
-                                            class="bi bi-pencil-square fa-fw pe-2"></i>Help</a></li>
-                            </ul> --}}
-                        </li>
                     </ul>
                     <!-- Share feed toolbar END -->
                 </div>
                 <hr>
+                {{-- Feed Information --}}
                 <div class="mt-3">
                     {{-- Single Post --}}
                     @foreach ($posts as $post)
-                    <div class="card mb-3">
-                        <div class="px-3 pt-4 pb-2">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
-                                    <div class="">
-                                        <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
-                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
-                                        <p class="text-muted m-0">{{ $post->user->email }}</p>
+                        <div class="card mb-3">
+                            <div class="px-3 pt-4 pb-2">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                            src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
+                                        <div class="">
+                                            <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
+                                                    class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
+                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <h5># {{ $post->title }}</h5>
-                            @if ($post->type === "message")
-                            <p class="fs-6 fw-light text-muted">
-                                {{ $post->content }}
-                            </p>
-                            @elseif ($post->type === "image")
-                            <div class="post">
-                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
-                            </div>
-                            @elseif ($post->type === "video")
-                            <div class="post">
-                                <video src=""></video>
-                            </div>
-                            @endif
-                            <div class="d-flex justify-content-between my-3">
+                            <div class="card-body">
+                                <h5># {{ $post->title }}</h5>
+                                @if ($post->type === "message")
+                                <p class="fs-6 fw-light text-muted">
+                                    {{ $post->content }}
+                                </p>
+                                @elseif ($post->type === "image")
+                                <div class="post">
+                                    <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
+                                </div>
+                                @elseif ($post->type === "video")
+                                <div class="post">
+                                    <video src=""></video>
+                                </div>
+                                @endif
+                                <div class="d-flex justify-content-between my-3">
+                                    <div>
+                                        <form id="likePost">
+                                            <input type="hidden" id="post-id" value="{{ $post->id }}">
+                                            <button type="submit" class="fw-light nav-link text-danger fs-6"> <i class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
+                                            $post->created_at->diffForHumans() }} </span>
+                                    </div>
+                                </div>
+                                {{-- Comments Section --}}
                                 <div>
-                                    <form id="likePost">
-                                        <input type="hidden" id="post-id" value="{{ $post->id }}">
-                                        <button type="submit" class="fw-light nav-link text-danger fs-6"> <i
-                                                class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
+                                    <form action="">
+                                        <div class="mb-3">
+                                            <textarea class="fs-6 form-control mb-3" rows="1"></textarea>
+                                            <button class="btn btn-dark btn-sm"> Post Comment </button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div>
-                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
-                                        $post->created_at->diffForHumans() }} </span>
-                                </div>
-                            </div>
-                            {{-- Comments Section --}}
-                            <div>
-                                <form action="">
-                                    <div class="mb-3">
-                                        <textarea class="fs-6 form-control mb-3" rows="1"></textarea>
-                                        <button class="btn btn-dark btn-sm"> Post Comment </button>
-                                    </div>
-                                </form>
 
-                                {{-- <hr> --}}
-                                @foreach ($post->comments as $comment)
+                                    {{--
+                                    <hr> --}}
+                                    @foreach ($post->comments as $comment)
                                     <div class="d-flex align-items-start">
                                         <img style="width:35px" class="me-2 avatar-sm rounded-circle"
                                             src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
@@ -216,17 +205,18 @@
                                                     <h6 class="m-0">{{ $comment->user->name }}</h6>
                                                     <p class="m-0">{{ $comment->user->email }}</p>
                                                 </div>
-                                                <small class="fs-6 fw-light text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                                <small class="fs-6 fw-light text-muted">{{
+                                                    $comment->created_at->diffForHumans() }}</small>
                                             </div>
                                             <p class="fs-6 mt-3 fw-light">
                                                 {{ $comment->comment }}
                                             </p>
                                         </div>
                                     </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -277,8 +267,8 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('plugins/jquery.js') }}"></script>
+{{-- <script src="{{ asset('plugins/jquery.js') }}"></script>
 <script src="{{ asset('plugins/axios.js') }}"></script>
 <script src="{{ asset('plugins/alert.js') }}"></script>
-<script src="{{ asset('js/community.js') }}"></script>
+<script src="{{ asset('js/community.js') }}"></script> --}}
 @endpush

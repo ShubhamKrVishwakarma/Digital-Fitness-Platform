@@ -16,28 +16,22 @@ class PostController extends Controller
             "posts" => Post::with('comments')->orderBy('created_at', 'DESC')->get()
         ]);
     }
-
-    public function like(Request $request) {
-        try {
-            $post = Post::findOrFail($request->post_id);
-            $post->likes = $post->likes + 1;
-            $post->update();
-            return response()->json(['message' => 'Post Liked']);
-        } catch(Exception) {
-            return response()->json(['error' => 'Server Error'], 500);
-        }
-    }
     
     public function share(Request $request) {
-        try {
-            Post::create([
-                "user_id" => auth()->user()->id,
-                "title" => "Demo",
-                "content" => $request->message
-            ]);
-            return response()->json(['message' => 'Post Shared successfully!']);
-        } catch(Exception) {
-            return response()->json(['error' => 'Server Error'], 500);
-        }
+        $request->validate([
+            "post-message" => "required|min:3"
+        ]);
+
+        Post::create([
+            "user_id" => auth()->user()->id,
+            "title" => "Test Title",
+            "content" => $request["post-message"]
+        ]);
+
+        return redirect()->route('community')->with('success', 'Post Added Successfully!');
+    }
+
+    public function like(Request $request) {
+       
     }
 }
