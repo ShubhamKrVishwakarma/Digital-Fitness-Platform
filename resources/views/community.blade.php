@@ -118,6 +118,9 @@
                             @csrf
                             <textarea class="form-control" rows="3" name="post-message"
                                 placeholder="Share your thoughts..." required></textarea>
+                            @error('post-message')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             <div class="d-flex flex-wrap justify-content-end align-items-center">
                                 <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
                             </div>
@@ -172,6 +175,7 @@
                                     <video src=""></video>
                                 </div>
                                 @endif
+                                {{-- Post Like --}}
                                 <div class="d-flex justify-content-between my-3">
                                     <div>
                                         @auth
@@ -198,24 +202,28 @@
                                 </div>
                                 {{-- Comments Section --}}
                                 <div>
-                                    <form action="">
+                                    <form action="{{ route('post.comment') }}" method="POST">
+                                        @csrf
                                         <div class="mb-3">
-                                            <textarea class="fs-6 form-control mb-3" rows="1"></textarea>
-                                            <button class="btn btn-dark btn-sm"> Post Comment </button>
+                                            <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                            <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment" required></textarea>
+                                            @error('post-comment')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <button class="btn btn-dark btn-sm">Add Comment</button>
                                         </div>
                                     </form>
-
                                     {{--
                                     <hr> --}}
                                     @foreach ($post->comments as $comment)
                                     <div class="d-flex align-items-start">
                                         <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                            src="{{ asset('images/profile-6.jpg') }}" alt="Luigi Avatar">
+                                            src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
                                         <div class="w-100">
                                             <div class="d-flex justify-content-between">
-                                                <div>
+                                                <div class="mt-2">
                                                     <h6 class="m-0">{{ $comment->user->name }}</h6>
-                                                    <p class="m-0">{{ $comment->user->email }}</p>
+                                                    {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
                                                 </div>
                                                 <small class="fs-6 fw-light text-muted">{{
                                                     $comment->created_at->diffForHumans() }}</small>
