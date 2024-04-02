@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Exception;
 use App\Models\Post;
+use App\Models\PostLike;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,18 @@ class PostController extends Controller
         return redirect()->route('community')->with('success', 'Post Added Successfully!');
     }
 
-    public function like(Request $request) {
-       
+    public function like($post_id) {
+        PostLike::create([
+            "post_id" => $post_id,
+            "user_id" => auth()->user()->id
+        ]);
+
+        return redirect()->route('community')->with('success', 'Post Liked Successfully!');
     }
+
+    public function unlike($post_id) {
+        PostLike::where("post_id", $post_id)->where("user_id", auth()->user()->id)->delete();
+        return redirect()->route('community')->with('success', 'Post Unliked Successfully!');
+    }
+    
 }

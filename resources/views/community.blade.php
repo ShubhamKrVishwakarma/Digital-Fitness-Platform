@@ -174,10 +174,22 @@
                                 @endif
                                 <div class="d-flex justify-content-between my-3">
                                     <div>
-                                        <form id="likePost">
-                                            <input type="hidden" id="post-id" value="{{ $post->id }}">
-                                            <button type="submit" class="fw-light nav-link text-danger fs-6"> <i class="bi bi-heart-fill"></i> {{ $post->likes }} </button>
-                                        </form>
+                                        @auth
+                                            @if ($post->postLiked($post))
+                                                <form action="{{ route('post.unlike', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('post.like', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
+                                                </form>
+                                            @endif
+                                        @endauth
+                                        @guest
+                                            <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
+                                        @endguest
                                     </div>
                                     <div>
                                         <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
