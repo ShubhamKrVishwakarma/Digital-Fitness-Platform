@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('title', 100);
             $table->enum('type', ['image', 'video', 'message'])->default('message');
             $table->string('content');
-            $table->string('likes')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
