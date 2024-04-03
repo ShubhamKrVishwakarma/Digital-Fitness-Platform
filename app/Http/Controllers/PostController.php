@@ -59,4 +59,14 @@ class PostController extends Controller
         
         return redirect()->route('community')->with('success', 'Comment Added Successfully!');
     }
+
+    public function uncomment(Request $request) {
+        $request->validate([
+            "post-id" => "required"
+        ]);
+
+        Comment::where("post_id", $request["post-id"])->where("user_id", auth()->user()->id)->delete();
+
+        return redirect()->route('community')->with('success', 'Comment Deleted Successfully!');
+    }
 }

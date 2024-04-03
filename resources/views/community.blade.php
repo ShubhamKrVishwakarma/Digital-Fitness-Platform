@@ -228,9 +228,21 @@
                                                 <small class="fs-6 fw-light text-muted">{{
                                                     $comment->created_at->diffForHumans() }}</small>
                                             </div>
-                                            <p class="fs-6 mt-3 fw-light">
-                                                {{ $comment->comment }}
-                                            </p>
+                                            <div class="d-flex">
+                                                <p class="fs-6 mt-3 fw-light">
+                                                    {{ $comment->comment }}
+                                                </p>
+                                                @if ($comment->user_id === auth()->user()->id)
+                                                    <div class="ms-auto my-auto">
+                                                        <form action="{{ route('post.uncomment') }}" method="POST">
+                                                            @method("DELETE")
+                                                            @csrf
+                                                            <input type="hidden" name="post-id" value="{{ $post->id }}" />
+                                                            <button class="btn btn-sm btn-danger m-0"><i class="bi bi-trash3-fill"></i></button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                     @endforeach
@@ -285,10 +297,3 @@
     </div>
 </main>
 @endsection
-
-@push('scripts')
-{{-- <script src="{{ asset('plugins/jquery.js') }}"></script>
-<script src="{{ asset('plugins/axios.js') }}"></script>
-<script src="{{ asset('plugins/alert.js') }}"></script>
-<script src="{{ asset('js/community.js') }}"></script> --}}
-@endpush
