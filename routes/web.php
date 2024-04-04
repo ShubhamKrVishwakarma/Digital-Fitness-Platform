@@ -97,3 +97,6 @@ Route::post('/post/like/{id}', [PostController::class, 'like'])->name('post.like
 Route::post('/post/unlike/{id}', [PostController::class, 'unlike'])->name('post.unlike');
 Route::post('/post/comment', [PostController::class, 'comment'])->name('post.comment');
 Route::delete('/post/uncomment', [PostController::class, 'uncomment'])->name('post.uncomment');
+
+Route::post('/post/image', [PostController::class, 'shareImage'])->name('post.share.image');
+Route::post('/post/video', [PostController::class, 'shareVideo'])->name('post.share.video');
