@@ -48,49 +48,49 @@
                                     <div class="text-center">
                                         <!-- Avatar -->
                                         @auth
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="{{ route('user.show', auth()->user()->id) }}">
-                                                    <img class="avatar-img rounded border border-white border-3"
-                                                        src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic"
-                                                        width="72">
-                                                </a>
-                                            </div>
-                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                            <small>{{ auth()->user()->email }}</small>
-                                            <p class="mt-3">{{ auth()->user()->bio ?? 'Bio is Empty'}}</p>
+                                        <div class="avatar avatar-lg mt-n5 mb-3">
+                                            <a href="{{ route('user.show', auth()->user()->id) }}">
+                                                <img class="avatar-img rounded border border-white border-3"
+                                                    src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic"
+                                                    width="72">
+                                            </a>
+                                        </div>
+                                        <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                        <small>{{ auth()->user()->email }}</small>
+                                        <p class="mt-3">{{ auth()->user()->bio ?? 'Bio is Empty'}}</p>
 
-                                            <!-- User stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center">
-                                                <!-- User stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
-                                                    <small>Post</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- User stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">{{ auth()->user()->followers }}</h6>
-                                                    <small>Followers</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- User stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">{{ auth()->user()->following }}</h6>
-                                                    <small>Following</small>
-                                                </div>
+                                        <!-- User stat START -->
+                                        <div class="hstack gap-2 gap-xl-3 justify-content-center">
+                                            <!-- User stat item -->
+                                            <div>
+                                                <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
+                                                <small>Post</small>
                                             </div>
+                                            <!-- Divider -->
+                                            <div class="vr"></div>
+                                            <!-- User stat item -->
+                                            <div>
+                                                <h6 class="mb-0">{{ auth()->user()->followers }}</h6>
+                                                <small>Followers</small>
+                                            </div>
+                                            <!-- Divider -->
+                                            <div class="vr"></div>
+                                            <!-- User stat item -->
+                                            <div>
+                                                <h6 class="mb-0">{{ auth()->user()->following }}</h6>
+                                                <small>Following</small>
+                                            </div>
+                                        </div>
                                         @endauth
                                         @guest
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a>
-                                                    <img class="avatar-img rounded border border-white border-3"
-                                                        src="{{ asset('images/profile/profile.jpg') }}" alt="Profile Pic"
-                                                        width="72">
-                                                </a>
-                                            </div>
-                                            <h5 class="mb-0">Guest</h5>
+                                        <div class="avatar avatar-lg mt-n5 mb-3">
+                                            <a>
+                                                <img class="avatar-img rounded border border-white border-3"
+                                                    src="{{ asset('images/profile/profile.jpg') }}" alt="Profile Pic"
+                                                    width="72">
+                                            </a>
+                                        </div>
+                                        <h5 class="mb-0">Guest</h5>
                                         @endguest
                                         <!-- Info -->
 
@@ -100,16 +100,15 @@
                                 <!-- Card body END -->
                                 <!-- Card footer -->
                                 @auth
-                                    <div class="card-footer text-center py-2">
-                                        <a class="link-primary text-decoration-none"
-                                            href="{{ route('user.show', auth()->user()->id )}}">View Profile </a>
-                                    </div>
+                                <div class="card-footer text-center py-2">
+                                    <a class="link-primary text-decoration-none"
+                                        href="{{ route('user.show', auth()->user()->id )}}">View Profile </a>
+                                </div>
                                 @endauth
                                 @guest
-                                    <div class="card-footer text-center py-2">
-                                        <a class="link-primary text-decoration-none"
-                                            href="{{ route('login')}}">Login</a>
-                                    </div>
+                                <div class="card-footer text-center py-2">
+                                    <a class="link-primary text-decoration-none" href="{{ route('login')}}">Login</a>
+                                </div>
                                 @endguest
                             </div>
                             <!-- Card END -->
@@ -129,43 +128,43 @@
                 @endif
                 {{-- Share your Thoughts --}}
                 @auth
-                    <div class="card card-body mb-3">
-                        <div class="d-flex mb-3">
-                            <!-- Avatar -->
-                            <div class="me-2">
-                                <a href="{{ route('user.show', auth()->user()->id) }}"> <img
-                                        class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt=""
-                                        width="50px"> </a>
-                            </div>
-                            <!-- Post input -->
-                            <form class="w-100" action="{{ route('post.share') }}" method="POST">
-                                @csrf
-                                <textarea class="form-control" rows="3" name="post-message"
-                                    placeholder="Share your thoughts..." required></textarea>
-                                @error('post-message')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                <div class="d-flex flex-wrap justify-content-end align-items-center">
-                                    <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
-                                </div>
-                            </form>
+                <div class="card card-body mb-3">
+                    <div class="d-flex mb-3">
+                        <!-- Avatar -->
+                        <div class="me-2">
+                            <a href="{{ route('user.show', auth()->user()->id) }}"> <img
+                                    class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt=""
+                                    width="50px"> </a>
                         </div>
-                        <!-- Share feed toolbar START -->
-                        <ul class="nav nav-pills nav-stack small fw-normal gap-2">
-                            <li class="nav-item">
-                                <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                    data-bs-target="#feedActionPhoto"> <i
-                                        class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                    data-bs-target="#feedActionVideo"> <i
-                                        class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                            </li>
-                        </ul>
-                        <!-- Share feed toolbar END -->
+                        <!-- Post input -->
+                        <form class="w-100" action="{{ route('post.share') }}" method="POST">
+                            @csrf
+                            <textarea class="form-control" rows="3" name="post-message"
+                                placeholder="Share your thoughts..." required></textarea>
+                            @error('post-message')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <div class="d-flex flex-wrap justify-content-end align-items-center">
+                                <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                            </div>
+                        </form>
                     </div>
-                    <hr>
+                    <!-- Share feed toolbar START -->
+                    <ul class="nav nav-pills nav-stack small fw-normal gap-2">
+                        <li class="nav-item">
+                            <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                data-bs-target="#postImage"> <i
+                                    class="bi bi-image-fill text-success pe-2"></i>Photo</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                data-bs-target="#postVideo"> <i
+                                    class="bi bi-camera-reels-fill text-info pe-2"></i>Video</button>
+                        </li>
+                    </ul>
+                    <!-- Share feed toolbar END -->
+                </div>
+                <hr>
                 @endauth
                 {{-- Feed Information --}}
                 <div>
@@ -231,23 +230,23 @@
                             {{-- Comments Section --}}
                             <div>
                                 {{--
-                                    <hr> --}}
+                                <hr> --}}
                                 @auth
-                                    @if (!$post->commentExists($post->id, auth()->user()->id))
-                                        <form action="{{ route('post.comment') }}" method="POST">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                                <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
-                                                    required></textarea>
-                                                @error('post-comment')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                                <button class="btn btn-dark btn-sm">Add Comment</button>
-                                            </div>
-                                        </form>
-                                    @endif
-                                    <hr>
+                                @if (!$post->commentExists($post->id, auth()->user()->id))
+                                <form action="{{ route('post.comment') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                        <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
+                                            required></textarea>
+                                        @error('post-comment')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <button class="btn btn-dark btn-sm">Add Comment</button>
+                                    </div>
+                                </form>
+                                @endif
+                                <hr>
                                 @endauth
                                 @foreach ($post->comments as $comment)
                                 <div class="d-flex align-items-start">
@@ -291,7 +290,8 @@
             </div>
             {{-- Right Section --}}
             <div class="d-none d-lg-block col-lg-3">
-                <div class="card">
+                {{-- Search Box --}}
+                {{-- <div class="card mb-3">
                     <div class="card-header pb-0 border-0">
                         <h5 class="">Search</h5>
                     </div>
@@ -299,8 +299,8 @@
                         <input placeholder="Search People here.." class="form-control w-100" type="text" id="search">
                         <button class="btn btn-dark mt-2"> Search</button>
                     </div>
-                </div>
-                <div class="card mt-3">
+                </div> --}}
+                <div class="card">
                     <div class="card-header pb-0 border-0">
                         <h5 class="">Trainers to Follow</h5>
                     </div>
@@ -333,4 +333,59 @@
         </div>
     </div>
 </main>
+
+{{-- Photo Modal --}}
+<div class="modal fade" id="postImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Share Images</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('post.share.image') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="post-title" class="form-label">Caption / Title</label>
+                        <input type="text" class="form-control" name="post-title" id="post-title" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="post-image" class="form-label">Image</label>
+                        <input type="file" name="post-image" id="post-image" class="form-control" accept="image/*">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-end align-items-center">
+                        <button class="btn btn-dark m-0">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Video Modal --}}
+<div class="modal fade" id="postVideo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Share Videos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('post.share.video') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="post-title" class="form-label">Caption / Title</label>
+                        <input type="text" class="form-control" id="post-title" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="post-video" class="form-label">Video</label>
+                        <input type="file" name="post-video" id="post-video" class="form-control" accept="video/*">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-end align-items-center">
+                        <button class="btn btn-dark m-0">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
