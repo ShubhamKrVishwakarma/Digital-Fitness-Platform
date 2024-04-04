@@ -13,7 +13,6 @@ class ManageOrder extends Component
     public $id;
     public $order = [];
     public $order_details = [];
-    public $products = [];
 
     public $name;
     public $email;
@@ -43,11 +42,7 @@ class ManageOrder extends Component
         $this->total_amount = $order->amount;
 
         $order_details = OrderedProduct::where("order_id", $id)->get();
-        $this->order_details[] = $order_details->toArray();
-        
-        foreach($order_details as $orders) {
-            $this->products[] = Product::findOrFail($orders->product_id);
-        }
+        $this->order_details = $order_details->toArray();
 
         if ($order->status === "confirmed") {
             $this->status = "Order Confirmed";

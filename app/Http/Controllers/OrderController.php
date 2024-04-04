@@ -17,7 +17,6 @@ class OrderController extends Controller
     public function orderDetails($id) {
         return view('order_details', [
             "order" => Order::find($id),
-            "ordered_products" => OrderedProduct::where("order_id", $id)->get()
         ]);
     }
 

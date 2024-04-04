@@ -47,49 +47,70 @@
                                 <div class="card-body pt-2">
                                     <div class="text-center">
                                         <!-- Avatar -->
-                                        <div class="avatar avatar-lg mt-n5 mb-3">
-                                            <a href="{{ route('user.show', auth()->user()->id) }}">
-                                                <img class="avatar-img rounded border border-white border-3"
-                                                    src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic"
-                                                    width="72">
-                                            </a>
-                                        </div>
-                                        <!-- Info -->
-                                        <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                        <small>{{ auth()->user()->email }}</small>
-                                        <p class="mt-3">{{ auth()->user()->bio ?? 'Bio is Empty'}}</p>
+                                        @auth
+                                            <div class="avatar avatar-lg mt-n5 mb-3">
+                                                <a href="{{ route('user.show', auth()->user()->id) }}">
+                                                    <img class="avatar-img rounded border border-white border-3"
+                                                        src="{{ auth()->user()->getProfileUrl() }}" alt="Profile Pic"
+                                                        width="72">
+                                                </a>
+                                            </div>
+                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                            <small>{{ auth()->user()->email }}</small>
+                                            <p class="mt-3">{{ auth()->user()->bio ?? 'Bio is Empty'}}</p>
 
-                                        <!-- User stat START -->
-                                        <div class="hstack gap-2 gap-xl-3 justify-content-center">
-                                            <!-- User stat item -->
-                                            <div>
-                                                <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
-                                                <small>Post</small>
+                                            <!-- User stat START -->
+                                            <div class="hstack gap-2 gap-xl-3 justify-content-center">
+                                                <!-- User stat item -->
+                                                <div>
+                                                    <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
+                                                    <small>Post</small>
+                                                </div>
+                                                <!-- Divider -->
+                                                <div class="vr"></div>
+                                                <!-- User stat item -->
+                                                <div>
+                                                    <h6 class="mb-0">{{ auth()->user()->followers }}</h6>
+                                                    <small>Followers</small>
+                                                </div>
+                                                <!-- Divider -->
+                                                <div class="vr"></div>
+                                                <!-- User stat item -->
+                                                <div>
+                                                    <h6 class="mb-0">{{ auth()->user()->following }}</h6>
+                                                    <small>Following</small>
+                                                </div>
                                             </div>
-                                            <!-- Divider -->
-                                            <div class="vr"></div>
-                                            <!-- User stat item -->
-                                            <div>
-                                                <h6 class="mb-0">{{ auth()->user()->followers }}</h6>
-                                                <small>Followers</small>
+                                        @endauth
+                                        @guest
+                                            <div class="avatar avatar-lg mt-n5 mb-3">
+                                                <a>
+                                                    <img class="avatar-img rounded border border-white border-3"
+                                                        src="{{ asset('images/profile/profile.jpg') }}" alt="Profile Pic"
+                                                        width="72">
+                                                </a>
                                             </div>
-                                            <!-- Divider -->
-                                            <div class="vr"></div>
-                                            <!-- User stat item -->
-                                            <div>
-                                                <h6 class="mb-0">{{ auth()->user()->following }}</h6>
-                                                <small>Following</small>
-                                            </div>
-                                        </div>
+                                            <h5 class="mb-0">Guest</h5>
+                                        @endguest
+                                        <!-- Info -->
+
                                         <!-- User stat END -->
                                     </div>
                                 </div>
                                 <!-- Card body END -->
                                 <!-- Card footer -->
-                                <div class="card-footer text-center py-2">
-                                    <a class="link-primary text-decoration-none"
-                                        href="{{ route('user.show', auth()->user()->id )}}">View Profile </a>
-                                </div>
+                                @auth
+                                    <div class="card-footer text-center py-2">
+                                        <a class="link-primary text-decoration-none"
+                                            href="{{ route('user.show', auth()->user()->id )}}">View Profile </a>
+                                    </div>
+                                @endauth
+                                @guest
+                                    <div class="card-footer text-center py-2">
+                                        <a class="link-primary text-decoration-none"
+                                            href="{{ route('login')}}">Login</a>
+                                    </div>
+                                @endguest
                             </div>
                             <!-- Card END -->
                         </div>
@@ -101,154 +122,167 @@
             <div class="col-lg-6">
                 {{-- Success Alert --}}
                 @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 @endif
                 {{-- Share your Thoughts --}}
-                <div class="card card-body">
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="me-2">
-                            <a href="{{ route('user.show', auth()->user()->id) }}"> <img class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt="" width="50px"> </a>
-                        </div>
-                        <!-- Post input -->
-                        <form class="w-100" action="{{ route('post.share') }}" method="POST">
-                            @csrf
-                            <textarea class="form-control" rows="3" name="post-message"
-                                placeholder="Share your thoughts..." required></textarea>
-                            @error('post-message')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="d-flex flex-wrap justify-content-end align-items-center">
-                                <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                @auth
+                    <div class="card card-body mb-3">
+                        <div class="d-flex mb-3">
+                            <!-- Avatar -->
+                            <div class="me-2">
+                                <a href="{{ route('user.show', auth()->user()->id) }}"> <img
+                                        class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt=""
+                                        width="50px"> </a>
                             </div>
-                        </form>
+                            <!-- Post input -->
+                            <form class="w-100" action="{{ route('post.share') }}" method="POST">
+                                @csrf
+                                <textarea class="form-control" rows="3" name="post-message"
+                                    placeholder="Share your thoughts..." required></textarea>
+                                @error('post-message')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="d-flex flex-wrap justify-content-end align-items-center">
+                                    <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Share feed toolbar START -->
+                        <ul class="nav nav-pills nav-stack small fw-normal gap-2">
+                            <li class="nav-item">
+                                <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                    data-bs-target="#feedActionPhoto"> <i
+                                        class="bi bi-image-fill text-success pe-2"></i>Photo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                    data-bs-target="#feedActionVideo"> <i
+                                        class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
+                            </li>
+                        </ul>
+                        <!-- Share feed toolbar END -->
                     </div>
-                    <!-- Share feed toolbar START -->
-                    <ul class="nav nav-pills nav-stack small fw-normal gap-2">
-                        <li class="nav-item">
-                            <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                data-bs-target="#feedActionPhoto"> <i
-                                    class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                data-bs-target="#feedActionVideo"> <i
-                                    class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                        </li>
-                    </ul>
-                    <!-- Share feed toolbar END -->
-                </div>
-                <hr>
+                    <hr>
+                @endauth
                 {{-- Feed Information --}}
-                <div class="mt-3">
+                <div>
                     {{-- Single Post --}}
                     @foreach ($posts as $post)
-                        <div class="card mb-3">
-                            <div class="px-3 pt-4 pb-2">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                            src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
-                                        <div class="">
-                                            <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
-                                                    class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
-                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
-                                        </div>
+                    <div class="card mb-3">
+                        <div class="px-3 pt-4 pb-2">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                        src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
+                                    <div class="">
+                                        <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
+                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
+                                        <p class="text-muted m-0">{{ $post->user->email }}</p>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5># {{ $post->title }}</h5>
-                                @if ($post->type === "message")
-                                <p class="fs-6 fw-light text-muted">
-                                    {{ $post->content }}
-                                </p>
-                                @elseif ($post->type === "image")
-                                <div class="post">
-                                    <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
-                                </div>
-                                @elseif ($post->type === "video")
-                                <div class="post">
-                                    <video src=""></video>
-                                </div>
-                                @endif
-                                {{-- Post Like --}}
-                                <div class="d-flex justify-content-between my-3">
-                                    <div>
-                                        @auth
-                                            @if ($post->postLiked($post))
-                                                <form action="{{ route('post.unlike', $post->id) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
-                                                </form>
-                                            @else
-                                                <form action="{{ route('post.like', $post->id) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
-                                                </form>
-                                            @endif
-                                        @endauth
-                                        @guest
-                                            <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
-                                        @endguest
-                                    </div>
-                                    <div>
-                                        <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
-                                            $post->created_at->diffForHumans() }} </span>
-                                    </div>
-                                </div>
-                                {{-- Comments Section --}}
-                                <div>
-                                    <form action="{{ route('post.comment') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                            <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment" required></textarea>
-                                            @error('post-comment')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <button class="btn btn-dark btn-sm">Add Comment</button>
-                                        </div>
-                                    </form>
-                                    {{--
-                                    <hr> --}}
-                                    @foreach ($post->comments as $comment)
-                                    <div class="d-flex align-items-start">
-                                        <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                            src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="mt-2">
-                                                    <h6 class="m-0">{{ $comment->user->name }}</h6>
-                                                    {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
-                                                </div>
-                                                <small class="fs-6 fw-light text-muted">{{
-                                                    $comment->created_at->diffForHumans() }}</small>
-                                            </div>
-                                            <div class="d-flex">
-                                                <p class="fs-6 mt-3 fw-light">
-                                                    {{ $comment->comment }}
-                                                </p>
-                                                @if ($comment->user_id === auth()->user()->id)
-                                                    <div class="ms-auto my-auto">
-                                                        <form action="{{ route('post.uncomment') }}" method="POST">
-                                                            @method("DELETE")
-                                                            @csrf
-                                                            <input type="hidden" name="post-id" value="{{ $post->id }}" />
-                                                            <button class="btn btn-sm btn-danger m-0"><i class="bi bi-trash3-fill"></i></button>
-                                                        </form>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <h5># {{ $post->title }}</h5>
+                            @if ($post->type === "message")
+                            <p class="fs-6 fw-light text-muted">
+                                {{ $post->content }}
+                            </p>
+                            @elseif ($post->type === "image")
+                            <div class="post">
+                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
+                            </div>
+                            @elseif ($post->type === "video")
+                            <div class="post">
+                                <video src=""></video>
+                            </div>
+                            @endif
+                            {{-- Post Like --}}
+                            <div class="d-flex justify-content-between my-3">
+                                <div>
+                                    @auth
+                                    @if ($post->postLiked($post))
+                                    <form action="{{ route('post.unlike', $post->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
+                                    </form>
+                                    @else
+                                    <form action="{{ route('post.like', $post->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
+                                    </form>
+                                    @endif
+                                    @endauth
+                                    @guest
+                                    <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
+                                            class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
+                                    @endguest
+                                </div>
+                                <div>
+                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
+                                        $post->created_at->diffForHumans() }} </span>
+                                </div>
+                            </div>
+                            {{-- Comments Section --}}
+                            <div>
+                                @auth
+                                <form action="{{ route('post.comment') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                        <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
+                                            required></textarea>
+                                        @error('post-comment')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <button class="btn btn-dark btn-sm">Add Comment</button>
+                                    </div>
+                                </form>
+                                @endauth
+                                {{--
+                                <hr> --}}
+                                @foreach ($post->comments as $comment)
+                                <div class="d-flex align-items-start">
+                                    <img style="width:35px" class="me-2 avatar-sm rounded-circle"
+                                        src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="mt-2">
+                                                <h6 class="m-0">{{ $comment->user->name }}</h6>
+                                                {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
+                                            </div>
+                                            <small class="fs-6 fw-light text-muted">{{
+                                                $comment->created_at->diffForHumans() }}</small>
+                                        </div>
+                                        <div class="d-flex">
+                                            <p class="fs-6 mt-3 fw-light">
+                                                {{ $comment->comment }}
+                                            </p>
+                                            @auth
+                                            @if ($comment->user_id === auth()->user()->id)
+                                            <div class="ms-auto my-auto">
+                                                <form action="{{ route('post.uncomment') }}" method="POST">
+                                                    @method("DELETE")
+                                                    @csrf
+                                                    <input type="hidden" name="post-id" value="{{ $post->id }}" />
+                                                    <button class="btn btn-sm btn-danger m-0"><i
+                                                            class="bi bi-trash3-fill"></i></button>
+                                                </form>
+                                            </div>
+                                            @endif
+                                            @endauth
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

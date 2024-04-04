@@ -60,11 +60,11 @@
                 {{-- Ordered Product --}}
                 <div class="card border shadow-none">
                     <div class="card-body">
-                        @foreach ($ordered_products as $ordered_product)
+                        @foreach ($order->orders as $ordered_product)
                             <div>
                                 <div class="d-flex align-items-start border-bottom pb-3">
                                     <div class="me-4">
-                                        <img src="{{ $ordered_product->product->getProductUrl() }}" class="avatar-lg rounded">
+                                        <img src="{{ $ordered_product->product_image }}" class="avatar-lg rounded">
                                     </div>
                                     <div class="flex-grow-1 align-self-center overflow-hidden">
                                         <div>
@@ -76,7 +76,7 @@
                                                 <i class="bi bi-star-fill text-warning"></i>
                                                 <i class="bi bi-star-fill text-warning"></i>
                                             </p>
-                                            <p class="mb-0 mt-1">Category : <span class="fw-medium">{{ $ordered_product->product->category->name }}</span></p>
+                                            <p class="mb-0 mt-1">Category : <span class="fw-medium">{{ $ordered_product->category }}</span></p>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0 ms-2">

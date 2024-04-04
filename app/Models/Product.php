@@ -18,10 +18,6 @@ class Product extends Model
     public function cart() {
         return $this->hasMany(Cart::class);
     }
-    
-    public function ordered_products() {
-        return $this->hasMany(OrderedProduct::class);
-    }
 
     public function getProductUrl() {
         if ($this->image) {
