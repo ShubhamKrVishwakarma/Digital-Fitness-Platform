@@ -309,7 +309,7 @@
                     </div>
                     <div class="card-body">
                         @foreach ($trainers as $trainer)
-                        < class="hstack gap-2 mb-3 flex-wrap">
+                        <div class="hstack gap-2 mb-3 flex-wrap">
                             <div class="avatar">
                                 <a href="{{ route('user.show', $trainer->id) }}">
                                     <img class="avatar-img rounded-circle" src="{{ $trainer->getProfileUrl() }}" alt=""
@@ -324,38 +324,39 @@
                                     }}..</a>
                             </div>
                             @auth
-                                @if (!auth()->user()->follows($trainer->id))
-                                    <div class="ms-auto">
-                                        <form action="{{ route('user.follow') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <button class="btn btn-primary-soft rounded-circle icon-md"><i
-                                                    class="bi bi-plus-lg"></i></button>
-                                        </form>
-                                    </div>
-                                    @else
-                                    <div class="ms-auto">
-                                        <form action="{{ route('user.unfollow') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <button class="btn btn-primary-soft rounded-circle icon-md"><i
-                                                    class="bi bi-dash"></i></button>
-                                        </form>
-                                    </div>
-                                @endif
+                            @if (!auth()->user()->follows($trainer->id))
+                            <div class="ms-auto">
+                                <form action="{{ route('user.follow') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                    <button class="btn btn-primary-soft rounded-circle icon-md"><i
+                                            class="bi bi-plus-lg"></i></button>
+                                </form>
+                            </div>
+                            @else
+                            <div class="ms-auto">
+                                <form action="{{ route('user.unfollow') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                    <button class="btn btn-primary-soft rounded-circle icon-md"><i
+                                            class="bi bi-dash"></i></button>
+                                </form>
+                            </div>
+                            @endif
                             @endauth
                             @guest
-                                <a href="{{ route('login') }}" class="btn btn-primary-soft rounded-circle ms-auto icon-md"><i class="bi bi-plus-lg"></i></a>
+                            <a href="{{ route('login') }}" class="btn btn-primary-soft rounded-circle ms-auto icon-md"><i
+                                    class="bi bi-plus-lg"></i></a>
                             @endguest
-                    </div>
-                    @endforeach
-                    <div class="d-grid mt-3">
-                        <a class="btn btn-sm btn-primary-soft" href="{{ route('trainers') }}">Show More</a>
+                        </div>
+                        @endforeach
+                        <div class="d-grid mt-3">
+                            <a class="btn btn-sm btn-primary-soft" href="{{ route('trainers') }}">Show More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </main>
 
