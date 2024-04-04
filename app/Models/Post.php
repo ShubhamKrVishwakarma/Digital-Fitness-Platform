@@ -37,4 +37,8 @@ class Post extends Model
         }
         return true;
     }
+
+    public function getPostUrl() {
+        return url('storage/posts/' . $this->content);
+    }
 }

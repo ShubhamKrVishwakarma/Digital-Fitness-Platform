@@ -14,7 +14,8 @@
         max-height: 500px;
     }
 
-    .post img {
+    .post img,
+    .post video {
         height: 100%;
         width: 100%;
         object-fit: contain;
@@ -170,121 +171,123 @@
                 <div>
                     {{-- Single Post --}}
                     @foreach ($posts as $post)
-                    <div class="card mb-3">
-                        <div class="px-3 pt-4 pb-2">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
-                                    <div class="">
-                                        <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
-                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
-                                        <p class="text-muted m-0">{{ $post->user->email }}</p>
+                        <div class="card mb-3">
+                            <div class="px-3 pt-4 pb-2">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                            src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
+                                        <div class="">
+                                            <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
+                                                    class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
+                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <h5># {{ $post->title }}</h5>
-                            @if ($post->type === "message")
-                            <p class="fs-6 fw-light text-muted">
-                                {{ $post->content }}
-                            </p>
-                            @elseif ($post->type === "image")
-                            <div class="post">
-                                <img class="rounded" src="{{ asset('images/feed-1.jpg') }}" alt="Post">
-                            </div>
-                            @elseif ($post->type === "video")
-                            <div class="post">
-                                <video src=""></video>
-                            </div>
-                            @endif
-                            {{-- Post Like --}}
-                            <div class="d-flex justify-content-between my-3">
-                                <div>
-                                    @auth
-                                    @if ($post->postLiked($post))
-                                    <form action="{{ route('post.unlike', $post->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
-                                                class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
-                                    </form>
-                                    @else
-                                    <form action="{{ route('post.like', $post->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
-                                                class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
-                                    </form>
-                                    @endif
-                                    @endauth
-                                    @guest
-                                    <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
-                                            class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
-                                    @endguest
-                                </div>
-                                <div>
-                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
-                                        $post->created_at->diffForHumans() }} </span>
-                                </div>
-                            </div>
-                            {{-- Comments Section --}}
-                            <div>
-                                {{--
-                                <hr> --}}
-                                @auth
-                                @if (!$post->commentExists($post->id, auth()->user()->id))
-                                <form action="{{ route('post.comment') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                        <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
-                                            required></textarea>
-                                        @error('post-comment')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <button class="btn btn-dark btn-sm">Add Comment</button>
+                            <div class="card-body">
+                                <h5># {{ $post->title }}</h5>
+                                @if ($post->type === "message")
+                                    <p class="fs-6 fw-light text-muted">
+                                        {{ $post->content }}
+                                    </p>
+                                @elseif ($post->type === "image")
+                                    <div class="post">
+                                        <img class="rounded" src="{{ $post->getPostUrl() }}" alt="Post">
                                     </div>
-                                </form>
+                                @elseif ($post->type === "video")
+                                    <div class="post">
+                                        <video controls>
+                                            <source src="{{ $post->getPostUrl() }}" type="video/mp4">
+                                        </video>
+                                    </div>
                                 @endif
-                                <hr>
-                                @endauth
-                                @foreach ($post->comments as $comment)
-                                <div class="d-flex align-items-start">
-                                    <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                        src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
-                                    <div class="w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="mt-2">
-                                                <h6 class="m-0">{{ $comment->user->name }}</h6>
-                                                {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
-                                            </div>
-                                            <small class="fs-6 fw-light text-muted">{{
-                                                $comment->created_at->diffForHumans() }}</small>
-                                        </div>
-                                        <div class="d-flex">
-                                            <p class="fs-6 mt-3 fw-light">
-                                                {{ $comment->comment }}
-                                            </p>
-                                            @auth
-                                            @if ($comment->user_id === auth()->user()->id)
-                                            <div class="ms-auto my-auto">
-                                                <form action="{{ route('post.uncomment') }}" method="POST">
-                                                    @method("DELETE")
-                                                    @csrf
-                                                    <input type="hidden" name="post-id" value="{{ $post->id }}" />
-                                                    <button class="btn btn-sm btn-danger m-0"><i
-                                                            class="bi bi-trash3-fill"></i></button>
-                                                </form>
-                                            </div>
-                                            @endif
-                                            @endauth
-                                        </div>
+                                {{-- Post Like --}}
+                                <div class="d-flex justify-content-between my-3">
+                                    <div>
+                                        @auth
+                                        @if ($post->postLiked($post))
+                                        <form action="{{ route('post.unlike', $post->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                    class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
+                                        </form>
+                                        @else
+                                        <form action="{{ route('post.like', $post->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                    class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
+                                        </form>
+                                        @endif
+                                        @endauth
+                                        @guest
+                                        <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
+                                                class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
+                                        @endguest
+                                    </div>
+                                    <div>
+                                        <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i> {{
+                                            $post->created_at->diffForHumans() }} </span>
                                     </div>
                                 </div>
-                                @endforeach
+                                {{-- Comments Section --}}
+                                <div>
+                                    {{--
+                                    <hr> --}}
+                                    @auth
+                                        @if (!$post->commentExists($post->id, auth()->user()->id))
+                                        <form action="{{ route('post.comment') }}" method="POST">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                                <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
+                                                    required></textarea>
+                                                @error('post-comment')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <button class="btn btn-dark btn-sm">Add Comment</button>
+                                            </div>
+                                        </form>
+                                        @endif
+                                    @endauth
+                                    @foreach ($post->comments as $comment)
+                                    <hr>
+                                    <div class="d-flex align-items-start">
+                                        <img style="width:35px" class="me-2 avatar-sm rounded-circle"
+                                            src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="mt-2">
+                                                    <h6 class="m-0">{{ $comment->user->name }}</h6>
+                                                    {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
+                                                </div>
+                                                <small class="fs-6 fw-light text-muted">{{
+                                                    $comment->created_at->diffForHumans() }}</small>
+                                            </div>
+                                            <div class="d-flex">
+                                                <p class="fs-6 mt-3 fw-light">
+                                                    {{ $comment->comment }}
+                                                </p>
+                                                @auth
+                                                @if ($comment->user_id === auth()->user()->id)
+                                                <div class="ms-auto my-auto">
+                                                    <form action="{{ route('post.uncomment') }}" method="POST">
+                                                        @method("DELETE")
+                                                        @csrf
+                                                        <input type="hidden" name="post-id" value="{{ $post->id }}" />
+                                                        <button class="btn btn-sm btn-danger m-0"><i
+                                                                class="bi bi-trash3-fill"></i></button>
+                                                    </form>
+                                                </div>
+                                                @endif
+                                                @endauth
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -374,14 +377,14 @@
                     @csrf
                     <div class="mb-3">
                         <label for="post-title" class="form-label">Caption / Title</label>
-                        <input type="text" class="form-control" id="post-title" placeholder="name@example.com">
+                        <input type="text" name="post-title" class="form-control" id="post-title" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="post-video" class="form-label">Video</label>
                         <input type="file" name="post-video" id="post-video" class="form-control" accept="video/*">
                     </div>
                     <div class="mb-3 d-flex justify-content-end align-items-center">
-                        <button class="btn btn-dark m-0">Post</button>
+                        <button type="submit" class="btn btn-dark m-0">Post</button>
                     </div>
                 </form>
             </div>

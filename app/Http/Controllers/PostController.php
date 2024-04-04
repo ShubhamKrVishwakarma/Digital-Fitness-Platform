@@ -78,13 +78,12 @@ class PostController extends Controller
         $fileExtension = $request->file('post-image')->getClientOriginalExtension();
         $file_name = date('YmdHis') . '_post' . '.' .$fileExtension;
         $request->file('post-image')->storeAs('public/posts/', $file_name);
-        $request["post-image"] = $file_name;
 
         Post::create([
             "user_id" => auth()->user()->id,
             "title" => $request["post-title"],
             "type" => "image",
-            "content" => $request["post-image"]
+            "content" => $file_name
         ]);
 
         return redirect()->route('community')->with('success', 'Post Shared Successfully!');
@@ -99,13 +98,12 @@ class PostController extends Controller
         $fileExtension = $request->file('post-video')->getClientOriginalExtension();
         $file_name = date('YmdHis') . '_post' . '.' .$fileExtension;
         $request->file('post-video')->storeAs('public/posts/', $file_name);
-        $request["post-video"] = $file_name;
 
         Post::create([
             "user_id" => auth()->user()->id,
             "title" => $request["post-title"],
             "type" => "video",
-            "content" => $request["post-video"]
+            "content" => $file_name
         ]);
 
         return redirect()->route('community')->with('success', 'Post Shared Successfully!');
