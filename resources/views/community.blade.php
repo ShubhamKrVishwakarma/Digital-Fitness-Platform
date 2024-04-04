@@ -230,22 +230,25 @@
                             </div>
                             {{-- Comments Section --}}
                             <div>
-                                @auth
-                                <form action="{{ route('post.comment') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                        <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
-                                            required></textarea>
-                                        @error('post-comment')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <button class="btn btn-dark btn-sm">Add Comment</button>
-                                    </div>
-                                </form>
-                                @endauth
                                 {{--
-                                <hr> --}}
+                                    <hr> --}}
+                                @auth
+                                    @if (!$post->commentExists($post->id, auth()->user()->id))
+                                        <form action="{{ route('post.comment') }}" method="POST">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                                <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
+                                                    required></textarea>
+                                                @error('post-comment')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <button class="btn btn-dark btn-sm">Add Comment</button>
+                                            </div>
+                                        </form>
+                                    @endif
+                                    <hr>
+                                @endauth
                                 @foreach ($post->comments as $comment)
                                 <div class="d-flex align-items-start">
                                     <img style="width:35px" class="me-2 avatar-sm rounded-circle"
