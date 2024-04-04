@@ -323,8 +323,23 @@
                                     href="{{ route('user.show', $trainer->id) }}">{{ substr($trainer->email, 0, 16)
                                     }}..</a>
                             </div>
-                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i
-                                    class="bi bi-plus-lg"></i></a>
+                            @if (!auth()->user()->follows($trainer->id))
+                                <div class="ms-auto">
+                                    <form action="{{ route('user.follow') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                        <button class="btn btn-primary-soft rounded-circle icon-md"><i class="bi bi-plus-lg"></i></button>
+                                    </form>
+                                </div>
+                            @else
+                                <div class="ms-auto">
+                                    <form action="{{ route('user.unfollow') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                        <button class="btn btn-primary-soft rounded-circle icon-md"><i class="bi bi-dash"></i></button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                         @endforeach
                         <div class="d-grid mt-3">
