@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Follower;
 use App\Models\Post;
 use App\Models\PostLike;
 use App\Models\User;
@@ -12,7 +13,8 @@ class PostController extends Controller
 {
     public function index() {
         return view('community', [
-            "trainers" => User::where('role', 'trainer')->inRandomOrder()->take(5)->get(),
+            // "trainers" => User::where('role', 'trainer')->inRandomOrder()->take(5)->get(),
+            "trainers" => User::where('role', 'trainer')->take(5)->get(),
             "posts" => Post::with('comments')->orderBy('created_at', 'DESC')->get()
         ]);
     }
@@ -107,5 +109,46 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('community')->with('success', 'Post Shared Successfully!');
+    }
+
+    public function follow(Request $request) {
+        if (auth()->user()->id === $request["user-id"]) {
+            return redirect()->route('community')->with('success', 'Cannot Follow Yourself!');
+        }
+
+        $request->validate([
+            "user-id" => "required"
+        ]);
+
+        Follower::create([
+            "user_id" => auth()->user()->id,
+            "follower_id" => $request["user-id"]
+        ]);
+
+        $user = User::findOrFail($request["user-id"]);
+        $user->followers = $user->followers + 1;
+        $user->following = $user->following + 1;
+        $user->update();
+
+        return redirect()->route('community')->with('success', 'Followed Successfully!');
+    }
+
+    public function unfollow(Request $request) {
+        if (auth()->user()->id === $request["user-id"]) {
+            return redirect()->route('community')->with('success', 'Cannot Unfollow Yourself!');
+        }
+
+        $request->validate([
+            "user-id" => "required"
+        ]);
+
+        Follower::where("user_id", auth()->user()->id)->where("follower_id", $request["user-id"])->delete();
+
+        $user = User::findOrFail($request["user-id"]);
+        $user->followers = $user->followers - 1;
+        $user->following = $user->following - 1;
+        $user->update();
+
+        return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
     }
 }

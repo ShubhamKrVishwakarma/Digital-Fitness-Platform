@@ -100,3 +100,6 @@ Route::delete('/post/uncomment', [PostController::class, 'uncomment'])->name('po
 
 Route::post('/post/image', [PostController::class, 'shareImage'])->name('post.share.image');
 Route::post('/post/video', [PostController::class, 'shareVideo'])->name('post.share.video');
+
+Route::post('/trainer/follow', [PostController::class, 'follow'])->name('user.follow');
+Route::post('/trainer/unfollow', [PostController::class, 'unfollow'])->name('user.unfollow');

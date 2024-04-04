@@ -40,6 +40,18 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function followers() {
+        return $this->hasMany(Follower::class);
+    }
+
+    public function follows($id) {
+        $follower = Follower::where("follower_id", $id)->where('user_id', auth()->user()->id)->get();
+        if ($follower->count() < 1) {
+            return false;
+        }
+        return true;
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/user/' . $this->profile_pic);
