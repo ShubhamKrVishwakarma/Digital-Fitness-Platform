@@ -132,6 +132,9 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
+        if($request->has('source')){
+            return redirect()->route('user.show', $request['user-id'])->with('success', 'Followed Successfully!');
+        }
         return redirect()->route('community')->with('success', 'Followed Successfully!');
     }
 
@@ -153,6 +156,9 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
+        if($request->has('source')){
+            return redirect()->route('user.show', $request['user-id'])->with('success', 'Unfollowed Successfully!');
+        }
         return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
     }
 }

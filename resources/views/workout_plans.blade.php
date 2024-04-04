@@ -212,7 +212,7 @@
             </div>
         </section>
 
-        <section class="container mt-5 text-dark" id="main-section-3">
+        {{-- <section class="container mt-5 text-dark" id="main-section-3">
             <div class="heading">
                 <h4>Picks for you</h4>
             </div>
@@ -266,6 +266,6 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </div>
 @endsection

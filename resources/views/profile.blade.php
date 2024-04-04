@@ -65,7 +65,22 @@
                 @if(Auth::user()->id !== $user->id)
                 <div class="buttons-for-user">
                     <button type="button" class="btn btn-primary" id="chat-button">Chat</button>
-                    <button type="button" class="btn btn-primary">Follow</button>
+                    @if (auth()->user()->follows($user->id))
+                        <form action="{{route('user.unfollow')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="user-id" value="{{$user->id}}">
+                        <input type="hidden" name="source" value="profile">
+                        <button type="submit" class="btn btn-primary">Unfollow</button>
+                        </form>
+                    @else
+                        <form action="{{route('user.follow')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="user-id" value="{{$user->id}}">
+                        <input type="hidden" name="source" value="profile">
+                        <button type="submit" class="btn btn-primary">Follow</button>
+                        </form>
+                        
+                    @endif
                 </div>
                 @else
                 <div class="buttons-for-self">
