@@ -127,7 +127,9 @@ class PostController extends Controller
 
         $user = User::findOrFail($request["user-id"]);
         $user->followers = $user->followers + 1;
-        $user->following = $user->following + 1;
+        $current_user = User::findOrFail(auth()->user()->id);
+        $current_user->following = $current_user->following + 1;
+        $current_user->update();
         $user->update();
 
         return redirect()->route('community')->with('success', 'Followed Successfully!');
@@ -146,7 +148,9 @@ class PostController extends Controller
 
         $user = User::findOrFail($request["user-id"]);
         $user->followers = $user->followers - 1;
-        $user->following = $user->following - 1;
+        $current_user = User::findOrFail(auth()->user()->id);
+        $current_user->following = $current_user->following - 1;
+        $current_user->update();
         $user->update();
 
         return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
