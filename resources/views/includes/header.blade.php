@@ -66,8 +66,8 @@
                                 href="{{ route('workout.plans') }}">Workouts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fw-medium {{ Route::is('about') ? 'active' : '' }}"
-                                href="{{ route('about') }}">About</a>
+                            <a class="nav-link text-light fw-medium {{ Route::is('trainers') ? 'active' : '' }}"
+                                href="{{ route('trainers') }}">Trainers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light fw-medium {{ Route::is('contact') ? 'active' : '' }}"
@@ -96,7 +96,7 @@
                                     <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
                                 @endcan
                                 <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id )}}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ route('trainers') }}">Trainers</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('trainers') }}">Trainers</a></li> --}}
                                 <li><a class="dropdown-item" href="{{ route('message') }}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart') }}">My Cart</a></li>
                                 <li><a class="dropdown-item" href="{{ route('orders') }}">My Orders</a></li>
