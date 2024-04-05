@@ -20,25 +20,23 @@
                             <table class="table tble-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center fw-semibold">Id</th>
+                                        {{-- <th class="text-center fw-semibold">Id</th> --}}
                                         <th class="text-center fw-semibold">Date</th>
-                                        <th class="text-center fw-semibold">Role</th>
+                                        <th class="text-center fw-semibold">Total Products</th>
+                                        {{-- <th class="text-center fw-semibold">Role</th> --}}
                                         <th class="text-center fw-semibold">Status</th>
                                         <th class="text-center fw-semibold">Amount</th>
-                                        <th class="text-center fw-semibold">Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                     <tbody>
                                         @forelse ($orders as $order)
                                            <tr>
+                                               <td class="text-center">
+                                                   <span>{{ $order->created_at->format('d-m-Y') }}</span>
+                                               </td>   
                                                 <td class="text-center">
-                                                    <span>{{ $order->id }}</span>
-                                                </td>    
-                                                <td class="text-center">
-                                                    <span>{{ $order->created_at->format('d-m-Y') }}</span>
-                                                </td>    
-                                                <td class="text-center">
-                                                    <span class="badge text-bg-primary">{{ $order->user->role }}</span>
+                                                    <span>{{ $order->orders->count() }}</span>
                                                 </td>    
                                                 <td class="text-center">
                                                     <span class="badge text-bg-{{ ($order->status === "confirmed") ? 'success' : ($order->status === "rejected" ? 'danger' : 'info') }} text-white">{{ $order->status }}</span>
