@@ -60,4 +60,8 @@ class ManageQuery extends Component
             text: 'Query Deleted Successfully!',
         );
     }
+
+    public function resetAll() {
+        $this->reset();
+    }
 }

@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-auto ms-auto my-auto">
-                    <button x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0">View All Users</button>
+                    <button wire:click.prevent='resetAll' x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0">View All Users</button>
                 </div>
             </div>
         </div>
