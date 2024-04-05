@@ -55,12 +55,12 @@ class ManageOrder extends Component
 
     public function confirmOrder() {
         $order = Order::findOrFail($this->id);
-        $products = $order->orders->toArray();
-        foreach ($products as $product) {
-            $update = Product::findOrFail($product["product_id"]);
-            $update->quantity = $update->quantity - $product["quantity"];
-            $update->update();
-        }
+        // $products = $order->orders->toArray();
+        // foreach ($products as $product) {
+        //     $update = Product::findOrFail($product["product_id"]);
+        //     $update->quantity = $update->quantity - $product["quantity"];
+        //     $update->update();
+        // }
         $order->status = "confirmed";
         $order->update();
         $this->status = "Order Confirmed";

@@ -134,7 +134,11 @@ class PostController extends Controller
 
         if($request->has('source')){
             return redirect()->route('user.show', $request['user-id'])->with('success', 'Followed Successfully!');
+        } 
+        elseif ($request->has('trainer-profile')) {
+            return redirect()->route('trainers')->with('success', 'Followed Successfully!');
         }
+        
         return redirect()->route('community')->with('success', 'Followed Successfully!');
     }
 
@@ -159,6 +163,10 @@ class PostController extends Controller
         if($request->has('source')){
             return redirect()->route('user.show', $request['user-id'])->with('success', 'Unfollowed Successfully!');
         }
+        elseif ($request->has('trainer-profile')) {
+            return redirect()->route('trainers')->with('success', 'Followed Successfully!');
+        }
+
         return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
     }
 }

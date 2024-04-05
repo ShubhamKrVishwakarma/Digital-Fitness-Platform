@@ -14,19 +14,21 @@ class TrainerSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 11; $i <= 17; $i++) {
             $user = User::create([
                 "name" => fake()->name(),
                 "email" => fake()->unique()->email(),
                 "phone" => fake()->numerify('##########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
-                "gender" => fake()->randomElement(['M', 'F', 'O']),
+                // "gender" => fake()->randomElement(['M', 'F', 'O']),
+                "gender" => 'M',
                 "dob" => "2004-01-10",
                 "address" => fake()->address(),
                 "city" => fake()->city(),
                 "zip_code" => "123456",
                 "state" => "West Bengal",
-                "role" => "trainer" , 
+                "role" => "trainer",
+                "profile_pic" => $i . ".jpg", 
                 "rating" => 0
             ]);
 

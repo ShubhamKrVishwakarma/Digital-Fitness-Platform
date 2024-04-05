@@ -14,7 +14,7 @@ class MemberSeeder extends Seeder
     {
         $userData = [];
 
-        for ($i = 1; $i < 20; $i++) {
+        for ($i = 2; $i <= 10; $i++) {
             $userData[] = [
                 "name" => fake()->name(),
                 "email" => fake()->unique()->email(),
@@ -26,6 +26,7 @@ class MemberSeeder extends Seeder
                 "city" => fake()->city(),
                 "zip_code" => "98765432",
                 "state" => "Delhi",
+                "profile_pic" => $i . ".jpg",
                 "created_at" => now(),
                 "updated_at" => now(),
             ];

@@ -42,36 +42,54 @@
         {{-- Trainers Card --}}
         <div class="row">
             @foreach ($trainers as $trainer)
-                
-            
-            {{-- Single Trainer --}}
-            <div class="col-lg-4 mb-4">
-                <div class="text-center card-box py-3 shadow-sm bg-body-tertiary rounded">
-                    <div class="member-card pt-2 pb-2">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ $trainer->getProfileUrl() }}" class="rounded-circle shadow-1-strong"
-                                width="100" height="100" />
-                        </div>
-                        <div class="my-3">
-                            <span>
-                            <i class="bi bi-star-fill text-warning fs-5"></i>
-                            {{ $trainer->rating }}
-                        </span>
-                        </div>
-                        <div>
-                            <h4 class="mb-2">{{$trainer->name}}</h4>
-                            <span class="badge text-bg-primary p-2" style="font-size: 0.8rem">Trainer</span>
-                            {{-- <p class="" style="font-size: 0.8rem">trainer@gmail.com</p> --}}
-                        </div>
-                        <div>
-                            <button type="button"
-                                class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
-                                data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
-                            <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                {{-- Single Trainer --}}
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center card-box py-3 shadow-sm bg-body-tertiary rounded">
+                        <div class="member-card pt-2 pb-2">
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('user.show', $trainer->id) }}">
+                                    <img src="{{ $trainer->getProfileUrl() }}" class="rounded-circle shadow-1-strong"
+                                    width="100" height="100" />
+                                </a>
+                            </div>
+                            <div class="my-3">
+                                <span>
+                                <i class="bi bi-star-fill text-warning fs-5"></i>
+                                {{ $trainer->rating }}
+                            </span>
+                            </div>
+                            <div>
+                                <h4 class="mb-2">{{$trainer->name}}</h4>
+                                @auth
+                                @if (auth()->user()->follows($trainer->id))
+                                    <form action="{{ route('user.unfollow') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                        <input type="hidden" name="trainer-profile" value="trainer-profile">
+                                        <button class="btn btn-sm btn-primary">Unfollow</button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('user.follow') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                        <input type="hidden" name="trainer-profile" value="trainer-profile">
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </form>
+                                @endif
+                                @endauth
+                                @guest
+                                    <a href="{{ route('login') }}" class="btn btn-sm btn-primary">Follow</a>
+                                @endguest
+                            </div>
+                            <div>
+                                <button type="button"
+                                    class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
+                                    data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
+                                <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
