@@ -45,9 +45,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{ route('about') }}">
+                                    <a class="nav-link me-2" href="{{ route('trainers') }}">
                                         <i class="fa-solid fa-circle-info opacity-6 text-dark me-1"></i>
-                                        About
+                                        Trainers
                                     </a>
                                 </li>
                                 <li class="nav-item">
