@@ -67,7 +67,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL PULLOVER",
                 "image" => "exercises/chest-7.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -107,7 +107,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL FLY",
                 "image" => "exercises/chest-12.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -115,7 +115,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL BENCH PRESS",
                 "image" => "exercises/chest-13.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -147,7 +147,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "INCLINE DUMBBELL FLY",
                 "image" => "exercises/chest-17.gif",
                 "type" => "chest",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -155,7 +155,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "INCLINE DUMBBELL PRESS",
                 "image" => "exercises/chest-18.gif",
                 "type" => "chest",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -163,7 +163,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "REVERSE GRIP INCLINE DUMBBELL PRESS",
                 "image" => "exercises/chest-19.gif",
                 "type" => "chest",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -188,7 +188,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL PUSH PRESS",
                 "image" => "exercises/shoulder-2.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -196,7 +196,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "STANDING DUMBBELL SHOULDER PRESS",
                 "image" => "exercises/shoulder-3.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -228,7 +228,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL LATERAL RAISE",
                 "image" => "exercises/shoulder-7.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -236,7 +236,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL SHOULDER PRESS",
                 "image" => "exercises/shoulder-8.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -268,7 +268,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "45 DEGREE INCLINE ROW",
                 "image" => "exercises/shoulder-12.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbell, Bench",
+                "equipment" => "Dumbbell, Bench",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -308,7 +308,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL CHEST SUPPORTED LATERAL RAISES",
                 "image" => "exercises/shoulder-17.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -316,7 +316,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL 6 WAY RAISE",
                 "image" => "exercises/shoulder-18.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -324,7 +324,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "DUMBBELL 4 WAY LATERAL RAISE",
                 "image" => "exercises/shoulder-19.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -332,7 +332,7 @@ class ExerciseSeeder extends Seeder
                 "name" => "ALTERNATING DUMBBELL FRONT RAISE",
                 "image" => "exercises/shoulder-20.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -417,6 +417,86 @@ class ExerciseSeeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now()
             ],
+            [
+                "name" => "DUMBBELL ROW",
+                "image" => "exercises/back-11.gif",
+                "type" => "back",
+                "equipment" => "Dumbbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BENT OVER DUMBBELL ROW",
+                "image" => "exercises/back-12.gif",
+                "type" => "back",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL BENT OVER REVERSE GRIP ROW",
+                "image" => "exercises/back-13.gif",
+                "type" => "back",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "REVERSE LAT-PULLDOWN",
+                "image" => "exercises/back-14.gif",
+                "type" => "cable",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "MUSCLE-UP",
+                "image" => "exercises/back-15.gif",
+                "type" => "cable",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "SEATED ROW MACHINE",
+                "image" => "exercises/back-16.gif",
+                "type" => "cable",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ONE ARM CABLE ROW",
+                "image" => "exercises/back-17.gif",
+                "type" => "cable",
+                "equipment" => "Cable",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "REVERSE GRIP BARBELL ROW",
+                "image" => "exercises/back-18.gif",
+                "type" => "cable",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DEADLIFT",
+                "image" => "exercises/back-19.gif",
+                "type" => "cable",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ROMANIAN DEADLIFT",
+                "image" => "exercises/back-20.gif",
+                "type" => "cable",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ]
         ];
 
         Exercise::insert($exercises);
