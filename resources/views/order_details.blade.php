@@ -54,7 +54,7 @@
 @endpush
 
 @section('content')
-    <div class="container p-5">
+    <div class="container p-5" style="min-height: 404px;">
         <div class="row">
             <div class="col-xl-8">
                 {{-- Ordered Product --}}
@@ -64,7 +64,7 @@
                             <div>
                                 <div class="d-flex align-items-start border-bottom pb-3">
                                     <div class="me-4">
-                                        <img src="{{ $ordered_product->product_image }}" class="avatar-lg rounded">
+                                        <img src="{{ url('storage') . '/' . $ordered_product->product_image }}" class="avatar-lg rounded">
                                     </div>
                                     <div class="flex-grow-1 align-self-center overflow-hidden">
                                         <div>
