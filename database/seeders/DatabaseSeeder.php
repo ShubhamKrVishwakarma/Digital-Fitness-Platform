@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ExerciseSeeder::class,
             WorkoutPlanSeeder::class,
-            OrderSeeder::class,
+            // OrderSeeder::class,
             // ChatSeeder::class,
             // MessageSeeder::class,
             PostSeeder::class,
