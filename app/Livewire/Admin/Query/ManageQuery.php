@@ -13,7 +13,6 @@ class ManageQuery extends Component
     public $email;
     public $phone;
     public $message;
-
     public $reply;
 
     public function render()
