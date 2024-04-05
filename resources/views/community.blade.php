@@ -11,7 +11,7 @@
     }
 
     .post {
-        max-height: 500px;
+        height: 500px;
     }
 
     .post img,
