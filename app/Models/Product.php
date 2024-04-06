@@ -19,6 +19,10 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
+    public function reviews() {
+        return $this->hasMany(ReviewType::class);
+    }
+
     public function getProductUrl() {
         if ($this->image) {
             return url('storage/' . $this->image);

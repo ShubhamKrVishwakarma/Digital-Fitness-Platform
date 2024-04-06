@@ -19,4 +19,7 @@ class ReviewType extends Model
     public function product(){
         return $this->belongsTo(Product::class,'product_id' , 'id');
     }
+    public function review(){
+        return $this->belongsTo(Review::class,'review_id' , 'id');
+    }
 }

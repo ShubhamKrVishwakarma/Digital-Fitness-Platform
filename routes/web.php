@@ -105,6 +105,5 @@ Route::post('/trainer/follow', [PostController::class, 'follow'])->name('user.fo
 Route::post('/trainer/unfollow', [PostController::class, 'unfollow'])->name('user.unfollow');
 
 // Product Details
-Route::get('/product', function() {
-    return view('product_details');
-});
+Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
+Route::post('/product/review', [ProductController::class, 'review'])->name('product.review');
