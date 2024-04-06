@@ -21,7 +21,7 @@
                                     </div>
                                 </div>
                                 <div class="manage-post">
-                                    <button class="btn btn-sm btn-danger mb-0">Delete</button>
+                                    <button wire:confirm.prompt='Are u Sure?\nEnter password to "DELETE"|aaaa' wire:click='deletePost({{ $post->id }})' class="btn btn-sm btn-danger mb-0">Delete</button>
                                 </div>
                             </div>
                             <div class="post-bio">
@@ -66,11 +66,11 @@
                             </div>
                         </div>
                         <div class="manage-post">
-                            <button class="btn btn-sm btn-dark mb-0">Delete All Comments</button>
+                            <button wire:confirm.prompt='Are you Sure?\nEnter password to "DELETE"|aaaa' wire:click='deleteAllComments({{ $post->id }})' class="btn btn-sm btn-dark mb-0">Delete All Comments</button>
                         </div>
                     </div>
                     <!-- Comment -->
-                    @foreach ($post->comments as $comment)
+                    @forelse ($post->comments as $comment)
                         <div wire:key='{{ $comment->user_id }}' class="comment-body p-3">
                             <div class="comment-body-header">
                                 <div class="comment-user-info">
@@ -85,9 +85,9 @@
                                     </div>
                                 </div>
                                 <div class="manage-comments">
-                                    <a href="" class="btn btn-sm btn-danger py-2 px-3">
+                                    <button wire:confirm.prompt='Are you Sure?\nEnter password to "DELETE"|aaaa' wire:click='deleteSingleComment({{ $comment->post_id }}, {{ $comment->user_id }})' class="btn btn-sm btn-danger py-2 px-3">
                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             <div class="comment-user-message p-1">
@@ -96,7 +96,11 @@
                                 </p>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div>
+                            <h6 class="mt-2 ms-3">No Comments on this Post</h6>
+                        </div>
+                    @endforelse
                 </div>
             </div>
             <!-- Post Comments End -->
