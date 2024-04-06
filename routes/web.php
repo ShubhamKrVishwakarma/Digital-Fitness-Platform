@@ -103,3 +103,8 @@ Route::post('/post/video', [PostController::class, 'shareVideo'])->name('post.sh
 
 Route::post('/trainer/follow', [PostController::class, 'follow'])->name('user.follow');
 Route::post('/trainer/unfollow', [PostController::class, 'unfollow'])->name('user.unfollow');
+
+// Product Details
+Route::get('/product', function() {
+    return view('product_details');
+});
