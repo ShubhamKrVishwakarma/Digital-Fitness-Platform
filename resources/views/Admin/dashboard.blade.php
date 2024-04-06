@@ -6,7 +6,7 @@
 <div class="container-fluid py-4">
     {{-- Website Counters --}}
     @livewire('Admin.Dashboard.SiteInfo')
-    {{-- <div class="row mt-4">
+    <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card ">
                 <div class="card-header pb-0 p-3">
@@ -224,6 +224,6 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 @endsection

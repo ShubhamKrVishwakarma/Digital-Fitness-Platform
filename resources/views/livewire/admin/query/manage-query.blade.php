@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap pb-3">
                 <h5>Query Reply</h5>
-                <button class="btn btn-sm btn-dark m-0" x-on:click="manageQuery = false, queryTable = true">View All Queries</button>
+                <button class="btn btn-sm btn-dark m-0" wire:click.prevent='resetAll' x-on:click="manageQuery = false, queryTable = true">View All Queries</button>
             </div>
             <hr class="m-0 bg-dark">
             <div class="card-body">

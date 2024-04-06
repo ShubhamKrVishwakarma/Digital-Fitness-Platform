@@ -126,11 +126,13 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <form action="{{ route('cancel.order', $order->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</button>
-                            </form>
+                            @if ($order->status === "pending")
+                                <form action="{{ route('cancel.order', $order->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>

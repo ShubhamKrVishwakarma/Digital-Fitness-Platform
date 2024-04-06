@@ -27,8 +27,7 @@
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
                                 <div class="avatar avatar-xxl position-relative mb-2">
-                                    {{-- <img src="{{ url('storage/' . $product->image) }}" class="w-100 border-radius-lg shadow-sm"> --}}
-                                    <img src="{{ $order_detail["product_image"] }}" class="w-100 border-radius-lg shadow-sm">
+                                    <img src="{{ url('storage') . '/' . $order_detail["product_image"] }}" class="w-100 border-radius-lg shadow-sm">
                                 </div>
                                 <!-- Product Details -->
                                 <div class="d-flex flex-column justify-content-center">

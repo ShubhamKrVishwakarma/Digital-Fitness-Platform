@@ -212,4 +212,8 @@ class ManageUser extends Component
         User::findOrFail($this->id)->delete();
         $this->dispatch('refreshUsersTable');
     }
+
+    public function resetAll() {
+        $this->reset();
+    }
 }

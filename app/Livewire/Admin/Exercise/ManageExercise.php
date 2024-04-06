@@ -76,4 +76,8 @@ class ManageExercise extends Component
             text: 'Exercise Deleted Successfully!',
         );
     }
+
+    public function resetAll() {
+        $this->reset();
+    }
 }

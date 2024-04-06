@@ -97,4 +97,8 @@ class ManageProduct extends Component
             text: 'Product Deleted Successfully!',
         );
     }
+
+    public function resetAll() {
+        $this->reset();
+    }
 }
