@@ -116,16 +116,15 @@
                         <div class="heading">
                             <h5 class="display-4 mb-5">Last workout</h5>
                         </div>
-                        {{-- <p id="workout-parts">{{$completed[0]->plan->workouts->plan_id}}<br></p> --}}
-                        {{-- <p id="workout-parts">{{auth()->user()->workoutLog->plan}}<br></p> --}}
-                        {{-- <p id="time">50 mins</p> --}}
-                        <div class="d-flex flex-wrap-reverse ">
-                            <a href="./exercise.html">
-                                <button class="btn btn-primary me-4">Start</button>
-                            </a>
-                            <span class="small-icons mb-1 "><img src="{{ asset('./images/workout/edit (1).png') }}"
-                                    alt=""></span>
-                        </div>
+                        @if ($completed)
+                        <p id="workout-parts">{{$completed->plan->name}}<br></p>
+                        <p id="workout-parts">{{$completed->plan->level}}<br></p>
+                        <p id="time">{{$completed->plan->duration}} Mins</p>
+                        <p id="time">{{$completed->plan->calories}} Calories</p>
+                        @else
+                        <p id="workout-parts">Choose a Workout<br></p>
+                        <p id="workout-parts">Beginner, Intermediate,<br>Advance</p>
+                        @endif
                     </div>
                 @endauth
                 @guest
