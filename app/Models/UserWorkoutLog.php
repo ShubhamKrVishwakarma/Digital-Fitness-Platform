@@ -13,10 +13,10 @@ class UserWorkoutLog extends Model
     protected $fillable = ['user_id', 'plan_id'];
 
     public function user(){
-        return $this->BelongsTo(User::class , 'user_id' , 'id');
+        return $this->belongsTo(User::class , 'user_id' , 'id');
     }
     
-    public function plan(){
-        return $this->BelongsTo(WorkoutPlan::class , 'plan_id' , 'id');
+    public function plan() {
+        return $this->belongsTo(WorkoutPlan::class , "plan_id" , "id");
     }
 }

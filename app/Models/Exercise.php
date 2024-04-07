@@ -11,6 +11,10 @@ class Exercise extends Model
 
     protected $fillable = ['name', 'image', 'type', 'equipment'];
 
+    public function workouts() {
+        return $this->hasMany(Workout::class);
+    }
+
     public function getExerciseGif() {
         if ($this->image) {
             return url('storage/' . $this->image);
