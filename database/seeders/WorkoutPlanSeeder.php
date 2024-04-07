@@ -318,7 +318,7 @@ class WorkoutPlanSeeder extends Seeder
         
         $workouts = [];
         
-        for ($i=15;$i<=30;$i++) {
+        for ($i=16;$i<=30;$i++) {
             $workouts[] = [
                 "plan_id" => $plan->id,
                 "exercise_id" => $i,
@@ -413,7 +413,7 @@ class WorkoutPlanSeeder extends Seeder
 
         $workouts = [];
 
-        for ($i=90;$i<=105;$i++) {
+        for ($i=91;$i<=105;$i++) {
             $workouts[] = [
                 "plan_id" => $plan->id,
                 "exercise_id" => $i,
