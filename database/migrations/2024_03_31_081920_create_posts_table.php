@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title', 100);
+            $table->string('title', 100)->nullable();
             $table->enum('type', ['image', 'video', 'message'])->default('message');
             $table->string('content');
             $table->timestamps();

@@ -147,6 +147,7 @@
                         <!-- Post input -->
                         <form class="w-100" action="{{ route('post.share') }}" method="POST">
                             @csrf
+                            <input type="text" name="post-title" placeholder="Caption/Title (Optional)" class="form-control mb-3">
                             <textarea class="form-control" rows="3" name="post-message"
                                 placeholder="Share your thoughts..." required></textarea>
                             @error('post-message')
@@ -193,7 +194,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5># {{ $post->title }}</h5>
+                            <h6>{{ $post->title }}</h6>
                             @if ($post->type === "message")
                             <p class="fs-6 fw-light text-muted">
                                 {{ $post->content }}
@@ -264,10 +265,9 @@
                                         src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between">
-                                            <div class="mt-2">
-                                                <h6 class="m-0">{{ $comment->user->name }}</h6>
-                                                {{-- <p class="m-0">{{ $comment->user->email }}</p> --}}
-                                            </div>
+                                            <a href="{{ route('user.show', $comment->user->id) }}" class="mt-2 text-dark text-decoration-none">
+                                               <h6 class="m-0">{{ $comment->user->name }}</h6>
+                                            </a>
                                             <small class="fs-6 fw-light text-muted">{{
                                                 $comment->created_at->diffForHumans() }}</small>
                                         </div>
