@@ -54,7 +54,7 @@ class WorkoutPlanSeeder extends Seeder
         
         Workout::insert($workouts);
         
-        $plan3 = WorkoutPlan::create([
+        $plan = WorkoutPlan::create([
             "name" => "Begineer's Back Workout",
             "level" => "begineer",
             "duration" => 30,
@@ -115,7 +115,7 @@ class WorkoutPlanSeeder extends Seeder
         
         Workout::insert($workouts);
         
-        $plan4 = WorkoutPlan::create([
+        $plan = WorkoutPlan::create([
             "name" => "Intermedaite Back Workout",
             "level" => "intermediate",
             "duration" => 40,
@@ -176,7 +176,7 @@ class WorkoutPlanSeeder extends Seeder
         
         Workout::insert($workouts);
         
-        $plan4 = WorkoutPlan::create([
+        $plan = WorkoutPlan::create([
             "name" => "Advanced Back Workout",
             "level" => "advanced",
             "duration" => 50,
