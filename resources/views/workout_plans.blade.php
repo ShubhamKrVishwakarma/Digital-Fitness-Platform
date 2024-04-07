@@ -149,22 +149,17 @@
                 <h4>Beginner</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @for ($i = 0; $i < $plans->count(); $i++)
-                    @if ($plans[$i]->level === 'begineer')
-                        <a href="{{ route('workout', $plans[$i]->id) }}">
+                @foreach ($begineers as $plan )
+                    <a href="{{ route('workout', $plan->id) }}">
                             <div class="image-group mb-4 ">
                                 <img src="{{ asset('./images/workout/plank.jpg') }}" alt="">
                                 <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plans[$i]->name }} <br>16
-                                        Exercises <br>
-                                        40 mins - {{ $plans[$i]->level }}</p>
+                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
+                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
                                 </span>
                             </div>
                         </a>
-                    @endif
-                @endfor
-                {{-- @foreach ($plans as $plan)
-                @endforeach --}}
+                @endforeach
             </div>
         </section>
 
@@ -173,20 +168,17 @@
                 <h4>Intermediate</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @for ($i = 0; $i < $plans->count(); $i++)
-                    @if ($plans[$i]->level === 'intermediate')
-                        <a href="{{ route('workout', $plans[$i]->id) }}">
+                @foreach ($intermediate as $plan )
+                    <a href="{{ route('workout', $plan->id) }}">
                             <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/home/intermediate.jpg') }}" alt="">
+                                <img src="{{ asset('./images/workout/intermediate.jpg') }}" alt="">
                                 <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plans[$i]->name }} <br>16
-                                        Exercises <br>
-                                        40 mins - {{ $plans[$i]->level }}</p>
+                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
+                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
                                 </span>
                             </div>
                         </a>
-                    @endif
-                @endfor
+                @endforeach
             </div>
         </section>
 
@@ -195,20 +187,17 @@
                 <h4>Advance</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @for ($i = 0; $i < $plans->count(); $i++)
-                    @if ($plans[$i]->level === 'advanced')
-                        <a href="{{ route('workout', $plans[$i]->id) }}">
+                @foreach ($advanced as $plan )
+                    <a href="{{ route('workout', $plan->id) }}">
                             <div class="image-group mb-4 ">
                                 <img src="{{ asset('./images/home/advance.jpg') }}" alt="">
                                 <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plans[$i]->name }} <br>16
-                                        Exercises <br>
-                                        40 mins - {{ $plans[$i]->level }}</p>
+                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
+                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
                                 </span>
                             </div>
                         </a>
-                    @endif
-                @endfor
+                @endforeach
             </div>
         </section>
 
