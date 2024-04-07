@@ -12,8 +12,6 @@ class WorkoutPlansController extends Controller
     public function index(){
         return view('workout_plans' , [
             'plans' => WorkoutPlan::all(),
-            
-            // 'completed' => UserWorkoutLog::where('user_id' , auth()->user()->id)->orderBy('created_at', 'DESC')->first()
             'completed' => UserWorkoutLog::all()
         ]);
     }
