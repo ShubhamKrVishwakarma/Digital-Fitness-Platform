@@ -114,10 +114,11 @@
                 @auth
                     <div class="data align-self-center w-50">
                         <div class="heading">
-                            <h5 class="display-4 mb-5">Today's workout</h5>
+                            <h5 class="display-4 mb-5">Last workout</h5>
                         </div>
-                        <p id="workout-parts">Quadriceps, Hamstrings, <br>Glutes</p>
-                        <p id="time">50 mins</p>
+                        {{-- <p id="workout-parts">{{$completed[0]->plan->workouts->plan_id}}<br></p> --}}
+                        {{-- <p id="workout-parts">{{auth()->user()->workoutLog->plan}}<br></p> --}}
+                        {{-- <p id="time">50 mins</p> --}}
                         <div class="d-flex flex-wrap-reverse ">
                             <a href="./exercise.html">
                                 <button class="btn btn-primary me-4">Start</button>

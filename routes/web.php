@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QueryController;
@@ -16,9 +17,7 @@ use App\Http\Controllers\WorkoutPlansController;
 
 
 // Home Page
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 // Shop Page
 Route::get('/shop' , [ProductController::class , 'index'])->name('shop');

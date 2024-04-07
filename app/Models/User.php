@@ -44,6 +44,10 @@ class User extends Authenticatable
         return $this->hasMany(Follower::class);
     }
 
+    public function workoutLog() {
+        return $this->hasMany(UserWorkoutLog::class);
+    }
+
     public function follows($id) {
         $follower = Follower::where("follower_id", $id)->where('user_id', auth()->user()->id)->get();
         if ($follower->count() < 1) {

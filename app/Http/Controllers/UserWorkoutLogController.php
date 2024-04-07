@@ -12,9 +12,7 @@ class UserWorkoutLogController extends Controller
     
         UserWorkoutLog::create([
             'user_id' => auth()->user()->id,
-            'plan_id' => $plan_id,
-            'created_at' => now(),
-            'updated_at' => now()
+            'plan_id' => $plan_id
         ]);
 
         return redirect()->route('workout.plans');

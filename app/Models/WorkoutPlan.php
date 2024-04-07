@@ -14,4 +14,8 @@ class WorkoutPlan extends Model
     public function workouts() {
         return $this->hasMany(Workout::class);
     }
+
+    public function workoutLogs() {
+        return $this->hasMany(UserWorkoutLog::class);
+    }
 }
