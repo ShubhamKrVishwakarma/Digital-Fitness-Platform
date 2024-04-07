@@ -2,18 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\Authenticatable;
-// use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    // use HasFactory;
-    // use AuthenticatableTrait;
     use HasFactory, Notifiable;
 
     protected $fillable = ['name', 'email', 'phone', 'password', 'gender', 'dob', 'address', 'city', 'state', 'zip_code', 'bio', 'profile_pic', 'role', 'rating', 'followers', 'following'];
@@ -44,7 +38,7 @@ class User extends Authenticatable
         return $this->hasMany(Follower::class);
     }
 
-    public function workoutLog() {
+    public function userWorkoutLogs() {
         return $this->hasMany(UserWorkoutLog::class);
     }
 

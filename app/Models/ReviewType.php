@@ -16,9 +16,11 @@ class ReviewType extends Model
     public function trainer(){
         return $this->belongsTo(User::class,'trainer_id' , 'id');
     }
+
     public function product(){
         return $this->belongsTo(Product::class,'product_id' , 'id');
     }
+    
     public function review(){
         return $this->belongsTo(Review::class,'review_id' , 'id');
     }
