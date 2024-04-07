@@ -21,12 +21,13 @@ class PostController extends Controller
     
     public function share(Request $request) {
         $request->validate([
+            "post-title" => "nullable|min:2|max:100",
             "post-message" => "required|min:3"
         ]);
 
         Post::create([
             "user_id" => auth()->user()->id,
-            "title" => "Test Title",
+            "title" => $request["post-title"],
             "content" => $request["post-message"]
         ]);
 

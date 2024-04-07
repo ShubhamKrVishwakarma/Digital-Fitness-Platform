@@ -43,6 +43,9 @@
                                     </p>
                                 @endif
                             </div>
+                            <div class="ps-2">
+                                <span class="fw-light text-danger nav-link fs-6"><i class="fa-solid fa-heart"></i> {{ $post->likes->count() }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
