@@ -28,7 +28,7 @@
             </div>
         </section>
 
-        @auth
+        {{-- @auth
             <section class="container mb-5 " id="workout-profile">
                 <div class="heading">
                     <h4>Workout Profile</h4>
@@ -41,12 +41,22 @@
                                         alt=""></span>
                             </p>
                             <div class="color-boxes">
-                                <span class="box fill"></span>
-                                <span class="box fill"></span>
-                                <span class="box"></span>
-                                <span class="box"></span>
+                            @php
+                                $count=0;
+                            @endphp
+                            @for ($i = 0; $i < 7; $i++)
+                                @empty($weeklyRecords[$i])
+                                    <span class="box"></span>
+                                @else
+                                    <span class="box fill"></span>
+                                    @php
+                                        $count+=1;
+                                    @endphp
+                                @endempty
+                            @endfor
                             </div>
-                            <p>2/4 workouts</p>
+                            <p>You have completed {{$count}} workouts this week !!</p>
+                            <p>{{$count}}/7 workouts</p>
                         </div>
                         <div class="data-2">
                             <div class="weeks">
@@ -73,6 +83,70 @@
                     </div>
                 </div>
             </section>
+        @endauth --}}
+
+        @auth
+            <section class="container mb-5 " id="workout-profile">
+                <div class="heading">
+                    <h4>Workout Profile</h4>
+                </div>
+                <div class="content">
+                    <div class="pt-5">
+                        <div class="data-1">
+                            <p>Weekly Goal <span class="small-icons"><img
+                                        src="{{ asset('./images/workout/edit (1).png') }}./images/workout/edit (1).png"
+                                        alt=""></span>
+                            </p>
+                            <div class="color-boxes">
+                                @for ($i = 0; $i < 7; $i++)
+                                    @empty($weeklyRecords[$i])
+                                        <span class="box"></span>
+                                    @else
+                                        <span class="box fill"></span>
+                                    @endempty
+                                @endfor
+                            </div>
+                            
+                            <p>{{ $weeklyRecords->count() > 0 ? 'You have completed '.$weeklyRecords->count()." workout this week !!" : "You haven't worked out this week"   }}</p>
+                            {{-- <p>{{$count}}/7 workouts</p> --}}
+                        </div>
+                        <div class="data-2">
+                            <div class="weeks">
+                                <ul class="list-unstyled d-flex justify-content-between">
+                                    @php
+                                        $weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                                    @endphp
+                                    @foreach ($weekDays as $day)
+                                        <li class="d-flex flex-column align-items-center p-2 {{ $day == now()->format('D') ? 'today' : '' }}" >
+                                            <p class="mb-0">{{ $day }}</p>
+                                            @php
+                                                $tickDisplayed = false;
+                                            @endphp
+                                            @foreach ($weeklyRecords as $record)
+                                                @php
+                                                    $dayName = $record->created_at->format('D');
+                                                @endphp
+                                                @if ($dayName == $day)
+                                                    <span class="x-small-icons">
+                                                        <img src="{{ asset('./images/workout/checked.png') }}" alt="">
+                                                    </span>
+                                                    @php
+                                                        $tickDisplayed = true;
+                                                        break;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="{{ asset('./images/workout/banner1body.png') }}" alt="">
+                    </div>
+                </div>
+            </section>
         @endauth
 
         @guest
@@ -87,14 +161,14 @@
                                         src="{{ asset('./images/workout/edit (1).png') }}./images/workout/edit (1).png"
                                         alt=""></span>
                             </p>
-                            
+
                             <p></p>
                         </div>
                         <div class="data-2">
                             <div class="weeks">
-                            <a href="{{route('login')}}">
-                                <button class="btn btn-primary">Start</button>
-                            </a>
+                                <a href="{{ route('login') }}">
+                                    <button class="btn btn-primary">Start</button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -117,13 +191,13 @@
                             <h5 class="display-4 mb-5">Last workout</h5>
                         </div>
                         @if ($completed)
-                        <p id="workout-parts">{{$completed->plan->name}}<br></p>
-                        <p id="workout-parts">{{$completed->plan->level}}<br></p>
-                        <p id="time">{{$completed->plan->duration}} Mins</p>
-                        <p id="time">{{$completed->plan->calories}} Calories</p>
+                            <p id="workout-parts">{{ $completed->plan->name }}<br></p>
+                            <p id="workout-parts">{{ $completed->plan->level }}<br></p>
+                            <p id="time">{{ $completed->plan->duration }} Mins</p>
+                            <p id="time">{{ $completed->plan->calories }} Calories</p>
                         @else
-                        <p id="workout-parts">Choose a Workout<br></p>
-                        <p id="workout-parts">Beginner, Intermediate,<br>Advance</p>
+                            <p id="workout-parts">Choose a Workout<br></p>
+                            <p id="workout-parts">Beginner, Intermediate,<br>Advance</p>
                         @endif
                     </div>
                 @endauth
@@ -144,21 +218,23 @@
             </div>
         </section>
 
-        <section class="container main-section-1" id="beginner">
+        <section class="container main-section-1" id="begineer">
             <div class="heading my-4">
-                <h4>Beginner</h4>
+                <h4>Begineer</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @foreach ($begineers as $plan )
+                @foreach ($begineers as $plan)
                     <a href="{{ route('workout', $plan->id) }}">
-                            <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/workout/plank.jpg') }}" alt="">
-                                <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
-                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
-                                </span>
-                            </div>
-                        </a>
+                        <div class="image-group mb-4 ">
+                            <img src="{{ asset('./images/workout/plank.jpg') }}" alt="">
+                            <span>
+                                <p class="text-start text-light text-capitalize ">{{ $plan->name }}
+                                    <br>{{ $plan->totalExercises($plan->id) }} Exercises<br>
+                                    {{ $plan->duration }} mins - {{ $plan->level }}
+                                </p>
+                            </span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </section>
@@ -168,16 +244,18 @@
                 <h4>Intermediate</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @foreach ($intermediate as $plan )
+                @foreach ($intermediate as $plan)
                     <a href="{{ route('workout', $plan->id) }}">
-                            <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/workout/intermediate.jpg') }}" alt="">
-                                <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
-                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
-                                </span>
-                            </div>
-                        </a>
+                        <div class="image-group mb-4 ">
+                            <img src="{{ asset('./images/workout/intermediate.jpg') }}" alt="">
+                            <span>
+                                <p class="text-start text-light text-capitalize ">{{ $plan->name }}
+                                    <br>{{ $plan->totalExercises($plan->id) }} Exercises<br>
+                                    {{ $plan->duration }} mins - {{ $plan->level }}
+                                </p>
+                            </span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </section>
@@ -187,16 +265,18 @@
                 <h4>Advance</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @foreach ($advanced as $plan )
+                @foreach ($advanced as $plan)
                     <a href="{{ route('workout', $plan->id) }}">
-                            <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/home/advance.jpg') }}" alt="">
-                                <span>
-                                    <p class="text-start text-light text-capitalize ">{{ $plan->name }} <br>{{$plan->totalExercises($plan->id)}} Exercises<br>
-                                        {{$plan->duration}} mins - {{ $plan->level }}</p>
-                                </span>
-                            </div>
-                        </a>
+                        <div class="image-group mb-4 ">
+                            <img src="{{ asset('./images/home/advance.jpg') }}" alt="">
+                            <span>
+                                <p class="text-start text-light text-capitalize ">{{ $plan->name }}
+                                    <br>{{ $plan->totalExercises($plan->id) }} Exercises<br>
+                                    {{ $plan->duration }} mins - {{ $plan->level }}
+                                </p>
+                            </span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </section>

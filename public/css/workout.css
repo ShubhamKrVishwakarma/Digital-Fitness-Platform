@@ -73,7 +73,7 @@
 }
 #workout-profile .content .color-boxes .box{
     display: inline-block;
-    width:100px;
+    width: 65px;
     height:8px;
     border-radius: 8px;
     /* background-color: red; */
@@ -200,20 +200,21 @@
     #personal-workout .content #workout-parts{
         font-size: 1rem;
     }
-    #main-section-1{
+    .main-section-1{
         max-width: 100vw !important;
     }
     
-    #main-section-1 .content .image-group{
-        width:278px;
+    .main-section-1 .content .image-group{
+        width:260px !important;
         height:135px;
         margin-bottom: 1rem !important;
     }
-    #main-section-3 .content .data-box .image img{
+    .main-section-3 .content .data-box .image img{
         width: 180px;
     }
-    #main-section-3 .content .data-box .image{
+    .main-section-3 .content .data-box .image{
         width: 280px;
+        padding: 0;
     }
 }
 
@@ -223,16 +224,19 @@
     }
 
     #personal-workout .content .image{
-        height: 200px !important;
+        height: 180px !important;
     }
     #personal-workout .content .heading h5{
         font-size: 1.5rem !important;
         margin-bottom: 1rem !important;
     }
-    #main-section-3 .content .data-box .image img{
+    .main-section-3 .content .data-box .image img{
         width: 80px;
     }
-    #main-section-3 .content .data-box .image{
+    .main-section-3 .content .data-box .image{
         width: 180px;
+    }
+    #workout-profile .content .data-2 .weeks ul{
+        flex-wrap: wrap;
     }
 }
