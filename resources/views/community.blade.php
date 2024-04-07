@@ -214,22 +214,22 @@
                             <div class="d-flex justify-content-between my-3">
                                 <div>
                                     @auth
-                                    @if ($post->postLiked($post))
-                                    <form action="{{ route('post.unlike', $post->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
-                                                class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</button>
-                                    </form>
-                                    @else
-                                    <form action="{{ route('post.like', $post->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="fw-light text-danger nav-link fs-6"><i
-                                                class="bi bi-heart"></i> {{ $post->likes->count() }}</button>
-                                    </form>
-                                    @endif
+                                        @if ($post->postLiked($post))
+                                            <form action="{{ route('post.unlike', $post->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                        class="bi bi-heart-fill"></i> {{ $post->totalLikes($post->id) }}</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('post.like', $post->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="fw-light text-danger nav-link fs-6"><i
+                                                        class="bi bi-heart"></i> {{ $post->totalLikes($post->id) }}</button>
+                                            </form>
+                                        @endif
                                     @endauth
                                     @guest
-                                    <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
+                                        <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
                                             class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
                                     @endguest
                                 </div>
@@ -258,7 +258,8 @@
                                 </form>
                                 @endif
                                 @endauth
-                                @foreach ($post->comments as $comment)
+                                {{-- @foreach ($post->comments as $comment) --}}
+                                @foreach ($post->comments()->orderBy('created_at', 'DESC')->get() as $comment)
                                 <hr>
                                 <div class="d-flex align-items-start">
                                     <img style="width:35px" class="me-2 avatar-sm rounded-circle"

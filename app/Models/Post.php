@@ -20,7 +20,11 @@ class Post extends Model
     }
 
     public function postLiked(Post $post) {
-        return $this->likes()->where('post_id', $post->id)->exists();
+        return $this->likes()->where('post_id', $post->id)->where('user_id', auth()->user()->id)->exists();
+    }
+
+    public function totalLikes($post_id) {
+        return PostLike::where("post_id", $post_id)->count();
     }
 
     public function comments() {

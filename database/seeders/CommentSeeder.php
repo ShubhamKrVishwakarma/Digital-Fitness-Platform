@@ -14,12 +14,26 @@ class CommentSeeder extends Seeder
     public function run(): void
     {
         $comments = [];
-
+        
         for ($i=1;$i<=7;$i++) {
             $comments[] = [
                 "post_id" => $i,
                 "user_id" => $i + 1,
-                "comment" => fake()->randomElement(['Nice', 'Good Work', 'Well Done']),
+                "comment" => fake()->randomElement(['Well Done', 'Good Job Keep it Up', 'Nice']),
+                "created_at" => now(),
+                "updated_at" => now()
+            ];
+        }
+        
+        Comment::insert($comments);
+
+        $comments = [];
+
+        for ($i=1;$i<=7;$i++) {
+            $comments[] = [
+                "post_id" => $i,
+                "user_id" => $i + 10,
+                "comment" => fake()->randomElement(['Well Done', 'Good Job Keep it Up', 'Nice']),
                 "created_at" => now(),
                 "updated_at" => now()
             ];
