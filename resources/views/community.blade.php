@@ -11,14 +11,21 @@
     }
 
     .post {
-        height: 500px;
+        height: 550px;
     }
 
-    .post img,
+    .post img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
     .post video {
         height: 100%;
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
     }
 </style>
