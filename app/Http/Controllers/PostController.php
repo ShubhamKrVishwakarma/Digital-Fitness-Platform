@@ -13,9 +13,8 @@ class PostController extends Controller
 {
     public function index() {
         return view('community', [
-            // "trainers" => User::where('role', 'trainer')->inRandomOrder()->take(5)->get(),
             "trainers" => User::where('role', 'trainer')->take(5)->get(),
-            "posts" => Post::with('comments')->orderBy('created_at', 'DESC')->get()
+            "posts" => Post::orderBy('id', 'DESC')->get()
         ]);
     }
     
