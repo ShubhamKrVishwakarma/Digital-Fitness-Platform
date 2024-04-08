@@ -93,7 +93,7 @@
                             </a>
                             <ul class="dropdown-menu text-small me-4">
                                 @can('admin')
-                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}" target="_blank">Admin Panel</a></li>
                                 @endcan
                                 <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id )}}">Profile</a></li>
                                 {{-- <li><a class="dropdown-item" href="{{ route('trainers') }}">Trainers</a></li> --}}
@@ -131,9 +131,6 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="modal-footer d-flex justify-content-center align-items-center">
-                    <a href="{{ route('admin.login') }}">Login as Admin</a>
-                </div> --}}
             </div>
         </div>
     </div>
