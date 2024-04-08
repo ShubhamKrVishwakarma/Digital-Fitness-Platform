@@ -39,7 +39,7 @@
                                         <a href="{{ route('community') }}" class="text-decoration-none text-light">Community</a>
                                     </li>
                                     <li class="mb-2">
-                                        <a href="{{ route('about') }}" class="text-decoration-none text-light">About</a>
+                                        <a href="{{ route('trainers') }}" class="text-decoration-none text-light">Trainers</a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{{ route('contact') }}" class="text-decoration-none text-light">Contact</a>
