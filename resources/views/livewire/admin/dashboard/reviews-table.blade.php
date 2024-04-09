@@ -1,8 +1,15 @@
 <div x-show="reviewsTable" class="row mt-4">
     <div class="col-12">
         <div class="card mb-4">
-            <div class="card-header pb-0">
+            <div class="card-header d-flex justify-content-between align-items-center pb-0">
                 <h6>Recent Reviews</h6>
+                <div class="d-flex justify-content-center align-items-center me-2 me-md-5">
+                    <label for="reviews" class="m-0 me-2">Type</label>
+                    <select class="form-control" id="reviews">
+                        <option value="">Trainers</option>
+                        <option value="">Products</option>
+                    </select>
+                </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
@@ -67,6 +74,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="px-4 pt-2">
+                        {{ $reviews->links() }}
+                    </div>
                 </div>
             </div>
         </div>
