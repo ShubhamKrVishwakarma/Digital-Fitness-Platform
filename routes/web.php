@@ -89,4 +89,4 @@ Route::group(["controller" => PostController::class], function() {
 
 // Product Details
 Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
-Route::post('/product/review', [ProductController::class, 'review'])->name('product.review');
+Route::post('/product/review', [ProductController::class, 'reviewProduct'])->name('product.review');

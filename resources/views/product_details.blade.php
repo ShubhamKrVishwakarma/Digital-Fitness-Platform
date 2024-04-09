@@ -8,107 +8,111 @@
 @endpush
 
 @section('content')
-{{-- Product Details --}}
-<div class="card-product py-3 px-5">
-    <div class="row justify-content-center align-items-center">
-        <!-- Product Image -->
-        <div class="col-lg-6 d-flex justify-content-center align-items-center mt-3">
-            <div class="left">
-                <img src="{{ $product->getProductUrl() }}" id="imgs" alt="dumbbel image">
+    {{-- Product Details --}}
+    <div class="card-product py-3 px-5">
+        <div class="row justify-content-center align-items-center">
+            <!-- Product Image -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center mt-3">
+                <div class="left">
+                    <img src="{{ $product->getProductUrl() }}" id="imgs" alt="dumbbel image">
+                </div>
             </div>
-        </div>
-        <!-- Product Info -->
-        <div class="col-lg-6 d-flex justify-content-center align-items-center mt-3">
-            <div class="right">
-                <h1 class="mb-3">{{ $product->name }}</h1>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <h1 class="mt-3">₹{{ $product->price }} </h1>
+            <!-- Product Info -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center mt-3">
+                <div class="right">
+                    <h1 class="mb-3">{{ $product->name }}</h1>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <h1 class="mt-3">₹{{ $product->price }} </h1>
 
-                <h3 class="mb-3">Product Info</h3>
-                <p class="mb-3">{{ $product->description }}</p>
+                    <h3 class="mb-3">Product Info</h3>
+                    <p class="mb-3">{{ $product->description }}</p>
 
-                <a href="{{route('addToCart',$product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                    <a href="{{route('addToCart',$product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Review Section -->
-<div class="container">
-    <div class="col-md-12">
-        <div class="offer-dedicated-body-left">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel"
-                    aria-labelledby="pills-reviews-tab">
-                    {{-- Review Form --}}
-                    <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                        <h5 class="mb-4 text-dark">Review this Product</h5>
-                        <p class="mb-2 text-muted">Rate the Place</p>
-                        <form action="{{ route('product.review') }}" method="post">
-                            @csrf
-                        <div class="mb-4">
-                            <span class="star-rating">
-                                <input type="hidden" id='product-rating' name="product-rating">
-                                <input type="hidden" id='product-id' value="{{ $product->id }}" name="product-id">
-                                <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                            </span>
+    <!-- Review Section -->
+    <div class="container">
+        <div class="col-md-12">
+            <div class="offer-dedicated-body-left">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel"
+                        aria-labelledby="pills-reviews-tab">
+                        {{-- Review Form --}}
+                        <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                            <h5 class="mb-4 text-dark">Review this Product</h5>
+                            <p class="mb-2 text-muted">Rate the Place</p>
+                            <form action="{{ route('product.review') }}" method="post">
+                                @csrf
+                            <div class="mb-4">
+                                <span class="star-rating">
+                                    <input type="hidden" id='product-rating' name="product-rating">
+                                    <input type="hidden" id='product-id' value="{{ $product->id }}" name="product-id">
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label text-dark">Your Review</label>
+                                    <textarea name="product-review" id="product-review" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button id="submit-Review-btn" class="btn btn-success btn-sm" type="submit">Submit Review</button>
+                                </div>
+                            </form>
                         </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label text-dark">Your Review</label>
-                                <textarea name="product-review" id="product-review" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button id="submit-Review-btn" class="btn btn-success btn-sm" type="submit">Submit Review</button>
-                            </div>
-                        </form>
-                    </div>
-                    {{-- User Reviews --}}
-                    <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                        <h5 class="mb-1 text-dark">Product Ratings and Reviews</h5>
-                        <div class="reviews-members pt-4 pb-4">
-                            @foreach ($product->reviews as $review)
-                            <div class="media">
-                                <div class="media-body">
-                                    <div class="d-flex align-items center gap-3">
-                                        <a href="#">
-                                            <img alt="Generic placeholder image"
-                                                src="http://bootdey.com/img/Content/avatar/avatar1.png"
-                                                class="mr-3 rounded-pill">
-                                        </a>
-                                        <div class="reviews-members-header">
-                                            <h6 class="mb-0"><a class="text-black text-decoration-none" href="#">{{ $review->review->user->name }}</a></h6>
-                                            <small class="text-muted">{{$review->review->created_at->diffForHumans()}}</small>
+                        {{-- User Reviews --}}
+                        <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                            <h5 class="mb-1 text-dark">Product Ratings and Reviews</h5>
+                            <div class="reviews-members pt-4 pb-4">
+                                @forelse ($product->reviews as $review)
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="d-flex align-items center gap-3">
+                                            <a href="#">
+                                                <img alt="Generic placeholder image"
+                                                    src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                                    class="mr-3 rounded-pill">
+                                            </a>
+                                            <div class="reviews-members-header">
+                                                <h6 class="mb-0"><a class="text-black text-decoration-none" href="{{ route('user.show', $review->user->id ) }}">{{ $review->user->name }}</a></h6>
+                                                <small class="text-muted">{{$review->created_at->diffForHumans()}}</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="reviews-members-body">
-                                        <div>
-                                            <span class="star-rating float-right">
-                                                <i class="bi bi-star-fill text-warning fs-4"></i>
-                                                {{ $review->review->rating }}
-                                            </span>
+                                        <div class="reviews-members-body">
+                                            <div>
+                                                <span class="star-rating float-right text-dark">
+                                                    <i class="bi bi-star-fill text-warning fs-4"></i>
+                                                    {{ $review->rating }}
+                                                </span>
+                                            </div>
+                                            <p class="text-secondary">{{$review->review}}</p>
                                         </div>
-                                        <p class="text-secondary">{{$review->review->review}}</p>
                                     </div>
                                 </div>
+                                @empty
+                                    <div class="media">
+                                        <h6 class="text-center text-dark">No Reviews Found for this Product</h6>
+                                    </div>
+                                @endforelse
                             </div>
-                            @endforeach
+                            <hr>
+                            <a class="text-center w-100 d-block mt-4 font-weight-bold text-decoration-none" href="#">See All
+                                Reviews</a>
                         </div>
-                        <hr>
-                        <a class="text-center w-100 d-block mt-4 font-weight-bold text-decoration-none" href="#">See All
-                            Reviews</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
@@ -118,7 +122,7 @@
     const ratingInput = document.querySelector('#product-review');
     const submitBtn = document.querySelector('#submit-Review-btn');
     let rating = document.querySelector('#product-rating');
-    // let trainer_id_btn= document.querySelectorAll("[data-trainer-id]");
+
     let ratingValue = 0;
     let trainer = document.querySelector("#product-id");
 

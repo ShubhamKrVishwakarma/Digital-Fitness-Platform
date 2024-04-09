@@ -20,7 +20,7 @@ class Product extends Model
     }
 
     public function reviews() {
-        return $this->hasMany(ReviewType::class);
+        return $this->hasMany(ProductReview::class);
     }
 
     public function getProductUrl() {
