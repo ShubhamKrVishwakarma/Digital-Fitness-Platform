@@ -66,9 +66,9 @@ Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('
 Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
 Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
 
-// Trainers Info Routes
+// Trainers Routes
 Route::get("/trainers" , [TrainerController::class, 'index'])->name('trainers');
-Route::post("/trainers" , [TrainerController::class, 'rate'])->name('trainers.review');
+Route::post("/trainers" , [TrainerController::class, 'reviewTrainer'])->name('trainers.review');
 
 // Community Page
 Route::group(["controller" => PostController::class], function() {
@@ -89,4 +89,4 @@ Route::group(["controller" => PostController::class], function() {
 
 // Product Details
 Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
-Route::post('/product/review', [ProductController::class, 'review'])->name('product.review');
+Route::post('/product/review', [ProductController::class, 'reviewProduct'])->name('product.review');
