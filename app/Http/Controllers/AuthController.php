@@ -56,19 +56,20 @@ class AuthController extends Controller
             }
 
             $credentials = $request->only('email', 'password');
-
+            
             if (auth()->attempt($credentials)) {
                 $user = auth()->user();
 
-                if ($user->role == "pending") {
+                if ($user->role === "pending") {            
                     auth()->logout();
                     request()->session()->invalidate();
                     request()->session()->regenerateToken();
                     return response()->json(['error' => 'Account is pending approval'], 403);
-                } else {
-                    request()->session()->regenerate();
-                    return response()->json(['message' => 'Account created successfully']);
                 }
+
+                request()->session()->regenerate();
+                return response()->json(['message' => 'Account created successfully']);
+                
             } else {
                 return response()->json(['error' => 'Invalid credentials'], 401);
             }
