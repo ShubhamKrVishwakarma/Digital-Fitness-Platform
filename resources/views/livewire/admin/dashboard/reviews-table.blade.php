@@ -1,8 +1,15 @@
 <div x-show="reviewsTable" class="row mt-4">
     <div class="col-12">
         <div class="card mb-4">
-            <div class="card-header pb-0">
+            <div class="card-header d-flex justify-content-between align-items-center pb-0">
                 <h6>Recent Reviews</h6>
+                <div class="d-flex justify-content-center align-items-center me-2 me-md-5">
+                    <label for="reviews" class="form-control-label m-0 me-2">Type</label>
+                    <select wire:model.live='type' class="form-control" id="reviews">
+                        <option value="trainer">Trainer</option>
+                        <option value="product">Product</option>
+                    </select>
+                </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
@@ -15,16 +22,13 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     User Info
                                 </th>
-                                <th
-                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Review Type
                                 </th>
-                                <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                     Rating
                                 </th>
-                                <th
-                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Date
                                 </th>
                                 <th class="text-secondary opacity-7"></th>
@@ -48,7 +52,7 @@
                                         </div>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-warning">Trainer</span>
+                                        <span class="badge badge-sm bg-gradient-{{ ($type === "trainer") ? "info" : "success" }}">{{ $type }}</span>
                                     </td>
                                     <td>
                                         <p class="text-xs font-weight-bold mb-0"><i
@@ -58,7 +62,7 @@
                                         <span class="text-secondary text-xs font-weight-bold">{{ $review->created_at->format('d-m-Y') }}</span>
                                     </td>
                                     <td class="align-middle">
-                                        <button @click="$dispatch('manage-review', {id: {{ $review->id }}})" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
+                                        <button @click="$dispatch('manage-review', { id: {{ $review->id }}, type: '{{ $type }}' })" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
                                     </td>
                                 </tr>
                             @empty
@@ -70,6 +74,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="px-4 pt-2">
+                        {{ $reviews->links() }}
+                    </div>
                 </div>
             </div>
         </div>
