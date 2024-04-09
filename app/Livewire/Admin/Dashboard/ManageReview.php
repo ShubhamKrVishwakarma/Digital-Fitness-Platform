@@ -60,7 +60,7 @@ class ManageReview extends Component
             $this->reviewer_rating = $review->rating;
             $this->reviewer_review = $review->review;
 
-            $this->pic = $review->product->getProfileUrl();
+            $this->pic = $review->product->getProductUrl();
             $this->name = $review->product->name;
             $this->product_category = $review->product->category->name;
         }

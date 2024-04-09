@@ -4,10 +4,10 @@
             <div class="card-header d-flex justify-content-between align-items-center pb-0">
                 <h6>Recent Reviews</h6>
                 <div class="d-flex justify-content-center align-items-center me-2 me-md-5">
-                    <label for="reviews" class="m-0 me-2">Type</label>
+                    <label for="reviews" class="form-control-label m-0 me-2">Type</label>
                     <select wire:model.live='type' class="form-control" id="reviews">
-                        <option value="trainer">Trainers</option>
-                        <option value="product">Products</option>
+                        <option value="trainer">Trainer</option>
+                        <option value="product">Product</option>
                     </select>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                                         </div>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-warning">Trainer</span>
+                                        <span class="badge badge-sm bg-gradient-{{ ($type === "trainer") ? "info" : "success" }}">{{ $type }}</span>
                                     </td>
                                     <td>
                                         <p class="text-xs font-weight-bold mb-0"><i
@@ -62,7 +62,7 @@
                                         <span class="text-secondary text-xs font-weight-bold">{{ $review->created_at->format('d-m-Y') }}</span>
                                     </td>
                                     <td class="align-middle">
-                                        <button @click="$dispatch('manage-review', {id: {{ $review->id }}, type: {{ $type }} })" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
+                                        <button @click="$dispatch('manage-review', { id: {{ $review->id }}, type: '{{ $type }}' })" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
                                     </td>
                                 </tr>
                             @empty

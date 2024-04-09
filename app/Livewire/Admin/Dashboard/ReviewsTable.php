@@ -18,9 +18,9 @@ class ReviewsTable extends Component
     public function render()
     {
         if ($this->type === "trainer") {
-            $reviews = TrainerReview::orderBy('id', 'DESC')->paginate(7);
+            $reviews = TrainerReview::orderBy('id', 'DESC')->paginate(5);
         } else if ($this->type === "product") {
-            $reviews = ProductReview::orderBy('id', 'DESC')->paginate(7);
+            $reviews = ProductReview::orderBy('id', 'DESC')->paginate(5);
         }
 
         return view('livewire.admin.dashboard.reviews-table', [
