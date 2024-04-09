@@ -6,37 +6,34 @@
         <div class="card">
             <div class="card-header text-center py-2">
                 <div class="avatar avatar-xxl position-relative">
-                    <img src="http://127.0.0.1:8000/storage/products/product-1.jpg" class="w-100 border-radius-lg shadow-sm">
+                    <img src="{{ $trainer_pic }}" class="w-100 border-radius-lg shadow-sm">
                 </div>
-                {{-- <div class="d-flex justify-content-center">
-                    <span class="btn btn-sm btn-info mb-0 d-none d-lg-block my-2">Trainer</span>
-                </div> --}}
             </div>
             <div class="card-body pt-0">
-                {{-- <div class="row">
+                <div class="row mb-2">
                     <div class="col">
                         <div class="d-flex justify-content-center">
                             <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">22</span>
+                                <span class="text-lg font-weight-bolder">{{ $trainer_posts }}</span>
                                 <span class="text-sm opacity-8">Posts</span>
                             </div>
                             <div class="d-grid text-center mx-4">
-                                <span class="text-lg font-weight-bolder">10</span>
+                                <span class="text-lg font-weight-bolder">{{ $trainer_followers }}</span>
                                 <span class="text-sm opacity-8">Followers</span>
                             </div>
                             <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">89</span>
+                                <span class="text-lg font-weight-bolder">{{ $trainer_followings }}</span>
                                 <span class="text-sm opacity-8">Following</span>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="text-center">
                     <h5>
-                        Mark Davis
+                        {{ $trainer_name }}
                     </h5>
                     <div class="h6 font-weight-300">
-                        Category
+                        {{ $trainer_email }}
                     </div>
                 </div>
             </div>
