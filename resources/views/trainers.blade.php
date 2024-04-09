@@ -116,8 +116,8 @@
                 </div>
             
                 <div class="mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Your Review..." required name="trainer-review"></textarea>
+                    <textarea class="form-control"  name="trainer-review" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Your Review..." required></textarea>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success" id="submitRatingBtn" type="submit">Submit Rating</button>
@@ -130,68 +130,68 @@
 @endsection
 
 @push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const stars = document.querySelectorAll('.star');
-    const ratingInput = document.querySelector('#exampleFormControlTextarea1');
-    const submitBtn = document.querySelector('#submitRatingBtn');
-    let rating = document.querySelector('#trainer-rating');
-    let trainer_id_btn= document.querySelectorAll("[data-trainer-id]");
-    let ratingValue = 0;
-    let trainer = document.querySelector("#trainer-id");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.querySelector('#exampleFormControlTextarea1');
+        const submitBtn = document.querySelector('#submitRatingBtn');
+        let rating = document.querySelector('#trainer-rating');
+        let trainer_id_btn= document.querySelectorAll("[data-trainer-id]");
+        let ratingValue = 0;
+        let trainer = document.querySelector("#trainer-id");
 
-    trainer_id_btn.forEach(btn => {
-        btn.addEventListener("click" , (e)=>{
-            // trainer.value=e.dataset("[data-trainer-id]");
-            trainer.value = e.target.dataset.trainerId;
-            // alert(trainer.value);
+        trainer_id_btn.forEach(btn => {
+            btn.addEventListener("click" , (e)=>{
+                // trainer.value=e.dataset("[data-trainer-id]");
+                trainer.value = e.target.dataset.trainerId;
+                // alert(trainer.value);
+            });
+
         });
-
-    });
-    // Function to highlight stars up to the hovered/clicked star
-    function highlightStars(index) {
-        stars.forEach((star, idx) => {
-            if (idx <= index) {
-                star.classList.remove('bi-star');
-                star.classList.add('bi-star-fill');
-            } else {
-                star.classList.remove('bi-star-fill');
-                star.classList.add('bi-star');
-            }
-        });
-    }
-
-    // Event listener for mouseover to highlight stars
-    stars.forEach((star, index) => {
-        star.addEventListener('mouseover', () => {
-            highlightStars(index);
-        });
-    });
-
-    // Event listener for mouseout to reset stars
-    document.querySelector('.modal-body').addEventListener('mouseout', () => {
-        highlightStars(ratingValue - 1);
-    });
-
-    // Event listener for click to set the rating value
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-            ratingValue = index + 1;
-            ratingInput.value = ''; // Clear any previous text in the textarea
-            highlightStars(index);
-            rating.value=ratingValue;
-        });
-    });
-
-    // Event listener for form submission
-    submitBtn.addEventListener('click', () => {
-        const review = ratingInput.value.trim();
-        if (review === '') {
-            alert('Please provide a review.');
-            return;
+        // Function to highlight stars up to the hovered/clicked star
+        function highlightStars(index) {
+            stars.forEach((star, idx) => {
+                if (idx <= index) {
+                    star.classList.remove('bi-star');
+                    star.classList.add('bi-star-fill');
+                } else {
+                    star.classList.remove('bi-star-fill');
+                    star.classList.add('bi-star');
+                }
+            });
         }
 
+        // Event listener for mouseover to highlight stars
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseover', () => {
+                highlightStars(index);
+            });
+        });
+
+        // Event listener for mouseout to reset stars
+        document.querySelector('.modal-body').addEventListener('mouseout', () => {
+            highlightStars(ratingValue - 1);
+        });
+
+        // Event listener for click to set the rating value
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                ratingValue = index + 1;
+                ratingInput.value = ''; // Clear any previous text in the textarea
+                highlightStars(index);
+                rating.value=ratingValue;
+            });
+        });
+
+        // Event listener for form submission
+        submitBtn.addEventListener('click', () => {
+            const review = ratingInput.value.trim();
+            if (review === '') {
+                alert('Please provide a review.');
+                return;
+            }
+
+        });
     });
-});
-</script>
+    </script>
 @endpush

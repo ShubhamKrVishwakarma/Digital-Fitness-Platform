@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Review;
-use App\Models\ReviewType;
+use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,31 +15,26 @@ class TrainerController extends Controller
         ]);
     }
 
-    public function rate(Request $request){
+    public function reviewTrainer(Request $request){
         $request->validate([
-            "trainer-rating"=> "required"
+            "trainer-rating" => "required",
+            "trainer-review" => "required|min:2|max:255"
         ]);
-        $rating = Review::create([
+
+        TrainerReview::create([
             "user_id" => auth()->user()->id,
             "rating" => $request["trainer-rating"],
             "review" => $request["trainer-review"],
+            "trainer_id" =>  $request["trainer-id"]
         ]);
-        ReviewType::create([
-            "review_id" => $rating->id,
-            "type" => "trainer",
-            "trainer_id" =>  $request["trainer-id"],
-        ]);
-
-        $reviews = ReviewType::where("trainer_id" , $request['trainer-id'])->get();
         
-        $total_no_of_reviews = $reviews->count();
+        $total_no_of_reviews = TrainerReview::where("trainer_id" , $request['trainer-id'])->count();
 
-        $trainer = User::find($request["trainer-id"]);
+        $trainer = User::findOrFail($request["trainer-id"]);
 
         $trainer->rating = ($trainer->rating +  $request["trainer-rating"])/$total_no_of_reviews;
 
         $trainer->update();
-
 
         return redirect()->route("trainers");
     }
