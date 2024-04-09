@@ -5,9 +5,9 @@
                 <h6>Recent Reviews</h6>
                 <div class="d-flex justify-content-center align-items-center me-2 me-md-5">
                     <label for="reviews" class="m-0 me-2">Type</label>
-                    <select class="form-control" id="reviews">
-                        <option value="">Trainers</option>
-                        <option value="">Products</option>
+                    <select wire:model.live='type' class="form-control" id="reviews">
+                        <option value="trainer">Trainers</option>
+                        <option value="product">Products</option>
                     </select>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                                         <span class="text-secondary text-xs font-weight-bold">{{ $review->created_at->format('d-m-Y') }}</span>
                                     </td>
                                     <td class="align-middle">
-                                        <button @click="$dispatch('manage-review', {id: {{ $review->id }}})" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
+                                        <button @click="$dispatch('manage-review', {id: {{ $review->id }}, type: {{ $type }} })" class="btn btn-xs btn-primary m-0" x-on:click="reviewsTable = false, manageReviews = true">Manage</button>
                                     </td>
                                 </tr>
                             @empty
