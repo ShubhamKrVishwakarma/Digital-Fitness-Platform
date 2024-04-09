@@ -35,7 +35,7 @@ composer update
 php artisan storage:link
 ```
 
-- Step 5 : Once the storage in liked copy all the folders inside `/public/website-images` and paste it inside `/public/storage/public/`
+- Step 5 : Once the storage in liked copy all the folders inside `/public/project-images` and paste it inside `/public/storage/`
 
 - Step 6 : Turn on Apache and MySQL Server ( You can use XAMPP, WAMPP or any other Tools)
 
