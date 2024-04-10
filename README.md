@@ -1,5 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p> -->
 
 # Digital Fitness Platform
 
@@ -10,47 +9,50 @@ features include a community hub for posting results, motivational content, and 
 project aims to redefine digital fitness, fostering a supportive ecosystem for achieving health and wellness 
 goals.
 
-### Follow the Steps to Succesfully install the Project
+## Follow the Steps to Succesfully install the Project
 
-- Step 1 : Create a New Folder and Open the Folder in Terminal and Run the following command
+### Step 1 - Download the zip file of this Project and Open the File in your Code Editor
+**OR**
+### Create a New Folder and Open the Folder in Terminal and Run the following command 
 
 ```
 git clone https://github.com/CoderShubham007/Digital-Fitness-Platform.git
 ```
 
-- Step 2 : Open the Folder inside your code Editor or use `cd` to change directory
+### Step 2 - Open the Folder inside your code Editor or use `cd` to change directory
 
 ```
 cd Digital-Fitness-Platform
 ```
 
-- Step 3 : Run the following command to update the composer and install all dependencies
+### Step 3 - Run the following command to update the composer and install all dependencies
 
 ```
 composer update
 ```
 
-- Step 4 : Run the following command to link storage
+### Step 4 - Run the following command to link storage
 ```
 php artisan storage:link
 ```
 
-- Step 5 : Once the storage in liked copy all the folders inside `/public/project-images` and paste it inside `/public/storage/`
+### Step 5 - Once the storage in liked copy all the folders inside `/public/project-images/` and paste it inside `/public/storage/`
 
-- Step 6 : Turn on Apache and MySQL Server ( You can use XAMPP, WAMPP or any other Tools)
+### Step 6 - Create a New File called `.env` in your Project root directory and copy all contents inside `/.env.example` to your newly created `/.env` File
 
-- Step 7 : Run All the Migration to create Database and Tables in MySQL
-```
-php artisan migrate
-```
+### Step 7 - Now Turn on Apache and MySQL Server `( You can use XAMPP, WAMPP or any other Tools)`
 
-- Step 8 : Seed the Database Using the following commands ( You can see All the Seeders inside `/database/seeders/`)
+### Step 8 - Run All the Migration to create Database and Tables in MySQL and also seed the all Tables
 ```
-php artisan db:seed
+php artisan migrate --seed
 ```
 
-- Step 9 : Finally Start the serve and Use and Customize the App Accourding to your Need
+### Step 9 - Now run the following command to Generate App Key
+```
+php artisan key:generate
+```
+
+### Step 10 - Finally Start the serve and Use and Customize the App Accourding to your Need
 ```
 php artisan serve
 ``` 
-
