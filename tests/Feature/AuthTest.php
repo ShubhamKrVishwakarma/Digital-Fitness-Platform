@@ -32,7 +32,8 @@ class AuthTest extends TestCase
         $response->assertRedirect('login');
     }
 
-    private function createUser() {
+    private function createUser(): User
+    {
         return User::create([
             "name" => "Test",
             "email" => "test@gmail.com",

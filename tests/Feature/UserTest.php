@@ -91,7 +91,8 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
-    private function createUser() {
+    private function createUser(): User
+    {
         return User::create([
             "name" => "Test",
             "email" => "test@gmail.com",
