@@ -5,7 +5,7 @@
                 <div class="col-auto">
                     @if ($profile_pic)
                         <div class="avatar avatar-xl position-relative">
-                            <img src="{{ url('storage/user') . '/' . $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                            <img src="{{ $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                         </div>
                     @else
                         <div class="avatar avatar-xl position-relative">
@@ -198,7 +198,7 @@
                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                     @if ($profile_pic)
                                         <a>
-                                            <img src="{{ url('storage/user') . '/' . $profile_pic }}"
+                                            <img src="{{ $profile_pic }}"
                                                 class="rounded-circle img-fluid border border-2 border-white">
                                         </a>
                                     @else
