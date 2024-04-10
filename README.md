@@ -1,6 +1,6 @@
 <!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p> -->
 
-# Digital Fitness Platform
+# Digital Fitness Platform (HTML, CSS, Bootstrap, JavaScript, Laravel & MySQL)
 
 The Digital Fitness Platform connects users and trainers for a personalized fitness experience. Users choose 
 trainers or follow predefined workouts, with an option to purchase equipment. Trainers undergo 
@@ -9,7 +9,7 @@ features include a community hub for posting results, motivational content, and 
 project aims to redefine digital fitness, fostering a supportive ecosystem for achieving health and wellness 
 goals.
 
-## Follow the Steps to Succesfully install the Project
+## Follow the Steps to Successfully install the Project
 
 ### Step 1 - Download the zip file of this Project and Open the File in your Code Editor
 **OR**
