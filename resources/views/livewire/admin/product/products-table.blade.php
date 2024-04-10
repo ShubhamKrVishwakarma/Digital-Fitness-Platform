@@ -35,7 +35,7 @@
                                             <td>
                                                 <div class="d-flex px-2">
                                                     <div>
-                                                        <img src="{{ url('storage/' . $product->image) }}" class="avatar me-3"
+                                                        <img src="{{ $product->getProductUrl() }}" class="avatar me-3"
                                                             alt="Product">
                                                     </div>
                                                     <div class="my-auto">

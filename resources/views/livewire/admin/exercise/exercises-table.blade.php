@@ -34,7 +34,6 @@
                                         <td class="d-flex justify-content-center align-items-center">
                                             <div class="px-2" style="width: 200px;">
                                                 <img src="{{ $exercise->getExerciseGif()  }}" class="w-100 rounded" alt="Product">
-                                                {{-- <img src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Medicine-Ball-Overhead-Throw.gif" class="w-100 rounded" alt="Product"> --}}
                                             </div>
                                         </td>
                                         <td class="text-center">
