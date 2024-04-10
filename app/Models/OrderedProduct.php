@@ -16,4 +16,8 @@ class OrderedProduct extends Model
     public function order() {
         return $this->belongsTo(Order::class, 'order_id', 'id');
     }
+
+    public function getOrderedProductUrl() {
+        return url('storage/ordered_products/' . $this->product_image); 
+    }
 }

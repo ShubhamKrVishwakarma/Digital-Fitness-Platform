@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function getProfileUrl() {
         if ($this->profile_pic) {
-            return url('storage/user/' . $this->profile_pic);
+            return url('storage/users/' . $this->profile_pic);
         }
         return asset('./images/profile/profile.jpg');
     }

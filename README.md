@@ -3,6 +3,12 @@
 
 # Digital Fitness Platform
 
+The Digital Fitness Platform connects users and trainers for a personalized fitness experience. Users choose 
+trainers or follow predefined workouts, with an option to purchase equipment. Trainers undergo 
+verification and guide users via a chat system. A secure payment system facilitates transactions. Additional 
+features include a community hub for posting results, motivational content, and social engagement. This 
+project aims to redefine digital fitness, fostering a supportive ecosystem for achieving health and wellness 
+goals.
 
 ### Follow the Steps to Succesfully install the Project
 
@@ -29,7 +35,7 @@ composer update
 php artisan storage:link
 ```
 
-- Step 5 : Once the storage in liked copy all the folders inside `/public/website-images` and paste it inside `/public/storage/public/`
+- Step 5 : Once the storage in liked copy all the folders inside `/public/project-images` and paste it inside `/public/storage/`
 
 - Step 6 : Turn on Apache and MySQL Server ( You can use XAMPP, WAMPP or any other Tools)
 

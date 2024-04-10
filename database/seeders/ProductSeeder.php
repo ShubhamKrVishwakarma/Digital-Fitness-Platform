@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
                 "price" => 1299,
                 "quantity" => 10,
                 "category_id" => 1,
-                "image" => "products/product-1.jpg",
+                "image" => "product-1.jpg",
                 "keywords" => "whey protien powder double dark rich chocolate optimum nutrition gold standard",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
                 "price" => 1549,
                 "quantity" => 20,
                 "category_id" => 1,
-                "image" => "products/product-2.jpg",
+                "image" => "product-2.jpg",
                 "keywords" => "whey protien powder dark chocolate nakpro gold",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
                 "price" => 150,
                 "quantity" => 20,
                 "category_id" => 4,
-                "image" => "products/product-3.jpg",
+                "image" => "product-3.jpg",
                 "keywords" => "gym bottle protien shaker sipper",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -60,7 +60,7 @@ class ProductSeeder extends Seeder
                 "price" => 235,
                 "quantity" => 20,
                 "category_id" => 4,
-                "image" => "products/product-4.jpg",
+                "image" => "product-4.jpg",
                 "keywords" => "gym bottle protien shaker sipper boldfit gallon",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -73,7 +73,7 @@ class ProductSeeder extends Seeder
                 "price" => 199,
                 "quantity" => 70,
                 "category_id" => 2,
-                "image" => "products/product-5.jpg",
+                "image" => "product-5.jpg",
                 "keywords" => "boldfit cotton wrist band men women gym hand grip",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -90,7 +90,7 @@ class ProductSeeder extends Seeder
                 "price" => 155,
                 "quantity" => 30,
                 "category_id" => 2,
-                "image" => "products/product-6.jpg",
+                "image" => "product-6.jpg",
                 "keywords" => "fitness mantra counter hand gripper",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -103,7 +103,7 @@ class ProductSeeder extends Seeder
                 "price" => 725,
                 "quantity" => 20,
                 "category_id" => 2,
-                "image" => "products/product-7.jpg",
+                "image" => "product-7.jpg",
                 "keywords" => "fitbox sports intruder pvc dumbell weight gym men training",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
                 "price" => 799,
                 "quantity" => 15,
                 "category_id" => 2,
-                "image" => "products/product-8.jpg",
+                "image" => "product-8.jpg",
                 "keywords" => "slovic door pull up bar home workout men training non slip rod",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -128,7 +128,7 @@ class ProductSeeder extends Seeder
                 "price" => 736,
                 "quantity" => 40,
                 "category_id" => 3,
-                "image" => "products/product-9.jpg",
+                "image" => "product-9.jpg",
                 "keywords" => "t-shirt men black zeker compression gym sports wear body fit skinny",
                 "created_at" => now(),
                 "updated_at" => now()
@@ -141,7 +141,7 @@ class ProductSeeder extends Seeder
                 "price" => 299,
                 "quantity" => 20,
                 "category_id" => 3,
-                "image" => "products/product-10.jpg",
+                "image" => "product-10.jpg",
                 "keywords" => "hotfits cotton mens training sports gym workout t-shier half sleeves",
                 "created_at" => now(),
                 "updated_at" => now()

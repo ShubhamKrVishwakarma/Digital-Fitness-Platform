@@ -24,9 +24,6 @@ class Product extends Model
     }
 
     public function getProductUrl() {
-        if ($this->image) {
-            return url('storage/' . $this->image);
-        }
-        return asset('./images/profile/profile.jpg');
+        return url('storage/products/' . $this->image);
     }
 }

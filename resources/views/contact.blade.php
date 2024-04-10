@@ -17,7 +17,7 @@
                         <h2>Fitness Hub</h2>
                     </a></li>
                 <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                <li><a href="{{ route('about') }}" class="nav-link">About Us</a></li>
+                <li><a href="{{ route('shop') }}" class="nav-link">Shop</a></li>
             </ul>
         </div>
     </header>

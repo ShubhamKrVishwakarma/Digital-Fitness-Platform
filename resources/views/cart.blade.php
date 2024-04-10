@@ -43,7 +43,7 @@
                                 @endphp
                                 <div class="row mb-4 d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img src="{{ url('storage') . '/' . $item->product->image }}"
+                                        <img src="{{ $item->product->getProductUrl() }}"
                                             class="img-fluid rounded-3" alt="Dumbbells">
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
@@ -81,7 +81,7 @@
                                         <form method="POST" action="{{ route('product.delete', $item->product_id) }}">
                                             @method("DELETE")
                                             @csrf
-                                            <button class="text-muted"><i class="bi bi-x-lg"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="bi bi-x-lg"></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                                     <h5 class="text-uppercase">Total price</h5>
                                     <h5>&#x20B9; {{ $total }}</h5>
                                 </div>
-                                                <a href="{{route('checkout')}}" type="button" class="btn btn-dark btn-block btn-lg w-100">Continue to Checkout</a>
+                                <a href="{{route('checkout')}}" type="button" class="btn btn-dark btn-block btn-lg w-100">Continue to Checkout</a>
 
                             </div>
                         </div>

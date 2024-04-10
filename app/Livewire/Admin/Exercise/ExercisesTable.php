@@ -15,7 +15,7 @@ class ExercisesTable extends Component
     public function render()
     {
         return view('livewire.admin.exercise.exercises-table', [
-            "exercises" => Exercise::orderBy('id', 'DESC')->paginate(7)
+            "exercises" => Exercise::orderBy('id', 'DESC')->paginate(2)
         ]);
     }
 }

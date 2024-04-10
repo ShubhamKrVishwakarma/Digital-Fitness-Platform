@@ -10,7 +10,7 @@
                     <div class="card-body mb-3">
                         <div class="col-12 mb-3">
                             <div class="px-2" style="width: 300px;">
-                                <img src="{{ url('storage') . '/' . $image }}" class="w-100 rounded" alt="Product">
+                                <img src="{{ $image }}" class="w-100 rounded" alt="Product">
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between align-items-center flex-wrap">
