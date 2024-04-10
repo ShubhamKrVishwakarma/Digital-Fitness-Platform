@@ -17,7 +17,7 @@ class ExerciseSeeder extends Seeder
             // Chest Exercises
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/chest-1.gif",
+                "image" => "chest-1.gif",
                 "type" => "chest",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -25,7 +25,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING MEDICINE BALL CHEST PASS",
-                "image" => "exercises/chest-2.gif",
+                "image" => "chest-2.gif",
                 "type" => "chest",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -33,7 +33,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM SCISSORS",
-                "image" => "exercises/chest-3.gif",
+                "image" => "chest-3.gif",
                 "type" => "chest",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -41,7 +41,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "INCLINE CHEST FLY MACHINE",
-                "image" => "exercises/chest-4.gif",
+                "image" => "chest-4.gif",
                 "type" => "chest",
                 "equipment" => "Fly Machine",
                 "created_at" => now(),
@@ -49,7 +49,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BENCH PRESS",
-                "image" => "exercises/chest-5.gif",
+                "image" => "chest-5.gif",
                 "type" => "chest",
                 "equipment" => "Barbell, Bench",
                 "created_at" => now(),
@@ -57,7 +57,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "PEC DECK FLY",
-                "image" => "exercises/chest-6.gif",
+                "image" => "chest-6.gif",
                 "type" => "chest",
                 "equipment" => "Fly Machine",
                 "created_at" => now(),
@@ -65,7 +65,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL PULLOVER",
-                "image" => "exercises/chest-7.gif",
+                "image" => "chest-7.gif",
                 "type" => "chest",
                 "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
@@ -73,7 +73,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LOW CABLE CROSSOVER",
-                "image" => "exercises/chest-8.gif",
+                "image" => "chest-8.gif",
                 "type" => "chest",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -81,7 +81,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "HIGH CABLE CROSSOVER",
-                "image" => "exercises/chest-9.gif",
+                "image" => "chest-9.gif",
                 "type" => "chest",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -89,7 +89,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE UPPER CHEST CROSSOVERS",
-                "image" => "exercises/chest-10.gif",
+                "image" => "chest-10.gif",
                 "type" => "chest",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -97,7 +97,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "INCLINE BARBELL BENCH PRESS",
-                "image" => "exercises/chest-11.gif",
+                "image" => "chest-11.gif",
                 "type" => "chest",
                 "equipment" => "Barbell, Bench",
                 "created_at" => now(),
@@ -105,7 +105,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL FLY",
-                "image" => "exercises/chest-12.gif",
+                "image" => "chest-12.gif",
                 "type" => "chest",
                 "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
@@ -113,7 +113,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL BENCH PRESS",
-                "image" => "exercises/chest-13.gif",
+                "image" => "chest-13.gif",
                 "type" => "chest",
                 "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
@@ -121,7 +121,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE CROSSOVER",
-                "image" => "exercises/chest-14.gif",
+                "image" => "chest-14.gif",
                 "type" => "chest",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -129,7 +129,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ONE-ARM CABLE CHEST PRESS",
-                "image" => "exercises/chest-15.gif",
+                "image" => "chest-15.gif",
                 "type" => "chest",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -138,7 +138,7 @@ class ExerciseSeeder extends Seeder
             // Shoulder
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/shoulder-1.gif",
+                "image" => "shoulder-1.gif",
                 "type" => "shoulder",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -146,7 +146,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL PUSH PRESS",
-                "image" => "exercises/shoulder-2.gif",
+                "image" => "shoulder-2.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -154,7 +154,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-3.gif",
+                "image" => "shoulder-3.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -162,7 +162,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM SCISSORS",
-                "image" => "exercises/shoulder-4.gif",
+                "image" => "shoulder-4.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -170,7 +170,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SIDE ARM RAISES",
-                "image" => "exercises/shoulder-5.gif",
+                "image" => "shoulder-5.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -178,7 +178,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM CIRCLES",
-                "image" => "exercises/shoulder-6.gif",
+                "image" => "shoulder-6.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -186,7 +186,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL LATERAL RAISE",
-                "image" => "exercises/shoulder-7.gif",
+                "image" => "shoulder-7.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -194,7 +194,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-8.gif",
+                "image" => "shoulder-8.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -202,7 +202,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SMITH MACHINE BEHIND NECK PRESS",
-                "image" => "exercises/shoulder-9.gif",
+                "image" => "shoulder-9.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -210,7 +210,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SMITH MACHINE SHOULDER PRESS",
-                "image" => "exercises/shoulder-10.gif",
+                "image" => "shoulder-10.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -218,7 +218,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE LATERAL RAISE",
-                "image" => "exercises/shoulder-11.gif",
+                "image" => "shoulder-11.gif",
                 "type" => "shoulder",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -226,7 +226,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "45 DEGREE INCLINE ROW",
-                "image" => "exercises/shoulder-12.gif",
+                "image" => "shoulder-12.gif",
                 "type" => "shoulder",
                 "equipment" => "Dumbbells, Bench",
                 "created_at" => now(),
@@ -234,7 +234,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER SHOULDER PRESS",
-                "image" => "exercises/shoulder-13.gif",
+                "image" => "shoulder-13.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -242,7 +242,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED BARBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-14.gif",
+                "image" => "shoulder-14.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -250,7 +250,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING CLOSE GRIP MILITARY PRESS",
-                "image" => "exercises/shoulder-15.gif",
+                "image" => "shoulder-15.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -259,7 +259,7 @@ class ExerciseSeeder extends Seeder
             // Back
             [
                 "name" => "ROWING MACHINE",
-                "image" => "exercises/back-1.gif",
+                "image" => "back-1.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -267,7 +267,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER FRONT PULLDOWN",
-                "image" => "exercises/back-2.gif",
+                "image" => "back-2.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -275,7 +275,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "PULL-UP",
-                "image" => "exercises/back-3.gif",
+                "image" => "back-3.gif",
                 "type" => "back",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -283,7 +283,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE REAR PULLDOWN",
-                "image" => "exercises/back-4.gif",
+                "image" => "back-4.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -291,7 +291,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LAT PULLDOWN",
-                "image" => "exercises/back-5.gif",
+                "image" => "back-5.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -299,7 +299,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED CABLE ROW",
-                "image" => "exercises/back-6.gif",
+                "image" => "back-6.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -307,7 +307,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BARBELL BENT OVER ROW",
-                "image" => "exercises/back-7.gif",
+                "image" => "back-7.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -315,7 +315,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE STRAIGHT ARM PULLDOWN",
-                "image" => "exercises/back-8.gif",
+                "image" => "back-8.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -323,7 +323,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEGLESS ROPE CLIMB",
-                "image" => "exercises/back-9.gif",
+                "image" => "back-9.gif",
                 "type" => "back",
                 "equipment" => "Pole, Rope",
                 "created_at" => now(),
@@ -331,7 +331,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER T-BAR ROW",
-                "image" => "exercises/back-10.gif",
+                "image" => "back-10.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -339,7 +339,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL ROW",
-                "image" => "exercises/back-11.gif",
+                "image" => "back-11.gif",
                 "type" => "back",
                 "equipment" => "Dumbbell",
                 "created_at" => now(),
@@ -347,7 +347,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BENT OVER DUMBBELL ROW",
-                "image" => "exercises/back-12.gif",
+                "image" => "back-12.gif",
                 "type" => "back",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -355,7 +355,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL BENT OVER REVERSE GRIP ROW",
-                "image" => "exercises/back-13.gif",
+                "image" => "back-13.gif",
                 "type" => "back",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -363,7 +363,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "REVERSE LAT-PULLDOWN",
-                "image" => "exercises/back-14.gif",
+                "image" => "back-14.gif",
                 "type" => "back",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -371,7 +371,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "MUSCLE-UP",
-                "image" => "exercises/back-15.gif",
+                "image" => "back-15.gif",
                 "type" => "back",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -380,7 +380,7 @@ class ExerciseSeeder extends Seeder
             // Arms
             [
                 "name" => "SEATED ZOTTMAN CURL",
-                "image" => "exercises/biceps-1.gif",
+                "image" => "biceps-1.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -388,7 +388,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING BARBELL CONCENTRATION CURL",
-                "image" => "exercises/biceps-2.gif",
+                "image" => "biceps-2.gif",
                 "type" => "biceps",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -396,7 +396,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "WAITER CURL",
-                "image" => "exercises/biceps-3.gif",
+                "image" => "biceps-3.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbells",
                 "created_at" => now(),
@@ -404,7 +404,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DOUBLE ARM DUMBBELL CURL",
-                "image" => "exercises/biceps-4.gif",
+                "image" => "biceps-4.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -412,7 +412,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DDUMBBELL CURL",
-                "image" => "exercises/biceps-5.gif",
+                "image" => "biceps-5.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -420,7 +420,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BARBELL CURL",
-                "image" => "exercises/biceps-6.gif",
+                "image" => "biceps-6.gif",
                 "type" => "biceps",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -428,7 +428,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CONCENTRATION CURL",
-                "image" => "exercises/biceps-7.gif",
+                "image" => "biceps-7.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -436,7 +436,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL PREACHER CURL",
-                "image" => "exercises/biceps-8.gif",
+                "image" => "biceps-8.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -444,7 +444,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "EZ BAR PREACHER CURL",
-                "image" => "exercises/biceps-9.gif",
+                "image" => "biceps-9.gif",
                 "type" => "biceps",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -452,7 +452,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "HAMMER CURL",
-                "image" => "exercises/biceps-10.gif",
+                "image" => "biceps-10.gif",
                 "type" => "biceps",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -460,7 +460,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED INCLINE DUMBBELL CURL",
-                "image" => "exercises/biceps-11.gif",
+                "image" => "biceps-11.gif",
                 "type" => "biceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -468,7 +468,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER PREACHER CURL",
-                "image" => "exercises/biceps-12.gif",
+                "image" => "biceps-12.gif",
                 "type" => "biceps",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -476,7 +476,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "HIGH CABLE SINGLE ARM BICEP CURL",
-                "image" => "exercises/biceps-13.gif",
+                "image" => "biceps-13.gif",
                 "type" => "biceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -484,7 +484,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ONE ARM CABLE CURL",
-                "image" => "exercises/biceps-14.gif",
+                "image" => "biceps-14.gif",
                 "type" => "biceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -492,7 +492,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LYING CABLE CURL",
-                "image" => "exercises/biceps-15.gif",
+                "image" => "biceps-15.gif",
                 "type" => "biceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -501,7 +501,7 @@ class ExerciseSeeder extends Seeder
             // Triceps
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/triceps-1.gif",
+                "image" => "triceps-1.gif",
                 "type" => "triceps",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -509,7 +509,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ONE ARM TRICEPS PUSHDOWN",
-                "image" => "exercises/triceps-2.gif",
+                "image" => "triceps-2.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -517,7 +517,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL KICKBACK",
-                "image" => "exercises/triceps-3.gif",
+                "image" => "triceps-3.gif",
                 "type" => "triceps",
                 "equipment" => "Dumbbell",
                 "created_at" => now(),
@@ -525,7 +525,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ONE ARM REVERSE PUSHDOWN",
-                "image" => "exercises/triceps-4.gif",
+                "image" => "triceps-4.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -533,7 +533,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "PUSH-DOWN",
-                "image" => "exercises/triceps-5.gif",
+                "image" => "triceps-5.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -541,7 +541,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BENCH DIPS",
-                "image" => "exercises/triceps-6.gif",
+                "image" => "triceps-6.gif",
                 "type" => "triceps",
                 "equipment" => "Bench, No Equipment",
                 "created_at" => now(),
@@ -549,7 +549,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "TRICEPS DIPS",
-                "image" => "exercises/triceps-7.gif",
+                "image" => "triceps-7.gif",
                 "type" => "triceps",
                 "equipment" => "Machine, No Equipment",
                 "created_at" => now(),
@@ -557,7 +557,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ONE ARM LYING TRICEPS EXTENSION",
-                "image" => "exercises/triceps-8.gif",
+                "image" => "triceps-8.gif",
                 "type" => "triceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -565,7 +565,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE ROPE OVERHEAD TRICEPS EXTENSION",
-                "image" => "exercises/triceps-9.gif",
+                "image" => "triceps-9.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -573,7 +573,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER TRICEPS DIP",
-                "image" => "exercises/triceps-10.gif",
+                "image" => "triceps-10.gif",
                 "type" => "triceps",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -581,7 +581,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LYING BARBELL TRICEPS EXTENSION",
-                "image" => "exercises/triceps-11.gif",
+                "image" => "triceps-11.gif",
                 "type" => "triceps",
                 "equipment" => "Barbell, Bench",
                 "created_at" => now(),
@@ -589,7 +589,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE TRICEP KICKBACK",
-                "image" => "exercises/triceps-12.gif",
+                "image" => "triceps-12.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -597,7 +597,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "TRICEPS DIPS ON FLOOR",
-                "image" => "exercises/triceps-13.gif",
+                "image" => "triceps-13.gif",
                 "type" => "triceps",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -605,7 +605,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL SEATED FRONT AND BACK TATE PRESS",
-                "image" => "exercises/triceps-14.gif",
+                "image" => "triceps-14.gif",
                 "type" => "triceps",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -613,7 +613,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "KNEELING CABLE TRICEPS EXTENSION",
-                "image" => "exercises/triceps-15.gif",
+                "image" => "triceps-15.gif",
                 "type" => "triceps",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -622,7 +622,7 @@ class ExerciseSeeder extends Seeder
             // Abs/Core
             [
                 "name" => "MEDICINE BALL ROTATIONAL THROW",
-                "image" => "exercises/abs-1.gif",
+                "image" => "abs-1.gif",
                 "type" => "abs",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -630,7 +630,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DRAGON FLAG",
-                "image" => "exercises/abs-2.gif",
+                "image" => "abs-2.gif",
                 "type" => "abs",
                 "equipment" => "Bench, No Equipment",
                 "created_at" => now(),
@@ -638,7 +638,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "AB COASTER MACHINE",
-                "image" => "exercises/abs-3.gif",
+                "image" => "abs-3.gif",
                 "type" => "abs",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -646,7 +646,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CROSS CRUNCH",
-                "image" => "exercises/abs-4.gif",
+                "image" => "abs-4.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -654,7 +654,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING CABLE CRUNCH",
-                "image" => "exercises/abs-5.gif",
+                "image" => "abs-5.gif",
                 "type" => "abs",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -662,7 +662,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED BENCH LEG PULL-IN",
-                "image" => "exercises/abs-6.gif",
+                "image" => "abs-6.gif",
                 "type" => "abs",
                 "equipment" => "Bench, No Equipment",
                 "created_at" => now(),
@@ -670,7 +670,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CROSS BODY MOUNTAIN CLIMBER",
-                "image" => "exercises/abs-7.gif",
+                "image" => "abs-7.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -678,7 +678,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ALTERNATE LEG RAISES",
-                "image" => "exercises/abs-8.gif",
+                "image" => "abs-8.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -686,7 +686,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CRUNCHES",
-                "image" => "exercises/abs-9.gif",
+                "image" => "abs-9.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -694,7 +694,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "MOUNTAIN CLIMBER",
-                "image" => "exercises/abs-10.gif",
+                "image" => "abs-10.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -702,7 +702,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BICYCLE CRUNCH",
-                "image" => "exercises/abs-11.gif",
+                "image" => "abs-11.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -710,7 +710,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LYING SCISSOR KICK",
-                "image" => "exercises/abs-12.gif",
+                "image" => "abs-12.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -718,7 +718,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEG RAISE",
-                "image" => "exercises/abs-13.gif",
+                "image" => "abs-13.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -726,7 +726,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "OBLIQUE FLOOR CRUNCHES",
-                "image" => "exercises/abs-14.gif",
+                "image" => "abs-14.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -734,7 +734,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "T-CROSS SIT-UP",
-                "image" => "exercises/abs-15.gif",
+                "image" => "abs-15.gif",
                 "type" => "abs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -743,7 +743,7 @@ class ExerciseSeeder extends Seeder
             // Legs
             [
                 "name" => "CURTSY LUNGE",
-                "image" => "exercises/legs-1.gif",
+                "image" => "legs-1.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -751,7 +751,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "5 DOT DRILLS",
-                "image" => "exercises/legs-2.gif",
+                "image" => "legs-2.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -759,7 +759,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "HIGH KNEE LUNGE ON BOSU BALL",
-                "image" => "exercises/legs-3.gif",
+                "image" => "legs-3.gif",
                 "type" => "legs",
                 "equipment" => "Exercise Ball, No Equipment",
                 "created_at" => now(),
@@ -767,7 +767,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING LEG CIRCLES",
-                "image" => "exercises/legs-4.gif",
+                "image" => "legs-4.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -775,7 +775,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STATIC LUNGE",
-                "image" => "exercises/legs-5.gif",
+                "image" => "legs-5.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -783,7 +783,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL WALKING LUNGE",
-                "image" => "exercises/legs-6.gif",
+                "image" => "legs-6.gif",
                 "type" => "legs",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -791,7 +791,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL GOOD MORNING",
-                "image" => "exercises/legs-7.gif",
+                "image" => "legs-7.gif",
                 "type" => "legs",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -799,7 +799,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL SQUAT",
-                "image" => "exercises/legs-8.gif",
+                "image" => "legs-8.gif",
                 "type" => "legs",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -807,7 +807,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DEPTH JUMP TO HURDLE HOP",
-                "image" => "exercises/legs-9.gif",
+                "image" => "legs-9.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -815,7 +815,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "POWER LUNGE",
-                "image" => "exercises/legs-10.gif",
+                "image" => "legs-10.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -823,7 +823,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL DEADLIFT",
-                "image" => "exercises/legs-11.gif",
+                "image" => "legs-11.gif",
                 "type" => "legs",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -831,7 +831,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL SUMO DEADLIFT",
-                "image" => "exercises/legs-12.gif",
+                "image" => "legs-12.gif",
                 "type" => "legs",
                 "equipment" => "Dumbbells",
                 "created_at" => now(),
@@ -839,7 +839,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BODYWEIGHT LUNGE",
-                "image" => "exercises/legs-13.gif",
+                "image" => "legs-13.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -847,7 +847,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BULGARIAN SPLIT SQUAT JUMP",
-                "image" => "exercises/legs-14.gif",
+                "image" => "legs-14.gif",
                 "type" => "legs",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -855,7 +855,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SQUAT",
-                "image" => "exercises/legs-15.gif",
+                "image" => "legs-15.gif",
                 "type" => "legs",
                 "equipment" => "Barbell",
                 "created_at" => now(),
