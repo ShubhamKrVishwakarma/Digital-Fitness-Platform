@@ -78,4 +78,34 @@ class UserTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_loggedin_user_can_access_cart_page(): void
+    {
+        $user = User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss"
+        ]);
+
+        $response = $this->actingAs($user)->get('/cart');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_loggedin_user_can_access_orders_page(): void
+    {
+        $user = User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss"
+        ]);
+
+        $response = $this->actingAs($user)->get('/orders');
+
+        $response->assertStatus(200);
+    }
 }
