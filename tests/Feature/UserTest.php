@@ -43,13 +43,7 @@ class UserTest extends TestCase
     {
         $response = $this->get('/signup');
 
-        User::create([
-            "name" => "Test",
-            "email" => "test@gmail.com",
-            "gender" => "M",
-            "dob" => "27-07-2002",
-            "password" => "ssssssss"
-        ]);
+        $this->createUser();
 
         $response->assertStatus(200);
     }
@@ -81,13 +75,7 @@ class UserTest extends TestCase
 
     public function test_loggedin_user_can_access_cart_page(): void
     {
-        $user = User::create([
-            "name" => "Test",
-            "email" => "test@gmail.com",
-            "gender" => "M",
-            "dob" => "22-04-2001",
-            "password" => "ssssssss"
-        ]);
+        $user = $this->createUser();
 
         $response = $this->actingAs($user)->get('/cart');
 
@@ -96,16 +84,20 @@ class UserTest extends TestCase
 
     public function test_loggedin_user_can_access_orders_page(): void
     {
-        $user = User::create([
+        $user = $this->createUser();
+
+        $response = $this->actingAs($user)->get('/orders');
+
+        $response->assertStatus(200);
+    }
+
+    private function createUser() {
+        return User::create([
             "name" => "Test",
             "email" => "test@gmail.com",
             "gender" => "M",
             "dob" => "22-04-2001",
             "password" => "ssssssss"
         ]);
-
-        $response = $this->actingAs($user)->get('/orders');
-
-        $response->assertStatus(200);
     }
 }

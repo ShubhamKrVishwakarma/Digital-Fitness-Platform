@@ -13,13 +13,7 @@ class AuthTest extends TestCase
 
     public function test_user_can_login(): void
     {
-        User::create([
-            "name" => "Test",
-            "email" => "test@gmail.com",
-            "gender" => "M",
-            "dob" => "22-04-2001",
-            "password" => "ssssssss"
-        ]);
+        $this->createUser();
 
         $response = $this->post('/login', [
             "email" => "test@gmail.com",
@@ -36,5 +30,15 @@ class AuthTest extends TestCase
         $response->assertStatus(302);
 
         $response->assertRedirect('login');
+    }
+
+    private function createUser() {
+        return User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss"
+        ]);
     }
 }
