@@ -14,7 +14,7 @@
 @section('content')
     <div class="container-fluid p-4">
     <div class="row p-4 text-center">
-      <h1 class="mb-3">FIT FOOD STORE</h1>
+      <h1 class="mb-3">FITNESS STORE</h1>
       <p>Shop top-tier gym gear for peak performance and style. Elevate your workout with quality equipment.</p>
     </div>
     <div class="row py-md-2 px-md-4">

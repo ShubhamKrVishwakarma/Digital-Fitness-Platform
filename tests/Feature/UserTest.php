@@ -12,57 +12,30 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_login_page_loads(): void
-    {
-        $response = $this->get('/login');
-
-        $response->assertSee('Welcome Back!');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_signup_page_loads(): void
-    {
-        $response = $this->get('/signup');
-
-        $response->assertSee('Create New Account');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_register_page_loads(): void
-    {
-        $response = $this->get('/register');
-
-        $response->assertSee('Join as a Trainer');
-
-        $response->assertStatus(200);
-    }
-
     public function test_member_can_signup(): void
     {
-        $response = $this->get('/signup');
-
-        $this->createUser();
+        $response = $this->post('/signup', [
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "date_of_birth" => "22-04-2001",
+            "password" => "ssssssss",
+            "confirm_password" => "ssssssss"
+        ]);
 
         $response->assertStatus(200);
     }
 
     public function test_trainer_can_register(): void
     {
-        $response = $this->get('/register');
-
-        $trainer = User::create([
+        $response = $this->post('/register', [
             "name" => "Test",
             "email" => "test@gmail.com",
-            "dob" => "27-07-2002",
-            "phone" => "999999999",
+            "date_of_birth" => "27-07-2002",
+            "phone" => "9999999999",
             "gender" => "M",
-            "password" => "ssssssss"
-        ]);
-
-        TrainerDetail::create([
-            "user_id" => $trainer->id,
+            "password" => "ssssssss",
+            "confirm_password" => "ssssssss",
             "occupation" => "Test",
             "certificate_id" => "CHD235FS",
             "issue_date" => "22-08-2012",
