@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function index(){
         return view('shop' , [
-            "products" => Product::inRandomOrder()->get()
+            "products" => Product::all()
         ]);
     }
 
@@ -38,7 +38,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('cart');
+        return redirect()->route('shop')->with('success', 'Product Added to Cart!');
     }
 
     public function reviewProduct(Request $request){
