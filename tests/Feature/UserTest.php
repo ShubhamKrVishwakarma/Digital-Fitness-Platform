@@ -46,20 +46,14 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_loggedin_user_can_access_cart_page(): void
+    public function test_user_can_login(): void
     {
-        $user = $this->createUser();
+        $this->createUser();
 
-        $response = $this->actingAs($user)->get('/cart');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_loggedin_user_can_access_orders_page(): void
-    {
-        $user = $this->createUser();
-
-        $response = $this->actingAs($user)->get('/orders');
+        $response = $this->post('/login', [
+            "email" => "test@gmail.com",
+            "password" => "ssssssss"
+        ]);
 
         $response->assertStatus(200);
     }

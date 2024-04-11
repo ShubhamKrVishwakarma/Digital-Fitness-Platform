@@ -11,18 +11,6 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_can_login(): void
-    {
-        $this->createUser();
-
-        $response = $this->post('/login', [
-            "email" => "test@gmail.com",
-            "password" => "ssssssss"
-        ]);
-
-        $response->assertStatus(200);
-    }
-    
     public function test_unauthorized_user_cannot_access_cart_page(): void
     {
         $response = $this->get('/cart');
@@ -30,6 +18,33 @@ class AuthTest extends TestCase
         $response->assertStatus(302);
 
         $response->assertRedirect('login');
+    }
+
+    public function test_unauthorized_user_cannot_access_orders_page(): void
+    {
+        $response = $this->get('/orders');
+
+        $response->assertStatus(302);
+
+        $response->assertRedirect('login');
+    }
+
+    public function test_authorized_user_can_access_cart_page(): void
+    {
+        $user = $this->createUser();
+
+        $response = $this->actingAs($user)->get('/cart');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_authorized_user_can_access_orders_page(): void
+    {
+        $user = $this->createUser();
+
+        $response = $this->actingAs($user)->get('/orders');
+
+        $response->assertStatus(200);
     }
 
     private function createUser(): User
