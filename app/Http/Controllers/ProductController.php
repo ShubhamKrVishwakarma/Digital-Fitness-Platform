@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function index(){
         return view('shop' , [
-            "products" => Product::all()
+            "products" => Product::inRandomOrder()->get()
         ]);
     }
 
@@ -65,5 +65,4 @@ class ProductController extends Controller
 
         return redirect()->route("product.details",$request["product-id"]);
     }
-
 }
