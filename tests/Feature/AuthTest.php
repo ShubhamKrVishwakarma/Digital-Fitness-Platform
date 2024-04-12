@@ -47,14 +47,29 @@ class AuthTest extends TestCase
         $response->assertStatus(200);
     }
 
-    private function createUser(): User
+    public function test_unauthorized_user_cannot_access_admin_page(): void
+    {
+        $response = $this->get('/Admin/dashboard');
+
+        $response->assertStatus(403);
+    }
+
+    public function test_authorized_admin_can_access_admin_page(): void
+    {
+        $response = $this->actingAs($this->createUser("admin"))->get('/Admin/dashboard');
+
+        $response->assertStatus(200);
+    }
+
+    private function createUser($role = "member"): User
     {
         return User::create([
             "name" => "Test",
             "email" => "test@gmail.com",
             "gender" => "M",
             "dob" => "22-04-2001",
-            "password" => "ssssssss"
+            "password" => "ssssssss",
+            "role" => $role
         ]);
     }
 }
