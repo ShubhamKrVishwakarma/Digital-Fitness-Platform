@@ -36,6 +36,6 @@ class TrainerController extends Controller
 
         $trainer->update();
 
-        return redirect()->route("trainers");
+        return redirect()->route("trainers")->with('success', 'Trainer Reviewed Successfully!');
     }
 }

@@ -164,7 +164,7 @@ class PostController extends Controller
             return redirect()->route('user.show', $request['user-id'])->with('success', 'Unfollowed Successfully!');
         }
         elseif ($request->has('trainer-profile')) {
-            return redirect()->route('trainers')->with('success', 'Followed Successfully!');
+            return redirect()->route('trainers')->with('success', 'Unfollowed Successfully!');
         }
 
         return redirect()->route('community')->with('success', 'UnFollowed Successfully!');

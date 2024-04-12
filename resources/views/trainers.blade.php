@@ -203,4 +203,16 @@
         });
     });
     </script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 1200
+        });
+    </script>
+    @endif
 @endpush
