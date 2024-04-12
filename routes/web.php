@@ -94,4 +94,8 @@ Route::post('/product/review', [ProductController::class, 'reviewProduct'])->nam
 // Trainers Pricing
 Route::get('/pricing', function() {
     return view('pricing');
-});
+})->name('pricing');
+
+Route::get('/select-trainers', function() {
+    return view('trainer_selection');
+})->name('select.trainer');

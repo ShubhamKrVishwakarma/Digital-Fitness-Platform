@@ -33,7 +33,7 @@
                                     <sup>&#8377;</sup><span class="text-dark display-5">450</span>
                                     <h6 class="font-weight-light">MONTHLY</h6>
                                     <a class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3"
-                                        href="#">CHOOSE PLAN </a>
+                                        href="{{ route('select.trainer') }}">CHOOSE PLAN </a>
                                 </div>
                             </div>
                             <div class="col-lg-7 align-self-center">
@@ -64,7 +64,7 @@
                                     <sup>&#8377;</sup><span class="text-dark display-5">3,999</span>
                                     <h6 class="font-weight-light">MONTHLY</h6>
                                     <a class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3"
-                                        href="#">CHOOSE PLAN </a>
+                                        href="{{ route('select.trainer') }}">CHOOSE PLAN </a>
                                 </div>
                             </div>
                             <div class="col-lg-7 align-self-center">
