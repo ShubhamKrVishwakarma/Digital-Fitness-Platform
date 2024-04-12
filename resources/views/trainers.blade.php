@@ -61,31 +61,40 @@
                             <div>
                                 <h4 class="mb-2">{{$trainer->name}}</h4>
                                 @auth
-                                @if (auth()->user()->follows($trainer->id))
-                                    <form action="{{ route('user.unfollow') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                        <input type="hidden" name="trainer-profile" value="trainer-profile">
-                                        <button class="btn btn-sm btn-primary">Unfollow</button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('user.follow') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                        <input type="hidden" name="trainer-profile" value="trainer-profile">
-                                        <button class="btn btn-sm btn-primary">Follow</button>
-                                    </form>
-                                @endif
+                                    @if (auth()->user()->follows($trainer->id))
+                                        <form action="{{ route('user.unfollow') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                            <input type="hidden" name="trainer-profile" value="trainer-profile">
+                                            <button class="btn btn-sm btn-primary">Unfollow</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('user.follow') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="user-id" value="{{ $trainer->id }}">
+                                            <input type="hidden" name="trainer-profile" value="trainer-profile">
+                                            <button class="btn btn-sm btn-primary">Follow</button>
+                                        </form>
+                                    @endif
                                 @endauth
                                 @guest
                                     <a href="{{ route('login') }}" class="btn btn-sm btn-primary">Follow</a>
                                 @endguest
                             </div>
                             <div>
-                                <button type="button"
-                                    class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
-                                    data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
-                                <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                @auth
+                                    @if ($trainer->hasBeenReviewed($trainer->id))
+                                        <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">Reviewed</button>
+                                    @else
+                                        <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
+                                            data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
+                                    @endif
+                                    <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                    @endauth
+                                @guest
+                                    <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3">Rate Trainer</a>
+                                    <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                @endguest
                             </div>
                         </div>
                     </div>

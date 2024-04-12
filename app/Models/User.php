@@ -50,6 +50,10 @@ class User extends Authenticatable
         return true;
     }
 
+    public function hasBeenReviewed($trainer_id) {
+        return TrainerReview::where("user_id", auth()->user()->id)->where("trainer_id", $trainer_id)->exists();
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/users/' . $this->profile_pic);
