@@ -90,3 +90,8 @@ Route::group(["controller" => PostController::class], function() {
 // Product Details
 Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
 Route::post('/product/review', [ProductController::class, 'reviewProduct'])->name('product.review');
+
+// Trainers Pricing
+Route::get('/pricing', function() {
+    return view('pricing');
+});
