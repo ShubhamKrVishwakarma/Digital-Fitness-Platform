@@ -88,11 +88,16 @@
                   alt="product image" /></a>
             </div>
             <div class="product-btns d-flex justify-content-center align-items-center">
-              @if ($item->isAlreadyInCart($item->id))
-                <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
-              @else
-                <a href="{{ route('addToCart',$item->id) }}" class="btn btn-dark">Add to Cart</a>
-              @endif
+              @auth
+                @if ($item->isAlreadyInCart($item->id))
+                  <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
+                @else
+                  <a href="{{ route('addToCart', $item->id) }}" class="btn btn-dark">Add to Cart</a>
+                @endif
+              @endauth
+              @guest
+                <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+              @endguest
             </div>
           </div>
 
