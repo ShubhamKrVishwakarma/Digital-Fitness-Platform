@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductReview;
-use App\Models\Review;
-use App\Models\ReviewType;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Symfony\Contracts\Service\Attribute\Required;
 
 class ProductController extends Controller
 {
@@ -38,7 +34,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('shop')->with('success', 'Product Added to Cart!');
+        return redirect()->route('shop')->with('alert', 'Product Added to Cart!');
     }
 
     public function reviewProduct(Request $request){

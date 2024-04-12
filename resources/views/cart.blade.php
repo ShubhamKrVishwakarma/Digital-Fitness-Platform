@@ -55,7 +55,7 @@
                                         <form method="POST" action="{{ route('cart.update', $item->product_id) }}">
                                             @csrf
                                             <div class="d-flex mb-1">
-                                                <button class="btn btn-link px-2"
+                                                <button type="button" class="btn btn-link px-2"
                                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                     <i class="bi bi-dash"></i>
                                                 </button>
@@ -64,13 +64,13 @@
                                                     value="{{ $item->quantity }}" type="number"
                                                     class="form-control form-control-sm" style="width: 45px" />
 
-                                                <button class="btn btn-link px-2"
+                                                <button type="button" class="btn btn-link px-2"
                                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                     <i class="bi bi-plus-lg"></i>
                                                 </button>
                                             </div>
                                             <div>
-                                                <button class="btn btn-sm btn-success w-100">Update</button>
+                                                <button type="submit" class="btn btn-sm btn-success w-100">Update</button>
                                             </div>
                                         </form>
                                     </div>
@@ -133,3 +133,18 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('plugins/alert.js') }}"></script>
+@if(session('alert'))
+  <script>
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "{{ session('alert') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+  </script>
+@endif
+@endpush

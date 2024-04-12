@@ -128,14 +128,14 @@
 
 @push('scripts')
 <script src="{{ asset('plugins/alert.js') }}"></script>
-@if(session('success'))
+@if(session('alert'))
   <script>
       Swal.fire({
-        position: "top-end",
+        position: "top",
         icon: "success",
-        title: "Added to Cart!",
+        title: "{{ session('alert') }}",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1200
       });
   </script>
 @endif
