@@ -80,7 +80,7 @@
                         <a href="{{ route('login') }}"
                             class="btn btn-outline-light d-flex justify-content-center align-items-center">Login</a>
                         <button class="bttn bttn-primary" data-bs-toggle="modal"
-                            data-bs-target="#registerModal">Register</button>
+                            data-bs-target="#registerModal">Join Us</button>
                     </div>
                     @endguest
 
