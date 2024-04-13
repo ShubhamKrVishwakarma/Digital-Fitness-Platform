@@ -79,7 +79,7 @@ class UserTest extends TestCase
 
     public function test_user_can_login(): void
     {
-        $this->createUser();
+        $user = $this->createUser();
 
         $response = $this->post('/login', [
             "email" => "test@gmail.com",
@@ -87,6 +87,11 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+
+        $this->assertDatabaseHas('users', [
+            "email" => $user->email,
+            "password" => $user->password
+        ]);
     }
 
     private function createUser(): User
