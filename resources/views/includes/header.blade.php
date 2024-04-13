@@ -1,4 +1,5 @@
 <header class="header py-1" style="background-color: #1b1b1f">
+    {{-- Navigation --}}
     <nav class="navbar navbar-expand-lg w-100 navbar-clone fixed">
         <div class="container p-0 px-3 px-sm-0">
             <a class="navbar-brand m-0" href="{{ route('home') }}" id="main-logo">
