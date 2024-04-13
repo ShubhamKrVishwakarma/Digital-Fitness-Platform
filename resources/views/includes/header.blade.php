@@ -123,7 +123,7 @@
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col-md-12" style="height: 200px">
-                            <a href="{{ route('register') }}" class="card b-h-box position-relative font-14 border-0 mb-4 h-100 w-100">
+                            <a href="{{ route('signup') }}" class="card b-h-box position-relative font-14 border-0 mb-4 h-100 w-100">
                                 <img class="card-img"
                                     src="{{ asset('images/trainer.jpg') }}"
                                     alt="Card image">
@@ -138,7 +138,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12" style="height: 200px">
-                            <a href="{{ route('signup') }}" class="card b-h-box position-relative font-14 border-0 mb-4 h-100 w-100">
+                            <a href="{{ route('register') }}" class="card b-h-box position-relative font-14 border-0 mb-4 h-100 w-100">
                                 <img class="card-img"
                                     src="{{ asset('images/member.jpg') }}"
                                     alt="Card image">
