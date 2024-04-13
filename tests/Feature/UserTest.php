@@ -24,6 +24,17 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+        
+        $this->assertDatabaseHas('users', [
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+        ]);
+
+        $latest_user = User::latest()->first();
+
+        $this->equalTo($latest_user->email, "test@gmail.com");
     }
 
     public function test_trainer_can_register(): void
@@ -44,6 +55,26 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+
+        $this->assertDatabaseHas('users', [
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "dob" => "27-07-2002",
+            "phone" => "9999999999",
+            "gender" => "M"
+        ]);
+
+        $this->assertDatabaseHas('trainer_details', [
+            "occupation" => "Test",
+            "certificate_id" => "CHD235FS",
+            "issue_date" => "22-08-2012",
+            "expiry_date" => "12-09-2012",
+            "issued_authority" => "Test Fitness Association"
+        ]);
+
+        $latest_trainer = User::latest()->first();
+
+        $this->assertEquals($latest_trainer->email, "test@gmail.com");
     }
 
     public function test_user_can_login(): void
