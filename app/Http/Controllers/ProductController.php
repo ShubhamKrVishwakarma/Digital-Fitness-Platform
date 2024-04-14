@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        if ($request->has('search')) {
+            $search = strtolower($request->search);
+            $query = Product::where("keywords", "like", "%{$search}%")->get();
+        } else {
+            $query = Product::latest()->get();
+        }
         return view('shop' , [
-            "products" => Product::all()
+            "products" => $query
         ]);
     }
 

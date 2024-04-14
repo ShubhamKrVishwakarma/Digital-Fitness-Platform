@@ -14,134 +14,133 @@
 @endpush
 
 @section('content')
-<div class="container-fluid p-4">
-  <div class="row p-4 text-center">
-    <h1 class="mb-3">FITNESS STORE</h1>
-    <p>Shop top-tier gym gear for peak performance and style. Elevate your workout with quality equipment.</p>
-  </div>
-  <div class="row py-md-2 px-md-4">
-
-    <!-- Left Side -->
-    <div class="col-lg-3 p-3">
-      <h2 class="ms-1 mb-4">Filter</h2>
-
-      <!-- Filter Dropdowns -->
-      <div class="list-group list-group-radio d-grid gap-2 border-0">
-        <div class="position-relative">
-          <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
-            for="listGroupRadioGrid1">
-            <strong class="fw-semibold">Protine</strong>
-            <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid1" value=""
-              checked="">
-          </label>
-        </div>
-        <div class="position-relative">
-          <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
-            for="listGroupRadioGrid2">
-            <strong class="fw-semibold">Creatine</strong>
-            <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid2" value=""
-              checked="">
-          </label>
-        </div>
-        <div class="position-relative">
-          <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
-            for="listGroupRadioGrid3">
-            <strong class="fw-semibold">T-shirts</strong>
-            <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid3" value=""
-              checked="">
-          </label>
-        </div>
-        <div class="position-relative">
-          <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
-            for="listGroupRadioGrid4">
-            <strong class="fw-semibold">Caps</strong>
-            <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid4" value=""
-              checked="">
-          </label>
-        </div>
-      </div>
-
-
-
-
+  <div class="container-fluid p-4">
+    <div class="row p-4 text-center">
+      <h1 class="mb-3">FITNESS STORE</h1>
+      <p>Shop top-tier gym gear for peak performance and style. Elevate your workout with quality equipment.</p>
     </div>
+    <div class="row py-md-2 px-md-4">
+      <!-- Left Side -->
+      <div class="col-lg-3 p-3">
+        <h2 class="ms-1 mb-4">Filter</h2>
 
-    <!-- Right Side -->
-    <div class="col-lg-9 p-3">
-
-      <!-- Search Container -->
-      <div class="input-group px-1 px-md-3 py-1">
-        <input type="search" class="form-control" placeholder="Search by Product's Name or Category Name...">
-        <button class="btn btn-success" type="button" id="button-addon2">Search</button>
-      </div>
-
-      <!-- Products -->
-      <div class="row justify-content-center align-items-center flex-wrap">
-
-        @foreach ($products as $item)
-
-        <!-- Single Product -->
-        <div class="product">
-          <div class="product-content">
-            <div class="product-img">
-              <a href="{{ route('product.details', $item->id) }}"><img src="{{$item->getProductUrl()}}"
-                  alt="product image" /></a>
-            </div>
-            <div class="product-btns d-flex justify-content-center align-items-center">
-              @auth
-                @if ($item->isAlreadyInCart($item->id))
-                  <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
-                @else
-                  <a href="{{ route('addToCart', $item->id) }}" class="btn btn-dark">Add to Cart</a>
-                @endif
-              @endauth
-              @guest
-                <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
-              @endguest
-            </div>
+        <!-- Filter Dropdowns -->
+        <div class="list-group list-group-radio d-grid gap-2 border-0">
+          <div class="position-relative">
+            <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
+              for="listGroupRadioGrid1">
+              <strong class="fw-semibold">Protine</strong>
+              <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid1" value=""
+                checked="">
+            </label>
           </div>
+          <div class="position-relative">
+            <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
+              for="listGroupRadioGrid2">
+              <strong class="fw-semibold">Creatine</strong>
+              <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid2" value=""
+                checked="">
+            </label>
+          </div>
+          <div class="position-relative">
+            <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
+              for="listGroupRadioGrid3">
+              <strong class="fw-semibold">T-shirts</strong>
+              <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid3" value=""
+                checked="">
+            </label>
+          </div>
+          <div class="position-relative">
+            <label class="list-group-item py-3 pe-5 d-flex align-items-center justify-content-between"
+              for="listGroupRadioGrid4">
+              <strong class="fw-semibold">Caps</strong>
+              <input class="form-check-input" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid4" value=""
+                checked="">
+            </label>
+          </div>
+        </div>
 
-          <div class="product-info">
-            <div class="product-info-top">
-              <h2 class="sm-title"></h2>
-              <div class="rating">
-                <span><i class="bi bi-star-fill"></i></span>
-                <span><i class="bi bi-star-fill"></i></span>
-                <span><i class="bi bi-star-fill"></i></span>
-                <span><i class="bi bi-star-fill"></i></span>
-                <span><i class="bi bi-star-fill"></i></span>
+
+
+
+      </div>
+      <!-- Right Side -->
+      <div class="col-lg-9 p-3">
+        <!-- Search Container -->
+        <form action="{{ route('shop') }}" method="GET">
+          <div class="input-group px-1 px-md-3 py-1">
+            <input type="search" class="form-control" name="search"
+              placeholder="Search by Product's Name or Category Name...">
+            <button class="btn btn-success" type="submit">Search</button>
+          </div>
+        </form>
+        <!-- Products -->
+        <div class="row justify-content-center align-items-center flex-wrap">
+          @forelse ($products as $item)
+          <!-- Single Product -->
+          <div class="product">
+            <div class="product-content">
+              <div class="product-img">
+                <a href="{{ route('product.details', $item->id) }}"><img src="{{$item->getProductUrl()}}"
+                    alt="product image" /></a>
+              </div>
+              <div class="product-btns d-flex justify-content-center align-items-center">
+                @auth
+                @if ($item->isAlreadyInCart($item->id))
+                <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
+                @else
+                <a href="{{ route('addToCart', $item->id) }}" class="btn btn-dark">Add to Cart</a>
+                @endif
+                @endauth
+                @guest
+                <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+                @endguest
               </div>
             </div>
-            <a href="#" class="product-name">{{ substr($item->name, 0, 15) }}...</a>
-            <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
-            <p class="product-price">{{ $item->price }}</p>
+
+            <div class="product-info">
+              <div class="product-info-top">
+                <h2 class="sm-title"></h2>
+                <div class="rating">
+                  <span><i class="bi bi-star-fill"></i></span>
+                  <span><i class="bi bi-star-fill"></i></span>
+                  <span><i class="bi bi-star-fill"></i></span>
+                  <span><i class="bi bi-star-fill"></i></span>
+                  <span><i class="bi bi-star-fill"></i></span>
+                </div>
+              </div>
+              <a href="#" class="product-name">{{ substr($item->name, 0, 15) }}...</a>
+              <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
+              <p class="product-price">{{ $item->price }}</p>
+            </div>
+
+            {{-- <div class="off-info">
+              <h2 class="sm-title">25% off</h2>
+            </div> --}}
           </div>
-
-          {{-- <div class="off-info">
-            <h2 class="sm-title">25% off</h2>
-          </div> --}}
+          @empty
+          <div class="d-flex flex-column justify-content-center align-items-center py-4">
+            <h2>No Such Products Found!</h2>
+            <a href="{{ route('shop') }}" class="btn btn-primary">Refresh Products</a>
+          </div>
+          @endforelse
         </div>
-
-        @endforeach
       </div>
-
     </div>
-
   </div>
-</div>
 @endsection
 
 @push('scripts')
 <script src="{{ asset('plugins/alert.js') }}"></script>
 @if(session('alert'))
-  <script>
-      Swal.fire({
+<script>
+  Swal.fire({
         position: "top",
         icon: "success",
         title: "{{ session('alert') }}",
         showConfirmButton: false,
         timer: 1200
       });
-  </script>
+</script>
 @endif
 @endpush
