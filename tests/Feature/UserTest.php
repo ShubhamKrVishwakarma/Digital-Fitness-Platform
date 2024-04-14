@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\TrainerDetail;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -79,7 +78,13 @@ class UserTest extends TestCase
 
     public function test_user_can_login(): void
     {
-        $user = $this->createUser();
+        $user = User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss"
+        ]);
 
         $response = $this->post('/login', [
             "email" => "test@gmail.com",
@@ -91,17 +96,6 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', [
             "email" => $user->email,
             "password" => $user->password
-        ]);
-    }
-
-    private function createUser(): User
-    {
-        return User::create([
-            "name" => "Test",
-            "email" => "test@gmail.com",
-            "gender" => "M",
-            "dob" => "22-04-2001",
-            "password" => "ssssssss"
         ]);
     }
 }
