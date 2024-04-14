@@ -221,7 +221,7 @@
 
 #registerModal .b-h-box:hover .card-img-overlay {
     height: 100%;
-    background: #ffffff;
+    background: #cacaca;
     border: 3px solid rgba(120, 130, 140, 0.13);
 }
 
