@@ -3,25 +3,7 @@
 @section('title', "Trainers")
 
 @push('styles')
-<style>
-    .content {
-        background: #DCDCDC;
-        color: #000;
-    }
-
-    .card-box {
-        border-radius: 0.7rem;
-    }
-
-    .btn-rounded {
-        border-radius: 2em;
-    }
-
-    h4 {
-        line-height: 22px;
-        font-size: 18px;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/trainer.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 @endpush
 
@@ -89,7 +71,7 @@
                                         <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
                                             data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
                                     @endif
-                                    <a href="#" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                    <a href="{{ route('pricing') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
                                     @endauth
                                 @guest
                                     <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3">Rate Trainer</a>

@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $casts = ['password' => 'hashed'];
 
     public function trainerDetails() {
-        $this->hasOne(TrainerDetail::class, 'user_id');
+        return $this->hasOne(TrainerDetail::class, 'user_id');
     }
 
     public function cart() {
