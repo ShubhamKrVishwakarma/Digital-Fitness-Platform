@@ -5,23 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductReview;
-use App\Models\Review;
-use App\Models\ReviewType;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Symfony\Contracts\Service\Attribute\Required;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        if ($request->has('search')) {
+            $search = strtolower($request->search);
+            $query = Product::where("keywords", "like", "%{$search}%")->paginate(12);
+        } else {
+            $query = Product::latest()->paginate(12);
+        }
         return view('shop' , [
-            "products" => Product::all()
+            "products" => $query
         ]);
     }
 
     public function product_details($id){
         return view('product_details', [
-            "product" => Product::findOrFail($id)
+            "product" => Product::findOrFail($id),
+            "id" => $id
         ]);
     }
     
@@ -38,14 +41,13 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('cart');
+        return redirect()->route('shop')->with('alert', 'Product Added to Cart!');
     }
 
     public function reviewProduct(Request $request){
         $request->validate([
             "product-rating" => "required",
-            "product-id" => "required",
-            "product-review" => "required"
+            "product-id" => "required"
         ]);
 
         ProductReview::create([
@@ -65,5 +67,4 @@ class ProductController extends Controller
 
         return redirect()->route("product.details",$request["product-id"]);
     }
-
 }

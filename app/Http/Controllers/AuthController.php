@@ -18,6 +18,9 @@ class AuthController extends Controller
      */
     public function login()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.login');
     }
 
@@ -27,6 +30,9 @@ class AuthController extends Controller
      */
     public function signup()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.signup');
     }
 
@@ -36,6 +42,9 @@ class AuthController extends Controller
      */
     public function register()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.register');
     }
 
@@ -181,6 +190,6 @@ class AuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('alert', 'Logged out Successfully!');
     }
 }

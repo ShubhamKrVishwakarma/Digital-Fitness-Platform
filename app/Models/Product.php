@@ -23,6 +23,10 @@ class Product extends Model
         return $this->hasMany(ProductReview::class);
     }
 
+    public function isAlreadyInCart($product_id) {
+        return Cart::where("product_id", $product_id)->where("user_id", auth()->user()->id)->exists();
+    }
+
     public function getProductUrl() {
         return url('storage/products/' . $this->image);
     }

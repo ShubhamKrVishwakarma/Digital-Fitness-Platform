@@ -193,4 +193,16 @@
 
 @push('scripts')
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
+    @if(session('alert'))
+    <script>
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{ session('alert') }}",
+            showConfirmButton: false,
+            timer: 1200
+        });
+    </script>
+    @endif
 @endpush

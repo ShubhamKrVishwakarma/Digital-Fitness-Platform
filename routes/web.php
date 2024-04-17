@@ -69,6 +69,7 @@ Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store
 // Trainers Routes
 Route::get("/trainers" , [TrainerController::class, 'index'])->name('trainers');
 Route::post("/trainers" , [TrainerController::class, 'reviewTrainer'])->name('trainers.review');
+Route::get("/select-trainers" , [TrainerController::class, 'trainerSelection'])->name('select.trainer');
 
 // Community Page
 Route::group(["controller" => PostController::class], function() {
@@ -90,3 +91,8 @@ Route::group(["controller" => PostController::class], function() {
 // Product Details
 Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
 Route::post('/product/review', [ProductController::class, 'reviewProduct'])->name('product.review');
+
+// Trainers Pricing
+Route::get('/pricing', function() {
+    return view('pricing');
+})->name('pricing');
