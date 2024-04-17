@@ -23,7 +23,8 @@ class ProductController extends Controller
 
     public function product_details($id){
         return view('product_details', [
-            "product" => Product::findOrFail($id)
+            "product" => Product::findOrFail($id),
+            "id" => $id
         ]);
     }
     
@@ -46,8 +47,7 @@ class ProductController extends Controller
     public function reviewProduct(Request $request){
         $request->validate([
             "product-rating" => "required",
-            "product-id" => "required",
-            "product-review" => "required"
+            "product-id" => "required"
         ]);
 
         ProductReview::create([

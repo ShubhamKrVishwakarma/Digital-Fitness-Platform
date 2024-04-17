@@ -54,6 +54,10 @@ class User extends Authenticatable
         return TrainerReview::where("user_id", auth()->user()->id)->where("trainer_id", $trainer_id)->exists();
     }
 
+    public function hasProductReview($product_id) {
+        return ProductReview::where("user_id", auth()->user()->id)->where("product_id", $product_id)->exists();
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/users/' . $this->profile_pic);

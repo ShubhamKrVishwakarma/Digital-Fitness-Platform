@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->float('rating');
-            $table->string('review', 255);
+            $table->string('review', 255)->nullable();
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
 
