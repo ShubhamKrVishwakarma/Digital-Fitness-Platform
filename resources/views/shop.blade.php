@@ -14,12 +14,11 @@
 @endpush
 
 @section('content')
-  <div class="container-fluid p-4">
-    <div class="row p-4 text-center">
-      <h1 class="mb-3">FITNESS STORE</h1>
-      <p>Shop top-tier gym gear for peak performance and style. Elevate your workout with quality equipment.</p>
+  <div class="container-fluid overflow-hidden p-0">
+    <div class="d-flex flex-column justify-content-center align-items-center p-4 text-center" id="shop-banner">
+      <h1 class="text-light fw-bold mb-2">FITNESS HUB STORE</h1>
     </div>
-    <div class="row py-md-2 px-md-4">
+    <div class="row px-3">
       <!-- Left Side -->
       {{-- <div class="col-lg-3 p-3">
         <h2 class="ms-1 mb-4">Filter</h2>
@@ -68,7 +67,7 @@
       <div class="col-lg-12 p-3">
         <!-- Search Container -->
         <form action="{{ route('shop') }}" method="GET">
-          <div class="input-group px-1 px-md-3 py-1">
+          <div class="input-group px-2 px-md-5 py-2">
             <input type="search" class="form-control" name="search"
               placeholder="Search by Product's Name or Category Name...">
             <button class="btn btn-success" type="submit">Search</button>
