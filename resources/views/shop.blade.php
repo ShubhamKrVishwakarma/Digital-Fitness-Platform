@@ -21,7 +21,7 @@
     </div>
     <div class="row py-md-2 px-md-4">
       <!-- Left Side -->
-      <div class="col-lg-3 p-3">
+      {{-- <div class="col-lg-3 p-3">
         <h2 class="ms-1 mb-4">Filter</h2>
 
         <!-- Filter Dropdowns -->
@@ -63,9 +63,9 @@
 
 
 
-      </div>
+      </div> --}}
       <!-- Right Side -->
-      <div class="col-lg-9 p-3">
+      <div class="col-lg-12 p-3">
         <!-- Search Container -->
         <form action="{{ route('shop') }}" method="GET">
           <div class="input-group px-1 px-md-3 py-1">
@@ -124,6 +124,9 @@
             <a href="{{ route('shop') }}" class="btn btn-primary">Refresh Products</a>
           </div>
           @endforelse
+          <div>
+            {{ $products->links() }}
+          </div>
         </div>
       </div>
     </div>
