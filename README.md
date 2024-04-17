@@ -16,7 +16,7 @@ goals.
 ### Create a New Folder and Open the Folder in Terminal and Run the following command 
 
 ```
-git clone https://github.com/CoderShubham007/Digital-Fitness-Platform.git
+git clone https://github.com/ShubhamKrVishwakarma/Digital-Fitness-Platform.git
 ```
 
 ### Step 2 - Open the Folder inside your code Editor or use `cd` to change directory
