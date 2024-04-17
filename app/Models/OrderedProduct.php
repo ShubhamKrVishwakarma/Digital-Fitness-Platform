@@ -9,7 +9,7 @@ class OrderedProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'product_id', 'product_name', 'product_price', 'quantity'];
+    protected $fillable = ['order_id', 'product_image', 'product_name', 'product_price', 'category', 'quantity'];
 
     public $timestamps = false;
 
@@ -17,7 +17,7 @@ class OrderedProduct extends Model
         return $this->belongsTo(Order::class, 'order_id', 'id');
     }
 
-    public function product() {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+    public function getOrderedProductUrl() {
+        return url('storage/ordered_products/' . $this->product_image); 
     }
 }

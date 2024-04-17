@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('phone', 10);
+            $table->string('phone', 12);
             $table->text('address');
             $table->string('city', 100);
-            $table->string('state', 50);
-            $table->string('zip_code', 10);
+            $table->string('state', 100);
+            $table->string('zip_code', 12);
             $table->float('amount');
-            $table->enum('status',['pending','confirmed','rejected']);
+            $table->enum('status',['pending','confirmed','rejected','cancelled']);
             $table->timestamps();
             
         });

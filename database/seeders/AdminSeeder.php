@@ -16,7 +16,8 @@ class AdminSeeder extends Seeder
             "name" => "Admin",
             "email" => "web@admin.com",
             "password" => "admin123",
-            "role" => "admin"
+            "profile_pic" => "1.png",
+            "role" => "admin",
         ]);
     }
 }

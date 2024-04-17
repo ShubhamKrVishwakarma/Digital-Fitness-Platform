@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-3">
                 <h3 class="text-light ms-2 font-weight-bolder">Manage Exercise</h3>
-                <a class="btn btn-sm btn-dark mb-0 me-4" x-on:click="manageExercise = false, exercisesTable = true">View All Products</a>
+                <button class="btn btn-sm btn-dark mb-0 me-4" wire:click.prevent='resetAll' x-on:click="manageExercise = false, exercisesTable = true">View All Products</button>
             </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body mb-3">
                         <div class="col-12 mb-3">
                             <div class="px-2" style="width: 300px;">
-                                <img src="{{ url('storage') . '/' . $image }}" class="w-100 rounded" alt="Product">
+                                <img src="{{ $image }}" class="w-100 rounded" alt="Product">
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between align-items-center flex-wrap">

@@ -1,7 +1,7 @@
 <div class="row" x-show="manageOrder" style="display: none;">
     <!-- view Order Table Button -->
     <div class="col-12 d-flex justify-content-start align-items-center flex-wrap ps-3 mb-3">
-        <button class="btn btn-sm btn-dark m-0" x-on:click="manageOrder = false, ordersTable = true">View All Orders</button>
+        <button class="btn btn-sm btn-dark m-0" wire:click='resetAll' x-on:click="manageOrder = false, ordersTable = true">View All Orders</button>
     </div>
     <!-- Order Details -->
     <div class="col-md-8">
@@ -21,29 +21,27 @@
             </div>
             <div class="card-body pt-4 p-3">
                 <ul class="list-group">
-                    @foreach ($products as $product)
+                    @foreach ($order_details as $order_detail)
                         <li
                             class="list-group-item border-0 d-flex justify-content-center justify-content-md-start p-4 mb-3 bg-gray-100 border-radius-lg">
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-start align-items-center flex-wrap gap-3">
                                 <div class="avatar avatar-xxl position-relative mb-2">
-                                    <img src="{{ url('storage/' . $product->image) }}" class="w-100 border-radius-lg shadow-sm">
+                                    <img src="{{ url('storage/products/') . '/' . $order_detail["product_image"] }}" class="w-100 border-radius-lg shadow-sm">
                                 </div>
                                 <!-- Product Details -->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <span class="mb-1 text-xs">Product ID: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">{{ $product->id }}</span></span>
                                     <span class="mb-1 text-xs">Product Name: <span
-                                            class="text-dark font-weight-bold ms-sm-2">{{ $product->name }}</span></span>
+                                            class="text-dark font-weight-bold ms-sm-2">{{ $order_detail["product_name"] }}</span></span>
                                     <span class="mb-1 text-xs">Category: <span
-                                            class="text-dark font-weight-bold ms-sm-2">{{ $product->category->name }}</span></span>
+                                            class="text-dark font-weight-bold ms-sm-2">{{ $order_detail["category"] }}</span></span>
                                     <span class="mb-1 text-xs">Quantity: <span
-                                            class="text-danger ms-sm-1 font-weight-bold">{{ $product->quantity }}</span></span>
+                                            class="text-danger ms-sm-1 font-weight-bold">{{ $order_detail["quantity"] }}</span></span>
                                     <span class="mb-1 text-xs">Available Quantity: <span
                                             class="text-dark ms-sm-1 font-weight-bold">112</span></span>
                                     <span class="mb-1 text-xs">Price: <span
                                             class="text-success ms-sm-1 font-weight-bold"><i
-                                                class="fa-solid fa-indian-rupee-sign"></i> {{ $product->price }}</span></span>
+                                                class="fa-solid fa-indian-rupee-sign"></i> {{ $order_detail["product_price"] }}</span></span>
                                 </div>
                             </div>
                         </li>

@@ -1,0 +1,64 @@
+/* trainers page */
+.content {
+    background: #DCDCDC;
+    color: #000;
+}
+
+.card-box {
+    border-radius: 0.7rem;
+}
+
+.btn-rounded {
+    border-radius: 2em;
+}
+
+h4 {
+    line-height: 22px;
+    font-size: 18px;
+}
+
+/* Trainer Selctions Page */
+.team1 {
+    color: #8d97ad;
+    font-weight: 300;
+}
+
+.team1 h1,
+.team1 h2,
+.team1 h3,
+.team1 h4,
+.team1 h5,
+.team1 h6 {
+    color: #3e4555;
+}
+
+.team1 .font-weight-medium {
+    font-weight: 500;
+}
+
+.team1 .bg-light {
+    background-color: #f4f8fa !important;
+}
+
+.team1 .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+}
+
+.team1 .pro-pic {
+    min-height: 200px;
+}
+
+.team1 .pro-pic .card-img-overlay {
+    display: none;
+}
+
+.team1 .pro-pic .card-img-overlay ul {
+    top: 50%;
+}
+
+.team1 .pro-pic .card-img-overlay ul li a {
+    -webkit-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+}

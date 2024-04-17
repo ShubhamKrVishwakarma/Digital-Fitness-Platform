@@ -8,20 +8,14 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         @if ($conversations->count() < 1)
-                            <h4 class="ms-2 ms-md-4">No Products Found</h4>
+                            <h4 class="ms-2 ms-md-4">No Conersations Found</h4>
                         @else
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            ID</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Member</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Trainer</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Member</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trainer</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -54,7 +48,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                <button class="btn btn-xs btn-danger mb-0">Delete</button>
+                                                <button wire:confirm.prompt='Are u sure?\nEnter password to "DELETE"|aaaa' wire:click='delete({{ $conversation->id }})' class="btn btn-xs btn-danger mb-0">Delete</button>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -22,8 +22,13 @@ class DatabaseSeeder extends Seeder
             ExerciseSeeder::class,
             WorkoutPlanSeeder::class,
             OrderSeeder::class,
-            ChatSeeder::class,
-            MessageSeeder::class
+            // ChatSeeder::class,
+            // MessageSeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
+            LikeSeeder::class,
+            // TrainerReviewSeeder::class,
+            // ProductReviewSeeder::class
         ]);
     }
 }

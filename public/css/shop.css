@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap");
-
 :root {
   --white-light: rgba(255, 255, 255, 0.5);
   --alice-blue: #f8f9fa;
@@ -15,10 +13,22 @@
   box-sizing: border-box;
 }
 
+#shop-banner {
+  height: 260px;
+  width: 100%;
+  background: url('../images/shop/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#shop-banner h1 {
+  letter-spacing: 7px;
+}
+
 /* Utility stylings */
 
 .sm-title {
-  font-family: "Roboto", sans-serif;
   padding: 0.6rem 0;
   text-transform: capitalize;
 }

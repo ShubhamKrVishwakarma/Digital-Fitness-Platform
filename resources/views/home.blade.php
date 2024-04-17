@@ -71,7 +71,9 @@
         <div class="content">
             <h1 class=" mb-5 display-2">SHOP VARIETY OF <br>EQUIPMENTS</h1>
             <div class="banner-button">
-                <button class="bttn bttn-primary">Go to Store</button>
+                <a href="{{route('shop')}}">
+                    <button class="bttn bttn-primary">Go to Store</button>
+                </a>
             </div>
         </div>
     </section>
@@ -81,38 +83,18 @@
             <h2>Our Top rated Trainers</h2>
         </div>
         <div class="content">
+        @foreach ($trainers as $trainer)
             <div class="trainer">
-                <img src="./images/profile.jpg" alt="" />
-                <h3>Trainer</h3>
+                <img src="{{$trainer->getProfileUrl()}}" alt="{{$trainer->name}}" />
+                <h3>{{$trainer->name}}</h3>
                 <p>
-                    Checkout profile.
+                    {{$trainer->email}}
                 </p>
 
-                <a href="#"><i class="bi bi-box-arrow-right"></i></a>
-                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
-            </div>
+                <a href="{{route('user.show', $trainer->id)}}"><i class="bi bi-box-arrow-right"></i></a>
+            </div> 
+        @endforeach
 
-            <div class="trainer">
-                <img src="./images/profile.jpg" alt="" />
-                <h3>Trainer</h3>
-                <p>
-                    Checkout profile.
-                </p>
-
-                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
-                <a href="{{ route('user.show', ['id' => 2]) }}"><i class="bi bi-box-arrow-right"></i></a>
-            </div>
-
-            <div class="trainer">
-                <img src="./images/home/profile.jpg" alt="" />
-                <h3>Trainer</h3>
-                <p>
-                    Checkout profile.
-                </p>
-                <a href="{{ route('user.show', ['id' => 1]) }}"><i class="bi bi-box-arrow-right"></i></a>
-                {{-- <a href="#"><i class="bi bi-box-arrow-right"></i></a> --}}
-                {{-- <a href="{{ route('user.show'),['id'=>user->id]}}"><i class="bi bi-box-arrow-right"></i></a> --}}
-            </div>
         </div>
         <div class="d-flex justify-content-center align-items-center">
             <a href="{{ route('trainers') }}" class="bttn bttn-primary">View All Trainers</a>
@@ -128,7 +110,9 @@
                 <h1 class="mb-5 display-2">Explore <br>our Community hub</h1>
             </div>
             <div class="banner-button">
-                <button class="bttn bttn-primary">Explore</button>
+                <a href="{{route('community')}}">
+                    <button class="bttn bttn-primary">Explore</button>
+                </a>
             </div>
         </div>
     </section>
@@ -209,4 +193,16 @@
 
 @push('scripts')
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
+    @if(session('alert'))
+    <script>
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{ session('alert') }}",
+            showConfirmButton: false,
+            timer: 1200
+        });
+    </script>
+    @endif
 @endpush

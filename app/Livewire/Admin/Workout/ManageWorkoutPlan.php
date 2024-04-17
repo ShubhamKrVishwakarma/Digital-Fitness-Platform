@@ -51,15 +51,24 @@ class ManageWorkoutPlan extends Component
 
     public function addExercise($exerciseId) {
         $exercise = Exercise::findOrFail($exerciseId);
-        $this->exerciseDetails[] = $exercise;
-        $this->sets[$exercise->id] = null;
-        $this->reps[$exercise->id] = null;
-        $this->dispatch(
-            'alert', 
-            icon: 'success',
-            title: 'Success!',
-            text: 'Exercise Added Successfully!',
-        );
+        if (in_array($exercise, $this->exerciseDetails)) {
+            $this->dispatch(
+                'alert', 
+                icon: 'info',
+                title: 'Done!',
+                text: 'Exercise Already Added!',
+            );
+        } else {
+            $this->exerciseDetails[] = $exercise;
+            $this->sets[$exercise->id] = null;
+            $this->reps[$exercise->id] = null;
+            $this->dispatch(
+                'alert', 
+                icon: 'success',
+                title: 'Success!',
+                text: 'Exercise Added Successfully!',
+            );
+        }
     }
 
     public function removeExercise($index) {
@@ -90,6 +99,21 @@ class ManageWorkoutPlan extends Component
 
         $plan->update();
 
+        Workout::where("plan_id", $this->id)->delete();
+
+        $exercises = [];
+
+        foreach ($this->exerciseDetails as $index => $exercise) {
+            $exercises [] = [
+                "plan_id" => $plan->id,
+                "exercise_id" => $exercise->id,
+                "sets" => $this->sets[$exercise->id],
+                "reps" => $this->reps[$exercise->id]
+            ];
+        }
+
+        Workout::insert($exercises);
+
         $this->dispatch('refreshWorkoutPlansTable');
 
         $this->dispatch(
@@ -112,4 +136,8 @@ class ManageWorkoutPlan extends Component
             text: 'Plan Removed Successfully!',
         );
     }
+
+    public function resetAll() {
+        $this->reset();
+    } 
 }

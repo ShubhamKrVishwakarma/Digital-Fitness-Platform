@@ -14,4 +14,12 @@ class WorkoutPlan extends Model
     public function workouts() {
         return $this->hasMany(Workout::class);
     }
+
+    public function workoutLogs() {
+        return $this->hasMany(UserWorkoutLog::class);
+    }
+    
+    public function totalExercises($id){
+        return Workout::where('plan_id', $id)->count();
+    }
 }

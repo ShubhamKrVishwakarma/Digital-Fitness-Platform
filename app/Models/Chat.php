@@ -16,6 +16,7 @@ class Chat extends Model
     public function member(){
         return $this->belongsTo(User::class, "user_id","id");
     }
+    
     public function trainer(){
         return $this->belongsTo(User::class, "trainer_id","id");
     }

@@ -54,17 +54,17 @@
 @endpush
 
 @section('content')
-    <div class="container p-5">
+    <div class="container p-5" style="min-height: 404px;">
         <div class="row">
             <div class="col-xl-8">
                 {{-- Ordered Product --}}
                 <div class="card border shadow-none">
                     <div class="card-body">
-                        @foreach ($ordered_products as $ordered_product)
+                        @foreach ($order->orders as $ordered_product)
                             <div>
                                 <div class="d-flex align-items-start border-bottom pb-3">
                                     <div class="me-4">
-                                        <img src="{{ $ordered_product->product->getProductUrl() }}" class="avatar-lg rounded">
+                                        <img src="{{ url('storage/products/'. $ordered_product->product_image) }}" class="avatar-lg rounded">
                                     </div>
                                     <div class="flex-grow-1 align-self-center overflow-hidden">
                                         <div>
@@ -76,7 +76,7 @@
                                                 <i class="bi bi-star-fill text-warning"></i>
                                                 <i class="bi bi-star-fill text-warning"></i>
                                             </p>
-                                            <p class="mb-0 mt-1">Category : <span class="fw-medium">{{ $ordered_product->product->category->name }}</span></p>
+                                            <p class="mb-0 mt-1">Category : <span class="fw-medium">{{ $ordered_product->category }}</span></p>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0 ms-2">
@@ -126,11 +126,13 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <form action="{{ route('cancel.order', $order->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</button>
-                            </form>
+                            @if ($order->status === "pending")
+                                <form action="{{ route('cancel.order', $order->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Cancel Order</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>

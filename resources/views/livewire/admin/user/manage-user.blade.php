@@ -5,7 +5,7 @@
                 <div class="col-auto">
                     @if ($profile_pic)
                         <div class="avatar avatar-xl position-relative">
-                            <img src="{{ url('storage/user') . '/' . $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                            <img src="{{ $profile_pic }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                         </div>
                     @else
                         <div class="avatar avatar-xl position-relative">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-auto ms-auto my-auto">
-                    <button x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0">View All Users</button>
+                    <button wire:click.prevent='resetAll' x-on:click="manageUser = false, usersTable = true" class="btn btn-sm btn-dark m-0">View All Users</button>
                 </div>
             </div>
         </div>
@@ -197,12 +197,12 @@
                             <div class="col-4 col-lg-4 order-lg-2">
                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                     @if ($profile_pic)
-                                        <a href="javascript:;">
-                                            <img src="{{ url('storage/user') . '/' . $profile_pic }}"
+                                        <a>
+                                            <img src="{{ $profile_pic }}"
                                                 class="rounded-circle img-fluid border border-2 border-white">
                                         </a>
                                     @else
-                                        <a href="javascript:;">
+                                        <a>
                                             <img src="{{ asset('images/profile/profile.jpg') }}"
                                                 class="rounded-circle img-fluid border border-2 border-white">
                                         </a>
@@ -226,33 +226,32 @@
                                 <div class="col">
                                     <div class="d-flex justify-content-center">
                                         <div class="d-grid text-center">
-                                            <span class="text-lg font-weight-bolder">22</span>
-                                            <span class="text-sm opacity-8">Friends</span>
+                                            <span class="text-lg font-weight-bolder">{{ $posts }}</span>
+                                            <span class="text-sm opacity-8">Posts</span>
                                         </div>
                                         <div class="d-grid text-center mx-4">
-                                            <span class="text-lg font-weight-bolder">10</span>
-                                            <span class="text-sm opacity-8">Photos</span>
+                                            <span class="text-lg font-weight-bolder">{{ $followers }}</span>
+                                            <span class="text-sm opacity-8">Followers</span>
                                         </div>
                                         <div class="d-grid text-center">
-                                            <span class="text-lg font-weight-bolder">89</span>
-                                            <span class="text-sm opacity-8">Comments</span>
+                                            <span class="text-lg font-weight-bolder">{{ $followings }}</span>
+                                            <span class="text-sm opacity-8">Followings</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-4">
                                 <h5>
-                                    Mark Davis<span class="font-weight-light">, 35</span>
+                                    {{ $name }}<span class="font-weight-light">, 35</span>
                                 </h5>
                                 <div class="h6 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                    <i class="ni location_pin mr-2"></i>{{ $email }}
                                 </div>
                                 <div class="h6 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim
-                                    Officer
+                                    Profile Bio 
                                 </div>
                                 <div>
-                                    <i class="ni education_hat mr-2"></i>University of Computer Science
+                                    {{ $bio }}
                                 </div>
                             </div>
                         </div>

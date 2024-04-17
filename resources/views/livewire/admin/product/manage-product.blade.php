@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-3">
                 <h3 class="text-light ms-2 font-weight-bolder">Manage Product</h3>
-                <a class="btn btn-sm btn-dark mb-0 me-4" x-on:click="manageProduct = false, productsTable = true">View All
-                    Products</a>
+                <button class="btn btn-sm btn-dark mb-0 me-4" wire:click.prevent='resetAll' x-on:click="manageProduct = false, productsTable = true">View All
+                    Products</button>
             </div>
             <div class="col-md-8">
                 <div class="card">

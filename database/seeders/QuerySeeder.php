@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Query;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class QuerySeeder extends Seeder
@@ -15,7 +14,7 @@ class QuerySeeder extends Seeder
     {
         $query=[];
 
-        for($i=1;$i<=20;$i++){
+        for($i=1;$i<=10;$i++){
             $query[] = [
                 "name"=>fake()->name(),
                 "email"=>fake()->email(),

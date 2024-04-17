@@ -13,7 +13,6 @@ class ManageOrder extends Component
     public $id;
     public $order = [];
     public $order_details = [];
-    public $products = [];
 
     public $name;
     public $email;
@@ -42,13 +41,8 @@ class ManageOrder extends Component
         $this->total_orders = $order->orders->count();
         $this->total_amount = $order->amount;
 
-        $order_details = OrderedProduct::where('order_id', $id)->get();
-        $this->order_details[] = $order_details;
-        
-        foreach($order_details as $orders) {
-            $this->products[] = Product::find($orders->product_id);
-        }
-
+        $order_details = OrderedProduct::where("order_id", $id)->get();
+        $this->order_details = $order_details->toArray();
 
         if ($order->status === "confirmed") {
             $this->status = "Order Confirmed";
@@ -61,11 +55,12 @@ class ManageOrder extends Component
 
     public function confirmOrder() {
         $order = Order::findOrFail($this->id);
-        $products = $order->orders->toArray();
-        foreach ($products as $product) {
-            $update = Product::findOrFail($product["product_id"]);
-            $update->quantity = $update->quantity - $product["quantity"];
-            $update->update();
+        foreach ($this->order_details as $product) {
+            $update = Product::where("name", $product["product_name"])->first();
+            if ($update) {
+                $update->quantity -= $product["quantity"];
+                $update->save();
+            }
         }
         $order->status = "confirmed";
         $order->update();
@@ -91,5 +86,9 @@ class ManageOrder extends Component
             title: 'Error!',
             text: 'Order Rejected!',
         );
+    }
+
+    public function resetAll() {
+        $this->reset();
     }
 }

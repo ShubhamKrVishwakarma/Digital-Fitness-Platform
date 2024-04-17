@@ -17,7 +17,7 @@ class ExerciseSeeder extends Seeder
             // Chest Exercises
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/chest-1.gif",
+                "image" => "chest-1.gif",
                 "type" => "chest",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -25,7 +25,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING MEDICINE BALL CHEST PASS",
-                "image" => "exercises/chest-2.gif",
+                "image" => "chest-2.gif",
                 "type" => "chest",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -33,7 +33,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM SCISSORS",
-                "image" => "exercises/chest-3.gif",
+                "image" => "chest-3.gif",
                 "type" => "chest",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -41,7 +41,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "INCLINE CHEST FLY MACHINE",
-                "image" => "exercises/chest-4.gif",
+                "image" => "chest-4.gif",
                 "type" => "chest",
                 "equipment" => "Fly Machine",
                 "created_at" => now(),
@@ -49,7 +49,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "BENCH PRESS",
-                "image" => "exercises/chest-5.gif",
+                "image" => "chest-5.gif",
                 "type" => "chest",
                 "equipment" => "Barbell, Bench",
                 "created_at" => now(),
@@ -57,47 +57,47 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "PEC DECK FLY",
-                "image" => "exercises/chest-6.gif",
+                "image" => "chest-6.gif",
                 "type" => "chest",
-                "equipment" => "FLY Machine",
+                "equipment" => "Fly Machine",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "DUMBBELL PULLOVER",
-                "image" => "exercises/chest-7.gif",
+                "image" => "chest-7.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "LOW CABLE CROSSOVER",
-                "image" => "exercises/chest-8.gif",
+                "image" => "chest-8.gif",
                 "type" => "chest",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "HIGH CABLE CROSSOVER",
-                "image" => "exercises/chest-9.gif",
+                "image" => "chest-9.gif",
                 "type" => "chest",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "CABLE UPPER CHEST CROSSOVERS",
-                "image" => "exercises/chest-10.gif",
+                "image" => "chest-10.gif",
                 "type" => "chest",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "INCLINE BARBELL BENCH PRESS",
-                "image" => "exercises/chest-11.gif",
+                "image" => "chest-11.gif",
                 "type" => "chest",
                 "equipment" => "Barbell, Bench",
                 "created_at" => now(),
@@ -105,80 +105,40 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL FLY",
-                "image" => "exercises/chest-12.gif",
+                "image" => "chest-12.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "DUMBBELL BENCH PRESS",
-                "image" => "exercises/chest-13.gif",
+                "image" => "chest-13.gif",
                 "type" => "chest",
-                "equipment" => "Bench, Dumbells",
+                "equipment" => "Bench, Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "CABLE CROSSOVER",
-                "image" => "exercises/chest-14.gif",
+                "image" => "chest-14.gif",
                 "type" => "chest",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "ONE-ARM CABLE CHEST PRESS",
-                "image" => "exercises/chest-15.gif",
+                "image" => "chest-15.gif",
                 "type" => "chest",
-                "equipment" => "Cable",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "SINGLE-ARM CABLE CROSSOVER",
-                "image" => "exercises/chest-16.gif",
-                "type" => "chest",
-                "equipment" => "Cable",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "INCLINE DUMBBELL FLY",
-                "image" => "exercises/chest-17.gif",
-                "type" => "chest",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "INCLINE DUMBBELL PRESS",
-                "image" => "exercises/chest-18.gif",
-                "type" => "chest",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "REVERSE GRIP INCLINE DUMBBELL PRESS",
-                "image" => "exercises/chest-19.gif",
-                "type" => "chest",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "MACHINE FLY",
-                "image" => "exercises/chest-20.gif",
-                "type" => "chest",
-                "equipment" => "FLY Machine",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             // Shoulder
             [
                 "name" => "MEDICINE BALL OVERHEAD THROW",
-                "image" => "exercises/shoulder-1.gif",
+                "image" => "shoulder-1.gif",
                 "type" => "shoulder",
                 "equipment" => "Exercise Ball",
                 "created_at" => now(),
@@ -186,23 +146,23 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL PUSH PRESS",
-                "image" => "exercises/shoulder-2.gif",
+                "image" => "shoulder-2.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "STANDING DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-3.gif",
+                "image" => "shoulder-3.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "ARM SCISSORS",
-                "image" => "exercises/shoulder-4.gif",
+                "image" => "shoulder-4.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -210,7 +170,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SIDE ARM RAISES",
-                "image" => "exercises/shoulder-5.gif",
+                "image" => "shoulder-5.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -218,7 +178,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "ARM CIRCLES",
-                "image" => "exercises/shoulder-6.gif",
+                "image" => "shoulder-6.gif",
                 "type" => "shoulder",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -226,23 +186,23 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "DUMBBELL LATERAL RAISE",
-                "image" => "exercises/shoulder-7.gif",
+                "image" => "shoulder-7.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "DUMBBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-8.gif",
+                "image" => "shoulder-8.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbells",
+                "equipment" => "Dumbbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "SMITH MACHINE BEHIND NECK PRESS",
-                "image" => "exercises/shoulder-9.gif",
+                "image" => "shoulder-9.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -250,7 +210,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SMITH MACHINE SHOULDER PRESS",
-                "image" => "exercises/shoulder-10.gif",
+                "image" => "shoulder-10.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -258,7 +218,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE LATERAL RAISE",
-                "image" => "exercises/shoulder-11.gif",
+                "image" => "shoulder-11.gif",
                 "type" => "shoulder",
                 "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
@@ -266,15 +226,15 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "45 DEGREE INCLINE ROW",
-                "image" => "exercises/shoulder-12.gif",
+                "image" => "shoulder-12.gif",
                 "type" => "shoulder",
-                "equipment" => "Dumbell, Bench",
+                "equipment" => "Dumbbells, Bench",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "LEVER SHOULDER PRESS",
-                "image" => "exercises/shoulder-13.gif",
+                "image" => "shoulder-13.gif",
                 "type" => "shoulder",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -282,7 +242,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "SEATED BARBELL SHOULDER PRESS",
-                "image" => "exercises/shoulder-14.gif",
+                "image" => "shoulder-14.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
                 "created_at" => now(),
@@ -290,56 +250,16 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "STANDING CLOSE GRIP MILITARY PRESS",
-                "image" => "exercises/shoulder-15.gif",
+                "image" => "shoulder-15.gif",
                 "type" => "shoulder",
                 "equipment" => "Barbell",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "BARBELL MILITARY PRESS (OVERHEAD PRESS)",
-                "image" => "exercises/shoulder-16.gif",
-                "type" => "shoulder",
-                "equipment" => "Barbell",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "DUMBBELL CHEST SUPPORTED LATERAL RAISES",
-                "image" => "exercises/shoulder-17.gif",
-                "type" => "shoulder",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "DUMBBELL 6 WAY RAISE",
-                "image" => "exercises/shoulder-18.gif",
-                "type" => "shoulder",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "DUMBBELL 4 WAY LATERAL RAISE",
-                "image" => "exercises/shoulder-19.gif",
-                "type" => "shoulder",
-                "equipment" => "Dumbells",
-                "created_at" => now(),
-                "updated_at" => now()
-            ],
-            [
-                "name" => "ALTERNATING DUMBBELL FRONT RAISE",
-                "image" => "exercises/shoulder-20.gif",
-                "type" => "shoulder",
-                "equipment" => "Dumbells",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             // Back
             [
                 "name" => "ROWING MACHINE",
-                "image" => "exercises/back-1.gif",
+                "image" => "back-1.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -347,7 +267,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER FRONT PULLDOWN",
-                "image" => "exercises/back-2.gif",
+                "image" => "back-2.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
@@ -355,7 +275,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "PULL-UP",
-                "image" => "exercises/back-3.gif",
+                "image" => "back-3.gif",
                 "type" => "back",
                 "equipment" => "No Equipment",
                 "created_at" => now(),
@@ -363,47 +283,47 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "CABLE REAR PULLDOWN",
-                "image" => "exercises/back-4.gif",
+                "image" => "back-4.gif",
                 "type" => "back",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "LAT PULLDOWN",
-                "image" => "exercises/back-5.gif",
+                "image" => "back-5.gif",
                 "type" => "back",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "SEATED CABLE ROW",
-                "image" => "exercises/back-6.gif",
+                "image" => "back-6.gif",
                 "type" => "back",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "BARBELL BENT OVER ROW",
-                "image" => "exercises/back-7.gif",
+                "image" => "back-7.gif",
                 "type" => "back",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "CABLE STRAIGHT ARM PULLDOWN",
-                "image" => "exercises/back-8.gif",
+                "image" => "back-8.gif",
                 "type" => "back",
-                "equipment" => "Cable",
+                "equipment" => "Cable, Resistance Band",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
             [
                 "name" => "LEGLESS ROPE CLIMB",
-                "image" => "exercises/back-9.gif",
+                "image" => "back-9.gif",
                 "type" => "back",
                 "equipment" => "Pole, Rope",
                 "created_at" => now(),
@@ -411,12 +331,536 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "name" => "LEVER T-BAR ROW",
-                "image" => "exercises/back-10.gif",
+                "image" => "back-10.gif",
                 "type" => "back",
                 "equipment" => "Machine",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
+            [
+                "name" => "DUMBBELL ROW",
+                "image" => "back-11.gif",
+                "type" => "back",
+                "equipment" => "Dumbbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BENT OVER DUMBBELL ROW",
+                "image" => "back-12.gif",
+                "type" => "back",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL BENT OVER REVERSE GRIP ROW",
+                "image" => "back-13.gif",
+                "type" => "back",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "REVERSE LAT-PULLDOWN",
+                "image" => "back-14.gif",
+                "type" => "back",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "MUSCLE-UP",
+                "image" => "back-15.gif",
+                "type" => "back",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            // Arms
+            [
+                "name" => "SEATED ZOTTMAN CURL",
+                "image" => "biceps-1.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "STANDING BARBELL CONCENTRATION CURL",
+                "image" => "biceps-2.gif",
+                "type" => "biceps",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "WAITER CURL",
+                "image" => "biceps-3.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DOUBLE ARM DUMBBELL CURL",
+                "image" => "biceps-4.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DDUMBBELL CURL",
+                "image" => "biceps-5.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BARBELL CURL",
+                "image" => "biceps-6.gif",
+                "type" => "biceps",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CONCENTRATION CURL",
+                "image" => "biceps-7.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL PREACHER CURL",
+                "image" => "biceps-8.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "EZ BAR PREACHER CURL",
+                "image" => "biceps-9.gif",
+                "type" => "biceps",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "HAMMER CURL",
+                "image" => "biceps-10.gif",
+                "type" => "biceps",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "SEATED INCLINE DUMBBELL CURL",
+                "image" => "biceps-11.gif",
+                "type" => "biceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEVER PREACHER CURL",
+                "image" => "biceps-12.gif",
+                "type" => "biceps",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "HIGH CABLE SINGLE ARM BICEP CURL",
+                "image" => "biceps-13.gif",
+                "type" => "biceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ONE ARM CABLE CURL",
+                "image" => "biceps-14.gif",
+                "type" => "biceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LYING CABLE CURL",
+                "image" => "biceps-15.gif",
+                "type" => "biceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            // Triceps
+            [
+                "name" => "MEDICINE BALL OVERHEAD THROW",
+                "image" => "triceps-1.gif",
+                "type" => "triceps",
+                "equipment" => "Exercise Ball",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ONE ARM TRICEPS PUSHDOWN",
+                "image" => "triceps-2.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL KICKBACK",
+                "image" => "triceps-3.gif",
+                "type" => "triceps",
+                "equipment" => "Dumbbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ONE ARM REVERSE PUSHDOWN",
+                "image" => "triceps-4.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "PUSH-DOWN",
+                "image" => "triceps-5.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BENCH DIPS",
+                "image" => "triceps-6.gif",
+                "type" => "triceps",
+                "equipment" => "Bench, No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "TRICEPS DIPS",
+                "image" => "triceps-7.gif",
+                "type" => "triceps",
+                "equipment" => "Machine, No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ONE ARM LYING TRICEPS EXTENSION",
+                "image" => "triceps-8.gif",
+                "type" => "triceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CABLE ROPE OVERHEAD TRICEPS EXTENSION",
+                "image" => "triceps-9.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEVER TRICEPS DIP",
+                "image" => "triceps-10.gif",
+                "type" => "triceps",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LYING BARBELL TRICEPS EXTENSION",
+                "image" => "triceps-11.gif",
+                "type" => "triceps",
+                "equipment" => "Barbell, Bench",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CABLE TRICEP KICKBACK",
+                "image" => "triceps-12.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "TRICEPS DIPS ON FLOOR",
+                "image" => "triceps-13.gif",
+                "type" => "triceps",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL SEATED FRONT AND BACK TATE PRESS",
+                "image" => "triceps-14.gif",
+                "type" => "triceps",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "KNEELING CABLE TRICEPS EXTENSION",
+                "image" => "triceps-15.gif",
+                "type" => "triceps",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            // Abs/Core
+            [
+                "name" => "MEDICINE BALL ROTATIONAL THROW",
+                "image" => "abs-1.gif",
+                "type" => "abs",
+                "equipment" => "Exercise Ball",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DRAGON FLAG",
+                "image" => "abs-2.gif",
+                "type" => "abs",
+                "equipment" => "Bench, No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "AB COASTER MACHINE",
+                "image" => "abs-3.gif",
+                "type" => "abs",
+                "equipment" => "Machine",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CROSS CRUNCH",
+                "image" => "abs-4.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "STANDING CABLE CRUNCH",
+                "image" => "abs-5.gif",
+                "type" => "abs",
+                "equipment" => "Cable, Resistance Band",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "SEATED BENCH LEG PULL-IN",
+                "image" => "abs-6.gif",
+                "type" => "abs",
+                "equipment" => "Bench, No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CROSS BODY MOUNTAIN CLIMBER",
+                "image" => "abs-7.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "ALTERNATE LEG RAISES",
+                "image" => "abs-8.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "CRUNCHES",
+                "image" => "abs-9.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "MOUNTAIN CLIMBER",
+                "image" => "abs-10.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BICYCLE CRUNCH",
+                "image" => "abs-11.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LYING SCISSOR KICK",
+                "image" => "abs-12.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "LEG RAISE",
+                "image" => "abs-13.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "OBLIQUE FLOOR CRUNCHES",
+                "image" => "abs-14.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "T-CROSS SIT-UP",
+                "image" => "abs-15.gif",
+                "type" => "abs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            // Legs
+            [
+                "name" => "CURTSY LUNGE",
+                "image" => "legs-1.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "5 DOT DRILLS",
+                "image" => "legs-2.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "HIGH KNEE LUNGE ON BOSU BALL",
+                "image" => "legs-3.gif",
+                "type" => "legs",
+                "equipment" => "Exercise Ball, No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "STANDING LEG CIRCLES",
+                "image" => "legs-4.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "STATIC LUNGE",
+                "image" => "legs-5.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL WALKING LUNGE",
+                "image" => "legs-6.gif",
+                "type" => "legs",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL GOOD MORNING",
+                "image" => "legs-7.gif",
+                "type" => "legs",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL SQUAT",
+                "image" => "legs-8.gif",
+                "type" => "legs",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DEPTH JUMP TO HURDLE HOP",
+                "image" => "legs-9.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "POWER LUNGE",
+                "image" => "legs-10.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL DEADLIFT",
+                "image" => "legs-11.gif",
+                "type" => "legs",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "DUMBBELL SUMO DEADLIFT",
+                "image" => "legs-12.gif",
+                "type" => "legs",
+                "equipment" => "Dumbbells",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BODYWEIGHT LUNGE",
+                "image" => "legs-13.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "BULGARIAN SPLIT SQUAT JUMP",
+                "image" => "legs-14.gif",
+                "type" => "legs",
+                "equipment" => "No Equipment",
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
+            [
+                "name" => "SQUAT",
+                "image" => "legs-15.gif",
+                "type" => "legs",
+                "equipment" => "Barbell",
+                "created_at" => now(),
+                "updated_at" => now()
+            ]
         ];
 
         Exercise::insert($exercises);

@@ -13,7 +13,6 @@ class ManageQuery extends Component
     public $email;
     public $phone;
     public $message;
-
     public $reply;
 
     public function render()
@@ -59,5 +58,9 @@ class ManageQuery extends Component
             title: 'Success!',
             text: 'Query Deleted Successfully!',
         );
+    }
+
+    public function resetAll() {
+        $this->reset();
     }
 }

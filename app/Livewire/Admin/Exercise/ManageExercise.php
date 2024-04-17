@@ -36,7 +36,7 @@ class ManageExercise extends Component
         $exercise = Exercise::findOrFail($id);
         $this->id = $id;
         $this->name = $exercise->name;
-        $this->image = $exercise->image;
+        $this->image = $exercise->getExerciseGif();
         $this->type = $exercise->type;
         $this->equipment = $exercise->equipment;
     }
@@ -75,5 +75,9 @@ class ManageExercise extends Component
             title: 'Success!',
             text: 'Exercise Deleted Successfully!',
         );
+    }
+
+    public function resetAll() {
+        $this->reset();
     }
 }

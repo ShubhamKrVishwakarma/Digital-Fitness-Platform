@@ -18,6 +18,9 @@ class AuthController extends Controller
      */
     public function login()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.login');
     }
 
@@ -27,6 +30,9 @@ class AuthController extends Controller
      */
     public function signup()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.signup');
     }
 
@@ -36,6 +42,9 @@ class AuthController extends Controller
      */
     public function register()
     {
+        if (auth()->user()) {
+            return redirect()->route('home');
+        }
         return view('Auth.register');
     }
 
@@ -56,18 +65,20 @@ class AuthController extends Controller
             }
 
             $credentials = $request->only('email', 'password');
+            
+            if (auth()->attempt($credentials)) {
+                $user = auth()->user();
 
-            if (Auth::attempt($credentials)) {
-                $user = Auth::user();
-
-                if ($user->role == "pending") {
+                if ($user->role === "pending") {            
                     auth()->logout();
                     request()->session()->invalidate();
                     request()->session()->regenerateToken();
                     return response()->json(['error' => 'Account is pending approval'], 403);
-                } else {
-                    return response()->json(['message' => 'Account created successfully']);
                 }
+
+                request()->session()->regenerate();
+                return response()->json(['message' => 'Account created successfully']);
+                
             } else {
                 return response()->json(['error' => 'Invalid credentials'], 401);
             }
@@ -179,6 +190,6 @@ class AuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('alert', 'Logged out Successfully!');
     }
 }

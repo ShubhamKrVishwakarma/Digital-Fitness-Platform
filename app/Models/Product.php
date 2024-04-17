@@ -18,15 +18,16 @@ class Product extends Model
     public function cart() {
         return $this->hasMany(Cart::class);
     }
-    
-    public function ordered_products() {
-        return $this->hasMany(OrderedProduct::class);
+
+    public function reviews() {
+        return $this->hasMany(ProductReview::class);
+    }
+
+    public function isAlreadyInCart($product_id) {
+        return Cart::where("product_id", $product_id)->where("user_id", auth()->user()->id)->exists();
     }
 
     public function getProductUrl() {
-        if ($this->image) {
-            return url('storage/' . $this->image);
-        }
-        return asset('./images/profile/profile.jpg');
+        return url('storage/products/' . $this->image);
     }
 }

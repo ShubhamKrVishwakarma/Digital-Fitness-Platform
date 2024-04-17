@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             ["name" => "Protien"],
-            ["name" => "GYM Equipments"],
+            ["name" => "Equipment"],
             ["name" => "T-shirt"],
             ["name" => "Bottle"],
         ];
