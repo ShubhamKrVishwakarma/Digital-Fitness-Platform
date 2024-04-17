@@ -10,67 +10,36 @@
                 </div>
             </div>
         </div>
-        <ul class="users" >
-            <li class="person" data-chat="person1">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                    <span class="status busy"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Steve Bangalter</span>
-                    <span class="time">15/02/2019</span>
-                </p>
-            </li>
-            <li class="person" data-chat="person1">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-                    <span class="status offline"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Steve Bangalter</span>
-                    <span class="time">15/02/2019</span>
-                </p>
-            </li>
-            <li class="person active-user" data-chat="person2">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar2.png" alt="Retail Admin">
-                    <span class="status away"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Peter Gregor</span>
-                    <span class="time">12/02/2019</span>
-                </p>
-            </li>
-            <li class="person" data-chat="person3">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                    <span class="status busy"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Jessica Larson</span>
-                    <span class="time">11/02/2019</span>
-                </p>
-            </li>
-            <li class="person" data-chat="person4">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
-                    <span class="status offline"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Lisa Guerrero</span>
-                    <span class="time">08/02/2019</span>
-                </p>
-            </li>
-            <li class="person" data-chat="person5">
-                <div class="user">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar5.png" alt="Retail Admin">
-                    <span class="status away"></span>
-                </div>
-                <p class="name-time">
-                    <span class="name">Michael Jordan</span>
-                    <span class="time">05/02/2019</span>
-                </p>
-            </li>
+        <ul class="users">
+            @if ($trainer)
+                @foreach ($users as $user)
+                    <li wire:key='{{ $user->member->id }}' class="person" data-chat="person1"
+                        @click="$dispatch('messages', { id: {{ $user->id }} })" >
+                        <div class="user">
+                            <img src="{{ $user->member->getProfileUrl() }}" alt="Retail Admin">
+                            <span class="status busy"></span>
+                        </div>
+                        <p class="name-time">
+                            <span class="name">{{ $user->member->name }}</span>
+                            {{-- <span class="time">15/02/2019</span> --}}
+                        </p>
+                    </li>
+                @endforeach
+            @else
+                @foreach ($users as $user)
+                    <li wire:key='{{ $user->trainer->id }}' class="person" data-chat="person1"
+                        @click="$dispatch('messages', { id: {{ $user->id }} })" >
+                        <div class="user">
+                            <img src="{{ $user->trainer->getProfileUrl() }}" alt="Retail Admin">
+                            <span class="status busy"></span>
+                        </div>
+                        <p class="name-time">
+                            <span class="name">{{ $user->trainer->name }}</span>
+                            {{-- <span class="time">15/02/2019</span> --}}
+                        </p>
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </div>
 </div>
