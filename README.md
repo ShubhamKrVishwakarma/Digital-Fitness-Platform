@@ -55,4 +55,5 @@ php artisan key:generate
 ### Step 10 - Finally Start the serve and Use and Customize the App Accourding to your Need
 ```
 php artisan serve
-``` 
+```
+Your Server in now running at: http://localhost:8000/
