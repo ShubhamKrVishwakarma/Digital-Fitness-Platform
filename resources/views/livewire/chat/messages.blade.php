@@ -7,21 +7,19 @@
             @foreach ($messages as $message)
                 @if (auth()->user()->id === $message->sender_id)
                     <li class="chat-right">
-                        <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
+                        <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
                         <div class="chat-text">{{ $message->message }}</div>
                         <div class="chat-avatar">
-                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                            <div class="chat-name">Sam</div>
+                            <img src="{{ auth()->user()->getProfileUrl() }}" alt="{{ auth()->user()->name }}">
                         </div>
                     </li>
                 @else
                     <li class="chat-left">
                         <div class="chat-avatar">
-                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                            <div class="chat-name">Russell</div>
+                            <img src="{{ $receiver_pic }}" alt="Retail Admin">
                         </div>
                         <div class="chat-text">{{ $message->message }}</div>
-                        <div class="chat-hour">08:55 <span class="bi bi-check-all fs-4"></span></div>
+                        <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
                     </li>
                 @endif
             @endforeach

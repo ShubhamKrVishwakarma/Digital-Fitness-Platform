@@ -15,6 +15,7 @@ class Messages extends Component
     
     public $chat_id;
     public $receiver_id;
+    public $receiver_pic;
     public $name;
 
     public function render()
@@ -35,6 +36,7 @@ class Messages extends Component
         }
         else{
             $this->receiver_id = $chat->trainer_id;
+            $this->receiver_pic = $chat->trainer->getProfileUrl();
             $this->name = $chat->trainer->name;
         }
     }
