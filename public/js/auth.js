@@ -12,7 +12,8 @@ $(document).ready(function() {
             $('#login-email').val('');
             $('#login-password').val('');
 
-            window.location.href = "http://127.0.0.1:8000/";
+            // window.location.href = "http://127.0.0.1:8000/";
+            location.reload();
         })
         .catch(function(error) {
             if (error.response && error.response.status === 422) {

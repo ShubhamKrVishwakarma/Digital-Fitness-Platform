@@ -77,8 +77,8 @@ class AuthController extends Controller
                 }
 
                 request()->session()->regenerate();
+
                 return response()->json(['message' => 'Account created successfully']);
-                
             } else {
                 return response()->json(['error' => 'Invalid credentials'], 401);
             }
