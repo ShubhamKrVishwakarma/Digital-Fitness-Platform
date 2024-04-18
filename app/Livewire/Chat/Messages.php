@@ -10,7 +10,9 @@ use Livewire\Component;
 class Messages extends Component
 {
     public $messages = [];
+
     public $message;
+    
     public $chat_id;
     public $receiver_id;
     public $name;
@@ -37,13 +39,15 @@ class Messages extends Component
         }
     }
 
-    public function sendMessage(){
+    public function sendMessage() {
         Message::create([
             "chat_id" =>$this->chat_id, 
             "sender_id" => auth()->user()->id,
             "receiver_id" => $this->receiver_id,
             "message" => $this->message,
         ]);
+
+        $this->messages = Message::where("chat_id", $this->chat_id)->get();
 
         $this->reset("message");
     }
