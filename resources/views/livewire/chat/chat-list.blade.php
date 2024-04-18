@@ -2,7 +2,7 @@
     <div class="users-container">
         <div class="chat-search-box">
             <div class="input-group">
-                <input class="form-control" placeholder="Search">
+                <input wire:model.live.debounce='search' class="form-control" placeholder="Search">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-info">
                         <i class="bi bi-search"></i>
@@ -13,8 +13,7 @@
         <ul class="users">
             @if ($trainer)
                 @foreach ($users as $user)
-                    <li wire:key='{{ $user->member->id }}' class="person" data-chat="person1"
-                        @click="$dispatch('messages', { id: {{ $user->id }} })" >
+                    <li wire:key='{{ $user->member->id }}' x-on:click="hideMessages = false, showMessages = true" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })" >
                         <div class="user">
                             <img src="{{ $user->member->getProfileUrl() }}" alt="Retail Admin">
                             <span class="status busy"></span>
@@ -27,8 +26,7 @@
                 @endforeach
             @else
                 @foreach ($users as $user)
-                    <li wire:key='{{ $user->trainer->id }}' class="person" data-chat="person1"
-                        @click="$dispatch('messages', { id: {{ $user->id }} })" >
+                    <li wire:key='{{ $user->trainer->id }}' x-on:click="hideMessages = false, showMessages = true" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })" >
                         <div class="user">
                             <img src="{{ $user->trainer->getProfileUrl() }}" alt="Retail Admin">
                             <span class="status busy"></span>

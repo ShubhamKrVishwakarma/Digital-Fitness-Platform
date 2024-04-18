@@ -52,14 +52,10 @@
     flex-direction: column;
 }
 
-/************************************************
-	************************************************
-											Users
-	************************************************
-************************************************/
-
 .users {
     padding: 0;
+    height: 460px;
+    overflow-y: auto;
 }
 
 .users .person {
@@ -214,6 +210,12 @@
 .chat-container {
     position: relative;
     padding: 1rem;
+}
+
+.chat-box {
+    padding: 0 1rem;
+    height: 460px;
+    overflow-y: auto;
 }
 
 .chat-container li.chat-left,

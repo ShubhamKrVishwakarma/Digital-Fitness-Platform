@@ -11,7 +11,7 @@ class Chat extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['user_id','trainer_id'];
+    protected $fillable = ['user_id', 'trainer_id'];
 
     public function member(){
         return $this->belongsTo(User::class, "user_id","id");
