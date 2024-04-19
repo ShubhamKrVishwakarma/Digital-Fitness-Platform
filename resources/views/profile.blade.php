@@ -41,19 +41,16 @@
                 <div class="follow-details">
                     <div>
                         <h6>Followers</h6>
-                        <span>{{$user->followers}}</span>
+                        <span class="d-block text-center">{{$user->followers}}</span>
                     </div>
                     <div>
                         <h6>Following</h6>
-                        <span>{{$user->following}}</span>
+                        <span class="d-block text-center">{{$user->following}}</span>
                     </div>
                     <div>
-                        @if ($user->role=='member')
-                            <h6>Posts</h6>
-                            <span>0</span>
-                        @else
+                        @if ($user->role === 'trainer')
                             <h6>Rating</h6>
-                            <span>{{$user->rating}}</span>
+                            <span class="d-block text-center">{{$user->rating}}</span>
                         @endif
                     </div>
                 </div>
