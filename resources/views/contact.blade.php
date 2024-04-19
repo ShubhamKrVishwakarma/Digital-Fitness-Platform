@@ -58,7 +58,7 @@
                             @enderror
                         </div>
                         <div class="contact-buttons">
-                            <input type="submit" value="Send message" class="btn" style="width: 100%;">
+                            <input type="submit" value="Send message" class="contact-btn" style="width: 100%;">
                         </div>
                     </form>
                 </div>

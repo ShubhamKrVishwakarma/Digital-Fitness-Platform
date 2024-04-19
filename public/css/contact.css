@@ -204,7 +204,7 @@ textarea.contact-input ~ .icon {
     width: 100%;
 }
 
-.btn {
+.contact-btn {
     display: inline-block;
     padding: 1.4rem 5rem;
     background-color: var(--main-color);
@@ -218,7 +218,7 @@ textarea.contact-input ~ .icon {
     transition: 0.3s;
 }
 
-.btn:hover {
+.contact-btn:hover {
     background-color: var(--main-color-hover);
 }
 
@@ -365,7 +365,7 @@ textarea.contact-input ~ .icon {
         margin-top: 0.45rem;
     }
 
-    .btn {
+    .contact-btn {
         padding: 1rem 1.5rem;
     }
 
