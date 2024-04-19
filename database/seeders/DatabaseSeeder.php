@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             CommentSeeder::class,
             LikeSeeder::class,
-            // TrainerReviewSeeder::class,
-            // ProductReviewSeeder::class
+            TrainerReviewSeeder::class,
+            ProductReviewSeeder::class
         ]);
     }
 }
