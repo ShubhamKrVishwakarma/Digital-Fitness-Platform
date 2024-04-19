@@ -38,7 +38,9 @@ php artisan storage:link
 
 ### Step 5 - Once the storage in liked copy all the folders inside `/public/project-images/` and paste it inside `/public/storage/`
 
-### Step 6 - Create a New File called `.env` in your Project root directory and copy all contents inside `/.env.example` to your newly created `/.env` File
+### Step 6 - Create a New File called `.env` in your Project root directory and Set up .env File according to your need 
+**OR**
+### copy all contents of `/.env.example` to your newly created `/.env` File
 
 ### Step 7 - Now Turn on Apache and MySQL Server `( You can use XAMPP, WAMPP or any other Tools)`
 
