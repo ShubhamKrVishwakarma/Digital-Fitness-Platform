@@ -29,12 +29,8 @@
                             </div>
                         </div>
                     @else
-                        {{-- <div class="card-body">
-                            <h3>Subscribe to get trained by Professional Instructors</h3>
-                        </div> --}}
                         <div class="py-5 bg-light service-25">
                             <div class="container">
-                                <!-- Row -->
                                 <div class="row justify-content-center">
                                     <div class="col-md-12 text-center mb-5"><img src="https://cdn-icons-png.flaticon.com/512/5234/5234307.png" width="200" class="img-fluid" /></div>
                                     <div class="col-md-7 text-center"> <span class="badge badge-success rounded-pill px-3 py-1 font-weight-light">Premium</span>
@@ -45,7 +41,6 @@
                                         <a class="btn btn-success-gradiant btn-md border-0 text-white" href="{{ route('pricing') }}"><span>View Pricing</span></a>
                                     </div>
                                 </div>
-                                <!-- Row -->
                             </div>
                         </div>
                     @endif

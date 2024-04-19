@@ -4,7 +4,7 @@
     </div>
     <div class="chat-container">
         <ul class="chat-box chatContainerScroll">
-            @foreach ($messages as $message)
+            @forelse ($messages as $message)
                 @if (auth()->user()->id === $message->sender_id)
                     <li class="chat-right">
                         <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
@@ -22,7 +22,12 @@
                         <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
                     </li>
                 @endif
-            @endforeach
+            @empty
+                <div class="d-flex justify-content-center align-items-center flex-column w-100 h-100">
+                    <h3>No Messages to display</h3>
+                    <p>Start your Converstaion</p>
+                </div>
+            @endforelse
         </ul>
         <div class="form-group mt-3 mb-0">
             <form wire:submit='sendMessage'>
