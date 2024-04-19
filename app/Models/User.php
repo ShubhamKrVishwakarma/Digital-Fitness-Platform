@@ -58,6 +58,13 @@ class User extends Authenticatable
         return ProductReview::where("user_id", auth()->user()->id)->where("product_id", $product_id)->exists();
     }
 
+    public function hasSubscription() {
+        if ($this->role === "trainer") {
+            return Chat::where("trainer_id", $this->id)->exists();
+        } 
+        return Chat::where("user_id", $this->id)->exists();
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/users/' . $this->profile_pic);

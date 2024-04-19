@@ -1,3 +1,7 @@
+body {
+    background-color: #f8f9fa;
+}
+
 .chat-search-box {
     -webkit-border-radius: 3px 0 0 0;
     -moz-border-radius: 3px 0 0 0;
@@ -35,11 +39,7 @@
     }
 }
 
-/************************************************
-	************************************************
-									Users Container
-	************************************************
-************************************************/
+/* User Container */
 
 .users-container {
     position: relative;
@@ -369,4 +369,79 @@ ul {
     border-radius: 2px;
     margin-bottom: 2rem;
     box-shadow: none;
+}
+
+/* No Message */
+.service-25 {
+    color: #8d97ad;
+    font-weight: 300;
+}
+
+.service-25 h1,
+.service-25 h2,
+.service-25 h3,
+.service-25 h4,
+.service-25 h5,
+.service-25 h6 {
+    color: #3e4555;
+}
+
+.service-25 .bg-light {
+    background-color: #f4f8fa !important;
+}
+
+.service-25 .badge {
+    line-height: 14px;
+}
+
+.service-25 .badge-success {
+    background: #2cdd9b;
+}
+
+.service-25 .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+}
+
+.service-25 .btn-success-gradiant {
+    background: #2cdd9b;
+    background: -webkit-linear-gradient(
+        legacy-direction(to right),
+        #2cdd9b 0%,
+        #1dc8cc 100%
+    );
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#2cdd9b),
+        to(#1dc8cc)
+    );
+    background: -webkit-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+    background: -o-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+    background: linear-gradient(to right, #2cdd9b 0%, #1dc8cc 100%);
+}
+
+.service-25 .btn-success-gradiant:hover {
+    background: #1dc8cc;
+    background: -webkit-linear-gradient(
+        legacy-direction(to right),
+        #1dc8cc 0%,
+        #2cdd9b 100%
+    );
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#1dc8cc),
+        to(#2cdd9b)
+    );
+    background: -webkit-linear-gradient(left, #1dc8cc 0%, #2cdd9b 100%);
+    background: -o-linear-gradient(left, #1dc8cc 0%, #2cdd9b 100%);
+    background: linear-gradient(to right, #1dc8cc 0%, #2cdd9b 100%);
+}
+
+.service-25 .btn-md {
+    padding: 15px 45px;
+    font-size: 16px;
 }
