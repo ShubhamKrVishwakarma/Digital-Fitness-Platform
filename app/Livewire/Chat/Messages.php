@@ -41,6 +41,10 @@ class Messages extends Component
         }
     }
 
+    public function refreshMessage() {
+        $this->messages = Message::where("chat_id", $this->chat_id)->get();
+    }
+
     public function sendMessage() {
         Message::create([
             "chat_id" =>$this->chat_id, 

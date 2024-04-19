@@ -3,7 +3,7 @@
         <span class="name">{{ $name }}</span>
     </div>
     <div class="chat-container">
-        <ul class="chat-box chatContainerScroll">
+        <ul class="chat-box chatContainerScroll" wire:poll.2s='refreshMessage'>
             @forelse ($messages as $message)
                 @if (auth()->user()->id === $message->sender_id)
                     <li class="chat-right">
