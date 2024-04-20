@@ -145,7 +145,7 @@ class AuthController extends Controller
                 "occupation" => "required|min:2|max:100",
                 "certificate_id" => "required|min:5|max:20",
                 "issue_date" => "required|date",
-                "expiry_date" => "required|date|after:issue_date",
+                "expiry_date" => "nullable|date|after:issue_date",
                 "issued_authority" => "required|min:2|max:100",
                 "password" => "required|min:8",
                 "confirm_password" => "required|min:8|same:password"
