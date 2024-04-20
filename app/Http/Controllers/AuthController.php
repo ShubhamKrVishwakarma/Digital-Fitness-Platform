@@ -78,7 +78,7 @@ class AuthController extends Controller
 
                 request()->session()->regenerate();
 
-                return response()->json(['message' => 'Account created successfully']);
+                return response()->json(['message' => 'Account created successfully'], 200);
             } else {
                 return response()->json(['error' => 'Invalid credentials'], 401);
             }
@@ -119,7 +119,7 @@ class AuthController extends Controller
                 "password" => $request->password
             ]);
 
-            return response()->json(['message' => 'Account created successfully']);
+            return response()->json(['message' => 'Account created successfully'], 200);
         } catch (Exception) {
             return response()->json(['error' => 'Server Error'], 500);
         }
@@ -140,12 +140,12 @@ class AuthController extends Controller
                     "date",
                     "before:" . Date::now()->subYears(18)->format('Y-m-d'),
                 ],
-                "phone" => "required|size:10",
+                "phone" => "required|numeric|digits:10",
                 "gender" => "required|in:M,F,O",
                 "occupation" => "required|min:2|max:100",
                 "certificate_id" => "required|min:5|max:20",
                 "issue_date" => "required|date",
-                "expiry_date" => "required|date|after:issue_date",
+                "expiry_date" => "nullable|date|after:issue_date",
                 "issued_authority" => "required|min:2|max:100",
                 "password" => "required|min:8",
                 "confirm_password" => "required|min:8|same:password"
@@ -174,7 +174,7 @@ class AuthController extends Controller
                 "issued_authority" => $request->issued_authority
             ]);
 
-            return response()->json(['message' => 'Account created successfully']);
+            return response()->json(['message' => 'Account created successfully'], 200);
         } catch (Exception) {
             return response()->json(['error' => 'Server Error'], 500);
         }
