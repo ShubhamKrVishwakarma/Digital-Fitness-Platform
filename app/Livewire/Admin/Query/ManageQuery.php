@@ -30,23 +30,6 @@ class ManageQuery extends Component
         $this->message = $query->message;
     }
 
-    public function sendReply() {
-        $this->validate([
-            "reply" => "required|min:2|max:255"
-        ]);
-
-        # Reply Code here...
-
-        $this->dispatch('refreshQueryTable');
-
-        $this->dispatch(
-            'alert', 
-            icon: 'success',
-            title: 'Success!',
-            text: 'Reply Sent!',
-        );
-    }
-
     public function delete() {
         Query::findOrFail($this->id)->deleteOrFail();
 
