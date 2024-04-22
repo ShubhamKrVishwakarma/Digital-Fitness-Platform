@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -11,8 +10,6 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\UserWorkoutLogController;
-use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\WorkoutPlansController;
 
 // Home Page Routes
@@ -20,14 +17,24 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::redirect('/home', '/');
 
 // Profile Page Routes
-Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
-Route::get('/profile-edit/{id}', [UserController::class, 'profile_edit'])->name('user.profile_edit');
-Route::post('/profile/{id}',[UserController::class,'update'])->name('user.update');
-Route::post('/profile',[UserController::class,'update_pass'])->name('user.update_pass');
+Route::group(['controller' => UserController::class], function() {
+    Route::get('/profile/{id}', 'show')->name('user.show');
+    Route::get('/profile-edit/{id}', 'profile_edit')->name('user.profile_edit');
+    Route::post('/profile/{id}', 'update')->middleware('auth')->name('user.update');
+    Route::post('/profile', 'update_pass')->middleware('auth')->name('user.update_pass');
+});
  
 // Shop Page Routes
-Route::get('/shop' , [ProductController::class , 'index'])->name('shop');
-Route::get('/shop/{id}' , [ProductController::class , 'addToCart'])->middleware('auth')->name('addToCart');
+Route::group(['controller' => ProductController::class], function() {
+    Route::get('/shop' , 'index')->name('shop');
+    Route::get('/shop/{id}' , 'addToCart')->middleware('auth')->name('addToCart');
+});
+
+// Product Details
+Route::group(['controller' => ProductController::class], function() {
+    Route::get('/product/{id}', 'product_details')->name('product.details');
+    Route::post('/product/review', 'reviewProduct')->name('product.review');
+});
 
 // Message Page Routes
 Route::get('/message', function() {
@@ -35,7 +42,7 @@ Route::get('/message', function() {
 })->middleware('auth')->name('message');
 
 // Cart Page Routes
-Route::group(["controller" => CartController::class, "middleware" => "auth"], function() {
+Route::group(['controller' => CartController::class, 'middleware' => 'auth'], function() {
     Route::get('/cart', 'index')->name('cart');
     Route::post('/cart/edit/{id}', 'update')->name('cart.update');
     Route::delete('/cart/{id}', 'destroy')->name('product.delete');
@@ -43,7 +50,7 @@ Route::group(["controller" => CartController::class, "middleware" => "auth"], fu
 });
 
 // Orders Page Routes
-Route::group(["controller" => OrderController::class, "middleware" => "auth"], function() {    
+Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], function() {    
     // Orders Page
     Route::get('/orders', 'index')->name('orders');
     // Order Details
@@ -52,24 +59,33 @@ Route::group(["controller" => OrderController::class, "middleware" => "auth"], f
 });
 
 // Checkout Page Routes
-Route::group(["controller" => CheckoutController::class, "middleware" => "auth"], function() {
+Route::group(['controller' => CheckoutController::class, 'middleware' => 'auth'], function() {
     Route::get('/checkout', 'index')->name('checkout');
     Route::post('/checkout/{total_price}', 'store')->name('checkout.store');
+    
+    // Payment
+    Route::get('payment/info', 'paymentInfo')->name('payment.info');
 });
 
 // Contact Page Routes
-Route::get('/contact', [QueryController::class, "index"])->name('contact');
-Route::post('/contact', [QueryController::class, "store"])->name('contact.store');
+Route::group(['controller' => QueryController::class], function() {
+    Route::get('/contact', 'index')->name('contact');
+    Route::post('/contact', 'store')->name('contact.store');
+});
 
 //Workout Page Routes
-Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('workout.plans');
-Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
-Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
+Route::group(['controller' => WorkoutPlansController::class], function() {
+    Route::get('/workout_plans', 'index')->name('workout.plans');
+    Route::get('/workout/{id}', 'index')->middleware('auth')->name('workout');
+    Route::post('/workout_completed/{id}', 'store')->middleware('auth')->name('workout.completed');
+});
 
 // Trainers Routes
-Route::get("/trainers" , [TrainerController::class, 'index'])->name('trainers');
-Route::post("/trainers" , [TrainerController::class, 'reviewTrainer'])->name('trainers.review');
-Route::get("/select-trainers" , [TrainerController::class, 'trainerSelection'])->name('select.trainer');
+Route::group(['controller' => TrainerController::class], function() {
+    Route::get('/trainers', 'index')->name('trainers');
+    Route::post('/trainers', 'reviewTrainer')->name('trainers.review');
+    Route::get('/select-trainers', 'trainerSelection')->name('select.trainer');
+});
 
 // Community Page
 Route::group(["controller" => PostController::class], function() {
@@ -88,14 +104,7 @@ Route::group(["controller" => PostController::class], function() {
     });
 });
 
-// Product Details
-Route::get('/product/{id}', [ProductController::class, 'product_details'])->name('product.details');
-Route::post('/product/review', [ProductController::class, 'reviewProduct'])->name('product.review');
-
 // Trainers Pricing
 Route::get('/pricing', function() {
     return view('pricing');
 })->name('pricing');
-
-// Payment
-Route::get('payment/info', [CheckoutController::class, 'paymentInfo'])->name('payment.info');
