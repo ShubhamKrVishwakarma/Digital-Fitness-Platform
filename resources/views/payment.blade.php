@@ -180,9 +180,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div id="make-payment" class="btn btn-primary d-block h8">PAY <span
-                            class="fas fa-dollar-sign ms-2"></span>1400<span
-                            class="ms-3 fas fa-arrow-right"></span></div>
+                        <div id="make-payment" class="btn btn-primary d-block h8">MAKE PAYMENT</div>
                     </div>
                 </div>
             </div>

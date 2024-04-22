@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
-                <h3 class="mb-3">Unlock Your Best Self with Our Pricing</h3>
+                <h3 class="mb-3">Choose Your Plan & Unlock Your Best Self</h3>
                 <h6 class="subtitle font-weight-normal">We're committed to making your journey to health and wellness not only effective but also enjoyable. That's why we've designed our pricing plans to be as flexible and empowering as your workouts.</h6>
             </div>
         </div>
@@ -32,8 +32,11 @@
                                 <div class="price-box my-3">
                                     <sup>&#8377;</sup><span class="text-dark display-5">450</span>
                                     <h6 class="font-weight-light">MONTHLY</h6>
-                                    <a class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3"
-                                        href="{{ route('select.trainer') }}">CHOOSE PLAN </a>
+                                    <form action="{{ route('subscription.payment') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="amount" value="450">
+                                        <button class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-lg-7 align-self-center">
@@ -43,7 +46,7 @@
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Diet Plan Included</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Morning and Evening Batches</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Discount on Products</span></li>
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Can Access Community</span></li>
+                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Community Interaction</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -63,18 +66,21 @@
                                 <div class="price-box my-3">
                                     <sup>&#8377;</sup><span class="text-dark display-5">3,999</span>
                                     <h6 class="font-weight-light">MONTHLY</h6>
-                                    <a class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3"
-                                        href="{{ route('select.trainer') }}">CHOOSE PLAN </a>
+                                    <form action="{{ route('subscription.payment') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="amount" value="3999">
+                                        <button class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-lg-7 align-self-center">
                                 <ul class="list-inline pl-3 font-14 font-weight-medium text-dark">
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>6 Days a Week</span></li>
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>DedicatedTrainer</span></li>
+                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>5 Days a Week</span></li>
+                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Dedicated Trainer</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Diet Plan Included</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Morning and Evening Batches</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Discount on Products</span></li>
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Can Access Community</span></li>
+                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Community Interaction</span></li>
                                 </ul>
                             </div>
                         </div>

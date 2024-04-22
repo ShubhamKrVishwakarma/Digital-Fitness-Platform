@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Razorpay\Api\Api;
 
 class TrainerController extends Controller
 {
@@ -46,5 +47,38 @@ class TrainerController extends Controller
         $trainer->update();
 
         return redirect()->route("trainers")->with('success', 'Trainer Reviewed Successfully!');
+    }
+
+    public function pricing($trainer_id)
+    {
+        return view('pricing', [
+            "trainer_id" => $trainer_id
+        ]);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
+
+        $order_id = rand(111111, 999999);
+
+        $orderData = [
+            'receipt' => `rcptid_$order_id`,
+            'amount' => ($request->amount * 100),
+            'currency' => 'INR',
+            'notes' => [
+                'order_id' => $order_id,
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'phone' => auth()->user()->phone
+            ]
+        ];
+
+        $razorpayOrder = $api->order->create($orderData);
+
+        return view('payment', [
+            "order_id" => $order_id,
+            "order" => $razorpayOrder
+        ]);
     }
 }

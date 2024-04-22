@@ -71,7 +71,7 @@
                                         <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
                                             data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
                                     @endif
-                                    <a href="{{ route('pricing') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                        <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Subscribe to Chat</a>
                                     @endauth
                                 @guest
                                     <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3">Rate Trainer</a>
