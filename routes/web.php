@@ -96,3 +96,6 @@ Route::post('/product/review', [ProductController::class, 'reviewProduct'])->nam
 Route::get('/pricing', function() {
     return view('pricing');
 })->name('pricing');
+
+// Payment
+Route::get('payment/info', [CheckoutController::class, 'paymentInfo'])->name('payment.info');
