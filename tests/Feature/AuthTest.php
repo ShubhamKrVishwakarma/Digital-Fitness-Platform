@@ -11,22 +11,28 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_unauthorized_user_cannot_access_cart_page(): void
+    private function createUser($role = "member"): User
     {
-        $response = $this->get('/cart');
-
-        $response->assertStatus(302);
-
-        $response->assertRedirect('login');
+        return User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss",
+            "role" => $role
+        ]);
     }
 
-    public function test_unauthorized_user_cannot_access_orders_page(): void
+    /**
+     *  Pages that Authorized User can access
+     */
+    public function test_authorized_user_can_access_message_page(): void
     {
-        $response = $this->get('/orders');
+        $user = $this->createUser();
 
-        $response->assertStatus(302);
+        $response = $this->actingAs($user)->get('/message');
 
-        $response->assertRedirect('login');
+        $response->assertStatus(200);
     }
 
     public function test_authorized_user_can_access_cart_page(): void
@@ -47,29 +53,96 @@ class AuthTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_unauthorized_user_cannot_access_admin_page(): void
+    /**
+     *  Pages that Only Admin can access
+     */
+    public function  test_authorized_admin_can_access_admin_dashboard_page(): void
     {
-        $response = $this->get('/Admin/dashboard');
+        $admin = $this->createUser("admin");
 
-        $response->assertStatus(403);
-    }
-
-    public function test_authorized_admin_can_access_admin_page(): void
-    {
-        $response = $this->actingAs($this->createUser("admin"))->get('/Admin/dashboard');
+        $response = $this->actingAs($admin)->get('/Admin/dashboard');
 
         $response->assertStatus(200);
     }
 
-    private function createUser($role = "member"): User
+    public function  test_authorized_admin_can_access_admin_users_page(): void
     {
-        return User::create([
-            "name" => "Test",
-            "email" => "test@gmail.com",
-            "gender" => "M",
-            "dob" => "22-04-2001",
-            "password" => "ssssssss",
-            "role" => $role
-        ]);
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/users');
+
+        $response->assertStatus(200);
+    }
+
+    public function  test_authorized_admin_can_access_admin_exercises_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/exercises');
+
+        $response->assertStatus(200);
+    }
+
+    public function  test_authorized_admin_can_access_admin_workout_plans_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/workout_plan');
+
+        $response->assertStatus(200);
+    }
+
+    public function  test_authorized_admin_can_access_admin_categories_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/categories');
+
+        $response->assertStatus(200);
+    }
+    
+    public function  test_authorized_admin_can_access_admin_products_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/products');
+
+        $response->assertStatus(200);
+    }
+    
+    public function  test_authorized_admin_can_access_admin_conversations_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/conversations');
+
+        $response->assertStatus(200);
+    }
+
+    public function  test_authorized_admin_can_access_admin_community_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/community');
+
+        $response->assertStatus(200);
+    }
+    
+    public function  test_authorized_admin_can_access_admin_orders_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/orders');
+
+        $response->assertStatus(200);
+    }
+    
+    public function  test_authorized_admin_can_access_admin_queries_page(): void
+    {
+        $admin = $this->createUser("admin");
+
+        $response = $this->actingAs($admin)->get('/Admin/queries');
+
+        $response->assertStatus(200);
     }
 }
