@@ -39,7 +39,8 @@ class CheckoutController extends Controller
                     'order_id' => $order_id,
                     'name' => $request->name,
                     'email' => $request->email,
-                    'phone' => $request->phone
+                    'phone' => $request->phone,
+                    'type' => 'order'
                 ]
             ];
     
@@ -86,9 +87,17 @@ class CheckoutController extends Controller
         $status = $api->payment->fetch($request->payment_id);
         
         if ($status->captured) {
-            return redirect()->route('orders')->with('success', 'Payment completed Successfully!');
+            if ($request->has('type') && $request->type === "subscription") {
+                return redirect()->route('message')->with('success', 'Payment completed Successfully!');
+            } else {
+                return redirect()->route('orders')->with('success', 'Payment completed Successfully!');
+            }
         } else {
-            return redirect()->route('cart')->with('alert', 'Payment Failed');
+            if ($request->has('type') && $request->type === "subscription") {
+                return redirect()->route('trainers')->with('alert', 'Payment Failed');
+            } else {
+                return redirect()->route('cart')->with('alert', 'Payment Failed');
+            }
         }
     }
 }

@@ -70,7 +70,8 @@ class TrainerController extends Controller
                 'order_id' => $order_id,
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
-                'phone' => auth()->user()->phone
+                'phone' => auth()->user()->phone,
+                'type' => 'subscription'
             ]
         ];
 

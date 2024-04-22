@@ -198,7 +198,7 @@
             "image": "{{ asset('images/favicon/favicon.png') }}",
             "order_id": "{{ $order->id }}",
             "handler": function (response){
-                window.location.href = "http://localhost:8000/payment/info" + "?payment_id=" + response.razorpay_payment_id;
+                window.location.href = "http://localhost:8000/payment/info" + "?payment_id=" + response.razorpay_payment_id + "&type={{ $order->notes->type }}";
             },
             "prefill": {
                 "name": "{{ $order->notes->name }}",
