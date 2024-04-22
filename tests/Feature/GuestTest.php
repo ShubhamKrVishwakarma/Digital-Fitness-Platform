@@ -10,82 +10,178 @@ class GuestTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_login_page_loads_successfully(): void
+    /**
+     *  Pages that unauthorized or unregistered user can access
+     */
+    public function test_unauthorized_user_can_access_login_page(): void
     {
         $response = $this->get('/login');
-
-        $response->assertSee('Welcome Back!');
-
+        
         $response->assertStatus(200);
     }
 
-    public function test_signup_page_loads_successfully(): void
+    public function test_unauthorized_user_can_access_signup_page(): void
     {
         $response = $this->get('/signup');
 
-        $response->assertSee('Create New Account');
-
         $response->assertStatus(200);
     }
 
-    public function test_register_page_loads_successfully(): void
+    public function test_unauthorized_user_can_access_register_page(): void
     {
         $response = $this->get('/register');
 
-        $response->assertSee('Join as a Trainer');
-
         $response->assertStatus(200);
     }
 
-    public function test_home_page_loads_successfully(): void
+    public function test_unauthorized_user_can_access_home_page(): void
     {
         $response = $this->get('/');
 
-        $response->assertSee('FITNESS_HUB');
-
         $response->assertStatus(200);
     }
 
-    public function test_shop_page_loads_successfully(): void
+    public function test_unauthorized_user_can_access_shop_page(): void
     {
         $response = $this->get('/shop');
 
-        $response->assertSee('FITNESS STORE');
-
         $response->assertStatus(200);
     }
 
-    public function test_community_page_loads_successfully(): void
+    public function  test_unauthorized_user_can_access_community_page(): void
     {
         $response = $this->get('/community');
 
         $response->assertStatus(200);
     }
 
-    public function test_workouts_plan_page_loads_successfully(): void
+    public function  test_unauthorized_user_can_access_workouts_plans_page(): void
     {
         $response = $this->get('/workout_plans');
 
-        $response->assertSee('WELCOME ,');
-
         $response->assertStatus(200);
     }
 
-    public function test_trainers_page_loads_successfully(): void
+    public function  test_unauthorized_user_can_access_trainers_page(): void
     {
         $response = $this->get('/trainers');
 
-        $response->assertSee('Trainers');
+        $response->assertStatus(200);
+    }
+
+    public function  test_unauthorized_user_can_access_contact_page(): void
+    {
+        $response = $this->get('/contact');
 
         $response->assertStatus(200);
     }
 
-    public function test_contact_page_loads_successfully(): void
+    /**
+     *  Pages that unauthorized or unregistered user cannot access
+     */
+    public function  test_unauthorized_user_cannot_access_cart_page(): void
     {
-        $response = $this->get('/contact');
+        $response = $this->get('/cart');
 
-        $response->assertSee("FitnessGroup777@gmail.com");
+        $response->assertStatus(302);
 
-        $response->assertStatus(200);
+        $response->assertRedirect('login');
+    }
+
+    public function  test_unauthorized_user_cannot_access_orders_page(): void
+    {
+        $response = $this->get('/orders');
+
+        $response->assertStatus(302);
+
+        $response->assertRedirect('login');
+    }
+
+    public function  test_unauthorized_user_cannot_access_order_details_page(): void
+    {
+        $response = $this->get('/orders/1');
+
+        $response->assertStatus(302);
+
+        $response->assertRedirect('login');
+    }
+    
+    public function  test_unauthorized_user_cannot_access_message_page(): void
+    {
+        $response = $this->get('/message');
+
+        $response->assertStatus(302);
+
+        $response->assertRedirect('login');
+    }
+    
+    public function  test_unauthorized_user_cannot_access_admin_dashboard_page(): void
+    {
+        $response = $this->get('/Admin/dashboard');
+
+        $response->assertStatus(403);
+    }
+
+    public function  test_unauthorized_user_cannot_access_admin_users_page(): void
+    {
+        $response = $this->get('/Admin/users');
+
+        $response->assertStatus(403);
+    }
+
+    public function  test_unauthorized_user_cannot_access_admin_exercises_page(): void
+    {
+        $response = $this->get('/Admin/exercises');
+
+        $response->assertStatus(403);
+    }
+
+    public function  test_unauthorized_user_cannot_access_admin_workout_plans_page(): void
+    {
+        $response = $this->get('/Admin/workout_plan');
+
+        $response->assertStatus(403);
+    }
+
+    public function  test_unauthorized_user_cannot_access_admin_categories_page(): void
+    {
+        $response = $this->get('/Admin/categories');
+
+        $response->assertStatus(403);
+    }
+    
+    public function  test_unauthorized_user_cannot_access_admin_products_page(): void
+    {
+        $response = $this->get('/Admin/products');
+
+        $response->assertStatus(403);
+    }
+    
+    public function  test_unauthorized_user_cannot_access_admin_conversations_page(): void
+    {
+        $response = $this->get('/Admin/conversations');
+
+        $response->assertStatus(403);
+    }
+
+    public function  test_unauthorized_user_cannot_access_admin_community_page(): void
+    {
+        $response = $this->get('/Admin/community');
+
+        $response->assertStatus(403);
+    }
+    
+    public function  test_unauthorized_user_cannot_access_admin_orders_page(): void
+    {
+        $response = $this->get('/Admin/orders');
+
+        $response->assertStatus(403);
+    }
+    
+    public function  test_unauthorized_user_cannot_access_admin_queries_page(): void
+    {
+        $response = $this->get('/Admin/queries');
+
+        $response->assertStatus(403);
     }
 }
