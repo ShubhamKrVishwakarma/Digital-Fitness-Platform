@@ -10,6 +10,8 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\UserWorkoutLogController;
+use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\WorkoutPlansController;
 
 // Home Page Routes
@@ -74,11 +76,9 @@ Route::group(['controller' => QueryController::class], function() {
 });
 
 //Workout Page Routes
-Route::group(['controller' => WorkoutPlansController::class], function() {
-    Route::get('/workout_plans', 'index')->name('workout.plans');
-    Route::get('/workout/{id}', 'index')->middleware('auth')->name('workout');
-    Route::post('/workout_completed/{id}', 'store')->middleware('auth')->name('workout.completed');
-});
+Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('workout.plans');
+Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
+Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
 
 // Trainers Routes
 Route::group(['controller' => TrainerController::class], function() {
