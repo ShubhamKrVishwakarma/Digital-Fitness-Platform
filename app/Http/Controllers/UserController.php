@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -14,7 +15,10 @@ class UserController extends Controller
     {
         try {
             $user = User::findOrFail($id);
-            return view('profile', compact('user'));
+            return view('profile', [
+                'user' => $user,
+                'posts' => Post::where('user_id',$id )->get()
+            ]);
         } catch (Exception $e) {
             // Handled the case where the user is not found
             return redirect()->route('home')->with('error', 'User not found.');
