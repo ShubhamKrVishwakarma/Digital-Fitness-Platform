@@ -60,5 +60,9 @@ php artisan serve
 ```
 Your Server in now running at: http://localhost:8000/
 
-**_NOTE:_**  We are using Razorpay Payment Gateway Integration so order payment and subscription payment wiil not 
+---
+**NOTE**
+
+We are using Razorpay Payment Gateway Integration so order payment and subscription payment will not 
 work unless you provide the Razorpay API Keys or use your required Payment Gateways
+---
