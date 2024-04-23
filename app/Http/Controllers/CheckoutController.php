@@ -25,6 +25,32 @@ class CheckoutController extends Controller
             'paymentType' => "required|in:online,cod",
         ]);
 
+        $cart = Cart::where('user_id' , auth()->user()->id)->get();
+            
+        $order = Order::create([
+            'user_id' => auth()->user()->id ,
+            'phone' => $request->phone,
+            'address' => $request->address ,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip_code' => $request->zip_code,
+            'amount' => $total_price,
+            'status' => 'pending'
+        ]);
+    
+        foreach ($cart as $item) {
+            OrderedProduct::create([
+                'order_id' => $order->id,
+                'product_image' => $item->product->image,
+                'product_name' => $item->product->name,
+                'product_price' => $item->product->price,
+                'category' => $item->product->category->name,
+                'quantity' => $item->quantity
+            ]);
+        }
+    
+        Cart::where('user_id' , auth()->user()->id)->delete();
+
         if ($request->paymentType === "online") {
             $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
@@ -39,44 +65,17 @@ class CheckoutController extends Controller
                     'order_id' => $order_id,
                     'name' => $request->name,
                     'email' => $request->email,
-                    'phone' => $request->phone,
-                    'type' => 'order'
+                    'phone' => $request->phone
                 ]
             ];
     
             $razorpayOrder = $api->order->create($orderData);
 
-            return view('payment', [
+            return view('order_payment', [
                 "order_id" => $order_id,
                 "order" => $razorpayOrder
             ]);
         } else {
-            $cart = Cart::where('user_id' , auth()->user()->id)->get();
-            
-            $order = Order::create([
-                'user_id' => auth()->user()->id ,
-                'phone' => $request->phone,
-                'address' => $request->address ,
-                'city' => $request->city,
-                'state' => $request->state,
-                'zip_code' => $request->zip_code,
-                'amount' => $total_price,
-                'status' => 'pending'
-            ]);
-    
-            foreach ($cart as $item) {
-                OrderedProduct::create([
-                    'order_id' => $order->id,
-                    'product_image' => $item->product->image,
-                    'product_name' => $item->product->name,
-                    'product_price' => $item->product->price,
-                    'category' => $item->product->category->name,
-                    'quantity' => $item->quantity
-                ]);
-            }
-    
-            Cart::where('user_id' , auth()->user()->id)->delete();
-            
             return redirect()->route('orders');
         }
     }
@@ -87,17 +86,9 @@ class CheckoutController extends Controller
         $status = $api->payment->fetch($request->payment_id);
         
         if ($status->captured) {
-            if ($request->has('type') && $request->type === "subscription") {
-                return redirect()->route('message')->with('success', 'Payment completed Successfully!');
-            } else {
-                return redirect()->route('orders')->with('success', 'Payment completed Successfully!');
-            }
+            return redirect()->route('orders')->with('alert', 'Payment completed Successfully!');
         } else {
-            if ($request->has('type') && $request->type === "subscription") {
-                return redirect()->route('trainers')->with('alert', 'Payment Failed');
-            } else {
-                return redirect()->route('cart')->with('alert', 'Payment Failed');
-            }
+            return redirect()->route('cart')->with('alert', 'Payment Failed');
         }
     }
 }
