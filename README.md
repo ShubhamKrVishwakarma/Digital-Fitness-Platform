@@ -44,7 +44,7 @@ php artisan storage:link
 
 ### Step 7 - Now Turn on Apache and MySQL Server `( You can use XAMPP, WAMPP or any other Tools)`
 
-### Step 8 - Run All the Migration to create Database and Tables in MySQL and also seed the all Tables
+### Step 8 - Run All the Migration to create Database and Tables in MySQL and also seed the Tables
 ```
 php artisan migrate --seed
 ```
@@ -54,8 +54,11 @@ php artisan migrate --seed
 php artisan key:generate
 ```
 
-### Step 10 - Finally Start the serve and Use and Customize the App Accourding to your Need
+### Step 10 - Finally Start the serve and Use and Customize the App according to your Need
 ```
 php artisan serve
 ```
 Your Server in now running at: http://localhost:8000/
+
+**_NOTE:_**  We are using Razorpay Payment Gateway Integration so order payment and subscription payment wiil not 
+work unless you provide the Razorpay API Keys or use your required Payment Gateways
