@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Chat;
+use App\Models\Subscription;
 use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class TrainerController extends Controller
             "trainers" => User::where("role", "trainer")->get()
         ]);
     }
-    
+
     public function reviewTrainer(Request $request)
     {
         $request->validate([
@@ -65,7 +65,8 @@ class TrainerController extends Controller
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
                 'phone' => auth()->user()->phone,
-                'trainer_id' => $request->trainer_id
+                'trainer_id' => $request->trainer_id,
+                'type' => $request->type
             ]
         ];
 
@@ -83,10 +84,12 @@ class TrainerController extends Controller
         $status = $api->payment->fetch($request->payment_id);
         
         if ($status->captured) {
-            // Chat::create([
-            //     "user_id" => auth()->user()->id,
-            //     "trainer_id" => $request->trainer_id
-            // ]);
+            Subscription::create([ 
+                "user_id" => auth()->user()->id,
+                "trainer_id" => $request->trainer_id,
+                "type" => $request->type,
+                "expiry_date" => date('Y-m-d', strtotime('+1 month'))
+            ]);
             return redirect()->route('message')->with('alert', 'Subscription Added Successfully!');
         } else {
             return redirect()->route('trainers')->with('alert', 'Payment Failed!');

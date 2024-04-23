@@ -36,6 +36,7 @@
                                         @csrf
                                         <input type="hidden" name="amount" value="450">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
+                                        <input type="hidden" name="type" value="monthly">
                                         <button class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
                                     </form>
                                 </div>
@@ -71,6 +72,7 @@
                                         @csrf
                                         <input type="hidden" name="amount" value="3999">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
+                                        <input type="hidden" name="type" value="yearly">
                                         <button class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
                                     </form>
                                 </div>
