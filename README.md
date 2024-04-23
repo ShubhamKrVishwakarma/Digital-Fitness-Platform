@@ -58,13 +58,13 @@ php artisan key:generate
 ```
 php artisan serve
 ```
-Your Server in now running at: http://localhost:8000/
+### Your Server in now running at: http://localhost:8000/
 
 **NOTE:**
 We are using Razorpay Payment Gateway Integration so order payment and subscription payment will not 
 work unless you provide the Razorpay API Keys or use your required Payment Gateways
 
-### If you want to use Razorpay create new account on https://razorpay.com/ and generate your API Key and Secret Key and paste the API Keys in the `/env` file variables
+If you want to use Razorpay create new account on https://razorpay.com/ and generate your API Key and Secret Key and paste the API Keys in the `/env` file variables
 ```
 RAZORPAY_API_KEY=
 RAZORPAY_SECRET_KEY=
