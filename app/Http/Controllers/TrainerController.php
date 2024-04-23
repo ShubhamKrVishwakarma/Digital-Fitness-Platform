@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -71,15 +72,31 @@ class TrainerController extends Controller
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
                 'phone' => auth()->user()->phone,
-                'type' => 'subscription'
+                'trainer_id' => $request->trainer_id
             ]
         ];
 
         $razorpayOrder = $api->order->create($orderData);
 
-        return view('payment', [
+        return view('subscription_payment', [
             "order_id" => $order_id,
             "order" => $razorpayOrder
         ]);
+    }
+
+    public function subscriptionInfo(Request $request) {
+        $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
+
+        $status = $api->payment->fetch($request->payment_id);
+        
+        if ($status->captured) {
+            // Chat::create([
+            //     "user_id" => auth()->user()->id,
+            //     "trainer_id" => $request->trainer_id
+            // ]);
+            return redirect()->route('message')->with('alert', 'Subscription Added Successfully!');
+        } else {
+            return redirect()->route('trainers')->with('alert', 'Payment Failed!');
+        }
     }
 }

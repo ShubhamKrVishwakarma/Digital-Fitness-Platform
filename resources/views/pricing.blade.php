@@ -35,6 +35,7 @@
                                     <form action="{{ route('subscription.payment') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="amount" value="450">
+                                        <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <button class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
                                     </form>
                                 </div>
@@ -69,6 +70,7 @@
                                     <form action="{{ route('subscription.payment') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="amount" value="3999">
+                                        <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <button class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
                                     </form>
                                 </div>

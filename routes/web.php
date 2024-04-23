@@ -107,3 +107,4 @@ Route::group(["controller" => PostController::class], function() {
 // Trainers Pricing
 Route::get('/pricing/{id}', [TrainerController::class, 'pricing'])->name('pricing');
 Route::post('/pricing/subscription', [TrainerController::class, 'subscribe'])->name('subscription.payment');
+Route::get('/pricing/subscription/Info', [TrainerController::class, 'subscriptionInfo'])->name('subscription.info');
