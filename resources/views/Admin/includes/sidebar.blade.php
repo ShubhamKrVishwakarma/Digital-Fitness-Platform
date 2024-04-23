@@ -72,13 +72,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::is('admin.conversations') ? 'active' : '' }}"
-                    href="{{ route('admin.conversations') }}">
+                <a class="nav-link {{ Route::is('admin.subscriptions') ? 'active' : '' }}"
+                    href="{{ route('admin.subscriptions') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-comments text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Conversations</span>
+                    <span class="nav-link-text ms-1">Subscriptions</span>
                 </a>
             </li>
             <li class="nav-item">

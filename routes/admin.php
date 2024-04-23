@@ -36,9 +36,9 @@ Route::group(["as" => "admin.", "middleware" => "can:admin"], function() {
     })->name("products");
     
     // Conversations Page
-    Route::get("/conversations", function() {
-        return view("Admin.conversations");
-    })->name("conversations");
+    Route::get("/subscriptions", function() {
+        return view("Admin.subscriptions");
+    })->name("subscriptions");
 
     // Community Page
     Route::get("/community", function() {
