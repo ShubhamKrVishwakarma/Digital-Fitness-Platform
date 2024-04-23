@@ -84,7 +84,6 @@ Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store
 Route::group(['controller' => TrainerController::class], function() {
     Route::get('/trainers', 'index')->name('trainers');
     Route::post('/trainers', 'reviewTrainer')->name('trainers.review');
-    Route::get('/select-trainers', 'trainerSelection')->name('select.trainer');
 });
 
 // Community Page

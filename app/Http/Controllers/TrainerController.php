@@ -17,14 +17,7 @@ class TrainerController extends Controller
             "trainers" => User::where("role", "trainer")->get()
         ]);
     }
-
-    public function trainerSelection()
-    {
-        return view('trainer_selection', [
-            "trainers" => User::where("role", "trainer")->get()
-        ]);
-    }
-
+    
     public function reviewTrainer(Request $request)
     {
         $request->validate([
