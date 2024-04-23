@@ -21,7 +21,12 @@ class OrderController extends Controller
     }
 
     public function cancelOrder($id) {
-        Order::findOrFail($id)->deleteOrFail();
+        $order = Order::findOrFail($id);
+
+        $order->status = "cancelled";
+
+        $order->update();
+
         return redirect()->route('orders');
     }
 }

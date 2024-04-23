@@ -50,7 +50,7 @@ class UserController extends Controller
             "profile_pic" => "mimes:jpg,bmp,png",
         ]);
     
-        $user = Auth::user();
+        $user = User::findOrFail(auth()->user()->id);
 
         $user->name = $request->input('name');
         $user->bio = $request->input('bio');
@@ -62,11 +62,11 @@ class UserController extends Controller
 
         if ($request->hasFile('profile_pic')) {
             $file_name = $user->id . '.' . $request->file('profile_pic')->getClientOriginalExtension();
-            $request->file('profile_pic')->storeAs('public/user', $file_name);
+            $request->file('profile_pic')->storeAs('public/users', $file_name);
             $user->profile_pic = $file_name;
         }
 
-        $user->save();
+        $user->update();
 
         return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
     }
@@ -78,10 +78,13 @@ class UserController extends Controller
             "new-pass" => "required|min:8|max:255",
             "re-pass" => "required|min:8|max:255|same:new-pass",
         ]);
-        $user = Auth::user();
+        
+        $user = User::findOrFail(auth()->user()->id);
         
         $user->password = $request->input('new-pass');
-        $user->save();
+        
+        $user->update();
+        
         return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
     }
 }

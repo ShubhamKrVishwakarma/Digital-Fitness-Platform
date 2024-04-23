@@ -86,7 +86,7 @@ class AddTrainer extends Component
         if ($this->profile_pic) {
             $fileExtension = $this->profile_pic->getClientOriginalExtension();
             $fileName = $user->id . '.' . $fileExtension;
-            $this->profile_pic->storeAs('public/user', $fileName);
+            $this->profile_pic->storeAs('public/users', $fileName);
             $user->profile_pic = $fileName;
         }
 

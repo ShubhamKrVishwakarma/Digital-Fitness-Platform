@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('occupation', 100);
             $table->string('certificate_id', 50);
             $table->date('issue_date');
-            $table->date('expiry_date');
+            $table->date('expiry_date')->nullable();
             $table->string('issued_authority', 200);
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

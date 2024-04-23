@@ -62,7 +62,7 @@ class ManageUser extends Component
         $this->zip_code = $user->zip_code;
         $this->state = $user->state;
         $this->bio = $user->bio;
-        $this->profile_pic = $user->profile_pic;
+        $this->profile_pic = $user->getProfileUrl();
         $this->role = $user->role;
 
         $this->posts = Post::where("user_id", $id)->count();
@@ -125,16 +125,18 @@ class ManageUser extends Component
             if ($this->new_profile_pic) {
                 $fileExtension = $this->new_profile_pic->getClientOriginalExtension();
                 $fileName = $this->id . '.' . $fileExtension;
-                $this->new_profile_pic->storeAs('public/user', $fileName);
+                $this->new_profile_pic->storeAs('public/users', $fileName);
                 $user->profile_pic = $fileName;
                 $this->new_profile_pic = null;
             }
-
+            
             if (!empty($this->password)) {
                 $user->password = $this->password;
             }
-
+            
             $user->update();
+
+            $this->profile_pic = $user->getProfileUrl();
         } else {
             $this->validate([
                 'name' => 'required|min:2|max:100',
@@ -165,7 +167,7 @@ class ManageUser extends Component
             if ($this->new_profile_pic) {
                 $fileExtension = $this->new_profile_pic->getClientOriginalExtension();
                 $fileName = $this->id . '.' . $fileExtension;
-                $this->new_profile_pic->storeAs('public/user', $fileName);
+                $this->new_profile_pic->storeAs('public/users', $fileName);
                 $user->profile_pic = $fileName;
                 $this->new_profile_pic = null;
             }
@@ -175,6 +177,8 @@ class ManageUser extends Component
             }
 
             $user->update();
+
+            $this->profile_pic = $user->getProfileUrl();
         }
 
         $this->reset('password', 'confirm_password', 'new_profile_pic');

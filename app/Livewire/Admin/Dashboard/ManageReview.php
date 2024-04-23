@@ -2,18 +2,31 @@
 
 namespace App\Livewire\Admin\Dashboard;
 
-use App\Models\Review;
+use App\Models\ProductReview;
+use App\Models\TrainerReview;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ManageReview extends Component
 {
+    public $type;
+
     public $id;
+    public $reviewer_pic;
+    public $reviewer_name;
+    public $reviewer_email;
+    public $reviewer_rating;
+    public $reviewer_review;
+
     public $pic;
     public $name;
-    public $email;
-    public $rating;
-    public $review;
+
+    public $trainer_email;
+    public $trainer_posts;
+    public $trainer_followers;
+    public $trainer_followings;
+
+    public $product_category;
     
     public function render()
     {
@@ -21,18 +34,40 @@ class ManageReview extends Component
     }
 
     #[On('manage-review')]
-    public function edit($id) {
+    public function edit($id, $type) {
         $this->id = $id;
-        $review = Review::findOrFail($id);
-        $this->pic = $review->user->getProfileUrl();
-        $this->name = $review->user->name;
-        $this->email = $review->user->email;
-        $this->rating = $review->rating;
-        $this->review = $review->review;
+        $this->type = $type;
+
+        if ($type === "trainer") {
+            $review = TrainerReview::findOrFail($id);
+            $this->reviewer_pic = $review->user->getProfileUrl();
+            $this->reviewer_name = $review->user->name;
+            $this->reviewer_email = $review->user->email;
+            $this->reviewer_rating = $review->rating;
+            $this->reviewer_review = $review->review;
+
+            $this->pic = $review->trainer->getProfileUrl();
+            $this->name = $review->trainer->name;
+            $this->trainer_email = $review->trainer->email;
+            $this->trainer_posts = $review->trainer->posts->count();
+            $this->trainer_followers = $review->trainer->followers;
+            $this->trainer_followings = $review->trainer->following;
+        } else if ($type === "product") {
+            $review = ProductReview::findOrFail($id);
+            $this->reviewer_pic = $review->user->getProfileUrl();
+            $this->reviewer_name = $review->user->name;
+            $this->reviewer_email = $review->user->email;
+            $this->reviewer_rating = $review->rating;
+            $this->reviewer_review = $review->review;
+
+            $this->pic = $review->product->getProductUrl();
+            $this->name = $review->product->name;
+            $this->product_category = $review->product->category->name;
+        }
     }
 
     public function delete() {
-        Review::findOrFail($this->id)->deleteOrFail();
+        TrainerReview::findOrFail($this->id)->deleteOrFail();
 
         $this->dispatch('refreshReviewsTable');
 

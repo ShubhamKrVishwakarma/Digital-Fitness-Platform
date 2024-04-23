@@ -1,15 +1,15 @@
 /*-----------------------------------*\
     # Google Fonts
 \*-----------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Anta&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 *,
 *::before,
 *::after {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
 }
 
 /*-----------------------------------*\
@@ -17,7 +17,7 @@
 \*-----------------------------------*/
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,7 +26,7 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: gray;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /*-----------------------------------*\
@@ -55,11 +55,11 @@
 }
 
 .active {
-    color: var(--color-primary)!important;
+    color: var(--color-primary) !important;
 }
 
 .nav-link:hover {
-    color: var(--color-primary)!important;
+    color: var(--color-primary) !important;
 }
 
 .bttn {
@@ -111,11 +111,11 @@
 }
 
 .dropdown-menu[data-bs-popper] {
-    left: -94%!important;
+    left: -94% !important;
 }
 
 .dropdown-toggle::after {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 /*-----------------------------------*\
@@ -154,5 +154,111 @@
 }
 
 .footer-body a:hover {
-    color: var(--color-primary)!important;
+    color: var(--color-primary) !important;
+}
+
+/* Modal Image */
+
+#registerModal {
+    color: #8d97ad;
+    font-weight: 300;
+}
+
+#registerModal h1,
+#registerModal h2,
+#registerModal h3,
+#registerModal h4,
+#registerModal h5,
+#registerModal h6 {
+    color: #3e4555;
+}
+
+#registerModal .card-title {
+    font-size: 18px;
+}
+
+#registerModal .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+}
+
+#registerModal .card.card-shadow {
+    -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+    box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+}
+
+#registerModal .card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#registerModal .b-h-box .card-img-overlay {
+    bottom: 0px;
+    top: auto;
+    -webkit-transition: 0.2s ease-in;
+    -o-transition: 0.2s ease-in;
+    transition: 0.2s ease-in;
+    height: 55%;
+}
+
+#registerModal .b-h-box .card-title {
+    color: #ffffff;
+}
+
+#registerModal .b-h-box {
+    color: #ffffff;
+}
+
+#registerModal .b-h-box .card-text {
+    display: none;
+}
+
+#registerModal .b-h-box:hover {
+    color: #8d97ad;
+}
+
+#registerModal .b-h-box:hover .card-img-overlay {
+    height: 100%;
+    background: #cacaca;
+    border: 3px solid rgba(120, 130, 140, 0.13);
+}
+
+#registerModal .b-h-box:hover .card-title {
+    color: #263238;
+    margin: 15px 0;
+}
+
+#registerModal .b-h-box:hover .card-text {
+    display: block;
+}
+
+#registerModal .bg-danger-gradiant {
+    background: #ff4d7e;
+    background: -webkit-linear-gradient(
+        legacy-direction(to right),
+        #ff4d7e 0%,
+        #ff6a5b 100%
+    );
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#ff4d7e),
+        to(#ff6a5b)
+    );
+    background: -webkit-linear-gradient(left, #ff4d7e 0%, #ff6a5b 100%);
+    background: -o-linear-gradient(left, #ff4d7e 0%, #ff6a5b 100%);
+    background: linear-gradient(to right, #ff4d7e 0%, #ff6a5b 100%);
+}
+
+#registerModal .font-14 {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    #registerModal .b-h-box .card-img-overlay {
+        height: 40%;
+    }
 }

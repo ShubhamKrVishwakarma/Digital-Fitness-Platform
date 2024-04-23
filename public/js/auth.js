@@ -12,7 +12,7 @@ $(document).ready(function() {
             $('#login-email').val('');
             $('#login-password').val('');
 
-            window.location.href = "http://127.0.0.1:8000/";
+            location.reload();
         })
         .catch(function(error) {
             if (error.response && error.response.status === 422) {
@@ -22,6 +22,12 @@ $(document).ready(function() {
                     title: "Invalid Credentials!",
                     text: "Check your Email and Password!",
                     icon: "info"
+                });
+            } else if (error.response && error.response.status === 403) {
+                Swal.fire({
+                    title: "Oops",
+                    text: "Verification Pending!",
+                    icon: "warning"
                 });
             } else {
                 Swal.fire({
@@ -109,7 +115,7 @@ $(document).ready(function() {
         }
 
         if (errors.date_of_birth) {
-            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2009-03-22.") {
+            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2009-04-20.") {
                 $('#signup-dob-error').text('You should be at least 15 years old!');
             } else {
                 $('#signup-dob-error').text(errors.date_of_birth[0]);
@@ -162,6 +168,11 @@ $(document).ready(function() {
                 title: "Success",
                 text: "Our Team will reach you after Verifying your details!",
                 icon: "info"
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "http://127.0.0.1:8000/";
+                }
             });
         })
         .catch(function(error) {
@@ -190,8 +201,8 @@ $(document).ready(function() {
         }
 
         if (errors.date_of_birth) {
-            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2006-03-23.") {
-                $('#register-dob-error').text('You should be at least 15 years old!');
+            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2006-04-20.") {
+                $('#register-dob-error').text('You should be at least 18 years old!');
             } else {
                 $('#register-dob-error').text(errors.date_of_birth[0]);
             }

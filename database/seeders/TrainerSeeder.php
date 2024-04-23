@@ -20,7 +20,6 @@ class TrainerSeeder extends Seeder
                 "email" => fake()->unique()->email(),
                 "phone" => fake()->numerify('##########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
-                // "gender" => fake()->randomElement(['M', 'F', 'O']),
                 "gender" => 'M',
                 "dob" => "2004-01-10",
                 "address" => fake()->address(),

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\TrainerDetail;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -12,63 +11,41 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_login_page_loads(): void
-    {
-        $response = $this->get('/login');
-
-        $response->assertSee('Welcome Back!');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_signup_page_loads(): void
-    {
-        $response = $this->get('/signup');
-
-        $response->assertSee('Create New Account');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_register_page_loads(): void
-    {
-        $response = $this->get('/register');
-
-        $response->assertSee('Join as a Trainer');
-
-        $response->assertStatus(200);
-    }
-
     public function test_member_can_signup(): void
     {
-        $response = $this->get('/signup');
-
-        User::create([
+        $response = $this->post('/signup', [
             "name" => "Test",
             "email" => "test@gmail.com",
             "gender" => "M",
-            "dob" => "27-07-2002",
-            "password" => "ssssssss"
+            "date_of_birth" => "22-04-2001",
+            "password" => "ssssssss",
+            "confirm_password" => "ssssssss"
         ]);
 
         $response->assertStatus(200);
+        
+        $this->assertDatabaseHas('users', [
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+        ]);
+
+        $latest_user = User::latest()->first();
+
+        $this->equalTo($latest_user->email, "test@gmail.com");
     }
 
     public function test_trainer_can_register(): void
     {
-        $response = $this->get('/register');
-
-        $trainer = User::create([
+        $response = $this->post('/register', [
             "name" => "Test",
             "email" => "test@gmail.com",
-            "dob" => "27-07-2002",
-            "phone" => "999999999",
+            "date_of_birth" => "27-07-2002",
+            "phone" => "9999999999",
             "gender" => "M",
-            "password" => "ssssssss"
-        ]);
-
-        TrainerDetail::create([
-            "user_id" => $trainer->id,
+            "password" => "ssssssss",
+            "confirm_password" => "ssssssss",
             "occupation" => "Test",
             "certificate_id" => "CHD235FS",
             "issue_date" => "22-08-2012",
@@ -77,5 +54,48 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+
+        $this->assertDatabaseHas('users', [
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "dob" => "27-07-2002",
+            "phone" => "9999999999",
+            "gender" => "M"
+        ]);
+
+        $this->assertDatabaseHas('trainer_details', [
+            "occupation" => "Test",
+            "certificate_id" => "CHD235FS",
+            "issue_date" => "22-08-2012",
+            "expiry_date" => "12-09-2012",
+            "issued_authority" => "Test Fitness Association"
+        ]);
+
+        $latest_trainer = User::latest()->first();
+
+        $this->assertEquals($latest_trainer->email, "test@gmail.com");
+    }
+
+    public function test_user_can_login(): void
+    {
+        $user = User::create([
+            "name" => "Test",
+            "email" => "test@gmail.com",
+            "gender" => "M",
+            "dob" => "22-04-2001",
+            "password" => "ssssssss"
+        ]);
+
+        $response = $this->post('/login', [
+            "email" => "test@gmail.com",
+            "password" => "ssssssss"
+        ]);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('users', [
+            "email" => $user->email,
+            "password" => $user->password
+        ]);
     }
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $casts = ['password' => 'hashed'];
 
     public function trainerDetails() {
-        $this->hasOne(TrainerDetail::class, 'user_id');
+        return $this->hasOne(TrainerDetail::class, 'user_id');
     }
 
     public function cart() {
@@ -50,9 +50,24 @@ class User extends Authenticatable
         return true;
     }
 
+    public function hasBeenReviewed($trainer_id) {
+        return TrainerReview::where("user_id", auth()->user()->id)->where("trainer_id", $trainer_id)->exists();
+    }
+
+    public function hasProductReview($product_id) {
+        return ProductReview::where("user_id", auth()->user()->id)->where("product_id", $product_id)->exists();
+    }
+
+    public function hasSubscription() {
+        if ($this->role === "trainer") {
+            return Chat::where("trainer_id", $this->id)->exists();
+        } 
+        return Chat::where("user_id", $this->id)->exists();
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
-            return url('storage/user/' . $this->profile_pic);
+            return url('storage/users/' . $this->profile_pic);
         }
         return asset('./images/profile/profile.jpg');
     }

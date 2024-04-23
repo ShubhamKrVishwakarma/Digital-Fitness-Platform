@@ -16,21 +16,6 @@
                 <p class="text-sm"><b>Email: </b>{{ $email }}</p>
                 <p class="text-sm"><b>Phone Number: </b>{{ $phone }}</p>
                 <p class="text-sm"><b>Query: </b>{{ $message }}</p>
-                <form wire:submit='sendReply'>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea wire:model='reply' class="form-control" cols="30" rows="5" placeholder="Reply..." required></textarea>
-                                @error('reply')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-sm btn-success">Send Reply</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

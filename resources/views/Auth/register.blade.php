@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Expiry Date</label>
-                                            <input type="date" id='register-expiry-date' class="form-control" placeholder="Expiry Date" required>
+                                            <input type="date" id='register-expiry-date' class="form-control" placeholder="Expiry Date">
                                             <span class="text-danger" id="register-expiry-date-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">

@@ -1,17 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
-
-/*
-* === MAJOR SECTION HEADING ===
-*/
-
-/*
-* — Minor Section Heading —
-*/
-
-
-
 *,
 *::before,
 *::after {
@@ -21,7 +7,6 @@
 }
 
 body {
-    font-family: "Poppins";
     --main-hue: 208;
     --main-color: hsl(var(--main-hue), 92%, 54%);
     --main-color-hover: hsl(var(--main-hue), 77%, 48%);
@@ -36,12 +21,11 @@ body {
     --input-shadow: hsla(var(--main-hue), 92%, 54%, 0.169);
 }
 
-
 a {
     text-decoration: none;
 }
 
-.error{
+.error {
     color: red;
     padding: 0 0 0 5px;
 }
@@ -52,75 +36,10 @@ a {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: hsla(var(--main-hue)30%, 16.5%, 80%);
+    background-color: hsla(var(--main-hue) 30%, 16.5%, 80%);
     z-index: 2;
     opacity: 0;
 }
-
-
-header {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 4;
-}
-
-header .container {
-    max-width: 82rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-    height: 65px;
-    display: flex;
-    align-items: flex-end;
-}
-
-header ul {
-    display: flex;
-    list-style: none;
-}
-
-header ul li{
-    align-self: center;
-}
-
-.logo {
-    display: flex;
-}
-
-.logo .images {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-.logo img {
-    height: 35px;
-    grid-column: 1/2;
-    grid-row: 1/2;
-    margin-right: 0.8rem;
-}
-
-
-.logo h2 {
-    color: var(--text-color);
-    font-size: 1.55rem;
-    margin-top: 2px;
-}
-
-.nav-link {
-    margin-left: 5.5rem;
-    padding: 0 1rem;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--nav-color);
-    transition: 0.3s;
-}
-
-.nav-link:hover {
-    color: var(--main-color);
-}
-
 
 /* Contact */
 
@@ -130,7 +49,7 @@ header ul li{
     background-color: var(--bg-color);
 }
 
-.contact .container {
+.contact .contact-container {
     height: 100vh;
     min-height: 700px;
     display: grid;
@@ -138,7 +57,7 @@ header ul li{
     grid-template-rows: 1fr;
 }
 
-.contact .container>div {
+.contact .contact-container > div {
     grid-column: 1/2;
     grid-row: 1/2;
 }
@@ -147,7 +66,7 @@ header ul li{
     width: 100%;
     max-width: 80rem;
     margin: 0 auto;
-    padding: 65px 1.5rem 0;
+    padding: 0 1.5rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -174,7 +93,6 @@ header ul li{
     font-size: 1rem;
 }
 
-
 .text a {
     color: var(--main-color);
     transition: 0.3s;
@@ -182,7 +100,6 @@ header ul li{
 
 .text a:hover {
     color: var(--main-color-hover);
-
 }
 
 .form-wrapper {
@@ -204,7 +121,6 @@ header ul li{
 .input-wrap.w-100 {
     grid-column: span 2;
 }
-
 
 .contact-input {
     width: 100%;
@@ -253,12 +169,12 @@ textarea.contact-input {
     min-height: 150px;
 }
 
-textarea.contact-input~label {
+textarea.contact-input ~ label {
     top: 1.2rem;
     transform: none;
 }
 
-textarea.contact-input~.icon {
+textarea.contact-input ~ .icon {
     top: 1.3em;
     transform: none;
 }
@@ -266,7 +182,7 @@ textarea.contact-input~.icon {
 .input-wrap.focus .contact-input {
     background-color: var(--bg-color);
     border: 2px solid var(--light-main-color);
-    box-shadow: 0 0 0 5px hsla(var(--main-hue), 91%, 55%, 0.11)
+    box-shadow: 0 0 0 5px hsla(var(--main-hue), 91%, 55%, 0.11);
 }
 
 .input-wrap.focus label {
@@ -284,19 +200,11 @@ textarea.contact-input~.icon {
 }
 
 .contact-buttons {
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    grid-column: span 2; */
-    display: grid;
-    place-items: center; 
     margin-top: 1rem;
     width: 100%;
 }
 
-.btn {
+.contact-btn {
     display: inline-block;
     padding: 1.4rem 5rem;
     background-color: var(--main-color);
@@ -310,33 +218,9 @@ textarea.contact-input~.icon {
     transition: 0.3s;
 }
 
-.btn:hover {
+.contact-btn:hover {
     background-color: var(--main-color-hover);
 }
-
-/* .btn.btn.upload {
-    position: relative;
-    background-color: var(--input-bg);
-}
-
-.btn.upload span {
-    color: var(--light-text-color);
-}
-
-.btn.upload:hover {
-    background-color: var(--input-bg-hover);
-}
-
-
-.btn.upload input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    opacity: 0;
-} */
 
 .right {
     display: grid;
@@ -399,7 +283,6 @@ textarea.contact-input~.icon {
     opacity: 0.8;
 }
 
-
 /*
 * === Responive Code ===
 */
@@ -461,11 +344,11 @@ textarea.contact-input~.icon {
         left: calc(1.2rem + 2px);
     }
 
-    textarea.contact-input~label {
+    textarea.contact-input ~ label {
         top: 1.2rem;
     }
 
-    textarea.contact-input~.icon {
+    textarea.contact-input ~ .icon {
         top: 1.33rem;
     }
 
@@ -482,7 +365,7 @@ textarea.contact-input~.icon {
         margin-top: 0.45rem;
     }
 
-    .btn {
+    .contact-btn {
         padding: 1rem 1.5rem;
     }
 
@@ -506,19 +389,18 @@ textarea.contact-input~.icon {
     }
 }
 
-
 @media (max-width: 650px) {
-    header .container {
+    header .contact-container {
         height: 50px;
     }
 
     .left {
-        padding: 50px 1.5rem 0;
+        padding: 0 1.5rem 0;
         grid-template-columns: 1fr;
         justify-items: center;
     }
 
-    .form-wrapper{
+    .form-wrapper {
         width: 100%;
         padding: 1rem 0;
     }
@@ -532,37 +414,36 @@ textarea.contact-input~.icon {
         margin-right: 0;
     }
 
-    .nav-link{
+    .nav-link {
         margin-left: 0;
     }
 
-    .right{
+    .right {
         display: none;
     }
-
 }
 
-@media (max-width:440px){
-    .input-wrap{
+@media (max-width: 440px) {
+    .input-wrap {
         grid-column: span 2;
     }
 
-    .contact-buttons{
+    .contact-buttons {
         grid-template-columns: 1fr;
-        row-gap: 0.5rem
+        row-gap: 0.5rem;
     }
 
-    .contact-heading h1{
+    .contact-heading h1 {
         font-size: 1.9rem;
         line-height: 1;
     }
 
-    .logo img{
+    .logo img {
         height: 25px;
         margin-right: 0.7rem;
     }
 
-    .logo h2{
+    .logo h2 {
         font-size: 1.15rem;
     }
 }
