@@ -3,9 +3,11 @@
 @section('title', 'Products') 
 
 @section('content')
-<div x-data="{subscriptionsTable : true, manageSubscription : false}" class="container-fluid py-4">
+<div x-data="{subscriptionsTable : true, addSubscription : false, manageSubscription : false}" class="container-fluid py-4">
     {{-- Conversations Table --}}
     @livewire('Admin.Subscription.SubscriptionsTable')
+    {{-- Add Subscription --}}
+    @livewire('Admin.Subscription.AddSubscription')
     {{-- Manage Subscriptions --}}
     @livewire('Admin.Subscription.ManageSubscription') 
 </div>
