@@ -69,6 +69,13 @@ class User extends Authenticatable
         return Subscription::where("user_id", $this->id)->where("trainer_id", $trainer_id)->exists();
     }
 
+    public function canShare() {
+        if ($this->role === "trainer" || $this->role === "admin") {
+            return true;
+        }
+        return Subscription::where("user_id", auth()->user()->id)->exists();
+    }
+
     public function getProfileUrl() {
         if ($this->profile_pic) {
             return url('storage/users/' . $this->profile_pic);

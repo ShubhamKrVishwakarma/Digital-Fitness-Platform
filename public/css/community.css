@@ -1,0 +1,22 @@
+.bg-grey {
+    background-color: rgba(238, 240, 242, 1)
+}
+
+.post {
+    height: 550px;
+}
+
+.post img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}

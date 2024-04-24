@@ -89,8 +89,10 @@ Route::group(['controller' => TrainerController::class], function() {
 // Community Page
 Route::group(["controller" => PostController::class], function() {
     Route::get('/community', 'index')->name('community');
-
+    Route::get('/post/{id}', 'singlePost')->name('post');
+    
     Route::group(["middleware" => "auth"], function() {
+        Route::delete('/post/{id}', 'destroy')->name('post.delete');
         Route::post('/post/share', 'share')->name('post.share');
         Route::post('/post/like/{id}', 'like')->name('post.like');
         Route::post('/post/unlike/{id}', 'unlike')->name('post.unlike');

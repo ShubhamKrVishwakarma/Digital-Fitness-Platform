@@ -4,6 +4,7 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center flex-wrap">
                     <h6>Subscriptions Table</h6>
+                    <button class="btn btn-sm btn-dark m-0" x-on:click="subscriptionsTable = false, addSubscription = true">Add Subscription</button>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -52,7 +53,7 @@
                                                 <span class="badge badge-sm bg-gradient-info">{{ $subscription->type }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <button @click="$dispatch('manage-subscription', { id: {{ $subscription->id }} })" class="btn btn-sm btn-primary" x-on:click="subscriptionsTable = false, manageSubscription = true">Manage</button>
+                                                <button @click="$dispatch('manage-subscription', { id: {{ $subscription->id }} })" class="btn btn-xs btn-primary m-0" x-on:click="subscriptionsTable = false, manageSubscription = true">Manage</button>
                                             </td>
                                         </tr>
                                     @endforeach
