@@ -88,7 +88,7 @@ class TrainerController extends Controller
                 "user_id" => auth()->user()->id,
                 "trainer_id" => $request->trainer_id,
                 "type" => $request->type,
-                "expiry_date" => date('Y-m-d', strtotime('+1 month'))
+                "expiry_date" => ($request->type === "monthly") ? now()->addMonth() : now()->addYear()
             ]);
             return redirect()->route('message')->with('alert', 'Subscription Added Successfully!');
         } else {
