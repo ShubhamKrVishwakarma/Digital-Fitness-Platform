@@ -13,14 +13,4 @@ class SubscriptionsTable extends Component
             "subscriptions" => Subscription::orderBy('id', 'DESC')->paginate(5)
         ]);
     }
-
-    public function delete(Subscription $chat) {
-        $chat->deleteOrFail();
-        $this->dispatch(
-            'alert', 
-            icon: 'success',
-            title: 'Success!',
-            text: 'Conversation Deleted Successfully!',
-        );
-    }
 }

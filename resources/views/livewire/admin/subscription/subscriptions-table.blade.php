@@ -1,14 +1,14 @@
-<div x-show="conversationsTable">
+<div x-show="subscriptionsTable">
     <div class="row mb-3">
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center flex-wrap">
-                    <h6>Conversations Table</h6>
+                    <h6>Subscriptions Table</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         @if ($subscriptions->count() < 1)
-                            <h4 class="ms-2 ms-md-4">No Conersations Found</h4>
+                            <h4 class="ms-2 ms-md-4">No Subscriptions Found</h4>
                         @else
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead>
@@ -52,7 +52,7 @@
                                                 <span class="badge badge-sm bg-gradient-info">{{ $subscription->type }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <button wire:confirm.prompt='Are u sure?\nEnter password to "DELETE"|aaaa' wire:click='delete({{ $subscription->id }})' class="btn btn-xs btn-danger mb-0">Delete</button>
+                                                <button @click="$dispatch('manage-subscription', { id: {{ $subscription->id }} })" class="btn btn-sm btn-primary" x-on:click="subscriptionsTable = false, manageSubscription = true">Manage</button>
                                             </td>
                                         </tr>
                                     @endforeach
