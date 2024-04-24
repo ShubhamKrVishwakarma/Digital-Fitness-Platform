@@ -293,7 +293,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                @if ($post->comments->count() > 1)
+                                @if ($post->comments->count() > 2)
                                     <hr>
                                     <div class="d-grid">
                                         <a class="btn btn-sm btn-primary-soft text-primary fw-medium" href="{{ route('post', $post->id) }}">View All Comments</a>
