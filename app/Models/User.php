@@ -26,8 +26,8 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function chats() {
-        return $this->hasMany(Chat::class);
+    public function subscriptions() {
+        return $this->hasMany(Subscription::class);
     }
 
     public function posts() {
@@ -60,9 +60,13 @@ class User extends Authenticatable
 
     public function hasSubscription() {
         if ($this->role === "trainer") {
-            return Chat::where("trainer_id", $this->id)->exists();
+            return Subscription::where("trainer_id", $this->id)->exists();
         } 
-        return Chat::where("user_id", $this->id)->exists();
+        return Subscription::where("user_id", $this->id)->exists();
+    }
+
+    public function hasSubscribed($trainer_id) {
+        return Subscription::where("user_id", $this->id)->where("trainer_id", $trainer_id)->exists();
     }
 
     public function getProfileUrl() {

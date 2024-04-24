@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Razorpay\Api\Api;
 
 class TrainerController extends Controller
 {
     public function index()
     {
         return view('trainers', [
-            "trainers" => User::where("role", "trainer")->get()
-        ]);
-    }
-
-    public function trainerSelection()
-    {
-        return view('trainer_selection', [
             "trainers" => User::where("role", "trainer")->get()
         ]);
     }
@@ -46,5 +41,58 @@ class TrainerController extends Controller
         $trainer->update();
 
         return redirect()->route("trainers")->with('success', 'Trainer Reviewed Successfully!');
+    }
+
+    public function pricing($trainer_id)
+    {
+        return view('pricing', [
+            "trainer_id" => $trainer_id
+        ]);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
+
+        $order_id = rand(111111, 999999);
+
+        $orderData = [
+            'receipt' => `rcptid_$order_id`,
+            'amount' => ($request->amount * 100),
+            'currency' => 'INR',
+            'notes' => [
+                'order_id' => $order_id,
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'phone' => auth()->user()->phone,
+                'trainer_id' => $request->trainer_id,
+                'type' => $request->type
+            ]
+        ];
+
+        $razorpayOrder = $api->order->create($orderData);
+
+        return view('subscription_payment', [
+            "order_id" => $order_id,
+            "order" => $razorpayOrder
+        ]);
+    }
+
+    public function subscriptionInfo(Request $request) {
+        $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
+
+        $status = $api->payment->fetch($request->payment_id);
+        
+        if ($status->captured) {
+            Subscription::create([ 
+                "user_id" => auth()->user()->id,
+                "trainer_id" => $request->trainer_id,
+                "type" => $request->type,
+                "expiry_date" => date('Y-m-d', strtotime('+1 month'))
+            ]);
+            return redirect()->route('message')->with('alert', 'Subscription Added Successfully!');
+        } else {
+            return redirect()->route('trainers')->with('alert', 'Payment Failed!');
+        }
     }
 }
