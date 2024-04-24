@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ExerciseSeeder::class,
             WorkoutPlanSeeder::class,
             OrderSeeder::class,
-            ChatSeeder::class,
+            SubscriptionSeeder::class,
             MessageSeeder::class,
             PostSeeder::class,
             CommentSeeder::class,

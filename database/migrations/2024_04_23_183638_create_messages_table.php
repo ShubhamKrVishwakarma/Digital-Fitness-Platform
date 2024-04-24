@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text("message");
             $table->timestamps();
 
-            $table->foreign('chat_id')->references('id')->on('chats')->cascadeOnDelete();
+            $table->foreign('chat_id')->references('id')->on('subscriptions')->cascadeOnDelete();
         });
     }
 
