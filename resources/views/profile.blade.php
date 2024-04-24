@@ -88,9 +88,9 @@
                     @endif
                     <div class="profile-nav-items">
                         <a href="#" class="nav-item-links is-active" id="about" active-color="black">About</a>
-                        {{-- @if (Auth::user()->role != 'member') --}}
+                        @if (auth()->user()->hasPost($user->id))
                         <a href="#" class="nav-item-links" id="posts" active-color="black">Posts</a>
-                        {{-- @endif --}}
+                        @endif
                         <span class="nav-indicator"></span>
                     </div>
                 </div>

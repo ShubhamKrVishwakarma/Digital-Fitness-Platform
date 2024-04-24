@@ -75,6 +75,14 @@ class User extends Authenticatable
         }
         return Subscription::where("user_id", auth()->user()->id)->exists();
     }
+    public function hasPost($id) {
+        $user = User::findOrFail($id);
+
+        if ($user->role === "trainer" || $user->role === "admin") {
+            return true;
+        }
+        return Subscription::where("user_id", $id)->exists();
+    }
 
     public function getProfileUrl() {
         if ($this->profile_pic) {

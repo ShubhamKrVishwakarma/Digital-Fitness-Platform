@@ -21,8 +21,9 @@
                         <h4 class="mb-1">Account Information</h4>
                         <p class="mb-0 fs-6">Edit your personal information and address.</p>
                     </div>
-                    <form class="row g-3 needs-validation" action="{{route('user.update', $user->id)}}" method="post" id="update_form" enctype="multipart/form-data">
+                    <form class="row g-3" action="{{route('user.update', $user->id)}}" method="POST" id="update_form" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="col-lg-7 col-md-7">
                             <label for="profileImageInput" class="form-label">Update Profile Image</label>
                             <input type="file" class="form-control" name="profile_pic" id="profileImageInput" />
@@ -96,7 +97,7 @@
                             @enderror
                         </div>
                         <div class="col-12 mt-4">
-                            <button class="btn btn-primary me-2">Update Profile</button>
+                            <button type="submit" class="btn btn-primary me-2">Update Profile</button>
                             {{-- <button class="btn btn-light" type="reset">Reset</button> --}}
                         </div>
 
@@ -108,8 +109,9 @@
                     <div class="mb-5">
                         <h4 class="mb-0">Change Password</h4>
                     </div>
-                    <form class="row g-3 needs-validation" action="{{route('user.update_pass')}}" method="post" id='update-pass'>
+                    <form class="row g-3" action="{{route('user.update_pass')}}" method="post" id='update-pass'>
                     @csrf
+                    @method('PATCH')
                         <div class="col-lg-4 position-relative px-40">
                             <label for="profileOldPassInput" class="form-label">Old Password</label>
                             <input type="password" class="form-control password" id="profileOldPassInput"
@@ -140,7 +142,7 @@
                             @enderror
                         </div>
                         <div class="col-12 mt-4">
-                            <button class="btn btn-primary me-2">Update Password</button>
+                            <button type="submit" class="btn btn-primary me-2">Update Password</button>
                         </div>
                     </form>
                 </div>

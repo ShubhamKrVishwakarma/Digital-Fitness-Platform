@@ -22,8 +22,8 @@ Route::redirect('/home', '/');
 Route::group(['controller' => UserController::class], function() {
     Route::get('/profile/{id}', 'show')->name('user.show');
     Route::get('/profile-edit/{id}', 'profile_edit')->name('user.profile_edit');
-    Route::post('/profile/{id}', 'update')->middleware('auth')->name('user.update');
-    Route::post('/profile', 'update_pass')->middleware('auth')->name('user.update_pass');
+    Route::put('/profile/{id}', 'update')->middleware('auth')->name('user.update');
+    Route::patch('/profile', 'update_pass')->middleware('auth')->name('user.update_pass');
 });
  
 // Shop Page Routes
