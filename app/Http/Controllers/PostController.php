@@ -17,6 +17,17 @@ class PostController extends Controller
             "posts" => Post::orderBy('id', 'DESC')->get()
         ]);
     }
+
+    public function singlePost($id) {
+        return view('post', [
+            "post" => Post::findOrFail($id)
+        ]);
+    }
+    
+    public function destroy($id) {
+        Post::findOrFail($id)->deleteOrFail();
+        return redirect()->route('community')->with('success', 'Post Deleted Successfully!');
+    }
     
     public function share(Request $request) {
         $request->validate([
