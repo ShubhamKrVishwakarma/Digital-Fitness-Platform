@@ -21,7 +21,7 @@ class UserController extends Controller
             ]);
         } catch (Exception $e) {
             // Handled the case where the user is not found
-            return redirect()->route('home')->with('error', 'User not found.');
+            return redirect()->route('home')->with('alert', 'User not found.');
         }
     }
 
@@ -32,7 +32,7 @@ class UserController extends Controller
             return view('profile_edit', compact('user'));
         } catch (Exception $e) {
             // Handled the case where the user is not found
-            return redirect()->route('home')->with('error', 'User not found.');
+            return redirect()->route('home')->with('alert', 'User not found.');
         }
     }
 
@@ -42,14 +42,13 @@ class UserController extends Controller
             "name" => "required|min:2|max:100",
             "bio" => "max:255",
             "dob" => "date",
-            "phone" => "max:10",
+            "phone" => "numeric|digits:10|nullable",
             "address" => "max:255",
             "city" => "max:100",
             "state" => "max:50",
-            "zip_code" => "max:10",
-            "profile_pic" => "mimes:jpg,bmp,png",
+            "zip_code" => "numeric|digits:6|nullable",
+            "profile_pic" => "mimes:jpg,png",
         ]);
-    
         $user = User::findOrFail(auth()->user()->id);
 
         $user->name = $request->input('name');
