@@ -5,6 +5,7 @@
 @push('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/community.css') }}">
 @endpush
 
 @section('content')
@@ -50,7 +51,7 @@
                         <div>
                             @if ($user->role === 'trainer')
                                 <h6>Rating</h6>
-                                <span class="d-block text-center">{{$user->rating}}</span>
+                                <span class="d-block text-center">{{ $user->rating }}</span>
                             @endif
                         </div>
                     </div>
@@ -126,57 +127,65 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="post" id="post-section">
-                        <section>
-                        @if($posts->isEmpty())
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div>No posts yet</div>
-                            </div>
-                            @else
-                            <div class="d-flex flex-wrap justify-content-around">
-                                {{-- Single Post --}}
-                                @foreach ($posts as $post)
-                                    <div class="card mb-3 h-100" id="">
+                    <div class="post-container" id="post-section">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-7 py-4">
+                                @forelse ($posts as $post)
+                                    <div class="card mb-5">
                                         <div class="px-3 pt-4 pb-2">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                                        src="{{ $post->user->getProfileUrl() }}"
-                                                        alt="{{ $post->user->name }}">
+                                                        src="{{ $post->user->getProfileUrl() }}" alt="{{ $post->user->name }}">
                                                     <div class="">
-                                                        <h5 class="card-title mb-0"><a
-                                                                href="{{ route('user.show', $post->user->id) }}"
-                                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a>
-                                                        </h5>
+                                                        <h5 class="card-title mb-0"><a href="{{ route('user.show', $post->user->id) }}"
+                                                                class="text-decoration-none text-dark">{{ $post->user->name }}</a></h5>
                                                         <p class="text-muted m-0">{{ $post->user->email }}</p>
                                                     </div>
                                                 </div>
+                                                <!-- Post dropdown -->
+                                                <div class="dropdown">
+                                                    <a class="text-dark btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
+                                                        <li><a class="dropdown-item" href="{{ route('post', $post->id) }}">View
+                                                                Post</a></li>
+                                                        @auth
+                                                            @if (auth()->user()->id === $post->user_id)
+                                                                <li>
+                                                                    <form action="{{ route('post.delete', $post->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button class="dropdown-item" type="submit">Delete Post</button>
+                                                                    </form>
+                                                                </li>
+                                                            @endif
+                                                        @endauth
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="card-body align-self-start h-100">
-                                            <h6>{{ $post->title }}</h6>
+                                        <div class="card-body">
+                                            <h6 class="text-dark">{{ $post->title }}</h6>
                                             @if ($post->type === 'message')
-                                                <p class="fs-6 fw-light text-muted text-wrap container" style="min-width:280px;max-width:500px;">
+                                                <p class="fs-6 fw-light text-muted">
                                                     {{ $post->content }}
                                                 </p>
                                             @elseif ($post->type === 'image')
-                                                <div class="post-img">
+                                                <div class="post">
                                                     <img class="rounded" src="{{ $post->getPostUrl() }}" alt="Post">
                                                 </div>
                                             @elseif ($post->type === 'video')
-                                                <div class="post-video">
+                                                <div class="post">
                                                     <video controls>
                                                         <source src="{{ $post->getPostUrl() }}" type="video/mp4">
                                                     </video>
                                                 </div>
                                             @endif
                                             {{-- Post Like --}}
-                                            <div>
-                                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i>
-                                                        {{ $post->created_at->diffForHumans() }} </span>
-                                                </div>
-                                            <div class="d-flex justify-content-between my-3 flex-wrap align-items-end">
-                                                
+                                            <div class="d-flex justify-content-between my-3">
                                                 <div>
                                                     @auth
                                                         @if ($post->postLiked($post))
@@ -189,48 +198,44 @@
                                                         @else
                                                             <form action="{{ route('post.like', $post->id) }}" method="POST">
                                                                 @csrf
-                                                                <button type="submit"
-                                                                    class="fw-light text-danger nav-link fs-6"><i
+                                                                <button type="submit" class="fw-light text-danger nav-link fs-6"><i
                                                                         class="bi bi-heart"></i>
                                                                     {{ $post->totalLikes($post->id) }}</button>
                                                             </form>
                                                         @endif
                                                     @endauth
                                                     @guest
-                                                        <a href="{{ route('login') }}"
-                                                            class="fw-light text-danger nav-link fs-6"><i class="bi bi-heart"></i>
-                                                            {{ $post->likes->count() }}</a>
+                                                        <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
+                                                                class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
                                                     @endguest
                                                 </div>
                                                 <div>
-                                                    <span class="fs-6 fw-light text-muted"> 
-                                                        Comments</span>
+                                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i>
+                                                        {{ $post->created_at->diffForHumans() }} </span>
                                                 </div>
                                             </div>
                                             {{-- Comments Section --}}
-                                            {{-- <div> --}}
+                                            <div>
                                                 {{--
-                                <hr> --}}
-                                                {{-- @auth
-                                @if (!$post->commentExists($post->id, auth()->user()->id))
-                                <form action="{{ route('post.comment') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                        <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
-                                            required></textarea>
-                                        @error('post-comment')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <button class="btn btn-dark btn-sm">Add Comment</button>
-                                    </div>
-                                </form>
-                                @endif
-                                @endauth --}}
-                                                {{-- @foreach ($post->comments as $comment) --}}
-                                                {{-- @foreach ($post->comments()->orderBy('created_at', 'DESC')->get() as $comment)
+                                        <hr> --}}
+                                                @auth
+                                                    @if (!$post->commentExists($post->id, auth()->user()->id))
+                                                        <form action="{{ route('post.comment') }}" method="POST">
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <input type="hidden" name="post-id" value="{{ $post->id }}">
+                                                                <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment" required></textarea>
+                                                                @error('post-comment')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                                <button class="btn btn-dark btn-sm">Add Comment</button>
+                                                            </div>
+                                                        </form>
+                                                    @endif
+                                                @endauth
+                                                @foreach ($post->comments()->orderBy('created_at', 'DESC')->take(2)->get() as $comment)
                                                     <hr>
-                                                    <div class="d-flex align-items-start" style="width:500px;">
+                                                    <div class="d-flex align-items-start">
                                                         <img style="width:35px" class="me-2 avatar-sm rounded-circle"
                                                             src="{{ $comment->user->getProfileUrl() }}" alt="Luigi Avatar">
                                                         <div class="w-100">
@@ -243,13 +248,13 @@
                                                                     class="fs-6 fw-light text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                                             </div>
                                                             <div class="d-flex">
-                                                                <p class="fs-6 mt-3 fw-light text-black">
+                                                                <p class="fs-6 mt-3 fw-light text-dark">
                                                                     {{ $comment->comment }}
                                                                 </p>
+                                                                @auth
                                                                     @if ($comment->user_id === auth()->user()->id)
                                                                         <div class="ms-auto my-auto">
-                                                                            <form action="{{ route('post.uncomment') }}"
-                                                                                method="POST">
+                                                                            <form action="{{ route('post.uncomment') }}" method="POST">
                                                                                 @method('DELETE')
                                                                                 @csrf
                                                                                 <input type="hidden" name="post-id"
@@ -259,38 +264,120 @@
                                                                             </form>
                                                                         </div>
                                                                     @endif
+                                                                @endauth
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach --}}
-                                            {{-- </div> --}}
+                                                @endforeach
+                                                @if ($post->comments->count() > 2)
+                                                    <hr>
+                                                    <div class="d-grid">
+                                                        <a class="btn btn-sm btn-primary-soft text-primary fw-medium"
+                                                            href="{{ route('post', $post->id) }}">View All Comments</a>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="d-flex flex-column align-items-center justify-content-center">
+                                        <div>No posts yet</div>
+                                    </div>
+                                @endforelse
                             </div>
-                        @endempty
-                        </section>
-                        {{-- <section class="grid">
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1548032885-b5e38734688a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1507041957456-9c397ce39c97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1519821172144-4f87d85de2a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1509233725247-49e657c54213?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');"></a>
-                        <a href="" class="grid-photo"
-                            style="background-image: url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></a>
+                        </div>
+
+                        {{-- <section>
+                            @if ($posts->isEmpty())
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <div>No posts yet</div>
+                                </div>
+                            @else
+                                <div class="d-flex flex-wrap justify-content-around">
+                                    Single Post
+                                    @foreach ($posts as $post)
+                                        <div class="card mb-3 h-100" id="">
+                                            <div class="px-3 pt-4 pb-2">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                                            src="{{ $post->user->getProfileUrl() }}"
+                                                            alt="{{ $post->user->name }}">
+                                                        <div class="">
+                                                            <h5 class="card-title mb-0"><a
+                                                                    href="{{ route('user.show', $post->user->id) }}"
+                                                                    class="text-decoration-none text-dark">{{ $post->user->name }}</a>
+                                                            </h5>
+                                                            <p class="text-muted m-0">{{ $post->user->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body align-self-start h-100">
+                                                <h6>{{ $post->title }}</h6>
+                                                @if ($post->type === 'message')
+                                                    <p class="fs-6 fw-light text-muted text-wrap container"
+                                                        style="min-width:280px;max-width:500px;">
+                                                        {{ $post->content }}
+                                                    </p>
+                                                @elseif ($post->type === 'image')
+                                                    <div class="post-img">
+                                                        <img class="rounded" src="{{ $post->getPostUrl() }}" alt="Post">
+                                                    </div>
+                                                @elseif ($post->type === 'video')
+                                                    <div class="post-video">
+                                                        <video controls>
+                                                            <source src="{{ $post->getPostUrl() }}" type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                @endif
+                                                Post Like
+                                                <div>
+                                                    <span class="fs-6 fw-light text-muted"> <i class="bi bi-clock"></i>
+                                                        {{ $post->created_at->diffForHumans() }} </span>
+                                                </div>
+                                                <div class="d-flex justify-content-between my-3 flex-wrap align-items-end">
+
+                                                    <div>
+                                                        @auth
+                                                            @if ($post->postLiked($post))
+                                                                <form action="{{ route('post.unlike', $post->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="fw-light text-danger nav-link fs-6"><i
+                                                                            class="bi bi-heart-fill"></i>
+                                                                        {{ $post->totalLikes($post->id) }}</button>
+                                                                </form>
+                                                            @else
+                                                                <form action="{{ route('post.like', $post->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="fw-light text-danger nav-link fs-6"><i
+                                                                            class="bi bi-heart"></i>
+                                                                        {{ $post->totalLikes($post->id) }}</button>
+                                                                </form>
+                                                            @endif
+                                                        @endauth
+                                                        @guest
+                                                            <a href="{{ route('login') }}"
+                                                                class="fw-light text-danger nav-link fs-6"><i
+                                                                    class="bi bi-heart"></i>
+                                                                {{ $post->likes->count() }}</a>
+                                                        @endguest
+                                                    </div>
+                                                    <div>
+                                                        <span class="fs-6 fw-light text-muted">
+                                                            Comments</span>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endempty
                     </section> --}}
                     </div>
                 </div>
