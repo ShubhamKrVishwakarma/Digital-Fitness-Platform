@@ -48,12 +48,9 @@
                             <span>{{ $user->following }}</span>
                         </div>
                         <div>
-                            @if ($user->role == 'member' || $user->role =='admin')
-                                <h6>Posts</h6>
-                                <span>{{ $user->posts->count() }}</span>
-                            @else
+                            @if ($user->role === 'trainer')
                                 <h6>Rating</h6>
-                                <span>{{ $user->rating }}</span>
+                                <span class="d-block text-center">{{$user->rating}}</span>
                             @endif
                         </div>
                     </div>
