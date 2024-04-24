@@ -2,6 +2,16 @@
 
 @section('title', 'Edit Profile')
 
+@push('styles')
+    <style>
+        .togglePassword{
+            position:absolute;
+            right:20px;
+            bottom:8px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="container bg-dark text-light mt-2 rounded-4 ">
         <div class="edit" id="edit-section">
@@ -141,5 +151,4 @@
 
 @push("scripts")
 <script src="{{asset('js/profile_edit.js')}}"></script>
-<script src="{{asset('./js/bootstrap.js')}}"></script>
 @endpush
