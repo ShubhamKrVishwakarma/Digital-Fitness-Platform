@@ -1,5 +1,5 @@
 <div x-show="addSubscription" style="display: none;">
-    <form>
+    <form wire:submit='addSubscription'>
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">Add New Exercise</h3>
@@ -13,9 +13,9 @@
                             <h6>Add New Subscription</h6>
                             <div class="col-md-12 mb-3">
                                 <label for="" class="form-label-control">Select User</label>
-                                <select wire:model='user' class="form-control" required>
-                                    @foreach ($users as $user)
+                                <select wire:model='user_id' class="form-control" required>
                                     <option value="" selected>Select User</option>
+                                    @foreach ($users as $user)
                                         <option value="{{ $user->id }}">
                                             <div>
                                                 <h6 class="mb-0 text-sm">{{ $user->id }} - {{ $user->name }} - {{ $user->email }}</h6>
@@ -26,9 +26,9 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="" class="form-label-control">Select Trainer</label>
-                                <select wire:model='user' class="form-control" required>
+                                <select wire:model='trainer_id' class="form-control" required>
+                                    <option value="" selected>Select Trainer</option>
                                     @foreach ($trainers as $trainer)
-                                    <option value="" selected>Select User</option>
                                         <option value="{{ $trainer->id }}">
                                             <div>
                                                 <h6 class="mb-0 text-sm">{{ $trainer->id }} - {{ $trainer->name }} - {{ $trainer->email }}</h6>
@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12">
-                                <button class="btn btn-sm btn-dark m-0">Add Exercise</button>
+                                <button type="submit" class="btn btn-sm btn-dark m-0">Add Exercise</button>
                             </div>
                         </div>
                     </div>
