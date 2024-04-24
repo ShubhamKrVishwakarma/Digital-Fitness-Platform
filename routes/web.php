@@ -91,18 +91,17 @@ Route::group(["controller" => PostController::class], function() {
     Route::get('/community', 'index')->name('community');
     Route::get('/post/{id}', 'singlePost')->name('post');
     
-    Route::group(["middleware" => "auth"], function() {
-        Route::delete('/post/{id}', 'destroy')->name('post.delete');
-        Route::post('/post/share', 'share')->name('post.share');
-        Route::post('/post/like/{id}', 'like')->name('post.like');
-        Route::post('/post/unlike/{id}', 'unlike')->name('post.unlike');
-        Route::post('/post/comment', 'comment')->name('post.comment');
-        Route::delete('/post/uncomment', 'uncomment')->name('post.uncomment');
-        Route::post('/post/image', 'shareImage')->name('post.share.image');
-        Route::post('/post/video', 'shareVideo')->name('post.share.video');
-        Route::post('/trainer/follow', 'follow')->name('user.follow');
-        Route::post('/trainer/unfollow', 'unfollow')->name('user.unfollow');
-    });
+    Route::delete('/post/uncomment', 'uncomment')->middleware("auth")->name('post.uncomment');
+    Route::delete('/post/{id}', 'destroy')->middleware("auth")->name('post.delete');
+    
+    Route::post('/post/share', 'share')->middleware("auth")->name('post.share');
+    Route::post('/post/like/{id}', 'like')->middleware("auth")->name('post.like');
+    Route::post('/post/unlike/{id}', 'unlike')->middleware("auth")->name('post.unlike');
+    Route::post('/post/comment', 'comment')->middleware("auth")->name('post.comment');
+    Route::post('/post/image', 'shareImage')->middleware("auth")->name('post.share.image');
+    Route::post('/post/video', 'shareVideo')->middleware("auth")->name('post.share.video');
+    Route::post('/trainer/follow', 'follow')->middleware("auth")->name('user.follow');
+    Route::post('/trainer/unfollow', 'unfollow')->middleware("auth")->name('user.unfollow');
 });
 
 // Trainers Pricing

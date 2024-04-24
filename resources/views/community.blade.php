@@ -283,8 +283,7 @@
                                                         @method("DELETE")
                                                         @csrf
                                                         <input type="hidden" name="post-id" value="{{ $post->id }}" />
-                                                        <button class="btn btn-sm btn-danger m-0"><i
-                                                                class="bi bi-trash3-fill"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-danger m-0"><i class="bi bi-trash3-fill"></i></button>
                                                     </form>
                                                 </div>
                                                 @endif
