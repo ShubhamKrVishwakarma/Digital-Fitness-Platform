@@ -30,8 +30,17 @@
 
                 <h3 class="mb-3">Product Info</h3>
                 <p class="mb-3">{{ $product->description }}</p>
+                @auth
+                    @if ($product->isAlreadyInCart($product->id))
+                        <a href="{{route('cart')}}" class="btn btn-success">Go to cart</a>
+                    @else
+                        <a href="{{route('addToCart', $product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                    @endif
+                @endauth
+                @guest
+                    <a href="{{route('login')}}" class="bttn bttn-primary">Add to cart</a>
+                @endguest
 
-                <a href="{{route('addToCart',$product->id)}}" class="bttn bttn-primary">Add to cart</a>
             </div>
         </div>
     </div>
@@ -48,34 +57,34 @@
                         <h5 class="mb-4 text-dark">Review this Product</h5>
                         <p class="mb-2 text-muted">Rate the Place</p>
                         @auth
-                            @if (auth()->user()->hasProductReview($id))
-                                <div>
-                                    <h3 class="text-dark">You have Already Reviewd this Product</h3>
-                                </div>
-                            @else
-                                <form action="{{ route('product.review') }}" method="post">
-                                    @csrf
-                                    <div class="mb-4">
-                                        <span class="star-rating">
-                                            <input type="hidden" id='product-rating' name="product-rating">
-                                            <input type="hidden" id='product-id' value="{{ $product->id }}" name="product-id">
-                                            <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                            <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                            <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                            <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                            <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
-                                        </span>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="form-label text-dark">Your Review</label>
-                                        <textarea name="product-review" id="product-review" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button id="submit-Review-btn" type="submit" class="btn btn-success btn-sm">Submit
-                                            Review</button>
-                                    </div>
-                                </form>
-                            @endif
+                        @if (auth()->user()->hasProductReview($id))
+                        <div>
+                            <h3 class="text-dark">You have Already Reviewd this Product</h3>
+                        </div>
+                        @else
+                        <form action="{{ route('product.review') }}" method="post">
+                            @csrf
+                            <div class="mb-4">
+                                <span class="star-rating">
+                                    <input type="hidden" id='product-rating' name="product-rating">
+                                    <input type="hidden" id='product-id' value="{{ $product->id }}" name="product-id">
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                    <i class="star bi bi-star text-warning fs-4" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label text-dark">Your Review</label>
+                                <textarea name="product-review" id="product-review" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button id="submit-Review-btn" type="submit" class="btn btn-success btn-sm">Submit
+                                    Review</button>
+                            </div>
+                        </form>
+                        @endif
                         @endauth
                     </div>
                     {{-- User Reviews --}}
@@ -115,8 +124,10 @@
                             </div>
                             @endforelse
                         </div>
-                        {{-- <hr> --}}
-                        {{-- <a class="text-center w-100 d-block mt-4 font-weight-bold text-decoration-none" href="#">See All Reviews</a> --}}
+                        {{--
+                        <hr> --}}
+                        {{-- <a class="text-center w-100 d-block mt-4 font-weight-bold text-decoration-none"
+                            href="#">See All Reviews</a> --}}
                     </div>
                 </div>
             </div>
@@ -182,4 +193,15 @@
         });
     });
 </script>
+@if(session('alert'))
+<script>
+    Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "{{ session('alert') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+</script>
+@endif
 @endpush

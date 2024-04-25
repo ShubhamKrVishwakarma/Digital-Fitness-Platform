@@ -47,7 +47,7 @@
                             @endif
                             @endauth
                             @guest
-                            <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+                                <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
                             @endguest
                         </div>
                     </div>
