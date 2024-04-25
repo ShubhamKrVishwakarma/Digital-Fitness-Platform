@@ -22,6 +22,7 @@ class OrderSeeder extends Seeder
             "zip_code" => fake()->countryCode(),
             "amount" => 2598,
             "status" => "pending",
+            "payment_mode" => "offline"
         ]);
 
         OrderedProduct::create([
@@ -42,6 +43,7 @@ class OrderSeeder extends Seeder
             "state" => "Odisha",
             "amount" => 1524,
             "status" => "pending",
+            "payment_mode" => "offline"
         ]);
 
         OrderedProduct::create([
