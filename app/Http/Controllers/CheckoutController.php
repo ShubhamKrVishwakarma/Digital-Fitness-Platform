@@ -35,7 +35,8 @@ class CheckoutController extends Controller
             'state' => $request->state,
             'zip_code' => $request->zip_code,
             'amount' => $total_price,
-            'status' => 'pending'
+            'status' => 'pending',
+            'payment_mode' => 'offline'
         ]);
     
         foreach ($cart as $item) {
