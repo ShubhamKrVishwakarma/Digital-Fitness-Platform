@@ -13,7 +13,10 @@
         {{-- Heading --}}
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 col-xl-8 text-center">
-                <h3 class="fw-bold mb-4">Trainers</h3>
+                <h3 class="fw-bold mb-4">
+                    @auth {{ auth()->user()->role === "trainer" ? "Other Trainers" : "Trainers" }} @endauth
+                    @guest Trainers @endguest
+                </h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
                     We're dedicated to providing you with top-tier trainers who are experts in their fields. Whether
                     you're a beginner or an experienced fitness enthusiast, our trainers are here to guide and support
@@ -63,16 +66,18 @@
                             </div>
                             <div>
                                 @auth
-                                    @if ($trainer->hasBeenReviewed($trainer->id))
-                                        <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">Reviewed</button>
-                                    @else
-                                        <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
-                                            data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
-                                    @endif
-                                    @if (auth()->user()->hasSubscribed($trainer->id))
-                                        <a href="{{ route('message') }}" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Message</a>
-                                    @else
-                                        <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Start Chat</a>
+                                    @if (auth()->user()->role !== "trainer")
+                                        @if ($trainer->hasBeenReviewed($trainer->id))
+                                            <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">Reviewed</button>
+                                        @else
+                                            <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
+                                                data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
+                                        @endif
+                                        @if (auth()->user()->hasSubscribed($trainer->id))
+                                            <a href="{{ route('message') }}" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Message</a>
+                                        @else
+                                            <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Start Chat</a>
+                                        @endif
                                     @endif
                                 @endauth
                                 @guest
@@ -188,14 +193,14 @@
     });
     </script>
     @if(session('alert'))
-    <script>
-        Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "{{ session('alert') }}",
-            showConfirmButton: false,
-            timer: 1200
-        });
-    </script>
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "{{ session('alert') }}",
+                showConfirmButton: false,
+                timer: 1200
+            });
+        </script>
     @endif
 @endpush
