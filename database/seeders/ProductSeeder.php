@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 10,
                 "category_id" => 1,
                 "image" => "product-1.jpg",
-                "keywords" => "whey protien powder double dark rich chocolate optimum nutrition gold standard",
+                "keywords" => "mens gyms fitness workouts wheys protiens powders doubles darks richs chocolates optimums nutritions golds standards",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 1,
                 "image" => "product-2.jpg",
-                "keywords" => "whey protien powder dark chocolate nakpro gold",
+                "keywords" => "mens gyms fitness workouts wheys protiens powders darks chocolates nakpros golds",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 24,
                 "category_id" => 1,
                 "image" => "product-3.jpg",
-                "keywords" => "whey protien atom double rich chocolate",
+                "keywords" => "mens gyms fitness workouts wheys protiens atoms doubles richs chocolates",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 17,
                 "category_id" => 1,
                 "image" => "product-4.jpg",
-                "keywords" => "whey protien no added sugar begineer chocolate",
+                "keywords" => "mens gyms fitness workouts wheys protiens begineers chocolates",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -70,7 +70,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 32,
                 "category_id" => 1,
                 "image" => "product-5.jpg",
-                "keywords" => "whey protien no added sugar begineer unflavored",
+                "keywords" => "mens gyms fitness workouts wheys protiens begineers unflavoreds",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -85,7 +85,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 4,
                 "image" => "product-6.jpg",
-                "keywords" => "gym water bottle protien shaker sipper",
+                "keywords" => "mens gyms fitness workouts waters bottles protiens shakers sippers",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -98,7 +98,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 4,
                 "image" => "product-7.jpg",
-                "keywords" => "gym water bottle protien shaker sipper boldfit gallon",
+                "keywords" => "mens gyms fitness workouts waters bottles protiens shakers sippers boldfits gallons",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -109,7 +109,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 4,
                 "image" => "product-8.jpg",
-                "keywords" => "gym water bottle protien shaker sipper doveaz unbreakable freezer safe gallon",
+                "keywords" => "mens gyms fitness workouts waters bottles protiens shakers sippers doveazs unbreakables freezers safes gallons",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -121,7 +121,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 30,
                 "category_id" => 4,
                 "image" => "product-9.jpg",
-                "keywords" => "gym water bottle protien shaker sipper boldfit gallon",
+                "keywords" => "mens gyms fitness workouts waters bottles protiens shakers sippers boldfits gallons",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -134,7 +134,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 41,
                 "category_id" => 4,
                 "image" => "product-10.jpg",
-                "keywords" => "gym water bottle protien shaker sipper aegon",
+                "keywords" => "mens gyms fitness workouts waters bottles protiens shakers sippers aegons",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -148,7 +148,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 40,
                 "category_id" => 3,
                 "image" => "product-11.jpg",
-                "keywords" => "t-shirt men black zeker compression gym sports wear body fit skinny",
+                "keywords" => "mens gyms fitness workouts tshirts t-shirts blacks zekers compressions sports wears bodys fits skinny",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -161,7 +161,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 3,
                 "image" => "product-12.jpg",
-                "keywords" => "hotfits cotton mens training sports gym workout t-shirt half sleeves",
+                "keywords" => "mens gyms fitness workouts tshirts t-shirts hotfits cottons trainings sports half sleeves",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -172,7 +172,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 30,
                 "category_id" => 3,
                 "image" => "product-13.jpg",
-                "keywords" => "boldfit sports mens training sports gym workout t-shirt half sleeves",
+                "keywords" => "mens gyms fitness workouts tshirts t-shirts boldfits sports trainings half sleeves",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -183,7 +183,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 30,
                 "category_id" => 3,
                 "image" => "product-14.jpg",
-                "keywords" => "just rider mens training sports gym workout t-shirt full long sleeves",
+                "keywords" => "mens gyms fitness workouts tshirts t-shirts justs riders trainings sports full long sleeves",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -197,7 +197,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 50,
                 "category_id" => 3,
                 "image" => "product-15.jpg",
-                "keywords" => "chkokko cotton mens training sports gym workout t-shirt tops sleeves vest",
+                "keywords" => "mens gyms fitness workouts tshirts t-shirts chkokkos cottons training sports tops sleeves vests",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -211,7 +211,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 70,
                 "category_id" => 2,
                 "image" => "product-16.jpg",
-                "keywords" => "boldfit cotton wrist band men women gym hand grip",
+                "keywords" => "mens gyms trainings equipments fitness workouts boldfits cottons wrists bands hands grips",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -228,7 +228,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 30,
                 "category_id" => 2,
                 "image" => "product-17.jpg",
-                "keywords" => "fitness mantra counter hand gripper",
+                "keywords" => "mens gyms trainings equipments fitness workouts mantras counters hands grippers",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -241,7 +241,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 2,
                 "image" => "product-18.jpg",
-                "keywords" => "fitbox sports intruder pvc dumbell weight gym men training",
+                "keywords" => "mens gyms trainings equipments fitness workouts fitboxs sports intruders pvcs dumbels dumbells dumbbells weights",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -253,7 +253,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 15,
                 "category_id" => 2,
                 "image" => "product-19.jpg",
-                "keywords" => "slovic door pull up bar home workout men training non slip rod",
+                "keywords" => "mens gyms trainings equipments fitness workouts slovics doors pull up bars non slip rods",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -268,7 +268,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 2,
                 "image" => "product-20.jpg",
-                "keywords" => "home gum abs core roller equipment",
+                "keywords" => "mens gyms trainings equipments fitness workouts gums abs cores rollers",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -283,7 +283,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 20,
                 "category_id" => 2,
                 "image" => "product-21.jpg",
-                "keywords" => "kore pvc home gym setup multipurpose fitness bench barbell dumbbell rods",
+                "keywords" => "mens gyms trainings equipments fitness workouts kores pvcs setups multipurposes benchs barbells dumbels dumbells dumbbells rods",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -295,7 +295,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 32,
                 "category_id" => 2,
                 "image" => "product-22.jpg",
-                "keywords" => "wellberg push up bars workout fitness gym foam grip",
+                "keywords" => "mens gyms trainings equipments fitness workouts wellbergs push ups bars workouts foams grips",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -308,7 +308,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 21,
                 "category_id" => 2,
                 "image" => "product-23.jpg",
-                "keywords" => "aurion premium strength kettlebells weightlifting training iron",
+                "keywords" => "mens gyms trainings equipments fitness workouts aurions premiums strengths kettlebells weightliftings irons",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -320,7 +320,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 60,
                 "category_id" => 2,
                 "image" => "product-24.jpg",
-                "keywords" => "boldfit gym ball exercise anti burst foot pump",
+                "keywords" => "mens gyms trainings equipments fitness workouts boldfits balls exercises antis bursts foots pumps",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -333,7 +333,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 30,
                 "category_id" => 2,
                 "image" => "product-25.jpg",
-                "keywords" => "bullar dumbbell rack home gym training fitness",
+                "keywords" => "mens gyms trainings equipments fitness workouts bullars dumbbells racks",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -347,7 +347,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 25,
                 "category_id" => 2,
                 "image" => "product-26.jpg",
-                "keywords" => "life long fitness multi home gym multiple muscle workout exercise machine chest biceps shoulder triceps legs",
+                "keywords" => "mens gyms trainings equipments fitness workouts life long multi homes multiples muscles workouts exercises machines chests biceps shoulders triceps legs",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -359,7 +359,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 25,
                 "category_id" => 2,
                 "image" => "product-27.jpg",
-                "keywords" => "blumora exercise bands resistance band set fitness gym resistance bands kits streching rubber bands",
+                "keywords" => "mens gyms trainings equipments fitness workouts blumoras exercises bands resistances bands sets resistances bands kits strechings rubbers bands",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -373,7 +373,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 41,
                 "category_id" => 2,
                 "image" => "product-28.jpg",
-                "keywords" => "bodyline heavy duty multipurpose home gym bench orkout bench press weightlifting",
+                "keywords" => "mens gyms trainings equipments fitness workouts bodylines heavys dutys multipurposes homes benchs press weightliftings",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -386,7 +386,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 120,
                 "category_id" => 2,
                 "image" => "product-29.jpg",
-                "keywords" => "aurion weight lifting gym fitness belt small leather black",
+                "keywords" => "mens gyms trainings equipments fitness workouts aurions weights liftings belts smalls leathers blacks",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
@@ -399,7 +399,7 @@ class ProductSeeder extends Seeder
                 "quantity" => 18,
                 "category_id" => 2,
                 "image" => "product-30.jpg",
-                "keywords" => "hashtag fitness gym equipment set home workout dumbbells bench barbell rods",
+                "keywords" => "mens gyms trainings equipments fitness workouts hashtags sets homes dumbels dumbells dumbbells benchs barbells rods",
                 "created_at" => now(),
                 "updated_at" => now()
             ],
