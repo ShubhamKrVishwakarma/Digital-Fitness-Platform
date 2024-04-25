@@ -32,6 +32,11 @@ Route::group(['controller' => ProductController::class], function() {
     Route::get('/shop/{id}' , 'addToCart')->middleware('auth')->name('addToCart');
 });
 
+//Product-Details page
+Route::group(['controller' => ProductController::class], function() {
+    Route::get('/product/{id}' , 'product_details')->name('product.details');
+});
+
 // Message Page Routes
 Route::get('/message', function() {
     return view('message');
