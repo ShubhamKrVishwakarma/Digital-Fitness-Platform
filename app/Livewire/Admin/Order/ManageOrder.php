@@ -20,6 +20,7 @@ class ManageOrder extends Component
     public $address;
     public $total_orders;
     public $total_amount;
+    public $payment_mode;
 
     public $status;
 
@@ -40,6 +41,7 @@ class ManageOrder extends Component
         $this->address = $order->address;
         $this->total_orders = $order->orders->count();
         $this->total_amount = $order->amount;
+        $this->payment_mode = $order->payment_mode;
 
         $order_details = OrderedProduct::where("order_id", $id)->get();
         $this->order_details = $order_details->toArray();

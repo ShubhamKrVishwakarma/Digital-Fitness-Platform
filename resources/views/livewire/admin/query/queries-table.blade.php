@@ -38,7 +38,7 @@
                                         <span class="text-secondary text-xs font-weight-bold">{{ $query->created_at->format('d-m-Y') }}</span>
                                     </td>
                                     <td>
-                                        <button @click="$dispatch('manage-query', { id: {{ $query->id }} })" class="btn btn-xs btn-dark" x-on:click="queryTable = false, manageQuery = true">Reply</button>
+                                        <button @click="$dispatch('manage-query', { id: {{ $query->id }} })" class="btn btn-xs btn-dark" x-on:click="queryTable = false, manageQuery = true">Manage</button>
                                     </td>
                                 </tr>
                             @endforeach

@@ -96,7 +96,7 @@
         <div class="card mb-3">
             <div class="card-body p-3">
                 <h6 class="mb-0 px-1 py-2">Payment Details</h6>
-                <p class="text-sm text-secondary m-0 px-1 pt-1 pb-2">Payment Type: COD</p>
+                <p class="text-sm text-secondary m-0 px-1 pt-1 pb-2">Payment Mode: {{ $payment_mode === "offline" ? "Cash on Delivery" : "Online" }}</p>
             </div>
         </div>
     </div>
