@@ -47,14 +47,12 @@
                                         <form action="{{ route('user.unfollow') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <input type="hidden" name="trainer-profile" value="trainer-profile">
                                             <button class="btn btn-sm btn-danger">Unfollow</button>
                                         </form>
                                     @else
                                         <form action="{{ route('user.follow') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <input type="hidden" name="trainer-profile" value="trainer-profile">
                                             <button class="btn btn-sm btn-danger">Follow</button>
                                         </form>
                                     @endif
@@ -190,12 +188,12 @@
     });
     </script>
     <script src="{{ asset('plugins/alert.js') }}"></script>
-    @if(session('success'))
+    @if(session('alert'))
     <script>
         Swal.fire({
             position: "top",
             icon: "success",
-            title: "{{ session('success') }}",
+            title: "{{ session('alert') }}",
             showConfirmButton: false,
             timer: 1200
         });

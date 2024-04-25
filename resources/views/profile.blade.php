@@ -10,9 +10,9 @@
 
 @section('content')
     @auth
-        @if (session('success'))
+        @if (session('alert'))
             <div id="success-message" class="alert alert-success mb-0">
-                {{ session('success') }}
+                {{ session('alert') }}
             </div>
             <script>
                 setTimeout(function() {
@@ -67,14 +67,12 @@
                                 <form action="{{ route('user.unfollow') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="user-id" value="{{ $user->id }}">
-                                    <input type="hidden" name="source" value="profile">
                                     <button type="submit" class="btn btn-primary">Unfollow</button>
                                 </form>
                             @else
                                 <form action="{{ route('user.follow') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="user-id" value="{{ $user->id }}">
-                                    <input type="hidden" name="source" value="profile">
                                     <button type="submit" class="btn btn-primary">Follow</button>
                                 </form>
                             @endif
