@@ -42,11 +42,11 @@
                     <div class="follow-details">
                         <div>
                             <h6>Followers</h6>
-                            <span>{{ $user->followers }}</span>
+                            <span class="d-block text-center">{{ $user->followers }}</span>
                         </div>
                         <div>
                             <h6>Following</h6>
-                            <span>{{ $user->following }}</span>
+                            <span class="d-block text-center">{{ $user->following }}</span>
                         </div>
                         <div>
                             @if ($user->role === 'trainer')
@@ -393,13 +393,6 @@
                             <div class="image">
                                 <img src="{{ $user->getProfileUrl() }}" alt="Profile image" />
                                 <span></span>
-                                {{-- @if ($user->profile_pic != null)
-                                <img src="{{ $user->profile_pic }}" alt="Profile image" />
-                                <span></span>
-                            @else
-                                <img src="{{ $user->getProfileUrl($user->id) }}" alt="Profile image" />
-                                <span></span>
-                            @endif --}}
                             </div>
                         </div>
                         <div class="name-container">

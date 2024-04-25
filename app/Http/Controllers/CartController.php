@@ -3,31 +3,53 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index(){
+    /**
+     * Cart Page
+     * @return view
+     */
+    public function index()
+    {
         return view('cart', [
-            "cart"=>Cart::where("user_id", auth()->user()->id)->get(),
+            "cart" => Cart::where("user_id", auth()->user()->id)->get()
         ]);
     }
 
-    public function destroy($id){
-        Cart::where("product_id", $id)->where("user_id", auth()->user()->id)->delete();
-        return redirect()->route('cart')->with('alert', 'Product Removed Successfully!');
-    }
-
-    public function update(Request $request, $id){
+    /**
+     * Update product quantity in Cart
+     * @return redirect
+     */
+    public function update(Request $request, $id)
+    {
         Cart::where("product_id", $id)->where("user_id", auth()->user()->id)->update([
-            "quantity"=>$request->quantity
+            "quantity" => $request->quantity
         ]);
+
         return redirect()->route('cart')->with('alert', 'Quantity Updated Successfully!');
     }
 
-    public function delete(){
+    /**
+     * Delete Single product from Cart
+     * @return redirect
+     */
+    public function delete($id)
+    {
+        Cart::where("product_id", $id)->where("user_id", auth()->user()->id)->delete();
+
+        return redirect()->route('cart')->with('alert', 'Product Removed Successfully!');
+    }
+
+    /**
+     * Delete All products from Cart
+     * @return redirect
+     */
+    public function deleteAll()
+    {
         Cart::where("user_id", auth()->user()->id)->delete();
+
         return redirect()->route('cart')->with('alert', 'All Products Removed Successfully!');
     }
 }

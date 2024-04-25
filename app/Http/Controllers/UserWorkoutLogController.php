@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\UserWorkoutLog;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class UserWorkoutLogController extends Controller
 {
-    public function store(Request $request , $plan_id){
-        // $startDate = Carbon::now()->subDays(7);
-        // $endDate = Carbon::now();
-        // $randomTimestamp = Carbon::createFromTimestamp(rand($startDate->timestamp, $endDate->timestamp));
+    /**
+     * Store User Workout Details
+     * @return redirect
+     */
+    public function store($plan_id)
+    {
         UserWorkoutLog::create([
             'user_id' => auth()->user()->id,
-            'plan_id' => $plan_id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-            // 'created_at' => $randomTimestamp,
-            // 'updated_at' => $randomTimestamp
+            'plan_id' => $plan_id
         ]);
 
-        return redirect()->route('workout.plans');
+        return redirect()->route('workout.plans')->with('alert', 'Workout Done!');
     }
 }

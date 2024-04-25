@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Exception;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -17,7 +15,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             return view('profile', [
                 'user' => $user,
-                'posts' => Post::where('user_id',$id )->get()
+                'posts' => Post::where('user_id', $id)->get()
             ]);
         } catch (Exception $e) {
             // Handled the case where the user is not found
@@ -36,6 +34,10 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Update User Profile Details
+     * @return redirect
+     */
     public function update(Request $request)
     {
         $request->validate([
@@ -49,6 +51,7 @@ class UserController extends Controller
             "zip_code" => "numeric|digits:6|nullable",
             "profile_pic" => "mimes:jpg,png",
         ]);
+
         $user = User::findOrFail(auth()->user()->id);
 
         $user->name = $request->input('name');
@@ -67,9 +70,13 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.show', $user->id)->with('success', 'Profile updated successfully.');
     }
-    
+
+    /**
+     * Change User Password
+     * @return redirect
+     */
     public function update_pass(Request $request)
     {
         $request->validate([
@@ -77,15 +84,13 @@ class UserController extends Controller
             "new-pass" => "required|min:8|max:255",
             "re-pass" => "required|min:8|max:255|same:new-pass",
         ]);
-        
+
         $user = User::findOrFail(auth()->user()->id);
-        
+
         $user->password = $request->input('new-pass');
-        
+
         $user->update();
-        
-        return redirect()->route('user.show',$user->id)->with('success', 'Profile updated successfully.');
+
+        return redirect()->route('user.show', $user->id)->with('success', 'Profile updated successfully.');
     }
 }
-
-

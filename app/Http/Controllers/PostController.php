@@ -2,34 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Follower;
-use App\Models\Post;
 use App\Models\PostLike;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index() {
+    /**
+     * Community Page
+     * @return view
+     */
+    public function index()
+    {
         return view('community', [
             "trainers" => User::where('role', 'trainer')->take(5)->get(),
             "posts" => Post::orderBy('id', 'DESC')->get()
         ]);
     }
 
-    public function singlePost($id) {
+    /**
+     * Single Post Page
+     * @return view
+     */
+    public function singlePost($id)
+    {
         return view('post', [
             "post" => Post::findOrFail($id)
         ]);
     }
-    
-    public function destroy($id) {
-        Post::findOrFail($id)->deleteOrFail();
-        return redirect()->route('community')->with('success', 'Post Deleted Successfully!');
-    }
-    
-    public function share(Request $request) {
+
+    /**
+     * Share Text/Message Post
+     * @return redirect
+     */
+    public function share(Request $request)
+    {
         $request->validate([
             "post-title" => "nullable|min:2|max:100",
             "post-message" => "required|min:3"
@@ -44,52 +54,19 @@ class PostController extends Controller
         return redirect()->route('community')->with('success', 'Post Added Successfully!');
     }
 
-    public function like($post_id) {
-        PostLike::create([
-            "post_id" => $post_id,
-            "user_id" => auth()->user()->id
-        ]);
-
-        return redirect()->route('community')->with('success', 'Post Liked Successfully!');
-    }
-
-    public function unlike($post_id) {
-        PostLike::where("post_id", $post_id)->where("user_id", auth()->user()->id)->delete();
-        return redirect()->route('community')->with('success', 'Post Unliked Successfully!');
-    }
-    
-    public function comment(Request $request) {
-        $request->validate([
-            "post-comment" => "required|min:2|max:255"
-        ]);
-        
-        Comment::create([
-            "post_id" => $request["post-id"],
-            "user_id" => auth()->user()->id,
-            "comment" => $request["post-comment"]
-        ]);
-        
-        return redirect()->route('community')->with('success', 'Comment Added Successfully!');
-    }
-
-    public function uncomment(Request $request) {
-        $request->validate([
-            "post-id" => "required"
-        ]);
-
-        Comment::where("post_id", $request["post-id"])->where("user_id", auth()->user()->id)->delete();
-
-        return redirect()->route('community')->with('success', 'Comment Deleted Successfully!');
-    }
-
-    public function shareImage(Request $request) {
+        /**
+     * Share Image Post
+     * @return redirect
+     */
+    public function shareImage(Request $request)
+    {
         $request->validate([
             "post-title" => "required|min:2|max:255",
-            "post-image" => "required|image" 
+            "post-image" => "required|image"
         ]);
 
         $fileExtension = $request->file('post-image')->getClientOriginalExtension();
-        $file_name = date('YmdHis') . '_post' . '.' .$fileExtension;
+        $file_name = date('YmdHis') . '_post' . '.' . $fileExtension;
         $request->file('post-image')->storeAs('public/posts/', $file_name);
 
         Post::create([
@@ -102,14 +79,19 @@ class PostController extends Controller
         return redirect()->route('community')->with('success', 'Post Shared Successfully!');
     }
 
-    public function shareVideo(Request $request) {
+    /**
+     * Share Video Post
+     * @return redirect
+     */
+    public function shareVideo(Request $request)
+    {
         $request->validate([
             "post-title" => "required|min:2|max:255",
-            "post-video" => "required" 
+            "post-video" => "required"
         ]);
 
         $fileExtension = $request->file('post-video')->getClientOriginalExtension();
-        $file_name = date('YmdHis') . '_post' . '.' .$fileExtension;
+        $file_name = date('YmdHis') . '_post' . '.' . $fileExtension;
         $request->file('post-video')->storeAs('public/posts/', $file_name);
 
         Post::create([
@@ -122,7 +104,71 @@ class PostController extends Controller
         return redirect()->route('community')->with('success', 'Post Shared Successfully!');
     }
 
-    public function follow(Request $request) {
+    /**
+     * Like Post
+     * @return redirect
+     */
+    public function like($post_id)
+    {
+        PostLike::create([
+            "post_id" => $post_id,
+            "user_id" => auth()->user()->id
+        ]);
+
+        return redirect()->route('community')->with('success', 'Post Liked Successfully!');
+    }
+
+    /**
+     * Remove Like from Post
+     * @return redirect
+     */
+    public function unlike($post_id)
+    {
+        PostLike::where("post_id", $post_id)->where("user_id", auth()->user()->id)->delete();
+
+        return redirect()->route('community')->with('success', 'Post Unliked Successfully!');
+    }
+
+    /**
+     * Add Comment to a Post
+     * @return redirect
+     */
+    public function comment(Request $request)
+    {
+        $request->validate([
+            "post-comment" => "required|min:2|max:255"
+        ]);
+
+        Comment::create([
+            "post_id" => $request["post-id"],
+            "user_id" => auth()->user()->id,
+            "comment" => $request["post-comment"]
+        ]);
+
+        return redirect()->route('community')->with('success', 'Comment Added Successfully!');
+    }
+
+    /**
+     * Remove Comment from a Post
+     * @return redirect
+     */
+    public function uncomment(Request $request)
+    {
+        $request->validate([
+            "post-id" => "required"
+        ]);
+
+        Comment::where("post_id", $request["post-id"])->where("user_id", auth()->user()->id)->delete();
+
+        return redirect()->route('community')->with('success', 'Comment Deleted Successfully!');
+    }
+
+    /**
+     * Follow User
+     * @return redirect
+     */
+    public function follow(Request $request)
+    {
         if (auth()->user()->id === $request["user-id"]) {
             return redirect()->route('community')->with('success', 'Cannot Follow Yourself!');
         }
@@ -143,17 +189,21 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
-        if($request->has('source')){
+        if ($request->has('source')) {
             return redirect()->route('user.show', $request['user-id'])->with('success', 'Followed Successfully!');
-        } 
-        elseif ($request->has('trainer-profile')) {
+        } elseif ($request->has('trainer-profile')) {
             return redirect()->route('trainers')->with('success', 'Followed Successfully!');
         }
-        
+
         return redirect()->route('community')->with('success', 'Followed Successfully!');
     }
 
-    public function unfollow(Request $request) {
+    /**
+     * UnFollow User
+     * @return redirect
+     */
+    public function unfollow(Request $request)
+    {
         if (auth()->user()->id === $request["user-id"]) {
             return redirect()->route('community')->with('success', 'Cannot Unfollow Yourself!');
         }
@@ -171,13 +221,23 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
-        if($request->has('source')){
+        if ($request->has('source')) {
             return redirect()->route('user.show', $request['user-id'])->with('success', 'Unfollowed Successfully!');
-        }
-        elseif ($request->has('trainer-profile')) {
+        } elseif ($request->has('trainer-profile')) {
             return redirect()->route('trainers')->with('success', 'Unfollowed Successfully!');
         }
 
         return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
+    }
+
+    /**
+     * Delete Single Post
+     * @return redirect
+     */
+    public function destroy($id)
+    {
+        Post::findOrFail($id)->deleteOrFail();
+
+        return redirect()->route('community')->with('success', 'Post Deleted Successfully!');
     }
 }
