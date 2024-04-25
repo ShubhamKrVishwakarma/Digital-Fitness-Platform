@@ -59,7 +59,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('alert', 'Added to Cart!');
+        return back()->with('alert', 'Product Added to Cart!');
     }
 
     /**
