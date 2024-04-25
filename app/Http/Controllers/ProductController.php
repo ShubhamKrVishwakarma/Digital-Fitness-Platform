@@ -12,13 +12,15 @@ class ProductController extends Controller
     public function index(Request $request){
         if ($request->has('search')) {
             $search = strtolower($request->search);
-            $query = Product::where("keywords", "like", "%{$search}%")->paginate(12);
+            return view('shop', [
+                "products" => Product::where("keywords", "like", "%{$search}%")->paginate(12),
+                "search" => $search
+            ]);
         } else {
-            $query = Product::latest()->paginate(12);
+            return view('shop' , [
+                "products" => Product::latest()->paginate(12)
+            ]);
         }
-        return view('shop' , [
-            "products" => $query
-        ]);
     }
 
     public function product_details($id){
