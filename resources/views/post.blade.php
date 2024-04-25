@@ -280,3 +280,16 @@
     </div>
 </main>
 @endsection
+
+@push('scripts')
+@if(session('alert'))
+  <script>
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "{{ session('alert') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+  </script>
+@endif

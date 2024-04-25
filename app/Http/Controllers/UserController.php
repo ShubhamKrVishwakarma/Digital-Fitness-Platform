@@ -11,27 +11,17 @@ class UserController extends Controller
 {
     public function show($id)
     {
-        try {
-            $user = User::findOrFail($id);
-            return view('profile', [
-                'user' => $user,
-                'posts' => Post::where('user_id', $id)->get()
-            ]);
-        } catch (Exception $e) {
-            // Handled the case where the user is not found
-            return redirect()->route('home')->with('alert', 'User not found.');
-        }
+        return view('profile', [
+            'user' => User::findOrFail($id),
+            'posts' => Post::where('user_id', $id)->get()
+        ]);
     }
 
     public function profile_edit($id)
     {
-        try {
-            $user = User::findOrFail($id);
-            return view('profile_edit', compact('user'));
-        } catch (Exception $e) {
-            // Handled the case where the user is not found
-            return redirect()->route('home')->with('alert', 'User not found.');
-        }
+        return view('profile_edit', [
+            "user" => User::findOrFail($id)
+        ]);
     }
 
     /**
@@ -70,7 +60,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('user.show', $user->id)->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.show', $user->id)->with('alert', 'Profile updated successfully.');
     }
 
     /**
@@ -91,6 +81,6 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('user.show', $user->id)->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.show', $user->id)->with('alert', 'Profile updated successfully.');
     }
 }
