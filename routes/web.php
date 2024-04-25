@@ -47,8 +47,8 @@ Route::get('/message', function() {
 Route::group(['controller' => CartController::class, 'middleware' => 'auth'], function() {
     Route::get('/cart', 'index')->name('cart');
     Route::post('/cart/edit/{id}', 'update')->name('cart.update');
-    Route::delete('/cart/{id}', 'destroy')->name('product.delete');
-    Route::delete('/cart', 'delete')->name('product.delete.all');
+    Route::delete('/cart/{id}', 'delete')->name('product.delete');
+    Route::delete('/cart', 'deleteAll')->name('product.delete.all');
 });
 
 // Orders Page Routes
