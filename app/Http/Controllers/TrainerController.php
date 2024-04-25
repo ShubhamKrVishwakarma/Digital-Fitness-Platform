@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Subscription;
-use App\Models\TrainerReview;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Razorpay\Api\Api;
+use App\Models\User;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
+use App\Models\TrainerReview;
+use App\Http\Controllers\Controller;
 
 class TrainerController extends Controller
 {
+    /**
+     * Trainers Page
+     * @return view
+     */
     public function index()
     {
         return view('trainers', [
@@ -18,6 +22,10 @@ class TrainerController extends Controller
         ]);
     }
 
+    /**
+     * Review a Trainer
+     * @return redirect
+     */
     public function reviewTrainer(Request $request)
     {
         $request->validate([
@@ -43,6 +51,10 @@ class TrainerController extends Controller
         return redirect()->route("trainers")->with('success', 'Trainer Reviewed Successfully!');
     }
 
+    /**
+     * Pricings Page
+     * @return view
+     */
     public function pricing($trainer_id)
     {
         return view('pricing', [
@@ -50,6 +62,10 @@ class TrainerController extends Controller
         ]);
     }
 
+    /**
+     * Make Subscription
+     * @return view
+     */
     public function subscribe(Request $request)
     {
         $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
@@ -78,13 +94,18 @@ class TrainerController extends Controller
         ]);
     }
 
-    public function subscriptionInfo(Request $request) {
+    /**
+     * Subscription Status
+     * @return redirect
+     */
+    public function subscriptionInfo(Request $request)
+    {
         $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
         $status = $api->payment->fetch($request->payment_id);
-        
+
         if ($status->captured) {
-            Subscription::create([ 
+            Subscription::create([
                 "user_id" => auth()->user()->id,
                 "trainer_id" => $request->trainer_id,
                 "type" => $request->type,

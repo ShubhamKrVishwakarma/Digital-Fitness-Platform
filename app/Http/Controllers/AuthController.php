@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TrainerDetail;
-use App\Models\User;
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\TrainerDetail;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 
