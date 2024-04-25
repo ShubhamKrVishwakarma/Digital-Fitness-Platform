@@ -2,25 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\OrderedProduct;
 
 class OrderController extends Controller
 {
-    public function index(){
+    /**
+     * Orders Page
+     * @return view
+     */
+    public function index()
+    {
         return view('orders', [
             "orders" => Order::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
         ]);
     }
 
-    public function orderDetails($id) {
+    /**
+     * Orders Details Page (Ordered Products)
+     * @return view
+     */
+    public function orderDetails($id)
+    {
         return view('order_details', [
             "order" => Order::find($id),
         ]);
     }
 
-    public function cancelOrder($id) {
+    /**
+     * Cancel Pending Order
+     * @return redirect
+     */
+    public function cancelOrder($id)
+    {
         $order = Order::findOrFail($id);
 
         $order->status = "cancelled";
