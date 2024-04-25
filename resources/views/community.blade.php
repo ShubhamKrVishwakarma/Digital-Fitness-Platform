@@ -103,10 +103,9 @@
             </div>
             {{-- Middle Section --}}
             <div class="col-lg-6">
-                {{-- Success Alert --}}
-                @if(session()->has('success'))
+                @if(session()->has('alert'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
+                    {{ session('alert') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
@@ -248,8 +247,7 @@
                                         @csrf
                                         <div class="mb-3">
                                             <input type="hidden" name="post-id" value="{{ $post->id }}">
-                                            <textarea class="fs-6 form-control mb-3" rows="1" name="post-comment"
-                                                required></textarea>
+                                            <input type="text" name="post-comment" class="form-control mb-3" required>
                                             @error('post-comment')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
