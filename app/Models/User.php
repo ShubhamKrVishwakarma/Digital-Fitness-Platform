@@ -66,7 +66,7 @@ class User extends Authenticatable
     }
 
     public function hasSubscribed($trainer_id) {
-        return Subscription::where("user_id", $this->id)->where("trainer_id", $trainer_id)->exists();
+        return Subscription::where("user_id", $this->id)->where("trainer_id", $trainer_id)->where("expiry_date", ">", now())->exists();
     }
 
     public function canShare() {
