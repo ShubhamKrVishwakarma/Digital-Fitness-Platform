@@ -51,7 +51,7 @@ class PostController extends Controller
             "content" => $request["post-message"]
         ]);
 
-        return redirect()->route('community')->with('success', 'Post Added Successfully!');
+        return redirect()->route('community')->with('alert', 'Post Added Successfully!');
     }
 
         /**
@@ -76,7 +76,7 @@ class PostController extends Controller
             "content" => $file_name
         ]);
 
-        return redirect()->route('community')->with('success', 'Post Shared Successfully!');
+        return redirect()->route('community')->with('alert', 'Post Shared Successfully!');
     }
 
     /**
@@ -101,7 +101,7 @@ class PostController extends Controller
             "content" => $file_name
         ]);
 
-        return redirect()->route('community')->with('success', 'Post Shared Successfully!');
+        return redirect()->route('community')->with('alert', 'Post Shared Successfully!');
     }
 
     /**
@@ -115,7 +115,7 @@ class PostController extends Controller
             "user_id" => auth()->user()->id
         ]);
 
-        return redirect()->route('community')->with('success', 'Post Liked Successfully!');
+        return back()->with('alert', 'Post Liked Successfully!');
     }
 
     /**
@@ -126,7 +126,7 @@ class PostController extends Controller
     {
         PostLike::where("post_id", $post_id)->where("user_id", auth()->user()->id)->delete();
 
-        return redirect()->route('community')->with('success', 'Post Unliked Successfully!');
+        return back()->with('alert', 'Post Unliked Successfully!');
     }
 
     /**
@@ -145,7 +145,7 @@ class PostController extends Controller
             "comment" => $request["post-comment"]
         ]);
 
-        return redirect()->route('community')->with('success', 'Comment Added Successfully!');
+        return back()->with('alert', 'Comment Added Successfully!');
     }
 
     /**
@@ -160,7 +160,7 @@ class PostController extends Controller
 
         Comment::where("post_id", $request["post-id"])->where("user_id", auth()->user()->id)->delete();
 
-        return redirect()->route('community')->with('success', 'Comment Deleted Successfully!');
+        return back()->with('alert', 'Comment Deleted Successfully!');
     }
 
     /**
@@ -170,7 +170,7 @@ class PostController extends Controller
     public function follow(Request $request)
     {
         if (auth()->user()->id === $request["user-id"]) {
-            return redirect()->route('community')->with('success', 'Cannot Follow Yourself!');
+            return back()->with('success', 'Cannot Follow Yourself!');
         }
 
         $request->validate([
@@ -189,13 +189,7 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
-        if ($request->has('source')) {
-            return redirect()->route('user.show', $request['user-id'])->with('success', 'Followed Successfully!');
-        } elseif ($request->has('trainer-profile')) {
-            return redirect()->route('trainers')->with('success', 'Followed Successfully!');
-        }
-
-        return redirect()->route('community')->with('success', 'Followed Successfully!');
+        return back()->with('alert', 'Followed Successfully!');
     }
 
     /**
@@ -221,13 +215,7 @@ class PostController extends Controller
         $current_user->update();
         $user->update();
 
-        if ($request->has('source')) {
-            return redirect()->route('user.show', $request['user-id'])->with('success', 'Unfollowed Successfully!');
-        } elseif ($request->has('trainer-profile')) {
-            return redirect()->route('trainers')->with('success', 'Unfollowed Successfully!');
-        }
-
-        return redirect()->route('community')->with('success', 'UnFollowed Successfully!');
+        return back()->with('alert', 'UnFollowed Successfully!');
     }
 
     /**
@@ -238,6 +226,6 @@ class PostController extends Controller
     {
         Post::findOrFail($id)->deleteOrFail();
 
-        return redirect()->route('community')->with('success', 'Post Deleted Successfully!');
+        return back()->with('alert', 'Post Deleted Successfully!');
     }
 }

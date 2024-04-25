@@ -23,6 +23,7 @@
     @include('includes.footer')
 
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('plugins/alert.js') }}"></script>
     @stack("scripts")
 </body>
 

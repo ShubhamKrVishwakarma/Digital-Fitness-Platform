@@ -65,7 +65,6 @@
 
 @push("scripts")
 <script src="{{ asset('js/orders.js') }}"></script>
-<script src="{{ asset('plugins/alert.js') }}"></script>
 @if(session('alert'))
   <script>
       Swal.fire({
