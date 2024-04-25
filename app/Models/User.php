@@ -73,14 +73,16 @@ class User extends Authenticatable
         if ($this->role === "trainer" || $this->role === "admin") {
             return true;
         }
-        return Subscription::where("user_id", auth()->user()->id)->exists();
+        return Subscription::where("user_id", auth()->user()->id)->where("expiry_date", ">", now())->exists();
     }
+
     public function hasPost($id) {
         $user = User::findOrFail($id);
 
         if ($user->role === "trainer" || $user->role === "admin") {
             return true;
         }
+        
         return Subscription::where("user_id", $id)->exists();
     }
 
