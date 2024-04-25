@@ -135,7 +135,6 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('plugins/alert.js') }}"></script>
 @if(session('alert'))
   <script>
       Swal.fire({
