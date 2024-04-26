@@ -29,12 +29,17 @@ class ProductController extends Controller
         }
     }
 
-   public function product_details($id)
-   {
-     return view("product_details", [
-        "product" => Product::findOrFail($id)
-     ]);
-   }
+    /**
+     * Product Details Page
+     * @return view
+     */
+    public function product_details($id)
+    {
+        return view("product_details", [
+            "product" => Product::findOrFail($id),
+            "id" => $id
+        ]);
+    }
 
 
     /**
