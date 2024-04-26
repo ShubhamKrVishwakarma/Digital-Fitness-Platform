@@ -60,7 +60,7 @@
 
             <div class="container-fluid mb-4" id="lower-container">
                 <div class="profile-nav">
-                    @if (Auth::user()->id !== $user->id)
+                    @if (auth()->user()->id !== $user->id)
                         <div class="buttons-for-user">
                             @if (auth()->user()->hasSubscribed($user->id)|| $user->hasSubscribed(auth()->user()->id))
                                 <button type="button" class="btn btn-primary" id="chat-button">Chat</button>
@@ -93,9 +93,9 @@
                         </div>
                     @endif
                     <div class="profile-nav-items">
-                        <a href="#" class="nav-item-links is-active" id="about" active-color="black">About</a>
+                        <a class="nav-item-links is-active" id="about" active-color="black">About</a>
                         @if ($user->hasPost($user->id))
-                            <a href="#" class="nav-item-links" id="posts" active-color="black">Posts</a>
+                            <a class="nav-item-links" id="posts" active-color="black">Posts</a>
                         @endif
                         <span class="nav-indicator"></span>
                     </div>
@@ -162,7 +162,6 @@
                                                         aria-labelledby="cardFeedAction">
                                                         <li><a class="dropdown-item" href="{{ route('post', $post->id) }}">View
                                                                 Post</a></li>
-                                                        {{-- @auth --}}
                                                         @if (auth()->user()->id === $post->user_id)
                                                             <li>
                                                                 <form action="{{ route('post.delete', $post->id) }}"
@@ -174,7 +173,6 @@
                                                                 </form>
                                                             </li>
                                                         @endif
-                                                        {{-- @endauth --}}
                                                     </ul>
                                                 </div>
                                             </div>
@@ -348,9 +346,9 @@
                 <div class="profile-nav">
                     <div class="buttons-for-user"></div>{{-- for-design --}}
                     <div class="profile-nav-items">
-                        <a href="#" class="nav-item-links is-active" id="about" active-color="black">About</a>
+                        <a class="nav-item-links is-active " id="about" active-color="black">About</a>
                         @if ($user->hasPost($user->id))
-                            <a href="#" class="nav-item-links" id="posts" active-color="black">Posts</a>
+                            <a class="nav-item-links " id="posts" active-color="black">Posts</a>
                         @endif
                         <span class="nav-indicator"></span>
                     </div>
