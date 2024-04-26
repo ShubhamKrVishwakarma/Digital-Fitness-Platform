@@ -74,7 +74,7 @@ class User extends Authenticatable
             return true;
         }
 
-        $user = Subscription::where("user_id", auth()->user()->id)->first();
+        $user = Subscription::where("user_id", auth()->user()->id)->latest()->first();
 
         if ($user) {
             if ($user->expiry_date > now()) {
