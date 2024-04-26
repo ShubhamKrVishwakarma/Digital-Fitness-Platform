@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("trainer_id");
             $table->enum('type', ['monthly', 'yearly']);
-            $table->date('expiry_date');
+            $table->dateTime('expiry_date');
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete();
