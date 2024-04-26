@@ -111,46 +111,46 @@
                 @endif
                 {{-- Share your Thoughts --}}
                 @auth
-                @if(auth()->user()->canShare())
-                    <div class="card card-body mb-3">
-                        <div class="d-flex mb-3">
-                            <!-- Avatar -->
-                            <div class="me-2">
-                                <a href="{{ route('user.show', auth()->user()->id) }}"> <img class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt=""
-                                        width="50px"> </a>
-                            </div>
-                            <!-- Post input -->
-                            <form class="w-100" action="{{ route('post.share') }}" method="POST">
-                                @csrf
-                                <input type="text" name="post-title" placeholder="Caption/Title (Optional)"
-                                    class="form-control mb-3">
-                                <textarea class="form-control" rows="3" name="post-message"
-                                    placeholder="Share your thoughts..." required></textarea>
-                                @error('post-message')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                <div class="d-flex flex-wrap justify-content-end align-items-center">
-                                    <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                    @if(auth()->user()->canShare())
+                        <div class="card card-body mb-3">
+                            <div class="d-flex mb-3">
+                                <!-- Avatar -->
+                                <div class="me-2">
+                                    <a href="{{ route('user.show', auth()->user()->id) }}"> <img class="avatar-sm rounded-circle" src="{{ auth()->user()->getProfileUrl() }}" alt=""
+                                            width="50px"> </a>
                                 </div>
-                            </form>
+                                <!-- Post input -->
+                                <form class="w-100" action="{{ route('post.share') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="post-title" placeholder="Caption/Title (Optional)"
+                                        class="form-control mb-3">
+                                    <textarea class="form-control" rows="3" name="post-message"
+                                        placeholder="Share your thoughts..." required></textarea>
+                                    @error('post-message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <div class="d-flex flex-wrap justify-content-end align-items-center">
+                                        <button class="btn btn-sm btn-dark text-end mt-2">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Share feed toolbar START -->
+                            <ul class="nav nav-pills nav-stack small fw-normal gap-2">
+                                <li class="nav-item">
+                                    <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                        data-bs-target="#postImage"> <i
+                                            class="bi bi-image-fill text-success pe-2"></i>Photo</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
+                                        data-bs-target="#postVideo"> <i
+                                            class="bi bi-camera-reels-fill text-info pe-2"></i>Video</button>
+                                </li>
+                            </ul>
+                            <!-- Share feed toolbar END -->
                         </div>
-                        <!-- Share feed toolbar START -->
-                        <ul class="nav nav-pills nav-stack small fw-normal gap-2">
-                            <li class="nav-item">
-                                <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                    data-bs-target="#postImage"> <i
-                                        class="bi bi-image-fill text-success pe-2"></i>Photo</button>
-                            </li>
-                            <li class="nav-item">
-                                <button class="nav-link bg-grey py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                                    data-bs-target="#postVideo"> <i
-                                        class="bi bi-camera-reels-fill text-info pe-2"></i>Video</button>
-                            </li>
-                        </ul>
-                        <!-- Share feed toolbar END -->
-                    </div>
-                    <hr>
-                @endif
+                        <hr>
+                    @endif
                 @endauth
                 {{-- Feed Information --}}
                 <div>

@@ -73,7 +73,16 @@ class User extends Authenticatable
         if ($this->role === "trainer" || $this->role === "admin") {
             return true;
         }
-        return Subscription::where("user_id", auth()->user()->id)->where("expiry_date", ">", now())->exists();
+
+        $user = Subscription::where("user_id", auth()->user()->id)->first();
+
+        if ($user) {
+            if ($user->expiry_date > now()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function hasPost($id) {
