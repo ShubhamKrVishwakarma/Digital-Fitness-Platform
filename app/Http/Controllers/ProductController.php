@@ -35,11 +35,12 @@ class ProductController extends Controller
      */
     public function product_details($id)
     {
-        return view('product_details', [
+        return view("product_details", [
             "product" => Product::findOrFail($id),
             "id" => $id
         ]);
     }
+
 
     /**
      * Add Product to Cart

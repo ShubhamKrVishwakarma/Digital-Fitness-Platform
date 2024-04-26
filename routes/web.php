@@ -34,8 +34,8 @@ Route::group(['controller' => ProductController::class], function() {
 
 // Product Details
 Route::group(['controller' => ProductController::class], function() {
-    Route::get('/product/{id}', 'product_details')->name('product.details');
-    Route::post('/product/review', 'reviewProduct')->name('product.review');
+    Route::get('/product/{id}' , 'product_details')->name('product.details');
+    Route::post('/product/review' , 'reviewProduct')->name('product.review');
 });
 
 // Message Page Routes
