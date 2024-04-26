@@ -3,7 +3,6 @@
 @section('title', 'Workout Plan')
 
 @push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/workout.css') }}">
 @endpush
 
@@ -27,7 +26,7 @@
                 </div>
             </div>
         </section>
-        
+
         @auth
             <section class="container mb-5 " id="workout-profile">
                 <div class="heading">
