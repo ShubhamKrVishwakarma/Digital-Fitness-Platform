@@ -30,6 +30,19 @@ class ProductController extends Controller
     }
 
     /**
+     * Product Details Page
+     * @return view
+     */
+    public function product_details($id)
+    {
+        return view("product_details", [
+            "product" => Product::findOrFail($id),
+            "id" => $id
+        ]);
+    }
+
+
+    /**
      * Add Product to Cart
      * @return redirect
      */
