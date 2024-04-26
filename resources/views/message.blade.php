@@ -38,7 +38,7 @@
                                         <h6 class="subtitle font-weight-light">We see you're enjoying our platform, but did you know there's a whole world of exclusive content waiting for you with a subscription?</h6>
                                     </div>
                                                 <div class="col-md-12 mt-3 text-center">
-                                        <a class="btn btn-success-gradiant btn-md border-0 text-white" href="{{ route('pricing') }}"><span>View Pricing</span></a>
+                                        <a class="btn btn-success-gradiant btn-md border-0 text-white" href="{{ route('trainers') }}"><span>View Trainers</span></a>
                                     </div>
                                 </div>
                             </div>
