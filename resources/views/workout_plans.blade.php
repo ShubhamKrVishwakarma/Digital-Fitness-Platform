@@ -3,7 +3,6 @@
 @section('title', 'Workout Plan')
 
 @push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/workout.css') }}">
 @endpush
 
@@ -27,63 +26,6 @@
                 </div>
             </div>
         </section>
-
-        {{-- @auth
-            <section class="container mb-5 " id="workout-profile">
-                <div class="heading">
-                    <h4>Workout Profile</h4>
-                </div>
-                <div class="content">
-                    <div class="pt-5">
-                        <div class="data-1">
-                            <p>Weekly Goal <span class="small-icons"><img
-                                        src="{{ asset('./images/workout/edit (1).png') }}./images/workout/edit (1).png"
-                                        alt=""></span>
-                            </p>
-                            <div class="color-boxes">
-                            @php
-                                $count=0;
-                            @endphp
-                            @for ($i = 0; $i < 7; $i++)
-                                @empty($weeklyRecords[$i])
-                                    <span class="box"></span>
-                                @else
-                                    <span class="box fill"></span>
-                                    @php
-                                        $count+=1;
-                                    @endphp
-                                @endempty
-                            @endfor
-                            </div>
-                            <p>You have completed {{$count}} workouts this week !!</p>
-                            <p>{{$count}}/7 workouts</p>
-                        </div>
-                        <div class="data-2">
-                            <div class="weeks">
-                                <ul class="list-unstyled d-flex justify-content-between">
-                                    <li class="d-flex flex-column align-items-center">
-                                        <p class="mb-0 ">Mon</p><span class="x-small-icons"><img
-                                                src="{{ asset('./images/workout/checked.png') }}" alt=""></span>
-                                    </li>
-                                    <li>Tue</li>
-                                    <li class="d-flex flex-column align-items-center">
-                                        <p class="mb-0 ">Wed</p><span class="x-small-icons"><img
-                                                src="{{ asset('./images/workout/checked.png') }}" alt=""></span>
-                                    </li>
-                                    <li class="today">Thu</li>
-                                    <li>Fri</li>
-                                    <li>Sat</li>
-                                    <li>Sun</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image">
-                        <img src="{{ asset('./images/workout/banner1body.png') }}" alt="">
-                    </div>
-                </div>
-            </section>
-        @endauth --}}
 
         @auth
             <section class="container mb-5 " id="workout-profile">
@@ -148,7 +90,6 @@
                 </div>
             </section>
         @endauth
-
         @guest
             <section class="container mb-5 " id="workout-profile">
                 <div class="heading">
@@ -178,7 +119,6 @@
                 </div>
             </section>
         @endguest
-
 
         <section class="container card py-4 bg-dark-subtle my-5" id="personal-workout">
             <div class="content d-flex justify-content-evenly ">
@@ -280,61 +220,5 @@
                 @endforeach
             </div>
         </section>
-
-        {{-- <section class="container mt-5 text-dark" id="main-section-3">
-            <div class="heading">
-                <h4>Picks for you</h4>
-            </div>
-            <div class="content my-3">
-                <div class="data-box border border-dark-subtle bg-dark-subtle p-sm-2 rounded me-3">
-                    <div class="image">
-                        <img src="./images/workout/plank-girl.jpg" alt="">
-                    </div>
-                    <div class="data card card-body bg-transparent border-0">
-                        <div>
-                            <h5>Belly fat burner</h5>
-                            <p>HIIT <br> 14 mins - Beginner</p>
-                        </div>
-                        <button class="btn btn-primary">Start</button>
-                    </div>
-                </div>
-                <div class="data-box border border-dark-subtle bg-dark-subtle p-sm-2 rounded me-3">
-                    <div class="image">
-                        <img src="./images/workout/plank-girl.jpg" alt="">
-                    </div>
-                    <div class="data card card-body bg-transparent border-0">
-                        <div>
-                            <h5>Belly fat burner</h5>
-                            <p>HIIT <br> 14 mins - Beginner</p>
-                        </div>
-                        <button class="btn btn-primary">Start</button>
-                    </div>
-                </div>
-                <div class="data-box border border-dark-subtle bg-dark-subtle p-sm-2 rounded me-3">
-                    <div class="image">
-                        <img src="./images/workout/plank-girl.jpg" alt="">
-                    </div>
-                    <div class="data card card-body bg-transparent border-0">
-                        <div>
-                            <h5>Belly fat burner</h5>
-                            <p>HIIT <br> 14 mins - Beginner</p>
-                        </div>
-                        <button class="btn btn-primary">Start</button>
-                    </div>
-                </div>
-                <div class="data-box border border-dark-subtle bg-dark-subtle p-sm-2 rounded">
-                    <div class="image">
-                        <img src="./images/workout/plank-girl.jpg" alt="">
-                    </div>
-                    <div class="data card card-body bg-transparent border-0">
-                        <div>
-                            <h5>Belly fat burner</h5>
-                            <p>HIIT <br> 14 mins - Beginner</p>
-                        </div>
-                        <button class="btn btn-primary">Start</button>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
     </div>
 @endsection

@@ -3,7 +3,6 @@
 @section('title', 'Workout')
 
 @push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/exercise.css') }}">
 @endpush
 
@@ -58,26 +57,6 @@
                 </div>
             </div>
         </section>
-
-        {{-- <section class="container training my-5">
-            <div class="training-heading text-center text-light ">
-                <h2 class="text-capitalize">Workout Type : {{ $workouts[0]->plan->level }}</h2>
-                <h4 class="text-center text-light text-capitalize">{{ $workouts[0]->plan->name }}</h4>
-            </div>
-            <div>
-                <div class="training-preview w-auto  mt-4">
-                    <video id="video" src="./videos/482_M.mp4" autoplay loop muted></video>
-                    <span role="button" class="play-pause-btn icons" id="pause-button">
-                        <img src="./images/workout/pause.png" alt="">
-                    </span>
-                    <span role="button" class="play-pause-btn icons"style="display:none; pointer-events: none;"
-                        id="play-button">
-                        <img src="./images/workout/play.png" alt="">
-                    </span>
-                </div>
-            </div>
-        </section> --}}
-
         <section class="container" id="trainings">
              <div class="training-heading text-center text-light my-4">
                 <h2 class="text-capitalize">Workout Type : {{ $workouts[0]->plan->level }}</h2>
