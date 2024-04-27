@@ -30,14 +30,22 @@
                 <h3 class="mb-3">Product Info</h3>
                 <p class="mb-3">{{ $product->description }}</p>
                 @auth
-                    @if ($product->isAlreadyInCart($product->id))
-                        <a href="{{route('cart')}}" class="btn btn-success">Go to cart</a>
+                    @if ($product->quantity < 1)
+                        <span class="text-success fw-semibold">Out of Stock</span>
                     @else
-                        <a href="{{route('addToCart', $product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                        @if ($product->isAlreadyInCart($product->id))
+                            <a href="{{route('cart')}}" class="btn btn-success">Go to cart</a>
+                        @else
+                            <a href="{{route('addToCart', $product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                        @endif
                     @endif
                 @endauth
                 @guest
-                    <a href="{{route('login')}}" class="bttn bttn-primary">Add to cart</a>
+                    @if ($product->quantity < 1)
+                        <span class="text-success fw-semibold">Out of Stock</span>
+                    @else
+                        <a href="{{route('login')}}" class="bttn bttn-primary">Add to cart</a>
+                    @endif
                 @endguest
 
             </div>

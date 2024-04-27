@@ -23,24 +23,31 @@
             </form>
             <!-- Products -->
             <div class="row justify-content-center align-items-center flex-wrap">
-                @forelse ($products as $item)
+                @forelse ($products as $product)
                 <!-- Single Product -->
                 <div class="product">
                     <div class="product-content">
                         <div class="product-img">
-                            <a href="{{ route('product.details', $item->id) }}"><img src="{{$item->getProductUrl()}}"
-                                    alt="product image" /></a>
+                            <a href="{{ route('product.details', $product->id) }}"><img src="{{ $product->getProductUrl() }}" alt="product image" /></a>
                         </div>
                         <div class="product-btns d-flex justify-content-center align-items-center">
                             @auth
-                            @if ($item->isAlreadyInCart($item->id))
-                            <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
-                            @else
-                            <a href="{{ route('addToCart', $item->id) }}" class="btn btn-dark">Add to Cart</a>
-                            @endif
+                                @if ($product->quantity < 1)
+                                    <span class="text-success fw-semibold">Out of Stock</span>
+                                @else
+                                    @if ($item->isAlreadyInCart($product->id))
+                                    <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
+                                    @else
+                                    <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark">Add to Cart</a>
+                                    @endif
+                                @endif
                             @endauth
                             @guest
-                                <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+                                @if ($product->quantity < 1)
+                                    <span class="btn text-success fw-semibold">Out of Stock</span>
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+                                @endif
                             @endguest
                         </div>
                     </div>
@@ -56,9 +63,9 @@
                                 <span><i class="bi bi-star-fill"></i></span>
                             </div>
                         </div>
-                        <a href="#" class="product-name">{{ substr($item->name, 0, 15) }}...</a>
+                        <a href="#" class="product-name">{{ substr($product->name, 0, 15) }}...</a>
                         <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
-                        <p class="product-price">{{ $item->price }}</p>
+                        <p class="product-price">{{ $product->price }}</p>
                     </div>
                 </div>
                 @empty
