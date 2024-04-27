@@ -16,8 +16,7 @@
                         <h1>Let's work together<span>.</span></h1>
                         <p class="text">Or reach us via : <a href="#">FitnessGroup777@gmail.com</a></p>
                     </div>
-
-                    <form action="{{ route("contact.store") }}" method="post">
+                    <form action="{{ route(" contact.store") }}" method="post">
                         @csrf
                         <div class="contact-form">
                             <div class="input-wrap w-100">
@@ -26,9 +25,9 @@
                                 <i class="icon fa-solid fa-address-card"></i>
                             </div>
                             @error('name')
-                                <div class="error">{{ $message }}</div>
+                            <div class="error">{{ $message }}</div>
                             @enderror
-    
+
                             <div class="input-wrap w-100">
                                 <input type="number" class="contact-input" autocomplete="off" name="phone"
                                     pattern="[+]?[0-9]{1,4}[0-9]{10}" required>
@@ -36,25 +35,25 @@
                                 <i class="icon fa-solid fa-phone"></i>
                             </div>
                             @error('phone')
-                                <div class="error">{{ $message }}</div>
+                            <div class="error">{{ $message }}</div>
                             @enderror
-    
+
                             <div class="input-wrap w-100">
                                 <input type="email" class="contact-input" autocomplete="off" name="email" required>
                                 <label>Email</label>
                                 <i class="icon fa-solid fa-envelope"></i>
                             </div>
                             @error('email')
-                                <div class="error">{{ $message }}</div>
+                            <div class="error">{{ $message }}</div>
                             @enderror
-    
+
                             <div class="input-wrap textarea w-100">
                                 <textarea name="message" class="contact-input" autocomplete="off" required></textarea>
                                 <label>Message</label>
                                 <i class="icon fa-solid fa-inbox"></i>
                             </div>
                             @error('message')
-                                <div class="error">{{ $message }}</div>
+                            <div class="error">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="contact-buttons">
