@@ -56,7 +56,8 @@ Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], f
     // Orders Page
     Route::get('/orders', 'index')->name('orders');
     // Order Details
-    Route::get('/orders/{id}', 'orderDetails')->name('orders.details');
+    // Route::get('/orders/{id}', 'orderDetails')->name('orders.details');
+    Route::get('/order/{id}', 'viewBill')->name('bill');
     Route::delete('/orders/{id}', 'cancelOrder')->name('cancel.order');
 });
 
