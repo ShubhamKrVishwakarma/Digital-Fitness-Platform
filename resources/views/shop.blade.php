@@ -21,58 +21,44 @@
                     <button class="btn btn-success" type="submit">Search</button>
                 </div>
             </form>
-            <!-- Products -->
             <div class="row justify-content-center align-items-center flex-wrap">
                 @forelse ($products as $product)
-                <!-- Single Product -->
-                <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <a href="{{ route('product.details', $product->id) }}"><img src="{{ $product->getProductUrl() }}" alt="product image" /></a>
-                        </div>
-                        <div class="product-btns d-flex justify-content-center align-items-center">
-                            @auth
+                    <!-- Single Product -->
+                    <div class="product">
+                        <div class="product-content">
+                            <div class="product-img">
+                                <a href="{{ route('product.details', $product->id) }}"><img src="{{ $product->getProductUrl() }}" alt="product image" /></a>
+                            </div>
+                            <div class="product-btns d-flex justify-content-center align-items-center">
                                 @if ($product->quantity < 1)
-                                    <span class="text-success fw-semibold">Out of Stock</span>
+                                    <p class="text-danger fw-semibold mt-4">Out of Stock</p>
                                 @else
-                                    @if ($item->isAlreadyInCart($product->id))
-                                    <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
+                                    @if ($product->isAlreadyInCart($product->id))
+                                        <a href="{{ route('cart') }}" class="btn btn-dark bg-success">Go to Cart</a>
                                     @else
-                                    <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark">Add to Cart</a>
+                                        <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark">Add to Cart</a>
                                     @endif
                                 @endif
-                            @endauth
-                            @guest
-                                @if ($product->quantity < 1)
-                                    <span class="btn text-success fw-semibold">Out of Stock</span>
-                                @else
-                                    <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
-                                @endif
-                            @endguest
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title"></h2>
-                            <div class="rating">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span><i class="bi bi-star-fill"></i></span>
                             </div>
                         </div>
-                        <a href="#" class="product-name">{{ substr($product->name, 0, 15) }}...</a>
-                        <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
-                        <p class="product-price">{{ $product->price }}</p>
+                        <div class="product-info">
+                            <div class="product-info-top">
+                                <h2 class="sm-title"></h2>
+                                <div class="rating">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    {{ $product->rating }}
+                                </div>
+                            </div>
+                            <a href="#" class="product-name">{{ substr($product->name, 0, 15) }}...</a>
+                            <p class="product-price"><i class="bi bi-currency-rupee"></i></p>
+                            <p class="product-price">{{ $product->price }}</p>
+                        </div>
                     </div>
-                </div>
                 @empty
-                <div class="d-flex flex-column justify-content-center align-items-center py-4">
-                    <h2>No Such Products Found!</h2>
-                    <a href="{{ route('shop') }}" class="btn btn-primary">Refresh Products</a>
-                </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center py-4">
+                        <h2>No Products Found!</h2>
+                        <a href="{{ route('shop') }}" class="btn btn-primary">Refresh Products</a>
+                    </div>
                 @endforelse
                 <div>
                     {{ $products->links() }}
