@@ -16,7 +16,7 @@
                         <h1>Let's work together<span>.</span></h1>
                         <p class="text">Or reach us via : <a href="#">FitnessGroup777@gmail.com</a></p>
                     </div>
-                    <form action="{{ route(" contact.store") }}" method="post">
+                    <form action="{{ route("contact.store") }}" method="post">
                         @csrf
                         <div class="contact-form">
                             <div class="input-wrap w-100">

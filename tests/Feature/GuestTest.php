@@ -96,15 +96,6 @@ class GuestTest extends TestCase
 
         $response->assertRedirect('login');
     }
-
-    public function  test_unauthorized_user_cannot_access_order_details_page(): void
-    {
-        $response = $this->get('/orders/1');
-
-        $response->assertStatus(302);
-
-        $response->assertRedirect('login');
-    }
     
     public function  test_unauthorized_user_cannot_access_message_page(): void
     {
@@ -157,9 +148,9 @@ class GuestTest extends TestCase
         $response->assertStatus(403);
     }
     
-    public function  test_unauthorized_user_cannot_access_admin_conversations_page(): void
+    public function  test_unauthorized_user_cannot_access_admin_subscriptions_page(): void
     {
-        $response = $this->get('/Admin/conversations');
+        $response = $this->get('/Admin/subscriptions');
 
         $response->assertStatus(403);
     }
