@@ -17,7 +17,8 @@ class AuthTest extends TestCase
             "name" => "Test",
             "email" => "test@gmail.com",
             "gender" => "M",
-            "dob" => "22-04-2001",
+            // "dob" => "22-04-2001",
+            "dob" => "2001-04-23",
             "password" => "ssssssss",
             "role" => $role
         ]);
