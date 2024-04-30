@@ -110,11 +110,11 @@ class AuthTest extends TestCase
         $response->assertStatus(200);
     }
     
-    public function  test_authorized_admin_can_access_admin_conversations_page(): void
+    public function  test_authorized_admin_can_access_admin_subscriptions_page(): void
     {
         $admin = $this->createUser("admin");
 
-        $response = $this->actingAs($admin)->get('/Admin/conversations');
+        $response = $this->actingAs($admin)->get('/Admin/subscriptions');
 
         $response->assertStatus(200);
     }
