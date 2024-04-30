@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderedProduct;
 
 class OrderController extends Controller
 {
@@ -18,13 +19,13 @@ class OrderController extends Controller
     }
 
     /**
-     * Orders Details Page (Ordered Products)
+     * Bill Page (Ordered Products)
      * @return view
      */
-    public function orderDetails($id)
+    public function viewBill($id)
     {
-        return view('order_details', [
-            "order" => Order::find($id),
+        return view('bill',[
+            "order" => Order::findOrFail($id)
         ]);
     }
 

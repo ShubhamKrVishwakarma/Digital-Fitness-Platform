@@ -65,6 +65,7 @@ We are using Razorpay Payment Gateway Integration so order payment and subscript
 work unless you provide the Razorpay API Keys or use your required Payment Gateways
 
 If you want to use Razorpay create new account on https://razorpay.com/ and generate your API Key and Secret Key and paste the API Keys in the `/env` file variables
+
 ```
 RAZORPAY_API_KEY=
 RAZORPAY_SECRET_KEY=
