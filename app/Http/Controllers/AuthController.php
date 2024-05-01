@@ -161,7 +161,8 @@ class AuthController extends Controller
                 "dob" => $request->date_of_birth,
                 "phone" => $request->phone,
                 "password" => $request->password,
-                "role" => "pending"
+                "role" => "pending",
+                "rating" => 0
             ]);
 
             TrainerDetail::create([

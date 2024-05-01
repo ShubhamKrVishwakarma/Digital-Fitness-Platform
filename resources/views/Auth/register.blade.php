@@ -107,7 +107,7 @@
                                             <span class="text-danger" id="register-gender-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                            <label class="form-label-control">Occupation</label>
+                                            <label class="form-label-control">Specialization (Area of Expertise)</label>
                                             <input type="text" id="register-occupation" class="form-control" placeholder="Enter Occupation" required>
                                             <span class="text-danger" id="register-occupation-error"></span>
                                         </div>
@@ -127,7 +127,7 @@
                                             <span class="text-danger" id="register-issue-date-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                            <label class="form-label-control">Expiry Date</label>
+                                            <label class="form-label-control">Expiry Date (Optional)</label>
                                             <input type="date" id='register-expiry-date' class="form-control" placeholder="Expiry Date">
                                             <span class="text-danger" id="register-expiry-date-error"></span>
                                         </div>
@@ -160,6 +160,21 @@
             </div>
         </div>        
     </main>
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-8 mx-auto text-center">
+              <p class="mb-0 text-secondary">
+                <b>Note: </b>Professional Information is mandatory for Trainer Verification.  
+              </p>
+              <p class="m-0 text-secondary">
+                If you don't have any Professional Information but you have experience in that field then reach us at
+                <a href="mailto:FitnessHUB@gmail.com" class="text-primary">FitnessHUB@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
 @endsection
 
 @push('scripts')

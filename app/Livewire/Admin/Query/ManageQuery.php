@@ -45,5 +45,6 @@ class ManageQuery extends Component
 
     public function resetAll() {
         $this->reset();
+        $this->resetValidation();
     }
 }
