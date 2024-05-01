@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\Shubham\OneDrive\Desktop\Major-Project\Digital-Fitness-Platform\app\Models</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=10.1.14" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css?v=10.1.14" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=10.1.14" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\Users\Shubham\OneDrive\Desktop\Major-Project\Digital-Fitness-Platform\app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Models</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Cart.php.html#8">App\Models\Cart</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Category.php.html#8">App\Models\Category</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Comment.php.html#8">App\Models\Comment</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exercise.php.html#8">App\Models\Exercise</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Follower.php.html#8">App\Models\Follower</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#8">App\Models\Message</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Order.php.html#8">App\Models\Order</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderedProduct.php.html#8">App\Models\OrderedProduct</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#8">App\Models\Post</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PostLike.php.html#8">App\Models\PostLike</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#8">App\Models\Product</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductReview.php.html#8">App\Models\ProductReview</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Subscription.php.html#8">App\Models\Subscription</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TrainerDetail.php.html#8">App\Models\TrainerDetail</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TrainerReview.php.html#8">App\Models\TrainerReview</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserWorkoutLog.php.html#9">App\Models\UserWorkoutLog</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Workout.php.html#8">App\Models\Workout</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WorkoutPlan.php.html#8">App\Models\WorkoutPlan</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#9">App\Models\User</a></td><td class="text-right">12%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="User.php.html#9">App\Models\User</a></td><td class="text-right">404</td></tr>
+       <tr><td><a href="Post.php.html#8">App\Models\Post</a></td><td class="text-right">72</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Cart.php.html#16"><abbr title="App\Models\Cart::product">product</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cart.php.html#20"><abbr title="App\Models\Cart::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Category.php.html#16"><abbr title="App\Models\Category::product">product</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Comment.php.html#14"><abbr title="App\Models\Comment::post">post</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Comment.php.html#18"><abbr title="App\Models\Comment::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exercise.php.html#14"><abbr title="App\Models\Exercise::workouts">workouts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exercise.php.html#18"><abbr title="App\Models\Exercise::getExerciseGif">getExerciseGif</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Follower.php.html#16"><abbr title="App\Models\Follower::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Follower.php.html#20"><abbr title="App\Models\Follower::follower">follower</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#14"><abbr title="App\Models\Message::chats">chats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Order.php.html#14"><abbr title="App\Models\Order::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Order.php.html#18"><abbr title="App\Models\Order::orders">orders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderedProduct.php.html#16"><abbr title="App\Models\OrderedProduct::order">order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderedProduct.php.html#20"><abbr title="App\Models\OrderedProduct::getOrderedProductUrl">getOrderedProductUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#14"><abbr title="App\Models\Post::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#18"><abbr title="App\Models\Post::likes">likes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#22"><abbr title="App\Models\Post::postLiked">postLiked</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#26"><abbr title="App\Models\Post::totalLikes">totalLikes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#30"><abbr title="App\Models\Post::comments">comments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#34"><abbr title="App\Models\Post::commentExists">commentExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Post.php.html#45"><abbr title="App\Models\Post::getPostUrl">getPostUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PostLike.php.html#14"><abbr title="App\Models\PostLike::post">post</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PostLike.php.html#18"><abbr title="App\Models\PostLike::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#14"><abbr title="App\Models\Product::category">category</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#18"><abbr title="App\Models\Product::cart">cart</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#22"><abbr title="App\Models\Product::reviews">reviews</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#26"><abbr title="App\Models\Product::isAlreadyInCart">isAlreadyInCart</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#30"><abbr title="App\Models\Product::getProductUrl">getProductUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductReview.php.html#14"><abbr title="App\Models\ProductReview::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductReview.php.html#18"><abbr title="App\Models\ProductReview::product">product</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Subscription.php.html#14"><abbr title="App\Models\Subscription::member">member</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Subscription.php.html#18"><abbr title="App\Models\Subscription::trainer">trainer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TrainerDetail.php.html#16"><abbr title="App\Models\TrainerDetail::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TrainerReview.php.html#14"><abbr title="App\Models\TrainerReview::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TrainerReview.php.html#18"><abbr title="App\Models\TrainerReview::trainer">trainer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#17"><abbr title="App\Models\User::trainerDetails">trainerDetails</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#21"><abbr title="App\Models\User::cart">cart</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#25"><abbr title="App\Models\User::order">order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#29"><abbr title="App\Models\User::subscriptions">subscriptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#33"><abbr title="App\Models\User::posts">posts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#37"><abbr title="App\Models\User::followers">followers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#41"><abbr title="App\Models\User::userWorkoutLogs">userWorkoutLogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#45"><abbr title="App\Models\User::follows">follows</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#53"><abbr title="App\Models\User::hasBeenReviewed">hasBeenReviewed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#57"><abbr title="App\Models\User::hasProductReview">hasProductReview</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#68"><abbr title="App\Models\User::hasSubscribed">hasSubscribed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#72"><abbr title="App\Models\User::canShare">canShare</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#88"><abbr title="App\Models\User::hasPost">hasPost</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserWorkoutLog.php.html#15"><abbr title="App\Models\UserWorkoutLog::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserWorkoutLog.php.html#19"><abbr title="App\Models\UserWorkoutLog::plan">plan</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Workout.php.html#16"><abbr title="App\Models\Workout::plan">plan</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Workout.php.html#20"><abbr title="App\Models\Workout::exercises">exercises</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WorkoutPlan.php.html#14"><abbr title="App\Models\WorkoutPlan::workouts">workouts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WorkoutPlan.php.html#18"><abbr title="App\Models\WorkoutPlan::workoutLogs">workoutLogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WorkoutPlan.php.html#22"><abbr title="App\Models\WorkoutPlan::totalExercises">totalExercises</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#61"><abbr title="App\Models\User::hasSubscription">hasSubscription</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="User.php.html#98"><abbr title="App\Models\User::getProfileUrl">getProfileUrl</abbr></a></td><td class="text-right">66%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="User.php.html#72"><abbr title="App\Models\User::canShare">canShare</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="User.php.html#88"><abbr title="App\Models\User::hasPost">hasPost</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Post.php.html#34"><abbr title="App\Models\Post::commentExists">commentExists</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="User.php.html#45"><abbr title="App\Models\User::follows">follows</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="User.php.html#61"><abbr title="App\Models\User::hasSubscription">hasSubscription</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="User.php.html#98"><abbr title="App\Models\User::getProfileUrl">getProfileUrl</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.14</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.12</a> and <a href="https://phpunit.de/">PHPUnit 10.5.20</a> at Wed May 1 11:58:10 IST 2024.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js?v=10.1.14" type="text/javascript"></script>
+  <script src="../_js/d3.min.js?v=10.1.14" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js?v=10.1.14" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([18,0,1,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([55,0,0,0,0,0,0,2,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"Cart.php.html#8\">App\\Models\\Cart<\/a>"],[0,1,"<a href=\"Category.php.html#8\">App\\Models\\Category<\/a>"],[0,2,"<a href=\"Comment.php.html#8\">App\\Models\\Comment<\/a>"],[0,2,"<a href=\"Exercise.php.html#8\">App\\Models\\Exercise<\/a>"],[0,2,"<a href=\"Follower.php.html#8\">App\\Models\\Follower<\/a>"],[0,1,"<a href=\"Message.php.html#8\">App\\Models\\Message<\/a>"],[0,2,"<a href=\"Order.php.html#8\">App\\Models\\Order<\/a>"],[0,2,"<a href=\"OrderedProduct.php.html#8\">App\\Models\\OrderedProduct<\/a>"],[0,8,"<a href=\"Post.php.html#8\">App\\Models\\Post<\/a>"],[0,2,"<a href=\"PostLike.php.html#8\">App\\Models\\PostLike<\/a>"],[0,5,"<a href=\"Product.php.html#8\">App\\Models\\Product<\/a>"],[0,2,"<a href=\"ProductReview.php.html#8\">App\\Models\\ProductReview<\/a>"],[100,0,"<a href=\"Query.php.html#8\">App\\Models\\Query<\/a>"],[0,2,"<a href=\"Subscription.php.html#8\">App\\Models\\Subscription<\/a>"],[0,1,"<a href=\"TrainerDetail.php.html#8\">App\\Models\\TrainerDetail<\/a>"],[0,2,"<a href=\"TrainerReview.php.html#8\">App\\Models\\TrainerReview<\/a>"],[12.903225806451612,24,"<a href=\"User.php.html#9\">App\\Models\\User<\/a>"],[0,2,"<a href=\"UserWorkoutLog.php.html#9\">App\\Models\\UserWorkoutLog<\/a>"],[0,2,"<a href=\"Workout.php.html#8\">App\\Models\\Workout<\/a>"],[0,3,"<a href=\"WorkoutPlan.php.html#8\">App\\Models\\WorkoutPlan<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Cart.php.html#16\">App\\Models\\Cart::product<\/a>"],[0,1,"<a href=\"Cart.php.html#20\">App\\Models\\Cart::user<\/a>"],[0,1,"<a href=\"Category.php.html#16\">App\\Models\\Category::product<\/a>"],[0,1,"<a href=\"Comment.php.html#14\">App\\Models\\Comment::post<\/a>"],[0,1,"<a href=\"Comment.php.html#18\">App\\Models\\Comment::user<\/a>"],[0,1,"<a href=\"Exercise.php.html#14\">App\\Models\\Exercise::workouts<\/a>"],[0,1,"<a href=\"Exercise.php.html#18\">App\\Models\\Exercise::getExerciseGif<\/a>"],[0,1,"<a href=\"Follower.php.html#16\">App\\Models\\Follower::user<\/a>"],[0,1,"<a href=\"Follower.php.html#20\">App\\Models\\Follower::follower<\/a>"],[0,1,"<a href=\"Message.php.html#14\">App\\Models\\Message::chats<\/a>"],[0,1,"<a href=\"Order.php.html#14\">App\\Models\\Order::user<\/a>"],[0,1,"<a href=\"Order.php.html#18\">App\\Models\\Order::orders<\/a>"],[0,1,"<a href=\"OrderedProduct.php.html#16\">App\\Models\\OrderedProduct::order<\/a>"],[0,1,"<a href=\"OrderedProduct.php.html#20\">App\\Models\\OrderedProduct::getOrderedProductUrl<\/a>"],[0,1,"<a href=\"Post.php.html#14\">App\\Models\\Post::user<\/a>"],[0,1,"<a href=\"Post.php.html#18\">App\\Models\\Post::likes<\/a>"],[0,1,"<a href=\"Post.php.html#22\">App\\Models\\Post::postLiked<\/a>"],[0,1,"<a href=\"Post.php.html#26\">App\\Models\\Post::totalLikes<\/a>"],[0,1,"<a href=\"Post.php.html#30\">App\\Models\\Post::comments<\/a>"],[0,2,"<a href=\"Post.php.html#34\">App\\Models\\Post::commentExists<\/a>"],[0,1,"<a href=\"Post.php.html#45\">App\\Models\\Post::getPostUrl<\/a>"],[0,1,"<a href=\"PostLike.php.html#14\">App\\Models\\PostLike::post<\/a>"],[0,1,"<a href=\"PostLike.php.html#18\">App\\Models\\PostLike::user<\/a>"],[0,1,"<a href=\"Product.php.html#14\">App\\Models\\Product::category<\/a>"],[0,1,"<a href=\"Product.php.html#18\">App\\Models\\Product::cart<\/a>"],[0,1,"<a href=\"Product.php.html#22\">App\\Models\\Product::reviews<\/a>"],[0,1,"<a href=\"Product.php.html#26\">App\\Models\\Product::isAlreadyInCart<\/a>"],[0,1,"<a href=\"Product.php.html#30\">App\\Models\\Product::getProductUrl<\/a>"],[0,1,"<a href=\"ProductReview.php.html#14\">App\\Models\\ProductReview::user<\/a>"],[0,1,"<a href=\"ProductReview.php.html#18\">App\\Models\\ProductReview::product<\/a>"],[0,1,"<a href=\"Subscription.php.html#14\">App\\Models\\Subscription::member<\/a>"],[0,1,"<a href=\"Subscription.php.html#18\">App\\Models\\Subscription::trainer<\/a>"],[0,1,"<a href=\"TrainerDetail.php.html#16\">App\\Models\\TrainerDetail::user<\/a>"],[0,1,"<a href=\"TrainerReview.php.html#14\">App\\Models\\TrainerReview::user<\/a>"],[0,1,"<a href=\"TrainerReview.php.html#18\">App\\Models\\TrainerReview::trainer<\/a>"],[0,1,"<a href=\"User.php.html#17\">App\\Models\\User::trainerDetails<\/a>"],[0,1,"<a href=\"User.php.html#21\">App\\Models\\User::cart<\/a>"],[0,1,"<a href=\"User.php.html#25\">App\\Models\\User::order<\/a>"],[0,1,"<a href=\"User.php.html#29\">App\\Models\\User::subscriptions<\/a>"],[0,1,"<a href=\"User.php.html#33\">App\\Models\\User::posts<\/a>"],[0,1,"<a href=\"User.php.html#37\">App\\Models\\User::followers<\/a>"],[0,1,"<a href=\"User.php.html#41\">App\\Models\\User::userWorkoutLogs<\/a>"],[0,2,"<a href=\"User.php.html#45\">App\\Models\\User::follows<\/a>"],[0,1,"<a href=\"User.php.html#53\">App\\Models\\User::hasBeenReviewed<\/a>"],[0,1,"<a href=\"User.php.html#57\">App\\Models\\User::hasProductReview<\/a>"],[66.66666666666666,2,"<a href=\"User.php.html#61\">App\\Models\\User::hasSubscription<\/a>"],[0,1,"<a href=\"User.php.html#68\">App\\Models\\User::hasSubscribed<\/a>"],[0,5,"<a href=\"User.php.html#72\">App\\Models\\User::canShare<\/a>"],[0,3,"<a href=\"User.php.html#88\">App\\Models\\User::hasPost<\/a>"],[66.66666666666666,2,"<a href=\"User.php.html#98\">App\\Models\\User::getProfileUrl<\/a>"],[0,1,"<a href=\"UserWorkoutLog.php.html#15\">App\\Models\\UserWorkoutLog::user<\/a>"],[0,1,"<a href=\"UserWorkoutLog.php.html#19\">App\\Models\\UserWorkoutLog::plan<\/a>"],[0,1,"<a href=\"Workout.php.html#16\">App\\Models\\Workout::plan<\/a>"],[0,1,"<a href=\"Workout.php.html#20\">App\\Models\\Workout::exercises<\/a>"],[0,1,"<a href=\"WorkoutPlan.php.html#14\">App\\Models\\WorkoutPlan::workouts<\/a>"],[0,1,"<a href=\"WorkoutPlan.php.html#18\">App\\Models\\WorkoutPlan::workoutLogs<\/a>"],[0,1,"<a href=\"WorkoutPlan.php.html#22\">App\\Models\\WorkoutPlan::totalExercises<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
