@@ -213,7 +213,7 @@
                         <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
                             @if ($role === "pending")
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button wire:click.prevent='confirmVerification' class="btn btn-sm btn-success m-0 w-100">Confirm Verification</button>
+                                    <button wire:confirm='Are u sure?' wire:click.prevent='confirmVerification' class="btn btn-sm btn-success m-0 w-100" x-on:click="manageUser = false, usersTable = true">Confirm Verification</button>
                                 </div>
                             @else
                             <div class="d-flex justify-content-center align-items-center">

@@ -219,5 +219,6 @@ class ManageUser extends Component
 
     public function resetAll() {
         $this->reset();
+        $this->resetValidation();
     }
 }
