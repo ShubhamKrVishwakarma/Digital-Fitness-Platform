@@ -13,6 +13,19 @@
 @endpush
 
 @section('content')
+    @if (session('alert'))
+    <div id="success-message" class="alert alert-danger mb-0">
+        {{ session('alert') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'none';
+            }, 0);
+        }, 3000);
+    </script>
+    @endif
     <div class="container bg-dark text-light mt-2 rounded-4 ">
         <div class="edit" id="edit-section">
             <div class="card border-0 bg-transparent mb-0">
@@ -141,10 +154,14 @@
                             <div>{{$message}}</div>
                             @enderror
                         </div>
+                        <div>
+                            <p class="alert alert-danger">Changing Password will redirect you to the login page</p>
+                        </div>
                         <div class="col-12 mt-4">
                             <button type="submit" class="btn btn-primary me-2">Update Password</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

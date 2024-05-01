@@ -89,7 +89,7 @@
                                                     <div class="mb-4 mb-lg-0">
                                                         <label class="form-label">State</label>
                                                         <input type="text" class="form-control" name="state"
-                                                            id="billing-city" placeholder="Enter City"
+                                                            id="billing-city" placeholder="Enter State"
                                                             value="{{ auth()->user()->state }}" required>
                                                     </div>
                                                 </div>
