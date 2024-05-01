@@ -115,7 +115,7 @@ $(document).ready(function() {
         }
 
         if (errors.date_of_birth) {
-            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2009-04-20.") {
+            if (errors.date_of_birth[0].startsWith("The date of birth field must be a date before")) {
                 $('#signup-dob-error').text('You should be at least 15 years old!');
             } else {
                 $('#signup-dob-error').text(errors.date_of_birth[0]);
@@ -201,7 +201,7 @@ $(document).ready(function() {
         }
 
         if (errors.date_of_birth) {
-            if (errors.date_of_birth[0] === "The date of birth field must be a date before 2006-04-20.") {
+            if (errors.date_of_birth[0].startsWith("The date of birth field must be a date before")) {
                 $('#register-dob-error').text('You should be at least 18 years old!');
             } else {
                 $('#register-dob-error').text(errors.date_of_birth[0]);
