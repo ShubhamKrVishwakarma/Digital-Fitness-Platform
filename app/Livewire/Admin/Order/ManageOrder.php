@@ -92,5 +92,6 @@ class ManageOrder extends Component
 
     public function resetAll() {
         $this->reset();
+        $this->resetValidation();
     }
 }
