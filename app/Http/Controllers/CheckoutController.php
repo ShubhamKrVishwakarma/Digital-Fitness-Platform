@@ -106,8 +106,8 @@ class CheckoutController extends Controller
 
         if ($status->captured) {
             return redirect()->route('orders')->with('alert', 'Payment completed Successfully!');
-        } else {
-            return redirect()->route('cart')->with('alert', 'Payment Failed');
         }
+        
+        return redirect()->route('cart')->with('alert', 'Payment Failed');
     }
 }

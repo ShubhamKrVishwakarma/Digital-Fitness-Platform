@@ -112,8 +112,8 @@ class TrainerController extends Controller
                 "expiry_date" => ($request->type === "monthly") ? now()->addMonth() : now()->addYear()
             ]);
             return redirect()->route('message')->with('alert', 'Subscription Added Successfully!');
-        } else {
-            return redirect()->route('trainers')->with('alert', 'Payment Failed!');
         }
+
+        return redirect()->route('trainers')->with('alert', 'Payment Failed!');
     }
 }
