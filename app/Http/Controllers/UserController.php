@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -76,11 +77,16 @@ class UserController extends Controller
         ]);
 
         $user = User::findOrFail(auth()->user()->id);
+        if(Hash::check($request->input('old-pass'),$user->password)){
+            $user->password = $request->input('new-pass');
+            $user->update();
+            auth()->logout();
 
-        $user->password = $request->input('new-pass');
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
 
-        $user->update();
-
-        return redirect()->route('user.show', $user->id)->with('alert', 'Profile updated successfully.');
+            return redirect()->route('login');
+        }
+        return redirect()->route('user.profile_edit', $user->id)->with('alert','Please Enter correct password');
     }
 }
