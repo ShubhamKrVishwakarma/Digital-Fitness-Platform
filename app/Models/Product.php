@@ -24,7 +24,7 @@ class Product extends Model
     }
 
     public function isAlreadyInCart($product_id) {
-        return Cart::where("product_id", $product_id)->where("user_id", $this->id)->exists();
+        return Cart::where("product_id", $product_id)->where("user_id", auth()->user()->id)->exists();
     }
 
     public function getProductUrl() {
