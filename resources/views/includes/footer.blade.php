@@ -131,10 +131,10 @@
             <div class="col-md-3">
                 <div class="text-md-end d-flex align-items-center justify-content-md-end">
                     <div class="ms-3 d-flex gap-2">
-                        <a href="https://www.linkedin.com/in/shubham-kumar-vishwakarma-085735271/" class="text-reset btn btn-icon" target="_blank">
+                        <a class="text-reset btn btn-icon" target="_blank" style="cursor: pointer">
                             <i class="bi bi-linkedin text-light"></i>
                         </a>
-                        <a href="https://twitter.com/" class="text-reset btn btn-icon" target="_blank">
+                        <a class="text-reset btn btn-icon" target="_blank" style="cursor: pointer">
                             <i class="bi bi-twitter-x text-light"></i>
                         </a>
                         <a href="https://github.com/ShubhamKrVishwakarma/Digital-Fitness-Platform" class="text-reset btn btn-icon" target="_blank">
