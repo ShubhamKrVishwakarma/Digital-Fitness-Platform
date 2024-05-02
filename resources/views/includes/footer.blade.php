@@ -61,7 +61,7 @@
                             <ul class="list-unstyled mb-0 py-3 py-lg-0">
                                 @guest
                                     <li class="mb-2">
-                                        <a href="{{ route('signup') }}" class="text-decoration-none text-light">Signup</a>
+                                        <a data-bs-toggle="modal" data-bs-target="#registerModal" class="text-decoration-none text-light" style="cursor: pointer;">Signup</a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{{ route('login') }}" class="text-decoration-none text-light">Login</a>
