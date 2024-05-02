@@ -87,4 +87,14 @@
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 <script src="{{ asset('js/contact.js') }}"></script>
+<script src="{{ asset('plugins/alert.js') }}"></script>
+@if(session('alert'))
+<script>
+    Swal.fire({
+        title: "Success",
+        text: "{{ session('alert') }}",
+        icon: "success"
+      });
+</script>
+@endif
 @endpush

@@ -211,7 +211,7 @@
                                         @endauth
                                         @guest
                                             <a href="{{ route('login') }}" class="fw-light text-danger nav-link fs-6"><i
-                                                    class="bi bi-heart"></i> {{ $post->likes->count() }}</a>
+                                                    class="bi bi-heart-fill"></i> {{ $post->likes->count() }}</a>
                                         @endguest
                                     </div>
                                     <div>

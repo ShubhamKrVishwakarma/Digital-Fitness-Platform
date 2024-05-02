@@ -30,11 +30,16 @@
                 @if ($product->quantity < 1)
                     <p class="text-danger fw-semibold mt-4">Out of Stock</p>
                 @else
-                    @if ($product->isAlreadyInCart($product->id))
-                        <a href="{{route('cart')}}" class="btn btn-success">Go to cart</a>
-                    @else
-                        <a href="{{route('addToCart', $product->id)}}" class="bttn bttn-primary">Add to cart</a>
-                    @endif
+                    @auth
+                        @if ($product->isAlreadyInCart($product->id))
+                            <a href="{{route('cart')}}" class="btn btn-success">Go to cart</a>
+                        @else
+                            <a href="{{route('addToCart', $product->id)}}" class="bttn bttn-primary">Add to cart</a>
+                        @endif
+                    @endauth
+                    @guest    
+                        <a href="{{ route('login') }}" class="bttn bttn-primary">Add to cart</a>
+                    @endguest
                 @endif
             </div>
         </div>
