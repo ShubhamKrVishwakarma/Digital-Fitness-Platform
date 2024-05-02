@@ -21,7 +21,7 @@ Route::redirect('/home', '/');
 // Profile Page Routes
 Route::group(['controller' => UserController::class], function() {
     Route::get('/profile/{id}', 'show')->name('user.show');
-    Route::get('/profile-edit/{id}', 'profile_edit')->name('user.profile_edit');
+    Route::get('/profile-edit/{id}', 'profile_edit')->middleware('auth')->name('user.profile_edit');
     Route::put('/profile/{id}', 'update')->middleware('auth')->name('user.update');
     Route::patch('/profile', 'update_pass')->middleware('auth')->name('user.update_pass');
 });
@@ -56,7 +56,6 @@ Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], f
     // Orders Page
     Route::get('/orders', 'index')->name('orders');
     // Order Details
-    // Route::get('/orders/{id}', 'orderDetails')->name('orders.details');
     Route::get('/order/{id}', 'viewBill')->name('bill');
     Route::delete('/orders/{id}', 'cancelOrder')->name('cancel.order');
 });

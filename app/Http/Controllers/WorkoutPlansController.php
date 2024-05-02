@@ -28,7 +28,7 @@ class WorkoutPlansController extends Controller
         }
 
         return view('workout_plans', [
-            'begineers' => WorkoutPlan::where('level', 'begineer')->get(),
+            'beginners' => WorkoutPlan::where('level', 'beginner')->get(),
             'intermediate' => WorkoutPlan::where('level', 'intermediate')->get(),
             'advanced' => WorkoutPlan::where('level', 'advanced')->get(),
             'completed' => $completed,
