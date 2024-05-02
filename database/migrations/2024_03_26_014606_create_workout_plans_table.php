@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('workout_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->enum('level', ['begineer', 'intermediate', 'advanced']);
+            $table->enum('level', ['beginner', 'intermediate', 'advanced']);
             $table->integer('duration');
             $table->integer('calories');
             $table->timestamps();

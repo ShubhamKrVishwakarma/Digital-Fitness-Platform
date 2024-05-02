@@ -13,10 +13,10 @@ class WorkoutPlanSeeder extends Seeder
      */
     public function run(): void
     {
-        // Begineers Chest Workout Plan
+        // Beginners Chest Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Chest Workout Plan",
-            "level" => "begineer",
+            "name" => "Beginner's Chest Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 450
         ]);
@@ -34,10 +34,10 @@ class WorkoutPlanSeeder extends Seeder
 
         Workout::insert($workouts);
         
-        // Begineers Shoulder Workout Plan
+        // Beginners Shoulder Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Shoulder Workout Plan",
-            "level" => "begineer",
+            "name" => "Beginner's Shoulder Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 336
         ]);
@@ -55,10 +55,10 @@ class WorkoutPlanSeeder extends Seeder
         
         Workout::insert($workouts);
         
-        // Begineers Back Workout Plan
+        // Beginner Back Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Back Workout Plan",
-            "level" => "begineer",
+            "name" => "Beginner's Back Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 412
         ]);
@@ -76,10 +76,10 @@ class WorkoutPlanSeeder extends Seeder
 
         Workout::insert($workouts);
 
-        // Begineers Arms Workout Plan
+        // Beginner Arms Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Arms Workout Plan",
-            "level" => "begineer",
+            "name" => "Beginner's Arms Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 412
         ]);
@@ -108,10 +108,10 @@ class WorkoutPlanSeeder extends Seeder
 
         Workout::insert($workouts);
 
-        // Begineers Abs Workout Plan
+        // Beginner Abs Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Abs Workout Plan",
-            "level" => "begineer",
+            "name" => "Beginner's Abs Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 310
         ]);
@@ -129,10 +129,10 @@ class WorkoutPlanSeeder extends Seeder
 
         Workout::insert($workouts);
 
-        // Begineers Legs Workout Plan
+        // Beginners Legs Workout Plan
         $plan = WorkoutPlan::create([
-            "name" => "Begineer's Legs Workout Plan",
-            "level" => "begineer",
+            "name" => "beginner's Legs Workout Plan",
+            "level" => "beginner",
             "duration" => 30,
             "calories" => 310
         ]);
