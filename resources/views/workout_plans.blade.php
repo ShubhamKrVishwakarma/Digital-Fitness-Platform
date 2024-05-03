@@ -158,12 +158,12 @@
             </div>
         </section>
 
-        <section class="container main-section-1" id="begineer">
+        <section class="container main-section-1" id="beginner">
             <div class="heading my-4">
-                <h4>Begineer</h4>
+                <h4>Beginner</h4>
             </div>
             <div class="content d-flex flex-wrap justify-content-around">
-                @foreach ($begineers as $plan)
+                @foreach ($beginners as $plan)
                     <a href="{{ route('workout', $plan->id) }}">
                         <div class="image-group mb-4 ">
                             <img src="{{ asset('./images/workout/plank.jpg') }}" alt="">

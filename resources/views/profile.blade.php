@@ -62,7 +62,9 @@
                     @if (auth()->user()->id !== $user->id)
                         <div class="buttons-for-user">
                             @if (auth()->user()->hasSubscribed($user->id)|| $user->hasSubscribed(auth()->user()->id))
-                                <button type="button" class="btn btn-primary" id="chat-button">Chat</button>
+                                <a href="{{ route('message') }}">
+                                    <button type="button" class="btn btn-primary" id="chat-button">Chat</button>
+                                </a>
                             @else
                                 @if ($user->role==="trainer" && auth()->user()->role!=="trainer")
                                     <a href="{{ route('pricing', $user->id) }}">
