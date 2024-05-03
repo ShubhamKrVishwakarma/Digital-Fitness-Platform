@@ -81,7 +81,7 @@
                                 @endauth
                                 @guest
                                     <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3">Rate Trainer</a>
-                                    <a href="{{ route('login') }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Chat Now</a>
+                                    <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Start Chat</a>
                                 @endguest
                             </div>
                         </div>

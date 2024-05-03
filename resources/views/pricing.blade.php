@@ -15,16 +15,12 @@
                 <h6 class="subtitle font-weight-normal">We're committed to making your journey to health and wellness not only effective but also enjoyable. That's why we've designed our pricing plans to be as flexible and empowering as your workouts.</h6>
             </div>
         </div>
-        <!-- row  -->
         <div class="row mt-4">
-            <!-- column  -->
             <div class="col-md-6">
                 <div class="card card-shadow border-0 mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center">
                             <h5 class="font-weight-medium mb-0 me-2">Monthly Plan</h5>
-                            <div class="ml-auto"><span class="badge badge-danger font-weight-normal p-2">Popular</span>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-5 text-center">
@@ -36,7 +32,12 @@
                                         <input type="hidden" name="amount" value="450">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <input type="hidden" name="type" value="monthly">
-                                        <button class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
+                                        @auth
+                                            <button type="submit" class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN</button>
+                                        @endauth
+                                        @guest
+                                            <a href="{{ route('login') }}" class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN</a>
+                                        @endguest
                                     </form>
                                 </div>
                             </div>
@@ -54,13 +55,13 @@
                     </div>
                 </div>
             </div>
-            <!-- column  -->
-            <!-- column  -->
             <div class="col-md-6">
                 <div class="card card-shadow border-0 mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center">
-                            <h5 class="font-medium m-b-0">Yearly Plan</h5>
+                            <h5 class="font-weight-medium mb-0 me-2">Monthly Plan</h5>
+                            <div class="ml-auto"><span class="badge badge-danger font-weight-normal p-2">Save &#8377;1,401</span>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-5 text-center">
@@ -72,7 +73,12 @@
                                         <input type="hidden" name="amount" value="3999">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <input type="hidden" name="type" value="yearly">
-                                        <button class="btn btn-info-gradiant border-0 font-14 text-white p-3 btn-block mt-3">CHOOSE PLAN </button>
+                                        @auth
+                                            <button type="submit" class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN</button>
+                                        @endauth
+                                        @guest
+                                            <a href="{{ route('login') }}" class="btn btn-info-gradiant font-14 border-0 text-white p-3 btn-block mt-3">CHOOSE PLAN</a>
+                                        @endguest
                                     </form>
                                 </div>
                             </div>
@@ -90,7 +96,6 @@
                     </div>
                 </div>
             </div>
-            <!-- column  -->
         </div>
     </div>
 </div>
