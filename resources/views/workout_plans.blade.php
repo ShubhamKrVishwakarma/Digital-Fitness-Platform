@@ -239,7 +239,7 @@
                     @foreach ($weeklyRecords as $record)
                         @if ($record->plan->name == $plan->name)
                             <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/workout/plank.jpg') }}" alt="" class="opacity-25">
+                                <img src="{{ asset('./images/workout/intermediate.jpg') }}" alt="" class="opacity-25">
                                 <span class="flex-column">
                                     <p class="text-start text-light text-capitalize ">{{ $plan->name }}
                                         <br>{{ $plan->totalExercises($plan->id) }} Exercises<br>
@@ -299,7 +299,7 @@
                     @foreach ($weeklyRecords as $record)
                         @if ($record->plan->name == $plan->name)
                             <div class="image-group mb-4 ">
-                                <img src="{{ asset('./images/workout/plank.jpg') }}" alt="" class="opacity-25">
+                                <img src="{{ asset('./images/home/advance.jpg') }}" alt="" class="opacity-25">
                                 <span class="flex-column">
                                     <p class="text-start text-light text-capitalize ">{{ $plan->name }}
                                         <br>{{ $plan->totalExercises($plan->id) }} Exercises<br>
