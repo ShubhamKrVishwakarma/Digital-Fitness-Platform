@@ -21,18 +21,26 @@ class WorkoutPlansController extends Controller
         $endOfweek = Carbon::now()->endOfWeek();
         $completed = null;
         $weeklyRecords = null;
+        $todayComplete = false;
 
         if ($user) {
             $weeklyRecords = UserWorkoutLog::where('user_id', $user->id)->whereBetween('created_at', [$startOfweek, $endOfweek])->get();
             $completed = UserWorkoutLog::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->first();
+            if($completed && $completed->created_at->format('Y-m-d') === Carbon::now()->format('Y-m-d') ){
+                $todayComplete = true;
+            }
         }
+
+        // dd($completed->created_at->format('Y-m-d'));
+        // dd(Carbon::now()->format('Y-m-d') === $completed->created_at->format('Y-m-d') );
 
         return view('workout_plans', [
             'beginners' => WorkoutPlan::where('level', 'beginner')->get(),
             'intermediate' => WorkoutPlan::where('level', 'intermediate')->get(),
             'advanced' => WorkoutPlan::where('level', 'advanced')->get(),
             'completed' => $completed,
-            'weeklyRecords' => $weeklyRecords
+            'weeklyRecords' => $weeklyRecords,
+            'todayComplete' => $todayComplete
         ]);
     }
 }

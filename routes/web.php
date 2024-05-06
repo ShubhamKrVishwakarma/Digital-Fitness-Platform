@@ -77,7 +77,7 @@ Route::group(['controller' => QueryController::class], function() {
 
 //Workout Page Routes
 Route::get('/workout_plans', [WorkoutPlansController::class , 'index' ])->name('workout.plans');
-Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware('auth')->name('workout');
+Route::get('/workout/{id}', [WorkoutController::class , 'index' ])->middleware(['auth', 'workout.complete'])->name('workout');
 Route::post('/workout_completed/{id}', [UserWorkoutLogController::class , 'store' ])->middleware('auth')->name('workout.completed');
 
 // Trainers Routes
