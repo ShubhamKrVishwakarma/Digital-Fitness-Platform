@@ -85,7 +85,7 @@ class UserController extends Controller
             request()->session()->invalidate();
             request()->session()->regenerateToken();
 
-            return redirect()->route('login');
+            return redirect()->route('login')->with('alert', 'Password Updated Successfully!');
         }
         return redirect()->route('user.profile_edit', $user->id)->with('alert','Please Enter correct password');
     }

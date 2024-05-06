@@ -29,8 +29,7 @@
                             @enderror
 
                             <div class="input-wrap w-100">
-                                <input type="number" class="contact-input" autocomplete="off" name="phone"
-                                    pattern="[+]?[0-9]{1,4}[0-9]{10}" required>
+                                <input type="text" class="contact-input" autocomplete="off" name="phone" required>
                                 <label>Phone Number</label>
                                 <i class="icon fa-solid fa-phone"></i>
                             </div>

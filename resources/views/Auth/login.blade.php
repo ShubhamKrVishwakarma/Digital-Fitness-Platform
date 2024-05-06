@@ -276,3 +276,15 @@
     </section>
 </main>
 @endsection
+
+@push('scripts')
+@if(session('alert'))
+<script>
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "{{ session('alert') }}"
+      });
+  </script>
+@endif
+@endpush

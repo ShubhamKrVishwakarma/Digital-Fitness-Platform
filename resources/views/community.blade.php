@@ -38,12 +38,13 @@
                                             <!-- User stat START -->
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center">
                                                 <!-- User stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
-                                                    <small>Post</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
+                                                @if (auth()->user()->canShare())
+                                                    <div>
+                                                        <h6 class="mb-0">{{ auth()->user()->posts->count() }}</h6>
+                                                        <small>Post</small>
+                                                    </div>
+                                                    <div class="vr"></div>
+                                                @endif
                                                 <!-- User stat item -->
                                                 <div>
                                                     <h6 class="mb-0">{{ auth()->user()->followers }}</h6>

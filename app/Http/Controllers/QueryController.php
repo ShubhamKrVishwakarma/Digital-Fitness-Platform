@@ -23,10 +23,10 @@ class QueryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|min:2|max:255",
-            "phone" => "required|min:10",
-            "email" => "required|email",
-            "message" => "required|max:250"
+            "name" => "required|min:2|max:100",
+            "phone" => "required|numeric|digits:10",
+            "email" => "required|email|min:5|max:100",
+            "message" => "required|min:5|max:250"
         ]);
 
         Query::create([
