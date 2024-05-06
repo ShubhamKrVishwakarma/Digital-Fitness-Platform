@@ -194,7 +194,7 @@
     @if(session('alert'))
         <script>
             Swal.fire({
-                position: "top",
+                position: "center",
                 icon: "success",
                 title: "{{ session('alert') }}",
                 showConfirmButton: false,
@@ -202,4 +202,13 @@
             });
         </script>
     @endif
+    @error("trainer-review")
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Oops..",
+                text: "{{ $message }}"
+            });
+        </script>
+    @enderror
 @endpush
