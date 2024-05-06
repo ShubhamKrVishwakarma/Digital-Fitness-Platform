@@ -43,7 +43,7 @@ class User extends Authenticatable
     }
 
     public function follows($id) {
-        $follower = Follower::where("follower_id", $id)->where('user_id', $this->id)->get();
+        $follower = Follower::where("follower_id", $id)->where('user_id', auth()->user()->id)->get();
         if ($follower->count() < 1) {
             return false;
         }
@@ -51,22 +51,22 @@ class User extends Authenticatable
     }
 
     public function hasBeenReviewed($trainer_id) {
-        return TrainerReview::where("user_id", $this->id)->where("trainer_id", $trainer_id)->exists();
+        return TrainerReview::where("user_id", auth()->user()->id)->where("trainer_id", $trainer_id)->exists();
     }
 
     public function hasProductReview($product_id) {
-        return ProductReview::where("user_id", $this->id)->where("product_id", $product_id)->exists();
+        return ProductReview::where("user_id", auth()->user()->id)->where("product_id", $product_id)->exists();
     }
 
     public function hasSubscription() {
         if ($this->role === "trainer") {
             return Subscription::where("trainer_id", $this->id)->exists();
         } 
-        return Subscription::where("user_id", $this->id)->where("expiry_date", ">", now())->exists();
+        return Subscription::where("user_id", auth()->user()->id)->where("expiry_date", ">", now())->exists();
     }
 
     public function hasSubscribed($trainer_id) {
-        return Subscription::where("user_id", $this->id)->where("trainer_id", $trainer_id)->where("expiry_date", ">", now())->exists();
+        return Subscription::where("user_id", auth()->user()->id)->where("trainer_id", $trainer_id)->where("expiry_date", ">", now())->exists();
     }
 
     public function canShare() {
@@ -74,7 +74,7 @@ class User extends Authenticatable
             return true;
         }
 
-        $user = Subscription::where("user_id", $this->id)->latest()->first();
+        $user = Subscription::where("user_id", auth()->user()->id)->latest()->first();
 
         if ($user) {
             if ($user->expiry_date > now()) {
