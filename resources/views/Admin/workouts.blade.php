@@ -18,6 +18,13 @@
     <script>
         document.addEventListener('alert', (event) => {
             Swal.fire({
+                icon: event.detail.icon,
+                title: event.detail.title,
+                text: event.detail.text
+            });
+        });
+        document.addEventListener('alert2', (event) => {
+            Swal.fire({
                 position: "center",
                 icon: event.detail.icon,
                 title: event.detail.title,

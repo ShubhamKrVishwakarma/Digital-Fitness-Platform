@@ -87,7 +87,7 @@ class AddMember extends Component
             'alert', 
             icon: 'success',
             title: 'Success!',
-            text: 'A New Member Added Successfully!',
+            text: 'New Member Added Successfully!',
         );
     }
 }

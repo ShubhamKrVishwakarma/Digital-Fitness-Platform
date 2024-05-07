@@ -42,7 +42,7 @@ class AddWorkoutPlan extends Component
             $this->sets[$exercise->id] = null;
             $this->reps[$exercise->id] = null;
             $this->dispatch(
-                'alert', 
+                'alert2', 
                 icon: 'success',
                 title: 'Success!',
                 text: 'Exercise Added Successfully!',
@@ -53,7 +53,7 @@ class AddWorkoutPlan extends Component
     public function removeExercise($index) {
         unset($this->exerciseDetails[$index]);
         $this->dispatch(
-            'alert', 
+            'alert2', 
             icon: 'success',
             title: 'Success!',
             text: 'Exercise Removed Successfully!',
@@ -61,9 +61,18 @@ class AddWorkoutPlan extends Component
     }
 
     public function addWorkoutPlan() {
+        if (count($this->exerciseDetails) < 1) {
+            $this->dispatch(
+                'alert', 
+                icon: 'info',
+                title: 'Oops!',
+                text: 'Add Exercise to your Workout Plan',
+            );
+            return;
+        }
         $this->validate([
             "name" => "required|min:5|max:100",
-            "level" => "required|in:begineer,intermediate,advanced",
+            "level" => "required|in:beginner,intermediate,advanced",
             "duration" => "required|integer",
             "calories" => "required|integer",
             "sets.*" => "required|integer",

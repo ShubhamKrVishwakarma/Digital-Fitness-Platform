@@ -242,7 +242,7 @@
                             </div>
                             <div class="text-center mt-4">
                                 <h5>
-                                    {{ $name }}<span class="font-weight-light">, 35</span>
+                                    {{ $name }}
                                 </h5>
                                 <div class="h6 font-weight-300">
                                     <i class="ni location_pin mr-2"></i>{{ $email }}
@@ -251,7 +251,7 @@
                                     Profile Bio 
                                 </div>
                                 <div>
-                                    {{ $bio }}
+                                    {{ $bio ?? "Bio is Empty"}}
                                 </div>
                             </div>
                         </div>

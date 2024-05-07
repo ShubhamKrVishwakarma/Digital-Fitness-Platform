@@ -67,7 +67,11 @@ class ManageReview extends Component
     }
 
     public function delete() {
-        TrainerReview::findOrFail($this->id)->deleteOrFail();
+        if ($this->type === "trainer") {
+            TrainerReview::findOrFail($this->id)->deleteOrFail();
+        } else {
+            ProductReview::findOrFail($this->id)->deleteOrFail();
+        }
 
         $this->dispatch('refreshReviewsTable');
 
