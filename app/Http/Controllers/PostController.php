@@ -51,7 +51,7 @@ class PostController extends Controller
             "content" => $request["post-message"]
         ]);
 
-        return redirect()->route('community')->with('alert', 'Post Added Successfully!');
+        return redirect()->route('community')->with('alert', 'Post Shared Successfully!');
     }
 
         /**
