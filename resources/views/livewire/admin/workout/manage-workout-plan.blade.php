@@ -23,7 +23,7 @@
                             <label class="form-label-control">Strength Level</label>
                             <select wire:model='level' class="form-control" required>
                                 <option value="" selected>Select Strength Level</option>
-                                <option value="begineer">Begineer</option>
+                                <option value="beginner">Begineer</option>
                                 <option value="intermediate">Intermediate</option>
                                 <option value="advanced">Advanced</option>
                             </select>

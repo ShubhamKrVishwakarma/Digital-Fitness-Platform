@@ -22,12 +22,9 @@
 <script>
     document.addEventListener('alert', (event) => {
         Swal.fire({
-            position: "center",
             icon: event.detail.icon,
             title: event.detail.title,
-            text: event.detail.text,
-            showConfirmButton: false,
-            timer: 1200
+            text: event.detail.text
         });
     });
 </script>

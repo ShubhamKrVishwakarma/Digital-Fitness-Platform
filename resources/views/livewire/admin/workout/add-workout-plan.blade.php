@@ -4,7 +4,7 @@
             <div class="col-12 d-flex justify-content-between align-items-center flex-wrap mb-2">
                 <h3 class="text-light ms-2 font-weight-bolder">Add New Workout Plan</h3>
                 <button class="btn btn-sm btn-dark mb-0 me-4"
-                    x-on:click="addWorkoutPlan = false, workoutPlansTable = true">View All Workout Plans</button>
+                    x-on:click.prevent="addWorkoutPlan = false, workoutPlansTable = true">View All Workout Plans</button>
             </div>
             <div class="col-md-6">
                 <div class="card">
@@ -21,7 +21,7 @@
                             <label class="form-label-control">Strength Level</label>
                             <select wire:model='level' class="form-control" required>
                                 <option value="" selected>Select Strength Level</option>
-                                <option value="begineer">Begineer</option>
+                                <option value="beginner">Begineer</option>
                                 <option value="intermediate">Intermediate</option>
                                 <option value="advanced">Advanced</option>
                             </select>

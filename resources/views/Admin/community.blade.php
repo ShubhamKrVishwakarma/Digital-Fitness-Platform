@@ -21,7 +21,7 @@
         Swal.fire({
             icon: event.detail.icon,
             title: event.detail.title,
-            text: event.detail.text,
+            text: event.detail.text
         });
     });
 </script>

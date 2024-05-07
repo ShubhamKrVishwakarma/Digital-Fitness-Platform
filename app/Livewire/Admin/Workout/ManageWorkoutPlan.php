@@ -84,7 +84,7 @@ class ManageWorkoutPlan extends Component
     public function update() {
         $this->validate([
             "name" => "required|min:5|max:100",
-            "level" => "required|in:begineer,intermediate,advanced",
+            "level" => "required|in:beginner,intermediate,advanced",
             "duration" => "required|integer",
             "calories" => "required|integer",
             "sets.*" => "required|integer",
@@ -133,7 +133,7 @@ class ManageWorkoutPlan extends Component
             'alert', 
             icon: 'success',
             title: 'Success!',
-            text: 'Plan Removed Successfully!',
+            text: 'Workout Plan Removed Successfully!',
         );
     }
 

@@ -112,7 +112,7 @@
                         <h6>Professional Information</h6>
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label class="form-control-label">Occupation</label>
+                                <label class="form-control-label">Specialization (Area of Expertise)</label>
                                 <input type="text" class="form-control" wire:model='occupation' placeholder="Occupation" required>
                                 @error('ocupation')
                                     <span class="text-danger">{{ $message }}</span>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-control-label">Expiry Date</label>
-                                <input type="date" wire:model='expiry_date' class="form-control" placeholder="Expiry Date" required>
+                                <input type="date" wire:model='expiry_date' class="form-control" placeholder="Expiry Date">
                                 @error('expiry_date')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
