@@ -18,7 +18,7 @@ class MemberSeeder extends Seeder
             $userData[] = [
                 "name" => fake()->name(),
                 "email" => fake()->unique()->email(),
-                "phone" => fake()->numerify('##########'),
+                "phone" => rand(6, 9) . fake()->numerify('#########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
                 "gender" => fake()->randomElement(['M', 'F', 'O']),
                 "dob" => "2005-10-10",

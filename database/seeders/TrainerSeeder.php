@@ -18,7 +18,7 @@ class TrainerSeeder extends Seeder
             $user = User::create([
                 "name" => fake()->name(),
                 "email" => fake()->unique()->email(),
-                "phone" => fake()->numerify('##########'),
+                "phone" => rand(6, 9) . fake()->numerify('#########'),
                 "password" => password_hash("ssssssss", PASSWORD_DEFAULT),
                 "gender" => 'M',
                 "dob" => "2004-01-10",
