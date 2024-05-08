@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('orders', [
-            "orders" => Order::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
+            "orders" => Order::where('user_id', auth()->user()->id)->latest()->paginate(5)
         ]);
     }
 
@@ -41,6 +41,6 @@ class OrderController extends Controller
 
         $order->update();
 
-        return redirect()->route('orders');
+        return redirect()->route('orders')->with('alert', 'Order Cancelled');
     }
 }
