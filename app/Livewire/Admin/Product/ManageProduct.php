@@ -13,7 +13,7 @@ class ManageProduct extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required|min:3|max:100')]
+    #[Rule('required|min:3|max:200')]
     public $name;
 
     #[Rule('required|min:10')]

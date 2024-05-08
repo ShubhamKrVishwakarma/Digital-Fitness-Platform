@@ -85,7 +85,7 @@ class ManageOrder extends Component
         $this->dispatch(
             'alert', 
             icon: 'success',
-            title: 'Error!',
+            title: 'Success!',
             text: 'Order Rejected!',
         );
     }
