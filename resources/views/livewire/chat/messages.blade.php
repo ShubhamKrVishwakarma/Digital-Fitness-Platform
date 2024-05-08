@@ -3,30 +3,37 @@
         <span class="name">{{ $name }}</span>
     </div>
     <div class="chat-container">
-        <ul class="chat-box chatContainerScroll" wire:poll.2s='refreshMessage'>
+        <ul class="chat-box chatContainerScroll" wire:poll.5s='refreshMessage'>
             @forelse ($messages as $message)
-                @if (auth()->user()->id === $message->sender_id)
-                    <li class="chat-right">
-                        <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
-                        <div class="chat-text">{{ $message->message }}</div>
-                        <div class="chat-avatar">
-                            <img src="{{ auth()->user()->getProfileUrl() }}" alt="{{ auth()->user()->name }}">
-                        </div>
-                    </li>
-                @else
-                    <li class="chat-left">
-                        <div class="chat-avatar">
-                            <img src="{{ $receiver_pic }}" alt="Retail Admin">
-                        </div>
-                        <div class="chat-text">{{ $message->message }}</div>
-                        <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span class="bi bi-check-all fs-4"></span></div>
-                    </li>
-                @endif
-            @empty
-                <div class="d-flex justify-content-center align-items-center flex-column w-100 h-100">
-                    <h3>No Messages to display</h3>
-                    <p>Start your Converstaion</p>
+            @if (auth()->user()->id === $message->sender_id)
+            <li class="chat-right">
+                <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span
+                        class="bi bi-check-all fs-4"></span></div>
+                <div class="chat-text">{{ $message->message }}</div>
+                <div class="chat-avatar">
+                    <img src="{{ auth()->user()->getProfileUrl() }}" alt="{{ auth()->user()->name }}">
                 </div>
+                <div>
+                    <button wire:click.prevent='deleteMessage({{ $message->id }})' class="btn btn-sm btn-danger m-0 ms-3 mt-1" title="Delete Message">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </div>
+            </li>
+            @else
+            <li class="chat-left">
+                <div class="chat-avatar">
+                    <img src="{{ $receiver_pic }}" alt="Retail Admin">
+                </div>
+                <div class="chat-text">{{ $message->message }}</div>
+                <div class="chat-hour">{{ $message->created_at->format("h:i") }} <span
+                        class="bi bi-check-all fs-4"></span></div>
+            </li>
+            @endif
+            @empty
+            <div class="d-flex justify-content-center align-items-center flex-column w-100 h-100">
+                <h3>No Messages to display</h3>
+                <p>Start your Converstaion</p>
+            </div>
             @endforelse
         </ul>
         <div class="form-group mt-3 mb-0">

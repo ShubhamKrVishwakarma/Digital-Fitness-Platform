@@ -56,5 +56,18 @@ class Messages extends Component
         $this->messages = Message::where("chat_id", $this->chat_id)->get();
 
         $this->reset("message");
+        $this->resetValidation();
+    }
+
+    public function deleteMessage($id)
+    {   
+        Message::findOrFail($id)->deleteOrFail();
+
+        $this->dispatch(
+            'alert',
+            icon: 'success',
+            title: 'Success!',
+            text: 'Message Deleted Successfully!',
+        );
     }
 }
