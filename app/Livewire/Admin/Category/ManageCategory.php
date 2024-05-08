@@ -47,8 +47,15 @@ class ManageCategory extends Component
     }
 
     public function destroy() {
-        $category = Category::find($this->id);
-        $category->delete();
+        Category::findOrFail($this->id)->deleteOrFail();
+
         $this->dispatch('refreshCategoryList');
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Category Deleted Successfully!',
+        );
     }
 }

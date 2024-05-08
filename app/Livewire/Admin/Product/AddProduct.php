@@ -12,7 +12,7 @@ class AddProduct extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required|min:3|max:100')]
+    #[Rule('required|min:3|max:200')]
     public $name;
 
     #[Rule('required|min:10|max:255')]

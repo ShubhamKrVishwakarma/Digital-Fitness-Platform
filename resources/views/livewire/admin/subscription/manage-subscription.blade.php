@@ -1,5 +1,5 @@
 <div x-show="manageSubscription" style="display: none;">
-    <form>
+    <form wire:submit='update'>
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center mb-3">
                 <h3 class="text-light ms-2 font-weight-bolder">Manage Exercise</h3>
@@ -42,13 +42,6 @@
                                 <option value="yearly">Yearly</option>
                             </select>
                             @error('type')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label-control">Expiry date</label>
-                            <input type="date" wire:model='expiry_date' class="form-control" required>
-                            @error('expiry_date')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

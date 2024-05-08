@@ -18,7 +18,6 @@ class ManageSubscription extends Component
     public $trainer_email;
 
     public $type;
-    public $expiry_date;
 
     public function render()
     {
@@ -39,7 +38,26 @@ class ManageSubscription extends Component
         $this->trainer_email = $subscription->trainer->email;
 
         $this->type = $subscription->type;
-        $this->expiry_date = $subscription->expiry_date;
+    }
+
+    public function update()
+    {
+        $this->validate([
+            "type" => "required|in:monthly,yearly"
+        ]);
+
+        $subscription = Subscription::findOrFail($this->id);
+
+        $subscription->type = $this->type;
+
+        $subscription->update();
+
+        $this->dispatch(
+            'alert', 
+            icon: 'success',
+            title: 'Success!',
+            text: 'Subscription Details Updated Successfully!',
+        );        
     }
 
     public function delete(Subscription $subscription) {
@@ -48,7 +66,7 @@ class ManageSubscription extends Component
             'alert', 
             icon: 'success',
             title: 'Success!',
-            text: 'Conversation Deleted Successfully!',
+            text: 'Subscription Deleted Successfully!',
         );
     }
 
