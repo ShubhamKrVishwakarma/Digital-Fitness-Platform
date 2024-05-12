@@ -103,8 +103,8 @@ class AuthController extends Controller
                     "date",
                     "before:" . Date::now()->subYears(15)->format('Y-m-d'),
                 ],
-                "password" => "required|min:8",
-                "confirm_password" => "required|min:8|same:password"
+                "password" => "required|min:8|max:16",
+                "confirm_password" => "required|min:8|max:16|same:password"
             ]);
 
             if ($validator->fails()) {
@@ -148,8 +148,8 @@ class AuthController extends Controller
                 "issue_date" => "required|date",
                 "expiry_date" => "nullable|date|after:issue_date",
                 "issued_authority" => "required|min:2|max:100",
-                "password" => "required|min:8",
-                "confirm_password" => "required|min:8|same:password"
+                "password" => "required|min:8|max:16",
+                "confirm_password" => "required|min:8|max:16|same:password"
             ]);
 
             if ($validator->fails()) {

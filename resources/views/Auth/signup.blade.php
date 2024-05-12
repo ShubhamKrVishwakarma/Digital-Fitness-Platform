@@ -72,15 +72,15 @@
                         <div class="card-body">
                             <form id="signupForm">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" id="signup-name" placeholder="Name" required>
+                                    <input type="text" class="form-control" id="signup-name" placeholder="Name" minlength="2" maxlength="100" required>
                                     <span class="text-danger" id="signup-name-error"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" id="signup-email" placeholder="Email" required>
+                                    <input type="email" class="form-control" id="signup-email" placeholder="Email" minlength="5" maxlength="100" required>
                                     <span class="text-danger" id="signup-email-error"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" id="signup-phone" placeholder="Phone Number" required>
+                                    <input type="number" class="form-control" id="signup-phone" placeholder="Phone Number" maxlength="10" required>
                                     <span class="text-danger" id="signup-phone-error"></span>
                                 </div>
                                 <div class="mb-2">
@@ -98,15 +98,15 @@
                                     <span class="text-danger" id="signup-dob-error"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" id="signup-password" placeholder="Password" required>
+                                    <input type="password" class="form-control" id="signup-password" placeholder="Password" minlength="8" maxlength="16" required>
                                     <span class="text-danger" id="signup-password-error"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" id="signup-confirm-password" placeholder="Confirm Password" required>
+                                    <input type="password" class="form-control" id="signup-confirm-password" placeholder="Confirm Password" minlength="8" maxlength="16" required>
                                     <span class="text-danger" id="signup-confirm-password-error"></span>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100">Create Account</button>
+                                    <button type="submit" class="btn bg-gradient-dark w-100">Signup as Member</button>
                                 </div>
                                 <p class="text-sm text-center mt-1 mb-0">Already have an account? <a href="{{ route('login') }}" class="text-dark font-weight-bolder">Login</a></p>
                             </form>
