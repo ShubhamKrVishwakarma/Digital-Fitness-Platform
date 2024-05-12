@@ -233,13 +233,12 @@
                             <div class="card-body">
                                 <form id="loginForm">
                                     <div class="mb-3">
-                                        <input type="email" id="login-email" class="form-control form-control-lg"
-                                            placeholder="Email" required>
+                                        <input type="email" id="login-email" class="form-control form-control-lg" placeholder="Email" minlength="5" maxlength="100" required>
                                         <span class="text-danger" id="login-email-error"></span>
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" id="login-password" class="form-control form-control-lg"
-                                            placeholder="Password" required>
+                                            placeholder="Password" minlength="8" maxlength="16" required>
                                         <span class="text-danger" id="login-password-error"></span>
                                     </div>
                                     <div class="text-center">

@@ -78,12 +78,12 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Full Name</label>
-                                            <input type="text" id="register-name" class="form-control" placeholder="Full Name" required>
+                                            <input type="text" id="register-name" class="form-control" placeholder="Full Name" minlength="2" maxlength="100" required>
                                             <span class="text-danger" id="register-name-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Email Address</label>
-                                            <input type="email" id="register-email" class="form-control" placeholder="Email Address" required>
+                                            <input type="email" id="register-email" class="form-control" placeholder="Email Address" minlength="5" maxlength="100" required>
                                             <span class="text-danger" id="register-email-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Phone Number</label>
-                                            <input type="number" id="register-phone" class="form-control" placeholder="Phone Number" required>
+                                            <input type="number" id="register-phone" class="form-control" placeholder="Phone Number" maxlength="10" required>
                                             <span class="text-danger" id="register-phone-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Specialization (Area of Expertise)</label>
-                                            <input type="text" id="register-occupation" class="form-control" placeholder="Enter Occupation" required>
+                                            <input type="text" id="register-occupation" class="form-control" placeholder="Enter Occupation" minlength="2" maxlength="100" required>
                                             <span class="text-danger" id="register-occupation-error"></span>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Certificate ID</label>
-                                            <input type="text" id='register-certificate-id' class="form-control" placeholder="Certificate ID" required>
+                                            <input type="text" id='register-certificate-id' class="form-control" placeholder="Certificate ID" minlength="5" maxlength="50" required>
                                             <span class="text-danger" id="register-certificate-id-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
@@ -133,17 +133,17 @@
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Issued Authority</label>
-                                            <input type="text" id='register-issued-authority' class="form-control" placeholder="Issued Authority" required>
+                                            <input type="text" id='register-issued-authority' class="form-control" placeholder="Issued Authority" minlength="2" maxlength="200" required>
                                             <span class="text-danger" id="register-issued-authority-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Password</label>
-                                            <input type="password" id="register-password" class="form-control" placeholder="Password" required>
+                                            <input type="password" id="register-password" class="form-control" placeholder="Password" minlength="8" maxlength="16" required>
                                             <span class="text-danger" id="register-password-error"></span>
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label class="form-label-control">Confirm Password</label>
-                                            <input type="password" id="register-confirm-password" class="form-control" placeholder="Confirm Password" required>
+                                            <input type="password" id="register-confirm-password" class="form-control" placeholder="Confirm Password" minlength="8" maxlength="16" required>
                                             <span class="text-danger" id="register-confirm-password-error"></span>
                                         </div>
                                     </div>
