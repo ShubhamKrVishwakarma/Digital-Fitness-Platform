@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-control-label">Phone Number</label>
-                                    <input type="number" wire:model='phone' class="form-control" placeholder="Phone Number">
+                                    <input type="number" wire:model='phone' class="form-control" placeholder="Phone Number" required>
                                     @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
