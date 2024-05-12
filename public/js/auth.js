@@ -59,6 +59,7 @@ $(document).ready(function() {
         axios.post("/signup", {
             name: $('#signup-name').val(),
             email: $('#signup-email').val(),
+            phone: $('#signup-phone').val(),
             gender: $('#signup-gender').val(),
             date_of_birth: $('#signup-dob').val(),
             password: $('#signup-password').val(),
@@ -68,6 +69,7 @@ $(document).ready(function() {
             $('.text-danger').text('');
             $('#signup-name').val('');
             $('#signup-email').val('');
+            $('#signup-phone').val('');
             $('#signup-gender').val('');
             $('#signup-dob').val('');
             $('#signup-password').val('');
@@ -108,6 +110,10 @@ $(document).ready(function() {
 
         if (errors.email) {
             $('#signup-email-error').text(errors.email[0]);
+        }
+
+        if (errors.phone) {
+            $('#signup-phone-error').text(errors.phone[0]);
         }
 
         if (errors.gender) {
