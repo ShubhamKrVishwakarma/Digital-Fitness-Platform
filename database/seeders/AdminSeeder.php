@@ -15,6 +15,7 @@ class AdminSeeder extends Seeder
         User::create([
             "name" => "Admin",
             "email" => "web@admin.com",
+            "phone" => "9999999999",
             "password" => "admin123",
             "profile_pic" => "1.png",
             "role" => "admin",
