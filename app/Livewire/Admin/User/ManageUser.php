@@ -85,8 +85,8 @@ class ManageUser extends Component
             $this->validate([
                 'name' => 'required|min:2|max:100',
                 'gender' => 'required|in:M,F,O',
-                "dob" => "required|date|before_or_equal:" . Date::now()->subYears(18)->format('d-m-Y'),
-                'phone' => 'required|min:10|max:12',
+                'dob' => 'required|date|before_or_equal:' . Date::now()->subYears(18)->format('d-m-Y'),
+                'phone' => 'required|numeric|digits:10',
                 'address' => 'nullable',
                 'city' => 'nullable|min:2|max:100',
                 'zip_code' => 'nullable|min:6|max:12',

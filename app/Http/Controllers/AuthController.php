@@ -96,6 +96,7 @@ class AuthController extends Controller
             $validator = Validator::make($request->all(), [
                 "name" => "required|min:2|max:100",
                 "email" => "required|email|min:5|max:100|unique:users,email",
+                "phone" => "required|numeric|digits:10",
                 "gender" => "required|in:M,F,O",
                 "date_of_birth" => [
                     "required",
@@ -113,6 +114,7 @@ class AuthController extends Controller
             User::create([
                 "name" => $request->name,
                 "email" => $request->email,
+                "phone" => $request->phone,
                 "gender" => $request->gender,
                 "dob" => $request->date_of_birth,
                 "password" => $request->password

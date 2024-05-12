@@ -67,7 +67,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
                         <div class="card-header text-center pt-4 pb-0">
-                            <h5>Create New Account</h5>
+                            <h5>Join as a Member</h5>
                         </div>
                         <div class="card-body">
                             <form id="signupForm">
@@ -79,8 +79,11 @@
                                     <input type="email" class="form-control" id="signup-email" placeholder="Email" required>
                                     <span class="text-danger" id="signup-email-error"></span>
                                 </div>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="signup-phone" placeholder="Phone Number" required>
+                                    <span class="text-danger" id="signup-phone-error"></span>
+                                </div>
                                 <div class="mb-2">
-                                    <label class="form-label-control-control">Gender</label>
                                     <select class="form-control" id="signup-gender" required>
                                         <option value="" selected>Select Gender</option>
                                         <option value="M">Male</option>

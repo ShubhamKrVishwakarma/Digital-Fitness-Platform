@@ -50,7 +50,7 @@ class AddTrainer extends Component
             "email" => "required|email|unique:users,email|min:5|max:100",
             "gender" => "required|in:M,F,O",
             "dob" => "required|date|before_or_equal:" . Date::now()->subYears(18)->format('d-m-Y'),
-            "phone" => "nullable|numeric|digits:10",
+            "phone" => "required|numeric|digits:10",
             "address" => "nullable",
             "city" => "nullable|min:2|max:100",
             "zip_code" => "nullable|min:6|max:12",
