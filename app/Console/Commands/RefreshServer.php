@@ -27,8 +27,10 @@ class RefreshServer extends Command
     {
         $this->info("Refreshing Migration...");
         $this->call('migrate:refresh');
+
         $this->info("Seeding the Database...");
         $this->call('db:seed');
+        
         $this->info("Server is starting...");
         $this->call('serve');
     }
