@@ -63,7 +63,7 @@ Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], f
 // Checkout Page Routes
 Route::group(['controller' => CheckoutController::class], function() {
     Route::get('/checkout', 'index')->middleware('auth')->name('checkout');
-    Route::post('/checkout/{total_price}', 'store')->middleware('auth')->name('checkout.store');
+    Route::post('/checkout/{total_price}', 'store')->name('checkout.store');
     
     // Payment
     Route::get('payment/info', 'paymentInfo')->name('payment.info');

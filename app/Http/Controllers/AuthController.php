@@ -52,7 +52,8 @@ class AuthController extends Controller
      * @param Request
      * @return JsonResponse
      */
-    public function authenticate(Request $request) {
+    public function authenticate(Request $request)
+    {
         try {
             $validator = Validator::make($request->all(), [
                 "email" => "required|email|min:5|max:100",
@@ -64,11 +65,11 @@ class AuthController extends Controller
             }
 
             $credentials = $request->only('email', 'password');
-            
+
             if (auth()->attempt($credentials)) {
                 $user = auth()->user();
 
-                if ($user->role === "pending") {            
+                if ($user->role === "pending") {
                     auth()->logout();
                     request()->session()->invalidate();
                     request()->session()->regenerateToken();
@@ -91,7 +92,8 @@ class AuthController extends Controller
      * @param Request
      * @return JsonResponse
      */
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         try {
             $validator = Validator::make($request->all(), [
                 "name" => "required|min:2|max:100",
@@ -131,7 +133,8 @@ class AuthController extends Controller
      * @param Request
      * @return JsonResponse
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         try {
             $validator = Validator::make($request->all(), [
                 "name" => "required|min:2|max:100",
@@ -186,7 +189,8 @@ class AuthController extends Controller
      * User Logout
      * @return Redirect
      */
-    public function logout() {
+    public function logout()
+    {
         auth()->logout();
 
         request()->session()->invalidate();

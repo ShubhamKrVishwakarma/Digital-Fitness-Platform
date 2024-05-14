@@ -23,11 +23,7 @@
     @yield('content')
     
     <!--   Core JS Files   -->
-    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
     <script src="{{ asset('plugins/jquery.js') }}"></script>
     <script src="{{ asset('plugins/axios.js') }}"></script>
     <script src="{{ asset('plugins/alert.js') }}"></script>
