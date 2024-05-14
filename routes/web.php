@@ -61,9 +61,9 @@ Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], f
 });
 
 // Checkout Page Routes
-Route::group(['controller' => CheckoutController::class, 'middleware' => 'auth'], function() {
-    Route::get('/checkout', 'index')->name('checkout');
-    Route::post('/checkout/{total_price}', 'store')->name('checkout.store');
+Route::group(['controller' => CheckoutController::class], function() {
+    Route::get('/checkout', 'index')->middleware('auth')->name('checkout');
+    Route::post('/checkout/{total_price}', 'store')->middleware('auth')->name('checkout.store');
     
     // Payment
     Route::get('payment/info', 'paymentInfo')->name('payment.info');
@@ -107,6 +107,6 @@ Route::group(["controller" => PostController::class], function() {
 // Trainers Pricing
 Route::group(["controller" => TrainerController::class], function() {
     Route::get('/pricing/{id}', 'pricing')->name('pricing');
-    Route::post('/pricing/subscription', 'subscribe')->middleware("auth")->name('subscription.payment');
-    Route::get('/pricing/subscription/Info', 'subscriptionInfo')->middleware("auth")->name('subscription.info');
+    Route::post('/pricing/subscription', 'subscribe')->name('subscription.payment');
+    Route::get('/pricing/subscription/Info', 'subscriptionInfo')->name('subscription.info');
 });
