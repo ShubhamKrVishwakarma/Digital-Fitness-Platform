@@ -65,7 +65,7 @@
                             </div>
                             <div>
                                 @auth
-                                    @if (auth()->user()->role !== "trainer")
+                                    @if (auth()->user()->role === "member")
                                         @if ($trainer->hasBeenReviewed($trainer->id))
                                             <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">Reviewed</button>
                                         @else
