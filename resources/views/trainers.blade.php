@@ -9,7 +9,6 @@
 @section('content')
 <div class="content">
     <div class="container p-4">
-        {{-- Heading --}}
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 col-xl-8 text-center">
                 <h3 class="fw-bold mb-4">
@@ -23,10 +22,10 @@
                 </p>
             </div>
         </div>
-        {{-- Trainers Card --}}
+        <!-- Trainers -->
         <div class="row">
             @foreach ($trainers as $trainer)
-                {{-- Single Trainer --}}
+                <!-- Single Trainer -->
                 <div class="col-lg-4 mb-4">
                     <div class="text-center card-box py-3 shadow-sm bg-body-tertiary rounded">
                         <div class="member-card pt-2 pb-2">
@@ -49,13 +48,13 @@
                                         <form action="{{ route('user.unfollow') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <button class="btn btn-sm btn-danger">Unfollow</button>
+                                            <button class="btn btn-sm btn-primary">Unfollow</button>
                                         </form>
                                     @else
                                         <form action="{{ route('user.follow') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="user-id" value="{{ $trainer->id }}">
-                                            <button class="btn btn-sm btn-danger">Follow</button>
+                                            <button class="btn btn-sm btn-primary">Follow</button>
                                         </form>
                                     @endif
                                 @endauth
@@ -73,7 +72,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
                                         @endif
                                         @if (auth()->user()->hasSubscribed($trainer->id))
-                                            <a href="{{ route('message') }}" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Message</a>
+                                            <a href="{{ route('message') }}" class="btn btn-info mt-3 btn-rounded waves-effect w-md waves-light">Message</a>
                                         @else
                                             <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Start Chat</a>
                                         @endif
@@ -91,7 +90,7 @@
         </div>
     </div>
 </div>
-{{-- Trainer Review Modal --}}
+<!-- Trainer Review Modal -->
 <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -139,12 +138,11 @@
 
         trainer_id_btn.forEach(btn => {
             btn.addEventListener("click" , (e)=>{
-                // trainer.value=e.dataset("[data-trainer-id]");
                 trainer.value = e.target.dataset.trainerId;
-                // alert(trainer.value);
             });
 
         });
+
         // Function to highlight stars up to the hovered/clicked star
         function highlightStars(index) {
             stars.forEach((star, idx) => {
