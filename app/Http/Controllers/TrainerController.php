@@ -33,20 +33,23 @@ class TrainerController extends Controller
             "trainer-review" => "required|min:2|max:255"
         ]);
 
-        TrainerReview::create([
-            "user_id" => auth()->user()->id,
-            "rating" => $request["trainer-rating"],
-            "review" => $request["trainer-review"],
-            "trainer_id" =>  $request["trainer-id"]
-        ]);
-
-        $total_no_of_reviews = TrainerReview::where("trainer_id", $request['trainer-id'])->count();
-
-        $trainer = User::findOrFail($request["trainer-id"]);
-
-        $trainer->rating = ($trainer->rating +  $request["trainer-rating"]) / $total_no_of_reviews;
-
-        $trainer->update();
+        if (!TrainerReview::where("user_id", auth()->user()->id)->where("trainer_id", $request["trainer-id"])->exists())
+        {
+            TrainerReview::create([
+                "user_id" => auth()->user()->id,
+                "rating" => $request["trainer-rating"],
+                "review" => $request["trainer-review"],
+                "trainer_id" =>  $request["trainer-id"]
+            ]);
+    
+            $total_no_of_reviews = TrainerReview::where("trainer_id", $request['trainer-id'])->count();
+    
+            $trainer = User::findOrFail($request["trainer-id"]);
+    
+            $trainer->rating = ($trainer->rating +  $request["trainer-rating"]) / $total_no_of_reviews;
+    
+            $trainer->update();
+        }
 
         return redirect()->route("trainers")->with('alert', 'Trainer Reviewed Successfully!');
     }
