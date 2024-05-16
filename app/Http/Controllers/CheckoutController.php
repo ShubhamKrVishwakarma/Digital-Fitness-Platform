@@ -90,7 +90,7 @@ class CheckoutController extends Controller
                 "order" => $razorpayOrder
             ]);
         } else {
-            return redirect()->route('orders');
+            return redirect()->route('orders')->with('alert', 'Order Placed Successfully');
         }
     }
 
