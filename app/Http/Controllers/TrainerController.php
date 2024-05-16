@@ -73,10 +73,9 @@ class TrainerController extends Controller
     {
         $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
-        $order_id = rand(111111, 999999);
+        $order_id = rand(1111, 9999);
 
         $orderData = [
-            'receipt' => `rcptid_$order_id`,
             'amount' => ($request->amount * 100),
             'currency' => 'INR',
             'notes' => [
@@ -88,7 +87,7 @@ class TrainerController extends Controller
                 'type' => $request->type
             ]
         ];
-
+        
         $razorpayOrder = $api->order->create($orderData);
 
         return view('subscription_payment', [
