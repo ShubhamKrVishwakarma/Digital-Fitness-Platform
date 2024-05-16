@@ -30,16 +30,24 @@
                     @else
                         <div class="py-5 bg-light service-25">
                             <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-12 text-center mb-5"><img src="https://cdn-icons-png.flaticon.com/512/5234/5234307.png" width="200" class="img-fluid" /></div>
-                                    <div class="col-md-7 text-center"> <span class="badge badge-success rounded-pill px-3 py-1 font-weight-light">Premium</span>
-                                        <h3 class="my-3">🚀 Unlock Premium Access to Your Ultimate Fitness Journey!</h3>
-                                        <h6 class="subtitle font-weight-light">We see you're enjoying our platform, but did you know there's a whole world of exclusive content waiting for you with a subscription?</h6>
+                                @if (auth()->user()->role === "member")
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 text-center mb-5"><img src="https://cdn-icons-png.flaticon.com/512/5234/5234307.png" width="200" class="img-fluid" /></div>
+                                        <div class="col-md-7 text-center"> <span class="badge badge-success rounded-pill px-3 py-1 font-weight-light">Premium</span>
+                                            <h3 class="my-3">🚀 Unlock Premium Access to Your Ultimate Fitness Journey!</h3>
+                                            <h6 class="subtitle font-weight-light">We see you're enjoying our platform, but did you know there's a whole world of exclusive content waiting for you with a subscription?</h6>
+                                        </div>
+                                                    <div class="col-md-12 mt-3 text-center">
+                                            <a class="btn btn-success-gradiant btn-md border-0 text-white" href="{{ route('trainers') }}"><span>View Trainers</span></a>
+                                        </div>
                                     </div>
-                                                <div class="col-md-12 mt-3 text-center">
-                                        <a class="btn btn-success-gradiant btn-md border-0 text-white" href="{{ route('trainers') }}"><span>View Trainers</span></a>
-                                    </div>
+                                @else
+                                <div class="d-flex flex-column justify-content-center align-items-center" style="height: 300px">
+                                    <h2>No Messgaes</h2>
+                                    <p>When you have messages</p>
+                                    <p>you will see them here</p>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     @endif

@@ -61,7 +61,7 @@ class PostController extends Controller
     public function shareImage(Request $request)
     {
         $request->validate([
-            "post-title" => "required|min:2|max:255",
+            "post-title" => "nullable|min:2|max:100",
             "post-image" => "required|image"
         ]);
 
@@ -86,7 +86,7 @@ class PostController extends Controller
     public function shareVideo(Request $request)
     {
         $request->validate([
-            "post-title" => "required|min:2|max:255",
+            "post-title" => "nullable|min:2|max:100",
             "post-video" => "required"
         ]);
 
@@ -110,12 +110,18 @@ class PostController extends Controller
      */
     public function like($post_id)
     {
-        PostLike::create([
-            "post_id" => $post_id,
-            "user_id" => auth()->user()->id
-        ]);
+        if (Post::where("id", $post_id)->exists()) {
+            if (!PostLike::where("post_id", $post_id)->where("user_id", auth()->user()->id)->exists()) {
+                PostLike::create([
+                    "post_id" => $post_id,
+                    "user_id" => auth()->user()->id
+                ]);
+            }
 
-        return back()->with('alert', 'Post Liked Successfully!');
+            return back()->with('alert', 'Post Liked Successfully!');
+        }
+        
+        return back()->with('alert', 'Something went wrong!');
     }
 
     /**
@@ -139,13 +145,19 @@ class PostController extends Controller
             "post-comment" => "required|min:2|max:255"
         ]);
 
-        Comment::create([
-            "post_id" => $request["post-id"],
-            "user_id" => auth()->user()->id,
-            "comment" => $request["post-comment"]
-        ]);
-
-        return back()->with('alert', 'Comment Added Successfully!');
+        if (Post::where("id", $request["post-id"])->exists()) {
+            if (!Comment::where("post_id", $request["post-id"])->where("user_id", auth()->user()->id)->exists()) {
+                Comment::create([
+                    "post_id" => $request["post-id"],
+                    "user_id" => auth()->user()->id,
+                    "comment" => $request["post-comment"]
+                ]);
+            }
+    
+            return back()->with('alert', 'Comment Added Successfully!');
+        }
+        
+        return back()->with('alert', 'Something went wrong!');
     }
 
     /**
@@ -177,17 +189,22 @@ class PostController extends Controller
             "user-id" => "required"
         ]);
 
-        Follower::create([
-            "user_id" => auth()->user()->id,
-            "follower_id" => $request["user-id"]
-        ]);
+        $follower = Follower::where("user_id", auth()->user()->id)->where("follower_id", $request["user-id"])->exists();
 
-        $user = User::findOrFail($request["user-id"]);
-        $user->followers = $user->followers + 1;
-        $current_user = User::findOrFail(auth()->user()->id);
-        $current_user->following = $current_user->following + 1;
-        $current_user->update();
-        $user->update();
+        if (!$follower) {
+            Follower::create([
+                "user_id" => auth()->user()->id,
+                "follower_id" => $request["user-id"]
+            ]);
+            
+            $user = User::findOrFail($request["user-id"]);
+            $user->followers = $user->followers + 1;
+            $user->update();
+
+            $current_user = User::findOrFail(auth()->user()->id);
+            $current_user->following = $current_user->following + 1;
+            $current_user->update();
+        }
 
         return back()->with('alert', 'Followed Successfully!');
     }
@@ -206,14 +223,18 @@ class PostController extends Controller
             "user-id" => "required"
         ]);
 
-        Follower::where("user_id", auth()->user()->id)->where("follower_id", $request["user-id"])->delete();
+        $follower = Follower::where("user_id", auth()->user()->id)->where("follower_id", $request["user-id"])->exists();
 
-        $user = User::findOrFail($request["user-id"]);
-        $user->followers = $user->followers - 1;
-        $current_user = User::findOrFail(auth()->user()->id);
-        $current_user->following = $current_user->following - 1;
-        $current_user->update();
-        $user->update();
+        if ($follower) {
+            Follower::where("user_id", auth()->user()->id)->where("follower_id", $request["user-id"])->delete();
+    
+            $user = User::findOrFail($request["user-id"]);
+            $user->followers = $user->followers - 1;
+            $current_user = User::findOrFail(auth()->user()->id);
+            $current_user->following = $current_user->following - 1;
+            $current_user->update();
+            $user->update();
+        }
 
         return back()->with('alert', 'UnFollowed Successfully!');
     }
@@ -224,7 +245,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::findOrFail($id)->deleteOrFail();
+        if (Post::where("id", $id)->exists()) {
+            Post::findOrFail($id)->deleteOrFail();
+        }
 
         return back()->with('alert', 'Post Deleted Successfully!');
     }
