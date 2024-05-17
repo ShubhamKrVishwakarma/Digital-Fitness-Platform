@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<section style="background-color: whitesmoke">
+<section>
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
             @if ($cart->count() < 1) <div class="col-12 d-flex justify-content-center align-items-center"

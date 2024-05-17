@@ -92,7 +92,7 @@
 @if(session('alert'))
 <script>
     Swal.fire({
-        position: "top",
+        position: "center",
         icon: "success",
         title: "{{ session('alert') }}",
         showConfirmButton: false,

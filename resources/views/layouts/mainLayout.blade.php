@@ -12,7 +12,7 @@
     @stack("styles")
 </head>
 
-<body>
+<body style="background-color: #eff2f6!important">
     <!-- Header -->
     @include('includes.header')
 

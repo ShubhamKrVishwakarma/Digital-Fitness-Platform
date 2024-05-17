@@ -72,7 +72,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
                                         @endif
                                         @if (auth()->user()->hasSubscribed($trainer->id))
-                                            <a href="{{ route('message') }}" class="btn btn-info mt-3 btn-rounded waves-effect w-md waves-light">Message</a>
+                                            <a href="{{ route('message') }}" class="btn text-light mt-3 btn-rounded waves-effect w-md waves-light" style="background-color: #5e72e4!important">Message</a>
                                         @else
                                             <a href="{{ route('pricing', $trainer->id) }}" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light">Start Chat</a>
                                         @endif
