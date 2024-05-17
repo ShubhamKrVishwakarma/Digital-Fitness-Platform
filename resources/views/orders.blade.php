@@ -79,6 +79,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="px-4 pt-2">
+                            {{ $orders->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
