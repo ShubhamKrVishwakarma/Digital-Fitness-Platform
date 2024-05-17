@@ -17,6 +17,9 @@
                 <p class="text-sm"><b>Phone Number: </b>{{ $phone }}</p>
                 <p class="text-sm"><b>Query: </b>{{ $message }}</p>
             </div>
+            <div class="card-footer pt-0">
+                <a class="btn btn-sm btn-success m-0" href="mailto:{{ $email }}">Reply</a>
+            </div>
         </div>
     </div>
 </div>
