@@ -87,4 +87,15 @@
       });
 </script>
 @endif
+@if(session('error'))
+<script>
+    Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "{{ session('error') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+</script>
+@endif
 @endpush
