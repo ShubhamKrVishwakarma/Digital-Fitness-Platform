@@ -189,9 +189,20 @@
 @if(session('alert'))
 <script>
     Swal.fire({
-        position: "top",
+        position: "center",
         icon: "success",
         title: "{{ session('alert') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+</script>
+@endif
+@if(session('error'))
+<script>
+    Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "{{ session('error') }}",
         showConfirmButton: false,
         timer: 1200
       });

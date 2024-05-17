@@ -16,9 +16,14 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout', [
+        if(Cart::where('user_id', auth()->user()->id)->exists()){
+            return view('checkout', [
             'cart' => Cart::where('user_id', auth()->user()->id)->get()
-        ]);
+            ]);
+        }
+        else{
+            return back()->with('error', "Cart is empty!");
+        }
     }
 
     /**
