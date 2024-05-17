@@ -47,7 +47,6 @@
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Dedicated Trainer</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Diet Plan Included</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Morning and Evening Batches</span></li>
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Discount on Products</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Community Interaction</span></li>
                                 </ul>
                             </div>
@@ -59,7 +58,7 @@
                 <div class="card card-shadow border-0 mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center">
-                            <h5 class="font-weight-medium mb-0 me-2">Monthly Plan</h5>
+                            <h5 class="font-weight-medium mb-0 me-2">Yearly Plan</h5>
                             <div class="ml-auto"><span class="badge badge-danger font-weight-normal p-2">Save &#8377;1,401</span>
                             </div>
                         </div>
@@ -67,7 +66,7 @@
                             <div class="col-lg-5 text-center">
                                 <div class="price-box my-3">
                                     <sup>&#8377;</sup><span class="text-dark display-5">3,999</span>
-                                    <h6 class="font-weight-light">MONTHLY</h6>
+                                    <h6 class="font-weight-light">YEARLY</h6>
                                     <form action="{{ route('subscription.payment') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="amount" value="3999">
@@ -88,7 +87,6 @@
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Dedicated Trainer</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Diet Plan Included</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Morning and Evening Batches</span></li>
-                                    <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Discount on Products</span></li>
                                     <li class="py-2"><i class="bi bi-shield-fill-check text-success"></i> <span>Community Interaction</span></li>
                                 </ul>
                             </div>
