@@ -68,15 +68,12 @@ class CheckoutController extends Controller
             ]);
         }
 
-        Cart::where('user_id', auth()->user()->id)->delete();
-
         if ($request->paymentType === "online") {
             $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
-            $order_id = $order->id;
+            $order_id = 'O' . $order->id;
 
             $orderData = [
-                'receipt' => `rcptid_$order_id`,
                 'amount' => ($request->total_price * 100),
                 'currency' => 'INR',
                 'notes' => [
@@ -102,22 +99,28 @@ class CheckoutController extends Controller
      * Checks Payment Status if payment mode is online
      * @return redirect
      */
-    public function paymentInfo(Request $request)
+    public function paymentVerification(Request $request)
     {
         $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
         $status = $api->payment->fetch($request->payment_id);
 
+        $id = substr($request->order_id, 1);
+
         if ($status->captured) {
-            $order = Order::findOrFail($request->order_id);
+            Cart::where('user_id', auth()->user()->id)->delete();
+
+            $order = Order::findOrFail($id);
 
             $order->payment_mode = "online";
 
             $order->update();
 
             return redirect()->route('orders')->with('alert', 'Payment completed Successfully!');
+        } else {
+            Order::findOrFail($id)->deleteOrFail();
+
+            return redirect()->route('cart')->with('alert', 'Payment Failed');
         }
-        
-        return redirect()->route('cart')->with('alert', 'Payment Failed');
     }
 }
