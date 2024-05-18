@@ -57,31 +57,61 @@ class ManageOrder extends Component
 
     public function confirmOrder() {
         $order = Order::findOrFail($this->id);
+
+        $all_products_available = true;
+
         foreach ($this->order_details as $product) {
-            $update = Product::where("name", $product["product_name"])->first();
-            if ($update) {
-                $update->quantity -= $product["quantity"];
-                $update->save();
+            // dump($product);
+            if (!Product::where("id", $product["product_id"])->exists()) {
+                $all_products_available = false;
             }
         }
-        $order->status = "confirmed";
-        $order->update();
-        $this->status = "Order Confirmed";
-        $this->dispatch('refreshOrdersTable');
-        $this->dispatch(
-            'alert', 
-            icon: 'success',
-            title: 'Success!',
-            text: 'Order Confirmed!',
-        );
+
+        if ($all_products_available) {
+            foreach ($this->order_details as $item) {
+                $product = Product::findOrFail($item["product_id"]);
+
+                $product->quantity -= $item["quantity"];
+
+                $product->update();
+            }
+
+            $order->status = "confirmed";
+            
+            $order->update();
+            
+            $this->status = "Order Confirmed";
+            
+            $this->dispatch('refreshOrdersTable');
+            
+            $this->dispatch(
+                'alert', 
+                icon: 'success',
+                title: 'Success!',
+                text: 'Order Confirmed!',
+            );
+        } else {
+            $this->dispatch(
+                'alert', 
+                icon: 'warning',
+                title: 'Oops..',
+                text: 'Some Products Unavailable!!',
+            );
+        }
+
     }
     
     public function cancelOrder() {
         $order = Order::findOrFail($this->id);
+
         $order->status = "rejected";
+        
         $order->update();
+        
         $this->status = "Order Canceled";
+        
         $this->dispatch('refreshOrdersTable');
+        
         $this->dispatch(
             'alert', 
             icon: 'success',
