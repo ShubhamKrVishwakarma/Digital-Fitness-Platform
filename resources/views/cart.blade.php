@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<section style="background-color: whitesmoke">
+<section>
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
             @if ($cart->count() < 1) <div class="col-12 d-flex justify-content-center align-items-center"
@@ -137,9 +137,20 @@
 @if(session('alert'))
   <script>
       Swal.fire({
-        position: "top",
+        position: "center",
         icon: "success",
         title: "{{ session('alert') }}",
+        showConfirmButton: false,
+        timer: 1200
+      });
+  </script>
+@endif
+@if(session('error'))
+  <script>
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "{{ session('error') }}",
         showConfirmButton: false,
         timer: 1200
       });

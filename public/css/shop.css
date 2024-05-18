@@ -59,9 +59,10 @@
 }
 
 .product-content {
-  background: var(--gray);
-  padding: 3rem 0.5rem 2rem 0.5rem;
+  background-color: #fff;
+  padding: 1.5rem 0.5rem 1.5rem 0.5rem;
   cursor: pointer;
+  border-bottom: 2px solid var(--carribean-green);
 }
 
 .product-img {
@@ -117,7 +118,7 @@
 }
 .product-info {
   background: white;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .product-info-top {
   display: flex;

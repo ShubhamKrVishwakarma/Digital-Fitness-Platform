@@ -79,6 +79,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="px-4 pt-2">
+                            {{ $orders->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,7 +95,7 @@
 @if(session('alert'))
 <script>
     Swal.fire({
-        position: "top",
+        position: "center",
         icon: "success",
         title: "{{ session('alert') }}",
         showConfirmButton: false,

@@ -43,11 +43,7 @@ class User extends Authenticatable
     }
 
     public function follows($id) {
-        $follower = Follower::where("follower_id", $id)->where('user_id', auth()->user()->id)->get();
-        if ($follower->count() < 1) {
-            return false;
-        }
-        return true;
+        return Follower::where("follower_id", $id)->where('user_id', auth()->user()->id)->exists();
     }
 
     public function hasBeenReviewed($trainer_id) {

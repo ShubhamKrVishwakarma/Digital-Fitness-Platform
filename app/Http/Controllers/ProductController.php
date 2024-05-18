@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
 
+use function Laravel\Prompts\alert;
+
 class ProductController extends Controller
 {
     /**
@@ -48,19 +50,23 @@ class ProductController extends Controller
      */
     public function addToCart($id)
     {
-        $cart = Cart::where("product_id", $id)->first();
+        if(Product::where("id", $id)->exists())
+        {
+            $cart = Cart::where("product_id", $id)->first();
 
-        if (!$cart) {
-            $product = Product::find($id);
-            Cart::create([
-                "user_id" => auth()->user()->id,
-                "product_id" => $id,
-                "quantity" => 1,
-                "price" => $product->price
-            ]);
+            if (!$cart) 
+            {
+                $product = Product::find($id);
+                Cart::create([
+                    "user_id" => auth()->user()->id,
+                    "product_id" => $id,
+                    "quantity" => 1,
+                    "price" => $product->price
+                ]);
+            }
+            return back()->with('alert', 'Product Added to Cart!');
         }
-
-        return back()->with('alert', 'Product Added to Cart!');
+        return redirect()->route("shop")->with("error", "Something Went Wrong!!");
     }
 
     /**
@@ -74,21 +80,28 @@ class ProductController extends Controller
             "product-id" => "required"
         ]);
 
-        ProductReview::create([
-            "user_id" => auth()->user()->id,
-            "rating" => $request["product-rating"],
-            "review" => $request["product-review"],
-            "product_id" => $request["product-id"]
-        ]);
+        if(Product::where("id", $request["product-id"])->exists())
+        {
+            if(!ProductReview::where("product_id", $request["product-id"])->where("user_id", auth()->user()->id)->exists())
+            {
+                ProductReview::create([
+                    "user_id" => auth()->user()->id,
+                    "rating" => $request["product-rating"],
+                    "review" => $request["product-review"],
+                    "product_id" => $request["product-id"]
+                ]);
+        
+                $total_no_of_reviews = ProductReview::where("product_id", $request['product-id'])->count();
+        
+                $product = Product::findOrFail($request["product-id"]);
+        
+                $product->rating = ($product->rating +  $request["product-rating"]) / $total_no_of_reviews;
+        
+                $product->update();
+            }
+            return redirect()->route("product.details", $request["product-id"])->with("alert", "Product Reviewed Successfully!");
+        }
 
-        $total_no_of_reviews = ProductReview::where("product_id", $request['product-id'])->count();
-
-        $product = Product::findOrFail($request["product-id"]);
-
-        $product->rating = ($product->rating +  $request["product-rating"]) / $total_no_of_reviews;
-
-        $product->update();
-
-        return redirect()->route("product.details", $request["product-id"]);
+        return redirect()->route("shop")->with("error", "Something Went Wrong!!");
     }
 }

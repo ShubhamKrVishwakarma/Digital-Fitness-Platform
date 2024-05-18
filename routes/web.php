@@ -63,10 +63,10 @@ Route::group(['controller' => OrderController::class, 'middleware' => 'auth'], f
 // Checkout Page Routes
 Route::group(['controller' => CheckoutController::class], function() {
     Route::get('/checkout', 'index')->middleware('auth')->name('checkout');
-    Route::post('/checkout/{total_price}', 'store')->name('checkout.store');
+    Route::post('/checkout', 'store')->name('checkout.store');
     
     // Payment
-    Route::get('payment/info', 'paymentInfo')->name('payment.info');
+    Route::get('/checkout/paymentInfo', 'paymentInfo')->name('payment.info');
 });
 
 // Contact Page Routes
@@ -108,5 +108,5 @@ Route::group(["controller" => PostController::class], function() {
 Route::group(["controller" => TrainerController::class], function() {
     Route::get('/pricing/{id}', 'pricing')->name('pricing');
     Route::post('/pricing/subscription', 'subscribe')->name('subscription.payment');
-    Route::get('/pricing/subscription/Info', 'subscriptionInfo')->name('subscription.info');
+    Route::get('/pricing/verify', 'subscriptionInfo')->name('subscription.info');
 });

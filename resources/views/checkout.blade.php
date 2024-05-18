@@ -20,7 +20,7 @@
     <div class="container py-3">
         <div class="row">
             <div class="col-xl-8">
-                <form action="{{ route('checkout.store', $total_price) }}" method="POST">
+                <form action="{{ route('checkout.store') }}" method="POST">
                     @csrf
                     <div class="card">
                         <div class="card-body">
@@ -39,6 +39,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
+                                                                <input type="hidden" name="total_price" value="{{ $total_price }}">
                                                                 <label class="form-label" for="billing-name">Name</label>
                                                                 <input type="text" class="form-control" name="name"
                                                                     id="billing-name" placeholder="Enter name"
@@ -60,7 +61,7 @@
                                                                 <label class="form-label" for="billing-phone">Phone</label>
                                                                 <input type="text" name="phone" class="form-control"
                                                                     id="billing-phone" placeholder="Enter Phone no."
-                                                                    value="{{ auth()->user()->phone }}" required>
+                                                                    value="{{ auth()->user()->phone }}" maxlength="10" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -165,7 +166,7 @@
                                 <li>
                                     <div class="mt-2 mt-sm-0">
                                         <button type="submit" class="btn btn-success">
-                                            <i class="bi bi-cart me-1"></i> Procced </button>
+                                            <i class="bi bi-cart me-1"></i> Proceed </button>
                                     </div>
                                 </li>
                             </ol>

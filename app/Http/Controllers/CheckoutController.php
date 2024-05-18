@@ -16,9 +16,14 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout', [
+        if(Cart::where('user_id', auth()->user()->id)->exists()){
+            return view('checkout', [
             'cart' => Cart::where('user_id', auth()->user()->id)->get()
-        ]);
+            ]);
+        }
+        else{
+            return back()->with('error', "Cart is empty!");
+        }
     }
 
     /**
@@ -26,7 +31,7 @@ class CheckoutController extends Controller
      * @return redirect if paymeny mode is offline
      * @return view if paymeny mode is online
      */
-    public function store(Request $request, $total_price)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => "required|min:2|max:100",
@@ -47,7 +52,7 @@ class CheckoutController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'zip_code' => $request->zip_code,
-            'amount' => $total_price,
+            'amount' => $request->total_price,
             'status' => 'pending',
             'payment_mode' => 'offline'
         ]);
@@ -68,12 +73,11 @@ class CheckoutController extends Controller
         if ($request->paymentType === "online") {
             $api = new Api(env("RAZORPAY_API_KEY"), env("RAZORPAY_SECRET_KEY"));
 
-            $order = Order::orderBy('id', 'DESC')->first();
-            $order_id = $order->id + 1;
+            $order_id = $order->id;
 
             $orderData = [
                 'receipt' => `rcptid_$order_id`,
-                'amount' => ($total_price * 100),
+                'amount' => ($request->total_price * 100),
                 'currency' => 'INR',
                 'notes' => [
                     'order_id' => $order_id,
@@ -90,7 +94,7 @@ class CheckoutController extends Controller
                 "order" => $razorpayOrder
             ]);
         } else {
-            return redirect()->route('orders');
+            return redirect()->route('orders')->with('alert', 'Order Placed Successfully');
         }
     }
 
@@ -105,6 +109,12 @@ class CheckoutController extends Controller
         $status = $api->payment->fetch($request->payment_id);
 
         if ($status->captured) {
+            $order = Order::findOrFail($request->order_id);
+
+            $order->payment_mode = "online";
+
+            $order->update();
+
             return redirect()->route('orders')->with('alert', 'Payment completed Successfully!');
         }
         
