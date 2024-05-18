@@ -67,7 +67,7 @@ Route::group(['controller' => CheckoutController::class], function() {
     Route::post('/checkout', 'store')->name('checkout.store');
     
     // Payment
-    Route::get('/checkout/paymentInfo', 'paymentInfo')->name('payment.info');
+    Route::get('/paymentVerification', 'paymentVerification')->name('payment.info');
 });
 
 // Contact Page Routes

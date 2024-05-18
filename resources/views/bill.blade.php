@@ -10,7 +10,7 @@
 <section class="py-3 py-md-5">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-9 col-xl-8 col-xxl-7">
+      <div class="col-12 col-lg-9 col-xl-8 col-xxl-7 pt-4 bg-light">
         <div class="row gy-3 mb-3">
           <div class="col-6">
             <h2 class="text-uppercase text-endx m-0">Invoice</h2>

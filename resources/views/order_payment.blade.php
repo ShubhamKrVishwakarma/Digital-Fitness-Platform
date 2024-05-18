@@ -30,16 +30,10 @@
                                 <p class="fw-bold h7">Email: <span class="textmuted">{{ $order->notes->email }}</span></p>
                                 <p class="fw-bold h7">Phone: <span class="textmuted">{{ $order->notes->phone }}</span></p>
                             </div>
-                            {{-- <div class="bg-blue p-2">
-                                <P class="h8 textmuted">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Laborum recusandae dolorem voluptas nemo, modi eos minus nesciunt.
-                                <p class="p-blue bg btn btn-primary h8">LEARN MORE</p>
-                                </P>
-                            </div> --}}
                         </div>
                     </div>
                     <div class="col-12">
-                        <div id="make-payment" class="btn btn-primary d-block h8">MAKE PAYMENT</div>
+                        <div id="make-payment" class="btn btn-primary d-block h8">PAY ONLINE</div>
                     </div>
                 </div>
             </div>
@@ -57,7 +51,7 @@
             "image": "{{ asset('images/favicon/favicon.png') }}",
             "order_id": "{{ $order->id }}",
             "handler": function (response){
-                window.location.href = "http://localhost:8000/checkout/paymentInfo" + "?payment_id=" + response.razorpay_payment_id + "&order_id={{ $order_id }}";
+                window.location.href = "http://localhost:8000/paymentVerification" + "?payment_id=" + response.razorpay_payment_id + "&order_id={{ $order_id }}";
             },
             "prefill": {
                 "name": "{{ $order->notes->name }}",
