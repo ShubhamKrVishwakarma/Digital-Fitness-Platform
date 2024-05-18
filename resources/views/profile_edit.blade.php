@@ -30,9 +30,15 @@
         <div class="edit" id="edit-section">
             <div class="card border-0 bg-transparent mb-0">
                 <div class="card-body p-lg-5 text-light">
-                    <div class="mb-5">
-                        <h4 class="mb-1">Account Information</h4>
-                        <p class="mb-0 fs-6">Edit your personal information and address.</p>
+                    <div class="mb-5 d-flex justify-content-between">
+                        <div>
+                            <h4 class="mb-1">Account Information</h4>
+                            <p class="mb-0 fs-6">Edit your personal information and address.</p>
+                        </div>
+                        <div>
+                            <a href="{{ route('user.delete', auth()->user()->id ) }}" style="pointer-events:none;display:none;" id="deleteLink"></a>
+                            <button onclick="deleteAccount()" class="btn btn-danger">Delete Account</button>
+                        </div>
                     </div>
                     <form class="row g-3" action="{{route('user.update', $user->id)}}" method="POST" id="update_form" enctype="multipart/form-data">
                         @csrf
@@ -170,4 +176,13 @@
 
 @push("scripts")
 <script src="{{asset('js/profile_edit.js')}}"></script>
+<script>
+    function deleteAccount(){
+        let result = confirm('Do you want to delete your account');
+        if(result){
+            document.getElementById('deleteLink').click()
+        }
+        return 0;
+    }
+</script>
 @endpush

@@ -24,6 +24,7 @@ Route::group(['controller' => UserController::class], function() {
     Route::get('/profile-edit/{id}', 'profile_edit')->middleware('auth')->name('user.profile_edit');
     Route::put('/profile/{id}', 'update')->middleware('auth')->name('user.update');
     Route::patch('/profile', 'update_pass')->middleware('auth')->name('user.update_pass');
+    Route::get('/profile/delete/{id}', 'delete')->middleware('auth')->name('user.delete');
 });
  
 // Shop Page Routes

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_workout_logs', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('plan_id');
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete();
             $table->foreign("plan_id")->references("id")->on("workout_plans");
             $table->timestamps();
         });
