@@ -41,12 +41,18 @@ class TrainerController extends Controller
                 "review" => $request["trainer-review"],
                 "trainer_id" =>  $request["trainer-id"]
             ]);
+
+            $total_no_of_reviews = TrainerReview::where("trainer_id", $request["trainer-id"])->count();
+        
+            $total_ratings_sum = TrainerReview::where("trainer_id", $request["trainer-id"])->sum('rating');
     
+            $new_average_rating = $total_ratings_sum / $total_no_of_reviews;
+
             $total_no_of_reviews = TrainerReview::where("trainer_id", $request['trainer-id'])->count();
     
             $trainer = User::findOrFail($request["trainer-id"]);
     
-            $trainer->rating = ($trainer->rating +  $request["trainer-rating"]) / $total_no_of_reviews;
+            $trainer->rating = $new_average_rating;
     
             $trainer->update();
         }
