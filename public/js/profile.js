@@ -2,10 +2,12 @@
 try {
     let aboutSection = document.getElementById('about-section');
     let postsSection = document.getElementById('post-section');
+    let reviewsSection = document.getElementById('review-section');
     let editSection = document.getElementById('edit-section');
     
     let aboutButton = document.getElementById('about');
     let postsButton = document.getElementById('posts');
+    let reviewsButton = document.getElementById('reviews');
     let editButton = document.getElementById('edit');
     
     aboutButton.addEventListener('click',()=>{
@@ -13,8 +15,8 @@ try {
         aboutSection.style.pointerEvents = "all";
         postsSection.style.display = "none";
         postsSection.style.pointerEvents = "none";
-        // editSection.style.display="none";
-        // editSection.style.pointerEvents = "none";
+        reviewsSection.style.display="none";
+        reviewsSection.style.pointerEvents = "none";
         editButton.style.backgroundColor="royalblue";
     });
     postsButton.addEventListener('click',()=>{
@@ -22,18 +24,20 @@ try {
         postsSection.style.pointerEvents = "all";
         aboutSection.style.display = "none";
         aboutSection.style.pointerEvents = "none";
-        // editSection.style.display="none";
-        // editSection.style.pointerEvents = "none";
+        reviewsSection.style.display="none";
+        reviewsSection.style.pointerEvents = "none";
         editButton.style.backgroundColor="royalblue";
     });
-    // editButton.addEventListener('click',()=>{
-    //     editSection.style.display="block";
-    //     editSection.style.pointerEvents = "all";
-    //     postsSection.style.display =  "none";
-    //     postsSection.style.pointerEvents = "none";
-    //     aboutSection.style.display = "none";
-    //     aboutSection.style.pointerEvents = "none";        
-    // });
+    if(reviewsButton){
+        reviewsButton.addEventListener('click',()=>{
+            reviewsSection.style.display="block";
+            reviewsSection.style.pointerEvents = "all";
+            postsSection.style.display =  "none";
+            postsSection.style.pointerEvents = "none";
+            aboutSection.style.display = "none";
+            aboutSection.style.pointerEvents = "none";        
+        });
+    }
 } catch (error) {
     console.error('Error adding event listener: ' + error.message);
 }

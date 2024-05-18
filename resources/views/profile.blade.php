@@ -98,6 +98,9 @@
                         @if ($user->hasPost($user->id))
                             <a class="nav-item-links" id="posts" active-color="black">Posts</a>
                         @endif
+                        @if ($user->role === 'trainer')
+                            <a class="nav-item-links" id="reviews" active-color="black">Reviews</a>
+                        @endif
                         <span class="nav-indicator"></span>
                     </div>
                 </div>
@@ -296,6 +299,44 @@
                             </div>
                         </div>
                     </div>
+                    <div class="review-container" id="review-section">
+                        <div class="bg-white rounded shadow-sm px-4 pt-4 restaurant-detailed-ratings-and-reviews">
+                            <div class="reviews-members pt-4 pb-4">
+                                    @if ($user->role === 'trainer')
+                                    @forelse($reviews as $review)
+                                    <div class="media pt-3">
+                                        <div class="media-body">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <a href="{{ route('user.show', $review->user_id ) }}">
+                                                    <img alt="Generic placeholder image" src="{{ $review->user->getProfileUrl() }}" class="mr-3 rounded-pill" style="width:50px">
+                                                </a>
+                                                <div class="reviews-members-header">
+                                                    <h6 class="mb-0"><a class="text-black text-decoration-none"
+                                                            href="{{ route('user.show', $review->user->id ) }}">{{ $review->user->name }}</a></h6>
+                                                    <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+                                                </div>
+                                            </div>
+                                            <div class="reviews-members-body">
+                                                <div>
+                                                    <span class="star-rating float-right text-dark border border-3 px-2 rounded-4">
+                                                        <i class="bi bi-star-fill text-warning">    </i>
+                                                         {{ $review->rating }}
+                                                    </span>
+                                                </div>
+                                                <p class="text-secondary">{{$review->review}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="text-dark">   
+                                    @empty
+                                    <div>
+                                        <h6 class="text-center text-dark">No Reviews Yet</h6>
+                                    </div>
+                                    @endforelse
+                                    @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -350,6 +391,9 @@
                         <a class="nav-item-links is-active " id="about" active-color="black">About</a>
                         @if ($user->hasPost($user->id))
                             <a class="nav-item-links " id="posts" active-color="black">Posts</a>
+                        @endif
+                        @if ($user->role === 'trainer')
+                            <a class="nav-item-links" id="reviews" active-color="black">Reviews</a>
                         @endif
                         <span class="nav-indicator"></span>
                     </div>
@@ -490,6 +534,44 @@
                                         <div>No posts yet</div>
                                     </div>
                                 @endforelse
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-container" id="review-section">
+                        <div class="bg-white rounded shadow-sm px-4 pt-4 restaurant-detailed-ratings-and-reviews">
+                            <div class="reviews-members pt-4 pb-4">
+                                    @if ($user->role === 'trainer')
+                                    @forelse($reviews as $review)
+                                    <div class="media pt-3">
+                                        <div class="media-body">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <a href="{{ route('user.show', $review->user_id ) }}">
+                                                    <img alt="Generic placeholder image" src="{{ $review->user->getProfileUrl() }}" class="mr-3 rounded-pill" style="width:50px">
+                                                </a>
+                                                <div class="reviews-members-header">
+                                                    <h6 class="mb-0"><a class="text-black text-decoration-none"
+                                                            href="{{ route('user.show', $review->user->id ) }}">{{ $review->user->name }}</a></h6>
+                                                    <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+                                                </div>
+                                            </div>
+                                            <div class="reviews-members-body">
+                                                <div>
+                                                    <span class="star-rating float-right text-dark border border-3 px-2 rounded-4">
+                                                        <i class="bi bi-star-fill text-warning">    </i>
+                                                         {{ $review->rating }}
+                                                    </span>
+                                                </div>
+                                                <p class="text-secondary">{{$review->review}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="text-dark">   
+                                    @empty
+                                    <div>
+                                        <h6 class="text-center text-dark">No Reviews Yet</h6>
+                                    </div>
+                                    @endforelse
+                                    @endif
                             </div>
                         </div>
                     </div>
