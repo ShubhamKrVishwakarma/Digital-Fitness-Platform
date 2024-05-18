@@ -50,7 +50,7 @@
             "image": "{{ asset('images/favicon/favicon.png') }}",
             "order_id": "{{ $order->id }}",
             "handler": function (response){
-                window.location.href = "http://localhost:8000/pricing/verify" + "?payment_id=" + response.razorpay_payment_id + "&trainer_id={{ $order->notes->trainer_id }}" + "&type={{ $order->notes->type }}";
+                window.location.href = "http://localhost:8000/verify" + "?payment_id=" + response.razorpay_payment_id + "&order_id={{ $order->notes->order_id }}";
             },
             "prefill": {
                 "name": "{{ $order->notes->name }}",

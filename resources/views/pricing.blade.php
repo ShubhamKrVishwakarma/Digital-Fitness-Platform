@@ -29,7 +29,6 @@
                                     <h6 class="font-weight-light">MONTHLY</h6>
                                     <form action="{{ route('subscription.payment') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="amount" value="450">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <input type="hidden" name="type" value="monthly">
                                         @auth
@@ -69,7 +68,6 @@
                                     <h6 class="font-weight-light">YEARLY</h6>
                                     <form action="{{ route('subscription.payment') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="amount" value="3999">
                                         <input type="hidden" name="trainer_id" value="{{ $trainer_id }}">
                                         <input type="hidden" name="type" value="yearly">
                                         @auth
