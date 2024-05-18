@@ -134,41 +134,6 @@ video{
     width: 150px;
 }
 
-/* section-3 */
-
-#banner-3{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    height: 730px;
-    max-width: 100%;
-    margin-top: 8rem;
-}
-
-#banner-3 .image{
-    position: absolute;
-    top:0;
-    left:0;
-    width:inherit;
-    height:inherit;
-    background-color: #111317;
-    z-index: -1;
-}
-#banner-3 .image img{
-    width:inherit;
-    height: inherit;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.5;
-}
-
-#banner-3 .content{
-    color:white;
-    text-align: center;
-}
-
 /* section-4 */
 
 #banner-4 {
@@ -191,11 +156,9 @@ video{
 .trainer img {
     border-radius: 20px;
     margin-bottom: 10px;
-    max-width: 270px;
-    max-height: 270px;
-    overflow: hidden;
+    width: 270px;
+    height: 270px;
     border: 1px solid black;
-    /* padding: 2px; */
     object-fit: cover;
     object-position: center;
 }
@@ -281,6 +244,17 @@ video{
     padding-block:1rem;
     gap:2rem;
 }    
+
+#banner-7{
+    min-height: 780px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
 @keyframes scroll{
     to{

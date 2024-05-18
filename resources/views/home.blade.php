@@ -4,6 +4,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
 @endpush
 
 @section('content')
@@ -63,17 +64,62 @@
         </div>
     </section>
 
-    <section class="container-fluid banner animate" id="banner-3">
-        <div class="image animate">
-            <img src="./images/home/bar.jpg" alt="">
+    <section class="container-fluid animate bg-dark text-dark mb-5" id="banner-7" style="background-image: url('{{ asset('./images/home/bar.jpg') }}');">
+        <div>
+            <h1 class=" text-center text-white py-3">Our top rated products</h1>
         </div>
-        <div class="content">
-            <h1 class=" mb-5 display-2">SHOP VARIETY OF <br>EQUIPMENTS</h1>
-            <div class="banner-button">
-                <a href="{{route('shop')}}">
-                    <button class="bttn bttn-primary">Go to Store</button>
-                </a>
+        <div class="row px-3 w-100">
+            <div class="col-lg-12 p-3">
+                <div class="row justify-content-center align-items-center flex-wrap">
+                    @forelse ($products as $product)
+                        <!-- Single Product -->
+                        <div class="product">
+                            <div class="product-content">
+                                <div class="product-img">
+                                    <a href="{{ route('product.details', $product->id) }}"><img src="{{ $product->getProductUrl() }}" alt="product image" /></a>
+                                </div>
+                                <div class="product-btns d-flex justify-content-center align-items-center">
+                                    @if ($product->quantity < 1)
+                                        <p class="text-danger fw-semibold mt-4">Out of Stock</p>
+                                    @else
+                                        @auth
+                                            @if ($product->isAlreadyInCart($product->id))
+                                                <a href="{{ route('cart') }}" class="btn btn-dark bg-success" style="background-color: #40c9a2!important">Go to Cart</a>
+                                            @else
+                                                <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark">Add to Cart</a>
+                                            @endif
+                                        @endauth
+                                        @guest
+                                            <a href="{{ route('login') }}" class="btn btn-dark">Add to Cart</a>
+                                        @endguest
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-info-top">
+                                    <a href="{{ route('product.details', $product->id) }}" class="product-name">{{ substr($product->name, 0, 15) }}...</a>
+                                    <div class="rating">
+                                        <span><i class="bi bi-star-fill"></i></span>
+                                        {{ $product->rating }}
+                                    </div>
+                                </div>
+                                <p class="product-price m-0"><i class="bi bi-currency-rupee"></i></p>
+                                <p class="product-price m-0">{{ $product->price }}</p>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="d-flex flex-column justify-content-center align-items-center py-4">
+                            <h2>No Products Found!</h2>
+                            <a href="{{ route('shop') }}" class="btn btn-primary">Refresh Products</a>
+                        </div>
+                    @endforelse
+                </div>
             </div>
+        </div>
+        <div>
+            <a href="{{ route('shop') }}">
+                <button class="bttn bttn-primary">Show more</button>
+            </a>
         </div>
     </section>
 
