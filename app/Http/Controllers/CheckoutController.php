@@ -61,6 +61,7 @@ class CheckoutController extends Controller
             OrderedProduct::create([
                 'order_id' => $order->id,
                 'product_image' => $item->product->image,
+                'product_id' => $item->product_id,
                 'product_name' => $item->product->name,
                 'product_price' => $item->product->price,
                 'category' => $item->product->category->name,
@@ -91,6 +92,8 @@ class CheckoutController extends Controller
                 "order" => $razorpayOrder
             ]);
         } else {
+            Cart::where('user_id', auth()->user()->id)->delete();
+            
             return redirect()->route('orders')->with('alert', 'Order Placed Successfully');
         }
     }
