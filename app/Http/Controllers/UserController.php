@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Post;
+use App\Models\TrainerReview;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,9 +13,16 @@ class UserController extends Controller
 {
     public function show($id)
     {
+        $user = User::findOrFail($id);
+        $review = null;
+        if($user->role === 'trainer'){
+            $review = TrainerReview::where('trainer_id' , $id)->get();
+        }
+
         return view('profile', [
-            'user' => User::findOrFail($id),
-            'posts' => Post::where('user_id', $id)->get()
+            'user' => $user,
+            'posts' => Post::where('user_id', $id)->get(),
+            'reviews' => $review
         ]);
     }
 

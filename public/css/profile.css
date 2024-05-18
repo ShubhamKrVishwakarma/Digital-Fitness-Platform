@@ -137,7 +137,7 @@
 }
 
 .profile-nav-items {
-    width: 200px;
+    /* width: 200px; */
     display: flex;
     align-self: center;
     justify-content: space-around;
@@ -273,6 +273,10 @@
     cursor: pointer;
 }
 
+#review-section{
+    display: none;
+    pointer-events: none;
+}
 /*RESPONSIVE*/
 
 @media (max-width:750px) {
