@@ -92,10 +92,14 @@ class ProductController extends Controller
                 ]);
         
                 $total_no_of_reviews = ProductReview::where("product_id", $request['product-id'])->count();
+
+                $total_ratings_sum = ProductReview::where("product_id", $request["product-id"])->sum('rating');
+    
+                $new_average_rating = $total_ratings_sum / $total_no_of_reviews;
         
                 $product = Product::findOrFail($request["product-id"]);
         
-                $product->rating = ($product->rating +  $request["product-rating"]) / $total_no_of_reviews;
+                $product->rating = $new_average_rating;
         
                 $product->update();
             }
