@@ -97,4 +97,12 @@ class UserController extends Controller
         }
         return redirect()->route('user.profile_edit', $user->id)->with('alert','Please Enter correct password');
     }
+    public function delete($id){
+        auth()->logout();
+        $user = User::findOrFail($id);
+        $user->delete();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }
