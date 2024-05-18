@@ -1,6 +1,16 @@
-<div x-show="showMessages" class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9" style="display: none;">
-    <div class="selected-user">
-        <span class="name">{{ $name }}</span>
+<div x-show="showMessages" class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9 p-0" style="display: none;">
+    <div class="selected-user" style="background-color: #2c3e50">
+        <div class="d-flex">
+            <div class="user">
+                <img src="{{ $receiver_pic }}" alt="Retail Admin">
+                <span class="status busy"></span>
+            </div>
+            <div>
+                @if ($receiver_id ?? false)
+                    <a href="{{ route('user.show', $receiver_id) }}" class="text-light text-decoration-none">{{ $name }}</a>
+                @endif
+            </div>
+        </div>
     </div>
     <div class="chat-container">
         <ul class="chat-box chatContainerScroll" wire:poll.5s='refreshMessage'>

@@ -9,7 +9,7 @@
 @section('content')
 <div class="container py-4">
     <div class="content-wrapper">
-        <div class="row gutters">
+        <div class="row justify-content-center align-items-center gutters">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card m-0">
                     @if (auth()->user()->hasSubscription())
