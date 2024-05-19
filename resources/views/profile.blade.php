@@ -583,4 +583,9 @@
 
 @push('scripts')
     <script src="{{ asset('js/profile.js') }}"></script>
+    @if (session('trainerReviewRequest'))
+    <script>
+        document.getElementById('reviews').click();
+    </script>
+    @endif
 @endpush

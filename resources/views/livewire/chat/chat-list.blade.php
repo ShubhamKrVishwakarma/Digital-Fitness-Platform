@@ -8,7 +8,7 @@
         <ul class="users">
             @if ($trainer)
                 @foreach ($users as $user)
-                    <li wire:key='{{ $user->trainer->id }}' x-on:click="hideMessages = false, showMessages = true; selectedUserId = {{ $user->id }}" :class="{ 'activeChat': selectedUserId === {{ $user->id }} }" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })">
+                    <li wire:key='{{ $user->id }}' x-on:click="hideMessages = false, showMessages = true; selectedUserId = {{ $user->id }}" :class="{ 'activeChat': selectedUserId === {{ $user->id }} }" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })">
                         <div class="user">
                             <img src="{{ $user->member->getProfileUrl() }}" alt="Retail Admin">
                             {{-- <span class="status busy"></span> --}}
@@ -20,10 +20,9 @@
                 @endforeach
             @else
                 @foreach ($users as $user)
-                    <li wire:key='{{ $user->trainer->id }}' x-on:click="hideMessages = false, showMessages = true; selectedUserId = {{ $user->id }}" :class="{ 'activeChat': selectedUserId === {{ $user->id }} }" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })">
+                    <li wire:key='{{ $user->id }}' x-on:click="hideMessages = false, showMessages = true; selectedUserId = {{ $user->id }}" :class="{ 'activeChat': selectedUserId === {{ $user->id }} }" class="person" @click="$dispatch('messages', { id: {{ $user->id }} })">
                         <div class="user">
                             <img src="{{ $user->trainer->getProfileUrl() }}" alt="Retail Admin">
-                            {{-- <span class="status busy"></span> --}}
                         </div>
                         <p class="name-time text-center m-0">
                             <span class="name fs-6 my-auto">{{ $user->trainer->name }}</span>

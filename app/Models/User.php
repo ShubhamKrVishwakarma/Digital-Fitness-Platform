@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function hasSubscription() {
         if ($this->role === "trainer") {
-            return Subscription::where("trainer_id", $this->id)->exists();
+            return Subscription::where("trainer_id", auth()->user()->id)->exists();
         } 
         return Subscription::where("user_id", auth()->user()->id)->where("expiry_date", ">", now())->exists();
     }
