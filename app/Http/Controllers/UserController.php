@@ -16,7 +16,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $review = null;
         if($user->role === 'trainer'){
-            $review = TrainerReview::where('trainer_id' , $id)->get();
+            $review = TrainerReview::where('trainer_id' , $id)->latest()->get();
         }
 
         return view('profile', [
@@ -97,6 +97,11 @@ class UserController extends Controller
         }
         return redirect()->route('user.profile_edit', $user->id)->with('alert','Please Enter correct password');
     }
+
+    /**
+     * Delete User Account
+     * @return redirect
+     */
     public function delete($id){
         auth()->logout();
         $user = User::findOrFail($id);
