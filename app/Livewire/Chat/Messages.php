@@ -30,8 +30,11 @@ class Messages extends Component
         
         $chat = Subscription::findOrFail($id);
 
-        if (auth()->user()->role === "trainer") {
+        $trainer = auth()->user()->role === "trainer" ? true : false;
+
+        if ($trainer) {
             $this->receiver_id = $chat->user_id;
+            $this->receiver_pic = $chat->member->getProfileUrl();
             $this->name = $chat->member->name;    
         }
         else{
