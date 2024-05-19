@@ -37,8 +37,6 @@
                                             class="text-dark font-weight-bold ms-sm-2">{{ $order_detail["category"] }}</span></span>
                                     <span class="mb-1 text-xs">Quantity: <span
                                             class="text-danger ms-sm-1 font-weight-bold">{{ $order_detail["quantity"] }}</span></span>
-                                    <span class="mb-1 text-xs">Available Quantity: <span
-                                            class="text-dark ms-sm-1 font-weight-bold">112</span></span>
                                     <span class="mb-1 text-xs">Price: <span
                                             class="text-success ms-sm-1 font-weight-bold"><i
                                                 class="fa-solid fa-indian-rupee-sign"></i> {{ $order_detail["product_price"] }}</span></span>
