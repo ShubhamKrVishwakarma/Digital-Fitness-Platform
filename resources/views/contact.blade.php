@@ -14,7 +14,7 @@
                 <div class="form-wrapper">
                     <div class="contact-heading">
                         <h1>Let's work together<span>.</span></h1>
-                        <p class="text">Or reach us via : <a href="#">FitnessGroup777@gmail.com</a></p>
+                        <p class="text">Or reach us via : <a href="#">FitnessHUB@gmail.com</a></p>
                     </div>
                     <form action="{{ route("contact.store") }}" method="post">
                         @csrf
