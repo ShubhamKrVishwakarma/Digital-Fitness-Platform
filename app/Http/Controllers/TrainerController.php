@@ -23,6 +23,15 @@ class TrainerController extends Controller
     }
 
     /**
+     * See Trainers Reviews
+     * @return redirect
+     */
+    public function seeTrainerReview($id)
+    {
+        return redirect()->route('user.show', $id)->with('trainerReviewRequest', 'Request to see Trainer Review');
+    }
+
+    /**
      * Review a Trainer
      * @return redirect
      */

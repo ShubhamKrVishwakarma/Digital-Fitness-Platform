@@ -66,7 +66,8 @@
                                 @auth
                                     @if (auth()->user()->role === "member")
                                         @if ($trainer->hasBeenReviewed($trainer->id))
-                                            <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">Reviewed</button>
+                                            {{-- <button type="button" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">See Review</button> --}}
+                                            <a href="{{ route('see.trainers.review', $trainer->id) }}" class="btn btn-success mt-3 btn-rounded waves-effect w-md waves-light me-3">See Review</a>
                                         @else
                                             <button type="button" class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light me-3"
                                                 data-bs-toggle="modal" data-bs-target="#reviewModal" data-trainer-id="{{ $trainer->id }}" >Rate Trainer</button>
