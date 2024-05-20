@@ -6,12 +6,17 @@ use App\Models\Message;
 use App\Models\Subscription;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Messages extends Component
 {
+    use WithFileUploads;
+
     public $messages = [];
 
     public $message;
+    public $image;
+    public $video;
     
     public $chat_id;
     public $receiver_id;
@@ -53,7 +58,7 @@ class Messages extends Component
             "chat_id" =>$this->chat_id, 
             "sender_id" => auth()->user()->id,
             "receiver_id" => $this->receiver_id,
-            "message" => $this->message,
+            "content" => $this->message,
         ]);
 
         $this->messages = Message::where("chat_id", $this->chat_id)->get();
@@ -62,9 +67,67 @@ class Messages extends Component
         $this->resetValidation();
     }
 
+    public function sendImage() {
+        $content = Message::create([
+            "chat_id" =>$this->chat_id, 
+            "sender_id" => auth()->user()->id,
+            "receiver_id" => $this->receiver_id,
+            "type" => "image",
+        ]);
+
+        $fileExtension = $this->image->getClientOriginalExtension();
+        $fileName = $content->id . '.' . $fileExtension;
+        $this->image->storeAs('public/messages', $fileName);
+
+        $content->content = $fileName;
+
+        $content->update();
+
+        $this->messages = Message::where("chat_id", $this->chat_id)->get();
+
+        // $this->image = null;
+        
+        $this->dispatch(
+            'alert',
+            icon: 'success',
+            title: 'Success!',
+            text: 'Image Shared!',
+        );
+    }
+
+    public function sendVideo() {
+        $content = Message::create([
+            "chat_id" =>$this->chat_id, 
+            "sender_id" => auth()->user()->id,
+            "receiver_id" => $this->receiver_id,
+            "type" => "video",
+        ]);
+
+        $fileExtension = $this->video->getClientOriginalExtension();
+        $fileName = $content->id . '.' . $fileExtension;
+        $this->video->storeAs('public/messages', $fileName);
+
+        $content->content = $fileName;
+
+        $content->update();
+
+        $this->messages = Message::where("chat_id", $this->chat_id)->get();
+
+        // $this->video = null;
+
+        $this->dispatch(
+            'alert',
+            icon: 'success',
+            title: 'Success!',
+            text: 'Video Shared!',
+        );
+    }
+
     public function deleteMessage($id)
     {   
         Message::findOrFail($id)->deleteOrFail();
+
+        $this->messages = Message::where("chat_id", $this->chat_id)->get();
 
         $this->dispatch(
             'alert',

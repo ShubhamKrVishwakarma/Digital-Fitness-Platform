@@ -13,7 +13,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card m-0">
                     @if (auth()->user()->hasSubscription())
-                        <div x-data="{hideMessages : true, showMessages : false}" class="row no-gutters">
+                        <div x-data="{hideMessages : true, showMessages : false, messageDiv : false, imageForm : false, videoForm : false}" class="row no-gutters">
                             {{-- Left Side --}}
                             @livewire('Chat.ChatList')
                             {{-- Right Side --}}

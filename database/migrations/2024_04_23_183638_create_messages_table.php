@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger("chat_id");
             $table->unsignedBigInteger("sender_id");
             $table->unsignedBigInteger("receiver_id");
-            $table->text("message");
+            $table->enum("type", ['message', 'image', 'video'])->default('message');
+            $table->text("content")->nullable();
             $table->timestamps();
 
             $table->foreign('chat_id')->references('id')->on('subscriptions')->cascadeOnDelete();
