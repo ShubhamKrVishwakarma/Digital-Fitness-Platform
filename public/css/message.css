@@ -424,3 +424,40 @@ ul {
     padding: 15px 45px;
     font-size: 16px;
 }
+
+/* Message Box */
+.messageBox {
+    height: 280px!important;
+    width: 280px!important;
+}
+
+.messageBox img {
+    height: 100%!important;
+    width: 100%!important;
+    object-fit: cover!important;
+    object-position: center!important;
+}
+
+.messageBox video {
+    height: 100%!important;
+    width: 100%!important;
+    object-fit: cover;
+    object-position: center!important;
+}
+
+.shareDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 350px;
+    width: 350px;
+    overflow: hidden;
+}
+
+.shareDiv img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+}
