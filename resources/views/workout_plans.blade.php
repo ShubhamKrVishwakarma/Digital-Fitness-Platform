@@ -7,8 +7,7 @@
 @endpush
 
 @section('content')
-    <div class="bg-dark text-light pb-4">
-        
+    <div class="bg-dark text-light pb-4">  
         <section class="container-fluid mb-2">
             <div class="row">
                 <div class="col p-0" id="banner-section">
@@ -18,7 +17,7 @@
                     <span id="greet">
                         <h2 class="text-light">WELCOME ,</h2>
                         @auth
-                            <p>{{ auth()->user()->name }}</p>
+                            <p class="text-capitalize">{{ auth()->user()->name }}</p>
                         @endauth
                         @guest
                             <p>Guest</p>
