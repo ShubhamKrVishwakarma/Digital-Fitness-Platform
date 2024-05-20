@@ -36,6 +36,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link me-2" href="{{ route('workout.plans') }}">
+                            <i class="fa-solid fa-dumbbell opacity-6 me-1"></i>
+                            Workouts
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link me-2" href="{{ route('trainers') }}">
                             <i class="fa-solid fa-circle-info opacity-6 me-1"></i>
                             Trainers
