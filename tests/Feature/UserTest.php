@@ -16,6 +16,7 @@ class UserTest extends TestCase
         $response = $this->post('/signup', [
             "name" => "Test",
             "email" => "test@gmail.com",
+            "phone" => "9999999999",
             "gender" => "M",
             "date_of_birth" => "22-04-2001",
             "password" => "ssssssss",
@@ -81,6 +82,7 @@ class UserTest extends TestCase
         $user = User::create([
             "name" => "Test",
             "email" => "test@gmail.com",
+            "phone" => "9999999999",
             "gender" => "M",
             "dob" => "22-04-2001",
             "password" => "ssssssss"
