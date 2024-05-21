@@ -9,10 +9,6 @@
                             <h5 class="font-weight-bolder">
                                 {{ $total_users }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                since yesterday
-                            </p> --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
@@ -30,14 +26,10 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Todal Products</p>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Products</p>
                             <h5 class="font-weight-bolder">
                                 {{ $total_products }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                since last week
-                            </p> --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
@@ -59,10 +51,6 @@
                             <h5 class="font-weight-bolder">
                                 {{ $total_orders }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                <span class="text-danger text-sm font-weight-bolder">+2%</span>
-                                than last month
-                            </p> --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
@@ -84,9 +72,6 @@
                             <h5 class="font-weight-bolder">
                                 {{ $total_queries }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                            </p> --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
