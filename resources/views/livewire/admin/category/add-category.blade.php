@@ -22,7 +22,7 @@
                     <button class="btn btn-sm btn-success text-white">Processing...</button>
                 </div>
                 <div wire:loading.remove class="col-md-6">
-                    <button class="btn btn-sm btn-primary">Add Category</button>
+                    <button class="btn btn-sm btn-primary">Save Category</button>
                 </div>
             </form>
         </div>

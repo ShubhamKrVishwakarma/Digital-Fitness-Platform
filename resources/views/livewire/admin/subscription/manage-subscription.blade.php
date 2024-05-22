@@ -45,9 +45,9 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-12 mb-3">
+                        {{-- <div class="col-12 mb-3">
                             <button class="btn btn-sm btn-success m-0">Update</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
