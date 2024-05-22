@@ -100,7 +100,7 @@
                             </table>
                         </div>
                         <div class="input-group mt-3">
-                            <button type="submit" class="btn btn-sm btn-primary m-0">Add Exercise</button>
+                            <button type="submit" class="btn btn-sm btn-primary m-0">Add Plan</button>
                         </div>
                     </div>
                 </div>

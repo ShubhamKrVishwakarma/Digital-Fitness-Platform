@@ -72,6 +72,16 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ Route::is('admin.orders') ? 'active' : '' }}"
+                    href="{{ route('admin.orders') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-dolly text-danger text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Orders</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ Route::is('admin.subscriptions') ? 'active' : '' }}"
                     href="{{ route('admin.subscriptions') }}">
                     <div
@@ -89,16 +99,6 @@
                         <i class="fa-solid fa-users text-info text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Community</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Route::is('admin.orders') ? 'active' : '' }}"
-                    href="{{ route('admin.orders') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-dolly text-danger text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Orders</span>
                 </a>
             </li>
             <li class="nav-item">
